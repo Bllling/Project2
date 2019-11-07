@@ -135,6 +135,8 @@ create table box(
 create table if not exists computer(
 	id  int primary key auto_increment, -- 配置单号
 	uid int,  -- 用户编号
+	cname varchar(50), -- 配置单名
+	detail text, -- 配置说明
 	rtime datetime not null, -- 发布时间
 	znumber int , -- 点赞数
 	bnumber int ,  -- 浏览次数
