@@ -45,7 +45,7 @@ create table cpu(
 	cores int,	  -- 核心数
 	threads int,	  -- 线程数
 	frequency varchar(5), -- 默认主频
-	maxfrequency varchar(5) 
+	maxfrequency varchar(5) --最大主频
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 
@@ -89,7 +89,7 @@ create table disk(
 	score varchar(50),	  -- 跑分
 	powers varchar(50),  -- 功率
 	volume varchar(50),   -- 硬盘容量
-	isssd int,
+	isssd int, -- 是否为固态
 	rpm varchar(50)  -- 转数
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
