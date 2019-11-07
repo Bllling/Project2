@@ -1,0 +1,21 @@
+@charset "utf-8";
+*{
+	margin: 0 auto;
+	padding: 0;
+	}
+.navy{
+	background: rgb(54,145,237);
+}
+ul li{
+	list-style-type: none;
+	display: inline;
+	margin-left: 40px;
+	
+}
+ul li a{
+	text-decoration-line: none;
+	font-size: 18px;
+	color: white;
+   font-family: "宋体";
+}
+
