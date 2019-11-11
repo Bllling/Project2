@@ -1,0 +1,330 @@
+/*
+* @Description: 论坛登录注册
+* @Author:      贾立平
+* @Update:      2014-10-08
+*/
+
+/* global */
+body { background-color:#f6f6f6; font:12px/1.5 微软雅黑; }
+.wrapper { width:980px; margin:0 auto;}
+a { color:#0368a8; text-decoration:none;}
+a:hover { color:#c00; text-decoration:underline;}
+input::-webkit-search-cancel-button{display: none;}  /* 清除谷歌浏览器下的 search 叉号 */
+input::-ms-clear{display:none;}/* 清除IE下的 search 叉号 */
+
+
+
+
+/* header */
+.header { height:56px; padding:30px 0;}
+.header .logo {float:left;background: url(http://icon.zol-img.com.cn/mainpage/2019logo/logo-login.png) no-repeat;width: 223px;height: 24px;margin: 26px 18px 0 0; overflow: hidden;    text-indent: -999em;}
+.header .logo-tip{ float:left; margin:22px 0 0; font:20px/34px "Microsoft YaHei",arial; color:#bfbfbf;}
+.header .logo-tip-pwd { float:left; zoom:1; padding:0 0 0 15px; margin:10px 0 0; border-left:1px solid #ccc; font: 28px/36px "Microsoft YaHei",arial; color:#666;}
+
+/* content */
+.content { min-height:350px; padding:45px 0; zoom:1; background-color:#fff; border:1px solid #e6e6e6;}
+.pass-btn { display:block; width:300px; height:42px; background-color:#008ef5; border:0 none; line-height:42px; font-size:16px; font-weight:700; cursor:pointer; outline:none; text-align:center; color:#fff; -webkit-transi tion: .3s; trans ition: .3s;}
+.pass-btn:hover { background-color:#0084e4; color:#fff; text-decoration:none;}
+.login-btn { position:relative; zoom:1; height:42px;}
+.login-btn .wait-bar { display:none; position:absolute; top:38px; left:0; height:4px; background:url(https://icon.zol-img.com.cn/service/login2014/login-bar.png) 100% center no-repeat #5bc92e; font:0/0 arial;}
+.login-btn-wait .pass-btn{ background-color:#008ef5; overflow:hidden; text-indent:-999em; background-position:0 -248px; cursor:default;}
+.login-btn-wait .wait-bar { display:block;}
+
+/* fast-login 快速登录 */
+.fast-login { float:left; width:338px; height:318px; padding:0 57px 0 89px; border-right:1px dashed #e6e6e6;}
+.title { padding:0 0 24px; zoom:1; font:18px/28px "Microsoft YaHei",arial; color:#666;}
+.fast-login-btns { margin:40px 0 0;}
+.fast-login-btns .fast-login-btn { float:left; width:58px; height:86px; margin:0 26px 0 0; text-align:center; line-height:18px; color:#666; overflow:hidden;}
+.fast-login-btn i { display:block; width:58px; height:58px; margin:0 0 10px;}
+.qq-btn i { background-position:0 0;}
+.sina-btn i { background-position:0 -186px;}
+.weixin-btn i { background-position:0 -124px;}
+.baidu-btn i { background-position:0 -62px;}
+
+.qq-btn:hover i { background-position:-68px 0;}
+.sina-btn:hover i { background-position:-68px -186px;}
+.weixin-btn:hover i { background-position:-68px -124px;}
+.baidu-btn:hover i { background-position:-68px -62px;}
+.fast-login-btn:hover { color:#c00;}
+.fast-login-btn:hover i { cursor:pointer;}
+
+/* 登录注册版块 */
+.login-regist { float:left; width:300px; padding:0 94px;}
+.login-box { width:300px; background-color:#fff;}
+
+.wrong-tips,.warning-tips { display:none; width:288px; height:22px; margin:10px 0 0; padding:0 5px; background-color:#fef2ef; border:1px solid #fcd5d4; color:#666; line-height:22px;}
+.login-regist .wrong-tips,.login-regist .warning-tips { margin-top:-24px;}
+.wrong-tips .wrong-ico,.warning-tips .warning-ico { display:inline-block; width:18px; height:22px; margin:0 6px 0 0; vertical-align:top; *vertical-align:middle; background-position:-355px -111px;}
+.wrong-tips .fast-login-ico { display: inline-block; width:16px; height: 22px; margin:0 1px; vertical-align:top; *vertical-align:middle; font:0/0 arial;}
+.wrong-tips .fast-login-ico-qq { background-position:-137px -39px;}
+.wrong-tips .fast-login-ico-sina { background-position:-155px -39px;}
+.wrong-tips .fast-login-ico-weixin { background-position:-173px -39px;}
+.wrong-tips .fast-login-ico-baidu { background-position:-191px -39px;}
+
+.warning-tips { background-color:#e6f4fe; border-color:#bbe0fc;}
+.warning-tips .warning-ico { background-position:-355px -138px;}
+
+.member-pass { margin:0 0 5px; color:#666;}
+.member-pass .forget-pwd { float:right;}
+.member-pass .autologon { margin-left:4px; *margin-left:0;}
+.member-pass input { vertical-align:middle;}
+.member-pass .member-pass-special { margin:0 3px; *margin:0;}
+.pass-reglink { margin:7px 0 0; text-align:right; color:#666;}
+
+.itembox { position:relative; width:300px; padding:10px 0;}
+.itembox .right-ico { display:none; position:absolute; top:21px; right:-29px; width:18px; height:18px; background-position:-262px 0;}
+.itembox-ok .right-ico { display:block;}/* 当输入框内容正确时，显示right图标 */
+.item { position:relative; width:236px; height:36px; padding:0 27px 0 35px; border:1px solid #e6e6e6;}
+.item .txt { position:relative; z-index:1; width:215px; height:18px; padding:9px 0 9px 10px; *margin:-1px 0 0; background-color:transparent;  border:0 none; outline:none; color:#666; font-size:16px; line-height:18px;}
+.item .ico { position:absolute; left:9px; top:7px; width:26px; height:22px; border-right:1px solid #e6e6e6;}
+.user-name .ico { background-position:-356px 1px;}
+.user-pwd .ico { background-position:-357px -55px;}
+.item .delete-btn { display:none; position:absolute; top:8px; right:6px; width:22px; height:21px; cursor:pointer; background-position:-297px 5px;}
+.item .delete-btn:hover { background-position:-280px 5px;}
+.item .txt-tip { position:absolute; top:7px; left:46px; z-index:0; font-size:12px; line-height:20px; color:#ccc;}
+
+.item-focus { border-color:#0791f5;}
+.item-wrong { border-color:#fc4343;}
+.user-name { z-index:2;}/* 账户名下拉提示弹层层级控制 */
+.login-regist .user-name { padding-top:3px;}
+.login-regist .user-name .right-ico { top:14px;}
+/*.user-name .item-focus .ico { background-position:-356px -27px;}
+.user-pwd .item-focus .ico { background-position:-357px -84px;}*/
+
+/* 账户名提示弹框 */
+.item .item-tippop { display:none; position:absolute; top:37px; left:-1px; width:298px; padding:3px 0; border:1px solid #e7e7e7; background-color:#fff;}
+.item .item-tippop li { padding: 6px 27px 6px 46px; font-size:16px; color:#666; line-height:18px; cursor:pointer; white-space:normal; word-break:break-all; word-wrap:break-word;}
+/*.item .item-tippop li:hover { background-color:#f6f6f6;}*/
+.item .item-tippop li.tippopHover {background-color:#f6f6f6;}
+
+/* 密码强度 */
+.pwd-strength { position:relative; height:12px; padding:0 0 10px 155px; line-height:12px; *line-height:14px; overflow:hidden; color:#fc4343;}
+.pwd-strength-bg,.pwd-strength-sco { position:absolute; top:1px; left:0; width:150px; height:10px; font:0/0 arial;}
+.pwd-strength-bg { background-color:#eee;}
+.pwd-strength-sco { width:54px; background-color:#fc4343;}/* 默认最弱密码 */
+.middle { color:#ff9800;}/* 默认中等密码 */
+.middle .pwd-strength-sco { width:85px; background-color:#ff9800;}
+.strong { color:#5bc92e;}/* 默认最强密码 */
+.strong .pwd-strength-sco { width:150px; background-color:#5bc92e;}
+
+/* pass-verifycode 验证码 */
+.pass-verifycode .item { width:88px; padding-left:0; padding-right:30px;}
+.pass-verifycode .item .txt-tip { left:10px;}
+.pass-verifycode .item .txt { width:78px; border-left:0 none;}
+.pass-verifycode .right-ico { right:auto; left:91px; top:20px;}
+.pass-verifycode .verifycode-img { position:absolute; top:10px; left:129px; width:113px; height:38px;}
+.pass-verifycode .verifycode-changelink { position:absolute; top:10px; left:253px; height:38px; line-height:38px; white-space:nowrap;}
+.verifycode-send { display:inline-block; width:168px; height:36px; border:1px solid #e8e8e8; background-color:#fafafa; color:#999; font-size:14px; line-height:36px; text-align:center; cursor:pointer;}
+.pass-verifycode .verifycode-send { position:absolute; left:129px; top:10px;}
+.verifycode-send:hover { background-color:#f4f4f4;}
+.verifycode-hassend { background-color:#f4f4f4; color:#ccc; cursor:default;}
+/* //登录注册版块 end */
+
+/* 激活邮箱 */
+.activate-mail { min-height:363px; padding-bottom:0; background:url(https://icon.zol-img.com.cn/service/login2014/bg-bar.png) repeat-x #fff;}
+.activate-mail-body { padding:53px 0 0; zoom:1; text-align:center;}
+.activate-mail-header { padding:2px 0 17px; zoom:1; font-size:18px; font-weight:700; line-height:26px; color:#5bc92e;}
+.activate-mail-header .right-ico { display:inline-block; width:26px; height:26px; margin:0 8px 0 0; vertical-align:top; *vertical-align:middle; background-position:-231px 1px;}
+.activate-mail-body p { font-size:14px; line-height:24px; color:#666;}
+.activate-mail-body .pass-btn { display:inline-block; margin:25px 0 0;}
+
+.activate-mail-foot { height:18px; margin:89px 0 0; padding:21px 0 0; border-top:1px dashed #e6e6e6; line-height:18px; text-align:center; color:#999;}
+.activate-mail-foot .received-no-mail { margin:0 17px 0 0; font-size:16px; line-height:18px;}
+.activate-mail-foot .line { margin:0 10px; color:#e6e6e6;}
+
+/* 邮箱已激活 */
+.already-activated-mail { font-size:14px; line-height:20px; color:#666; text-align:center;}
+.already-activated-mail-header { zoom:1; padding:73px 0 22px; font:bold 18px/30px "Microsoft YaHei",arial; color:#666;}
+.time-bar,.time-bar em { display:inline-block; width:200px; height:4px; background-color:#f0f0f0; font:0/0 arial;}
+.time-bar { margin:17px 0 0; text-align:left;}
+.time-bar em { width:0; background-color:#5bc92e; vertical-align:top;}
+
+/* 更换邮箱 */
+.change-mail { padding:44px 0 0 283px; zoom:1;}
+.change-mail-item { position:relative; min-height:38px; padding:3px 0 3px 73px; color:#666;}
+.change-mail-item .change-mail-item-label { position:absolute; top:3px; left:0; line-height:38px; font-size:14px; font-weight:700;}
+.change-mail-item .mail-name { line-height:38px;}
+.change-mail-item .pass-verifycode { padding-bottom:20px;}
+.change-mail-item .user-name { padding-top:0;}
+.change-mail-item .user-name .right-ico { top:11px;}
+.change-mail .wrong-tips { margin-left:73px; margin-top:3px; margin-bottom:7px;}
+
+/* 注册成功页 */
+.regist-success { font-size:14px; line-height:20px; color:#666; text-align:center;}
+.regist-success .activate-mail-header { padding-top:94px; padding-left:380px; text-align:left;}
+.regist-success .specail-one { padding:0 20px 0 0; zoom:1;}
+.regist-success .specail-two { padding:0 20px 0 34px; zoom:1;}
+.regist-success-tip { padding:60px 0 0; zoom:1; font-size:12px; color: #999;}
+.regist-success-tip em { color: #333;}
+
+/* 连接失效 */
+.hyperlinks-invalid { text-align:center; color:#666;}
+.hyperlinks-invalid-header { padding:96px 0 23px; zoom:1; font:bold 18px/26px "Microsoft YaHei",arial; color:#fc4343;}
+.hyperlinks-invalid-header .wrong-ico { display:inline-block; width:25px; height:26px; margin:0 8px 0 0; vertical-align:top; *vertical-align:middle; background-position:-202px 0;}
+
+/* 找回密码 */
+.findpwd-step { padding:0 0 0 114px;}
+.findpwd-step-icos { padding:2px 0 0 13px;}
+.findpwd-step-icos .findpwd-step-num { position:relative; display:inline-block; width:29px; height:28px; padding:0 0 4px; margin:-11px 7px 0; text-align:center; font-size:16px; font-weight:700; line-height:28px; color:#fff; vertical-align:top; background-position:-169px 0;}
+.findpwd-step-icos .findpwd-step-line { display:inline-block; width:180px; height:7px; background-color:#f2f2f2; font:0/0 arial; vertical-align:top;-webkit-border-radius: 4px; border-radius:4px;}
+
+
+.findpwd-step-title { height:30px; overflow:hidden; font:18px/30px "Microsoft YaHei",arial; color:#666;}
+.findpwd-step-title span { float:left; width:76px; text-align:center;}
+.step-title-1 { margin-right:153px; }
+.step-title-2 { margin-right:151px;}
+.step-title-3 { margin-right:150px;}
+
+.findpwd-step-1 .findpwd-step-num-1,
+.findpwd-step-2 .findpwd-step-num-1,
+.findpwd-step-2 .findpwd-step-num-2,
+.findpwd-step-3 .findpwd-step-num-1,
+.findpwd-step-3 .findpwd-step-num-2,
+.findpwd-step-3 .findpwd-step-num-3,
+.findpwd-step-4 .findpwd-step-num-1,
+.findpwd-step-4 .findpwd-step-num-2,
+.findpwd-step-4 .findpwd-step-num-3,
+.findpwd-step-4 .findpwd-step-num-4 { background-position:-137px 0;}
+
+.findpwd-step-2 .findpwd-step-line-1,
+.findpwd-step-3 .findpwd-step-line-1,
+.findpwd-step-3 .findpwd-step-line-2,
+.findpwd-step-4 .findpwd-step-line-1,
+.findpwd-step-4 .findpwd-step-line-2,
+.findpwd-step-4 .findpwd-step-line-3 { background-color:#ade496;}
+
+/* findpwd-body */
+.findpwd-body { position:relative; padding:38px 0 0 329px;}
+.findpwd-body .findpwd-wrong-tips { position:absolute; top:4px; left:329px;}
+.findpwd-body .pass-btn { margin-top:10px;}
+.findpwd-infro { padding:5px 0; zoom:1; font-size:14px; line-height:24px; color:#666;}
+
+.findpwd-phone-verifycode { width:120px; padding-left:180px;}/* 通过手机找回密码验证码样式 */
+.findpwd-phone-verifycode .verifycode-send { left:0;}
+.findpwd-phone-verifycode .right-ico { left:auto; right:11px;}
+
+.findpwd-mail-verifycode { height:38px; margin:10px 0 0; line-height:38px; color:#666;}/* 通过邮箱发送验证码样式 */
+.findpwd-mail-verifycode .verifycode-send { width:138px; margin:0 15px 0 0;}
+
+/* 重置密码 */
+.reset-pwd .item { width:209px; padding-left:62px;}
+.reset-pwd .item .txt { width:188px;}
+.reset-pwd .item .txt-tip { left:73px;}
+.reset-pwd .item .newpwd-label { position:absolute; top:7px; left:10px; width:52px; border-right:1px solid #e6e6e6; font-size:14px; line-height:22px; color:#666;}
+.reenter-pwd { padding-top:0;}
+.reenter-pwd .right-ico { top:11px;}
+.reset-pwd-body .pwd-strength { padding-bottom:20px;}
+
+.reset-pwd-success {font-size:14px; line-height:20px; color:#666; text-align:center;}/* 重置密码成功 */
+.reset-pwd-success .activate-mail-header { padding-top:98px; zoom:1;}
+
+/* foot */
+.foot {	height: 40px; padding:2px 0;}
+.foot .footerw { margin:20px 0 0; padding-left:5px; color:#999;}
+.foot .footerw a ,.foot .footerw a.aboutme { color:#BFBFBF;}
+.foot .footerw a:hover { color:#c00; text-decoration:underline;}
+.footerw{color:#AB99BC; margin:0 auto; float: none; text-align:left; font-size:12px; font-family:arial; line-height:30px;padding:5px 0}
+.footerw span{ color:#ccc;float:right;font-family:"宋体";font-size:10px;-webkit-text-size-adjust:none;}
+.footerw a{color:#666; text-decoration:none; font-family:Arial; font-size:12px;}
+.footerw a.aboutme{ color: #F00;}
+.footerw a:hover{ color:#f60;}
+.footerw i {width:23px;height:23px;background:url("https://icon.zol-img.com.cn/service/login2014/cnet.png");float:left;}
+/* 登录注册翻转效果 */
+@-webkit-keyframes flip {
+	0% { -webkit-transform: perspective(2000px) rotateY(0deg)	}
+	100% { -webkit-transform: perspective(2000px) rotateY(90deg)}
+}
+
+@-webkit-keyframes flip_out {
+	0% { -webkit-transform: perspective(2000px) rotateY(-90deg) }
+	100% { -webkit-transform: perspective(2000px) rotateY(0deg)	}
+}
+
+@keyframes flip {
+	0% { transform: perspective(2000px) rotateY(0deg) }
+	100% { transform: perspective(2000px) rotateY(90deg) }
+}
+
+@keyframes flip_out {
+	0% { transform: perspective(2000px) rotateY(-90deg)	}
+	100% { transform: perspective(2000px) rotateY(0deg)	}
+}
+
+#unauth_main.switching {
+	-webkit-transform: perspective(2000px) rotateY(-90deg);
+	-webkit-animation: flip .4s linear,flip_out .4s .41s linear;
+	transform: perspective(2000px) rotateY(-90deg);
+	animation: flip .4s linear,flip_out .4s .41s linear
+}
+
+input:-webkit-autofill { 
+	-webkit-box-shadow: 0 0 0px 1000px white inset; 
+}
+.tmall-comment { float: right; margin: 0 0 5px 0; display: block; width: 100%;}
+.login-btn{margin-top: 30px;}
+.tmall-comment a{color: #dc2626;text-decoration:none;}
+.tmall-comment a:hover{text-decoration:underline;}
+.tmall-comment input{margin:0 4px 0 0;}
+
+.active-20170618{padding-bottom: 10px;font-size: 15px;color: #999;font-family: 'Microsoft YaHei';line-height: 1.5}
+.active-20170618 img{float: left;margin-right: 10px;}
+.active-20170618 h3{color: #333;font-size: 18px;font-weight: normal;display: inline;margin-bottom: 5px;word-break: break-all;}
+.active-red{color: #FF6666}
+/**
+ * 登陆注册优化新增样式
+ */
+.fast-login .title{display: none;}
+.fast-login-btns{background:url(https://icon.zol-img.com.cn/service/updatepic/y_img6.png) no-repeat top center;padding-top:76px;}
+.sitenav-login-top {border-bottom: 2px solid #d0d0d0; height: 38px; margin-bottom: 20px; }
+.sitenav-login-top h3 {color: #666; font: normal 16px/20px "Microsoft YaHei",Arial; float: left; margin-top: 2px; padding: 8px 43px; }
+.sitenav-login-top h3:hover, .sitenav-login-top h3.current {border-bottom: 2px solid #1790de; color: #1790de; cursor: pointer; }
+.inf{position: relative;}
+.inf .login-change{position: absolute; top: -64px; right: -10px; width: 30px; height: 30px; background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat 0px -350px; }
+.login-change img {position: absolute; top: -1px; right: 35px; width: 136px; height: 21px; display: block;}
+.login-box{position: relative;padding-top: 6px;}
+.sitenav-login-error-tip {position: absolute; left: 0; top: -16px; width: 190px; height: 20px; font: 12px/20px 'Microsoft YaHei', arial; color: #f33; background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -168px -7px; padding-left: 20px; display: block; }
+.user-name .ico{background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -94px -140px;}
+.user-pwd .ico {background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -92px -70px; }
+.member-pass .autologon,.pass-reglink{color:#898989;}
+.member-pass .forget-pwd,.switch{color:#1790de;}
+.pass-btn{background-color:#1585c9;margin-top:-5px;}
+.login-box .login-change {position: absolute; top: -93px; right: -66px; width: 34px; height: 30px; background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -164px -65px; }
+.login-box .login-change:hover{background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -4px -350px; cursor:pointer;}
+.login-box .login-change:hover img{display: block;}
+.login-input-itembox {position: relative; width: 300px; padding: 7px 0; }
+.login-input-itembox .login-right-ico {position: absolute; top: 21px; right: -29px; width: 18px; height: 18px;background: url(https://icon.zol-img.com.cn/login/login2014/icos.png) no-repeat -262px 0;display: none; }
+.login-input-item {position: relative; width: 60px; height: 22px; padding: 7px 27px 7px 10px;}
+.login-input-item .ico {position: absolute; }
+.login-user-name .ico, .login-user-code .ico, .login-user-acode .ico {top: 8px; left: 9px; width: 17px; height: 18px; background-position: -356px 0; }
+.login-user-code .ico {background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -94px -230px;background:none; }
+.login-input-item .txt-tip {position: absolute; top: 7px; left: 13px; z-index: 0; font-size: 14px; line-height: 20px; color: #ccc; }
+.login-input-item .login-txt {position: relative; z-index: 1; width: 215px; height: 18px; padding: 2px 0 2px 0px; border: 0 none; border-left: 0px solid #e6e6e6; background-color: transparent; outline: none; color: #666; font-size: 16px; line-height: 18px; }
+.login-user-acode .login-txt, .login-user-code .login-txt {width: 80px; }
+.login-user-code .code-img, .login-user-code .fresh {position: absolute; cursor: pointer; }
+.login-user-code .code-img {width: 136px; height: 38px; left: 120px; top: -1px; }
+.login-user-code .fresh {display: inline-block; width: 16px; height: 16px; background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -4px -155px; left: 280px; top: 10px; }
+.login-user-acode .ico {background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -94px -140px;background:none; }
+.login-user-acode .get-anicode {display: inline-block; width: 177px;height: 36px; border: 1px solid #1790de; color: #1790de; text-align: center; cursor: pointer; position: absolute; top: -1px; right: -202px;font-size: 14px; line-height: 36px; }
+.login-user-acode .dis-anicode{color:#999999;border:1px solid #d0d0d0;}
+.login-user-acode .time{background:#ededed;color:#999;border:0px;}
+/*#tel-login .login-change{background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -160px -64px;}*/
+#u-login{display: block;}
+#tel-login{display: none;}
+.itembox{padding:7px 0px;}
+#unauth_main{padding-top:18px;}
+.fast-login-btns .fast-login-btn{margin: 0 13px;}
+
+/*扫码登录css*/
+.code-login{width: 210px;height: auto;margin:0 auto;position: relative;display: none;}
+.code-login .login-change{top:-40px;right:-116px;width: 43px;height: 44px;background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat -160px -120px;position: absolute;}
+.code-login .login-change{cursor:pointer}
+.code-login .ewm{width: 190px;height: 190px;margin:0 auto 35px;}
+.code-login .ewm img{width: 190px;height: 190px;}
+.code-login .downloadbox{text-align:center;padding-top:3px;font-size:14px;color:#333;line-height:22px;}
+.code-login .downloadbox a.download{color:#1790de;margin-left:5px;text-decoration: none;}
+.code-login .downloadbox p{padding-left:24px;background: url(https://icon.zol-img.com.cn/service/updatepic/y_icons.png) no-repeat 54px -280px;}
+.code-login .title{color:#1790de;font:22px/66px "Microsoft YaHei";text-align: center;padding:0px;}
+.login-user-name .ico, .login-user-code .ico, .login-user-acode .ico{border-right: 0px;}
+.item-wrong {
+    border-color: #fc4343!important;
+}
