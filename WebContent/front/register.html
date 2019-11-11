@@ -119,7 +119,7 @@
 	</div>
 	
 	</div>
-	 
+	  <script src="../js/jquery-3.4.1.min.js"></script>
 	<script>
 		window.onload=function(){
      createCode(4);    
@@ -140,6 +140,7 @@
         if (checkCode)
         {
             checkCode.className = "code";
+            console.log(code);
             checkCode.innerHTML = code;
         }
     }
@@ -208,6 +209,13 @@
 			return;
         }
        
+		 $.post("../usr",{op:"register",uemail:email,utel:tel,uname:name,upwd:psw},function(data){
+			if(data>0){
+				confirm("注册成功");
+			}else{
+				alert("注册失败");
+			}
+		 },"json")	
 		
     }  
 	</script>

@@ -15,12 +15,33 @@ public class UsrServlet extends BasicServlet{
 		String op = req.getParameter("op");
 		if ("sendemail".equals(op)) {
 			sendemail(req,resp);
+		} else if ("register".equals(op)) {
+			register(req,resp);
+		} else if ("login".equals(op)) {
+			login(req,resp);
+		} else if ("update".equals(op)) {
+			update(req,resp);
 		} 
 
 	}
 
+	private void update(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO 用户更新密码
+		
+	}
+
+	private void login(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO 用户登录
+		
+	}
+
+	private void register(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO 用户注册
+		
+	}
+
 	private void sendemail(HttpServletRequest req, HttpServletResponse resp) {
-	//DOTO:发送邮箱验证码
+	//TODO:发送邮箱验证码到用户邮箱
 		
 	}
 }
