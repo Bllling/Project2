@@ -128,8 +128,8 @@
                <div class="code-box">
                   <input type="text" class="code ">
                   <span class="code-img">
-				<a href="javascript:void(0);" target="_self" class="blue" onclick="diyZj.code();">点击图片刷新，</a>
-                  不区分大小写 <span>不可超过20字</span>
+				<a href="javascript:void(0);" target="_self" class="blue" onclick="createCode(6)" id="checkCode" style="color:blue;font-size: 23px"></a>
+                   <span>点击图片刷新</span>
                   </span>
                </div> 
                <div class="synch" style="display: none;">
@@ -147,7 +147,31 @@
 </div>
 
 
+<script type="text/javascript">
+window.onload=function(){
+    createCode(6);    
+   }
 
+   function createCode(length) {
+       var code = "";
+       var codeLength = parseInt(length); 
+       var checkCode = document.getElementById("checkCode");
+       var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+       'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+       'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); 
+       for (var i = 0; i < codeLength; i++)
+       {
+           var charNum = Math.floor(Math.random() * 62);
+           code += codeChars[charNum];
+       }
+       if (checkCode)
+       {
+           checkCode.className = "code";
+           console.log(code);
+           checkCode.innerHTML = code;
+       }
+   }
+</script>
 
 
 
