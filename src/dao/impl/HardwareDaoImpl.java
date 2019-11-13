@@ -53,7 +53,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public int addBox(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into graphics box(0,?,?,?,?,'0','0')";
+		String sql = "insert into box values(0,?,?,?,?,'0','0')";
 		return dbHelper.update(sql, map.get("name"), map.getOrDefault("boxpics", ""), map.get("boxprice"), map.get("quantiy"));
 	}
 

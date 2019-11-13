@@ -36,7 +36,8 @@
 		var boxprice = $.trim($("#add_box_price").val());
 		var quantiy = $.trim($("#add_box_quantiy").val());
 		
-		if (name == "" || boxprice == "" || quantiy == ""  {
+		if (name == "" || boxprice == "" || quantiy == "" ) {
+			alert("您输入的信息不能为空，请确认后重新输入...");
 			return;
 		}
 		

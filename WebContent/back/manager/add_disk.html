@@ -71,7 +71,6 @@
 		} else {
 			isssd = 0;
 		}
-		alert(isssd);
 		var name = $.trim($("#add_disk_name").val());
 		var diskprice = $.trim($("#add_disk_price").val());
 		var quantiy = $.trim($("#add_disk_quantiy").val());
@@ -79,9 +78,9 @@
 		var powers = $.trim($("#add_disk_powers").val());
 		var volume = $.trim($("#add_disk_volume").val());
 		var rpm = $.trim($("#add_disk_rpm").val());
-		
 		if (name == "" || diskprice == "" || quantiy == "" || score == "" || powers == "" || volume == "" || 
-				rpm == "" || isssd == "") {
+				rpm == "" ) {
+			alert("您输入的信息不能为空，请确认后重新输入...");
 			return;
 		}
 		
