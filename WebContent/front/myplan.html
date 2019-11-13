@@ -10,18 +10,33 @@
 <link href="../css/Diy_NetFriendList.css" rel="stylesheet">
 
 <link rel="stylesheet" href="../css/share_style0_16.css">
-<link rel="stylesheet" href="../css/global-sitennav.css"></head>
-<body>
-
-
-
-
-
-    <style>
+<link rel="stylesheet" href="../css/global-sitennav.css">
+  <style>
         .navs-box .inf{width:684px;}
         .navs-box .inf .list{float:right;}
         .zol20th{float: left;width: 50px;height: 36px;margin: 8px 0 0 219px;background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png) no-repeat center;}
     </style>
+   </head>
+<body>
+
+<div class="nav-search">
+    <div class="navs-box clearfix">
+        <span class="zol20th"></span>
+        <div class="inf">
+           <ul >
+              <li class="li5">
+                  <div class="search-box">
+                       <input id="J_keywords" type="text" class="skey" name="kword" value="请输入关键词或配置单名称" data-source="" autocomplete="off">
+                       <input id="submit" type="submit" class="sbtn" value="搜索">
+                 </div>
+              </li>
+           </ul>
+        </div>
+    </div>
+</div>
+
+
+  
 <div class="nav"  >
     <div class="nav-box">
        <ul class="navul" style="min-width: 800px;margin-left: 150px;">
@@ -48,15 +63,15 @@
         </div>
         <div class="sort-box clearfix" style="width: 100%">
          <div class="sort netf-sort" >
-            <a href="#" target="_self" class="active myprofile">我的配置</a>
-            <a href="#" class="hovera">我的收藏</a>
+            <a href="javascript:show1()" target="_self" class="active myprofile">我的配置</a>
+            <a href="javascript:show2()" class="hovera">我的收藏</a>
          </div>
         </div>
         <div class="plan-list-box">
             <div class="my-nothing">
 					<div class="text">
 					   <p class="inst">您目前尚无配置单，快去攒一个吧!</p>
-					   <a href="#" class="link">我要攒机<font>&gt;&gt;</font></a>
+					   <a href="../index.html" class="link">我要攒机<font>&gt;&gt;</font></a>
 					</div>         
 			 </div>    
 				
@@ -65,7 +80,7 @@
      <!--右侧 start-->
      <div class="wright" style="float: rigth; width: 30%; margin-right: -200px;">
         <!--登录 start-->
-                 <div class="logo" >
+                 <div class="logo" style="display: block;" >
                      <p class="title" style=" width: 310px;margin-right: -200px;">用户登录 <a href="register.html" class="more">免费注册<font>&gt;&gt;</font></a></p>
                      <div class="inf" style=" width: 304px;">
                        
@@ -77,56 +92,66 @@
                           <input type="password" class="pwd login"   placeholder="密码" id="passWord1" rel="pwd-inst" value="">
                         </div>
                         <div class="other">
-                           <input type="checkbox" id="autoLogin">下次自动登录
+                          
                            <a href="forgetPwd.html" class="forget">忘记密码?</a>
                         </div>
-                        <input type="submit" class="subm" value="登录">
+                        <input type="button" class="subm" value="登录" onclick="login()">
                         
                      </form>
                      </div>
                  </div>
                  <!--登录 end-->
         		<!--个人信息 start-->
-                <!-- <div class="per-infor" style="">
+           <div class="per-infor" style="display: none;">
                     <p class="title">个人信息</p>
                     <div class="edit-box clearfix">
-                        <div class="head-portrait"><img src="./我的方案_files/zoler_50.jpg" width="75" height="75" alt="头像"></div>
+                        <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="头像"></div>
                        <div class="right">
-                          <p><a href="http://my.zol.com.cn/qq_527456i2c41b/" class="name">qq_52745</a>(平民)</p>
-                          <a href="http://my.zol.com.cn/qq_527456i2c41b/settings/" class="link myLink"><i></i>编辑个人资料</a>
+                          <p><a href="http://my.zol.com.cn/qq_527456i2c41b/" class="name">张三</a></p>
+                          
                        </div>
                     </div>
-                    <table width="100%" height="70">
-                        <tbody><tr>
-                           <td>
+                    <table >
+                        <tbody style="height: 50px;"><tr >
+                           <td >
                               <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link fanan">
-                                <h1>0</h1>
+                                <h1>xx</h1>
                                 方案
                               </a>
                            </td>
                            <td>
                              <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link l2 review">
-                                 <h1>0</h1>
+                                 <h1>xx</h1>
                                 浏览
                               </a>
                            </td>
                            <td>
                               <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link l3 hitNum">
-                                <h1>0</h1>
+                                <h1>xx</h1>
                                 点评
                               </a>
                            </td>
                         </tr>
                     </tbody></table>         
-                 </div>    -->  
-				
+                 </div>
 	         </div>
         </div>
      
     </div>
 
    </div>
- 
+   <script src="../js/jquery-3.4.1.min.js"></script>
+ <script type="text/javascript">
+ function show1(){
+	 alert("进入我的方案");
+ }
+ function show2(){
+	 alert("进入我的收藏");
+ }
+ function login(){
+	 alert("登录");
+ }
+ </script>
 
 
 </body></html>

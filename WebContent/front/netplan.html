@@ -3,8 +3,15 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <link href="../css/Diy_WyListPlan.css" rel="stylesheet">
-<link rel="../css/share_style0_16.css"></head>
+<link rel="../css/share_style0_16.css">
 <link rel="../css/global-sitennav.css">
+<style>
+  .navs-box .inf{width:684px;}
+  .navs-box .inf .list{float:right;}
+  .zol20th{float: left;width: 50px;height: 36px;margin: 8px 0 0 219px;background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png) no-repeat center;}
+</style>
+</head>
+
 <body>
 
 <div class="nav-search">
@@ -22,12 +29,7 @@
         </div>
     </div>
 </div>
-    <style>
-        .navs-box .inf{width:684px;}
-        .navs-box .inf .list{float:right;}
-        .zol20th{float: left;width: 50px;height: 36px;margin: 8px 0 0 219px;background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png) no-repeat center;}
-    </style>
-
+ 
 
 
 <!--wrap start-->
@@ -36,8 +38,8 @@
        <ul class="navul" style="min-width: 800px;margin-left: 150px;">
 		   
          <li id="menu_nav_index"><a target="_self" href="../index.html">模拟攒机</a></li>
-		 <li id="menu_nav_myplan"><a class="active"  href="myplan.html">我的方案</a></li>
-		 <li id="menu_nav_wyplan"><a target="_self" >网友方案</a></li>
+		 <li id="menu_nav_myplan"><a  href="myplan.html">我的方案</a></li>
+		 <li id="menu_nav_wyplan"><a class="active"  target="_self" >网友方案</a></li>
 		 <li id="menu_nav_DiyTop"><a target="_self" href="#">配置排行榜</a></li>
 		 <li id="menu_nav_ProTop"><a target="_self" href="rank.html">网友首选配件</a></li>
 		 <li id="menu_nav_Graphics"><a target="_blank" href="#">智能推荐攒机</a></li>
@@ -205,32 +207,32 @@
 	 <div class="wright">
 		<!--登录 start-->
 		<!--个人信息 start-->
-                 <div class="per-infor" style="">
+                 <div class="per-infor" style="display: none;">
                     <p class="title">个人信息</p>
                     <div class="edit-box clearfix">
-                        <div class="head-portrait"><img src=" " width="75" height="75" alt="头像"></div>
+                        <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="头像"></div>
                        <div class="right">
-                          <p><a href="http://my.zol.com.cn/qq_527456i2c41b/" class="name">qq_52745</a>(平民)</p>
-                          <a href="http://my.zol.com.cn/qq_527456i2c41b/settings/" class="link myLink"><i></i>编辑个人资料</a>
+                          <p><a href="http://my.zol.com.cn/qq_527456i2c41b/" class="name">张三</a></p>
+                          
                        </div>
                     </div>
                     <table >
                         <tbody style="height: 50px;"><tr >
                            <td >
                               <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link fanan">
-                                <h1>0</h1>
+                                <h1>xx</h1>
                                 方案
                               </a>
                            </td>
                            <td>
                              <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link l2 review">
-                                 <h1>0</h1>
+                                 <h1>xx</h1>
                                 浏览
                               </a>
                            </td>
                            <td>
                               <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link l3 hitNum">
-                                <h1>0</h1>
+                                <h1>xx</h1>
                                 点评
                               </a>
                            </td>
@@ -239,34 +241,25 @@
                  </div>
                  <!--个人信息 end-->
                  <!--登录 start-->
-                 <div class="logo" style="display: none;">
-                     <p class="title">用户登录 <a href="http://service.zol.com.cn/user/login.php?type=reg" class="more">免费注册<font>&gt;&gt;</font></a></p>
-                     <div class="inf">
-                         <iframe height="0" width="0" id="noform" style="display:none;" src="./【电脑配置 2018年配件方案】在线装机－ZOL中关村在线_files/saved_resource.html"></iframe>
-                         <form action="http://zj.zol.com.cn/list_t2018_l1_2_1.html" target="noform">
+                 <div class="logo" style="display: block;">             
+                     <p class="title" style=" width: 310px;margin-right: -200px;">用户登录 <a href="register.html" class="more">免费注册<font>&gt;&gt;</font></a></p>
+                     <div class="inf" style=" width: 304px;">
+                       
+                         <form action="http://zj.zol.com.cn/list_l2_1_1.html" target="noform">
                         <div class="text-inf">
                             <span class="inst"></span>
-<!--                            <label for="userName" class="uname-inst" >用户名ID/邮箱/手机号</label>
-                          <label for="passWord" class="pwd-inst">密码</label>-->
-                          <span class="uname-inst">用户名ID/邮箱/手机号</span> 
-                            <span class="pwd-inst">密码</span> 
-                          <input type="text" class="username login" id="userName1" rel="uname-inst" value=""> 
-                          <input type="password" class="pwd login" id="passWord1" rel="pwd-inst" value="">
+                         
+                          <input type="text" class="username login" placeholder="邮箱/手机号"  id="userName1" rel="uname-inst" value=""> 
+                          <input type="password" class="pwd login"   placeholder="密码" id="passWord1" rel="pwd-inst" value="">
                         </div>
                         <div class="other">
-                           <input type="checkbox" id="autoLogin">下次自动登录
-                           <a href="http://my.zol.com.cn/index.php?c=getPassword" class="forget">忘记密码?</a>
+                           
+                           <a href="forgetPwd.html" class="forget">忘记密码?</a>
                         </div>
                         <input type="submit" class="subm" value="登录">
-                        <div class="list">
-                            <a href="http://service.zol.com.cn/user/api/qq/libs/oauth/redirect_to_login.php?backurl=http%3A%2F%2Fwww.zol.com.cn%2F" class="qq"></a>
-                            <a href="http://service.zol.com.cn/user/api/sina/jump.php?backurl=http%3A%2F%2Fwww.zol.com.cn%2F" class="sina"></a>
-                            <a href="http://service.zol.com.cn/user/api/weixin/jump.php?backurl=http%3A%2F%2Fwww.zol.com.cn%2F" class="weix"></a>
-                            <a href="http://service.zol.com.cn/user/api/baidu/jump.php?backurl=http%3A%2F%2Fwww.zol.com.cn%2F" class="baidu"></a>
-                        </div>
+                        
                      </form>
                      </div>
-                     
                  </div>
 		<div class="start"><script>write_ad("zj_list_right_mid_ad");</script></div>
 	</div>
