@@ -1,0 +1,91 @@
+<h2>添加显卡</h2>
+<form id="add_form">
+	<ul>
+		<li>
+			<label for="add_graphics_name">显卡名称：</label> 
+			<br />
+			<input type="text" name="gname" id="add_graphics_name" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
+			<br />
+			<input type="text" name="gprice" id="add_graphics_price" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
+			<br />
+			<input type="text" name="gquantiy" id="add_graphics_quantiy" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
+			<br />
+			<input type="text" name="gscore" id="add_graphics_score" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
+			<br />
+			<input type="text" name=gpowers" id="add_graphics_powers" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_memory">显卡大小：</label> 
+			<br />
+			<input type="text" name="gmemory" id="add_graphics_memory" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_width">显卡带宽：</label> 
+			<br />
+			<input type="text" name="gwidth" id="add_graphics_width" class="myipt" />
+		</li>
+		<li>
+			<label for="add_graphics_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
+			<br />
+			<input type="file" name="gpics" id="add_graphics_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_graphics_pic')" />
+		</li>
+		<li id="show_graphics_pic">
+					
+		</li>
+		<li style="width: 80%; text-align: center;">
+			<input type="button" value="添加" onclick="add_graphics()" class="mybtn" />
+		</li>
+	</ul>
+</form>
+
+<<script type="text/javascript">
+	function add_graphics() {
+		var name = $.trim($("#add_graphics_name").val());
+		var graphicsprice = $.trim($("#add_graphics_price").val());
+		var quantiy = $.trim($("#add_graphics_quantiy").val());
+		var score = $.trim($("#add_graphics_score").val());
+		var powers = $.trim($("#add_graphics_powers").val());
+		var memory = $.trim($("#add_graphics_memory").val());
+		var width = $.trim($("#add_graphics_width").val());
+		
+		if (name == "" || graphicsprice == "" || quantiy == "" || score == "" || powers == "" || memory == "" || 
+				width == "" {
+			alert("您输入的信息不能为空，请确认后重新输入...");
+			return;
+		} 
+		$.ajaxFileUpload({
+			url: "../../hardware?op=addGraphics",
+			secureuri: false,
+			fileElementId: ["add_graphics_pics"],
+			data: {name: name, graphicsprice: graphicsprice, quantiy: quantiy, score: score, powers: powers, memory: memory, width: width},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					$("#add_form")[0].reset();
+					$("#show_graphics_pic").html("");
+					alert("显卡添加成功...");
+				} else {
+					alert("显卡添加失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("显卡添加失败...\n" + e);
+			}
+		})
+	}
+</script>

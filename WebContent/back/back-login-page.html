@@ -18,8 +18,40 @@
     <!--  Social tags      -->
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
     
 </head>
+
+<script type="text/javascript">
+	function login() {
+		
+		var account = $.trim($("#account").val());
+		var pwd = $.trim($("#pwd").val());
+		
+		if (account == "") {
+			alert("请输入账号...");
+			return;
+		}
+		
+		if (pwd == "") {
+			alert("请输入密码...");
+			return;
+		}
+		
+		$.post("../admin", {op:"login", aname: account, pwd: pwd}, function(data) {
+			// 请求处理后，拿到服务器的响应数据后怎么处理
+			data = parseInt($.trim(data));
+			if (data > 0) {
+				
+				location.href="manager/index.jsp";
+			} else if (data == 0) {
+				alert("账号或密码输入错误...")
+				return;
+			}
+		},"text");
+	}
+
+</script>
 
 <body class="login-page sidebar-collapse">
     <!-- Navbar -->
@@ -56,17 +88,17 @@
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons users_circle-08"></i>
                                 </span>
-                                <input type="text" class="form-control" placeholder="User Name">
+                                <input type="text" class="form-control" id="account" placeholder="User Name">
                             </div>
                             <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons text_caps-small"></i>
                                 </span>
-                                <input type="text" placeholder="PassWord" class="form-control" />
+                                <input type="password" placeholder="PassWord" id="pwd" class="form-control" />
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Login</a>
+                            <a onclick="login()" class="btn btn-primary btn-round btn-lg btn-block">Login</a>
                         </div>
                         <div class="pull-left">
                             <h6>

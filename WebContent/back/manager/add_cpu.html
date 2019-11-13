@@ -1,0 +1,105 @@
+<h2>CPU添加</h2>
+		<form id="add_form">
+			<ul>
+				<li>
+					<label for="add_cpu_name">cpu名称：</label> 
+					<br />
+					<input type="text" name="cname" id="add_cpu_name" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
+					<br />
+					<input type="text" name="cprice" id="add_cpu_price" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
+					<br />
+					<input type="text" name="cquantiy" id="add_cpu_quantiy" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
+					<br />
+					<input type="text" name="cscore" id="add_cpu_score" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
+					<br />
+					<input type="text" name="cpowers" id="add_cpu_powers" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_cores">核&nbsp;心&nbsp;数：&nbsp;</label> 
+					<br />
+					<input type="text" name="cores" id="add_cpu_cores" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_threads">线&nbsp;程&nbsp;数：&nbsp;</label> 
+					<br />
+					<input type="text" name="threads" id="add_cpu_threads" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_frequency">默认主频：</label> 
+					<br />
+					<input type="text" name="frequency" id="add_cpu_frequency" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_maxfrequency">最大主频：</label> 
+					<br />
+					<input type="text" name="maxfrequency" id="add_cpu_maxfrequency" class="myipt" />
+				</li>
+				<li>
+					<label for="add_cpu_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
+					<br />
+					<input type="file" name="cpics" id="add_cpu_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_cpu_pic')" />
+				</li>
+				
+				<li id="show_cpu_pic">
+					
+				</li>
+				
+				<li style="width: 80%; text-align: center;">
+					<input type="button" value="添加" onclick="addCPU()" class="mybtn" />
+				</li>
+			</ul>
+</form>
+<script type="text/javascript">
+	function addCPU() {
+		var cname = $.trim($("#add_cpu_name").val());    
+		var price = $.trim($("#add_cpu_price").val());
+		var quantiy = $.trim($("#add_cpu_quantiy").val());
+		var score = $.trim($("#add_cpu_score").val());
+		var powers = $.trim($("#add_cpu_powers").val());
+		var cores = $.trim($("#add_cpu_cores").val());
+		var threads = $.trim($("#add_cpu_threads").val());
+		var frequency = $.trim($("#add_cpu_frequency").val());
+		var maxfrequency = $.trim($("#add_cpu_maxfrequency").val());
+		if (cname == "" || price == "" || quantiy == "" || score == "" || powers == "" || cores == "" || 
+				threads == "" || frequency == "" || maxfrequency == "") {
+			alert("您输入的信息不能为空，请确认后重新输入...");
+			return;
+		}
+		$.ajaxFileUpload({
+			url: "../../hardware?op=addCPU",
+			secureuri: false,
+			fileElementId: ["add_cpu_pics"],
+			data: {cname: cname, price: price, quantiy: quantiy, score: score, powers: powers, cores: cores, threads: threads, frequency: frequency, maxfrequency: maxfrequency},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					$("#add_form")[0].reset();
+					$("#show_cpu_pic").html("");
+					alert("CPU添加成功...");
+				} else {
+					alert("CPU添加失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("CPU添加失败...\n" + e);
+			}
+		})
+	}
+</script>
+
+

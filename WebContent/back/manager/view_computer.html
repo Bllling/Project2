@@ -1,0 +1,39 @@
+<table id="conputer_data" data-options="fit:true"></table>
+
+<script>
+$('#conputer_data').datagrid({    
+    url:'../../conputers', 
+    queryParams: {op: "findByPage"},
+    fitColumns: true,
+    loadMsg: "数据加载中...",
+    striped: true,
+    pagination: true,
+    pageSize: 5,
+    pageList: [5,10,15,20],
+    sortName: "id",
+    remoteSort: false,
+    sortOrder: "desc",
+    singleSelect: true,
+    columns:[[
+        {checkbox: true},
+        {field:'id',title:'配置单号',width:100,align:'center', sortable: true},    
+        {field:'uname',title:'用户名',width:100,align:'center'},    
+        {field:'cname',title:'配置单名',width:100,align:'center'},
+        {field:'rtime',title:'配置时间',width:100,align:'center'},
+        {field:'bnumber',title:'浏览次数',width:100,align:'center'},
+        {field:'mbname',title:'主板名',width:100,align:'center'},
+        {field:'mname',title:'内存名',width:100,align:'center'},
+        {field:'diskname',title:'硬盘名',width:100,align:'center'},
+        {field:'sourcename',title:'电源名',width:100,align:'center'},
+        {field:'graphicsname',title:'显卡名',width:100,align:'center'},
+        {field:'boxname',title:'机箱名',width:100,align:'center'},
+        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+        	var str = "<a href='javascript:void(0)'>[详细]</a>&nbsp";
+        	str += "<a href='javascript:void(0)'>[删除]</a>";
+        	return str;
+        }} 
+    ]],
+    toolbar: "#_search"
+})
+
+</script>

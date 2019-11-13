@@ -1,0 +1,15 @@
+<table id="tt" style="width:600px;height:400px"></table>
+
+<script>
+$('#tt').treegrid({    
+    url:'get_data.php',    
+    idField:'id',    
+    treeField:'name',    
+    columns:[[    
+        {title:'Task Name',field:'name',width:180},    
+        {field:'persons',title:'Persons',width:60,align:'right'},    
+        {field:'begin',title:'Begin Date',width:80},    
+        {field:'end',title:'End Date',width:80}    
+    ]]    
+}); 
+</script>
