@@ -1,0 +1,68 @@
+<h2>添加机箱</h2>
+<form id="add_form">
+	<ul>
+		<li>
+			<label for="add_box_name">机箱名称：</label> 
+			<br />
+			<input type="text" name="bname" id="add_box_name" class="myipt" />
+		</li>
+		<li>
+			<label for="add_box_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
+			<br />
+			<input type="text" name="bprice" id="add_box_price" class="myipt" />
+		</li>
+		<li>
+			<label for="add_box_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
+			<br />
+			<input type="text" name="bquantiy" id="add_box_quantiy" class="myipt" />
+		</li>
+		<li>
+			<label for="add_box_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
+			<br />
+			<input type="file" name="boxpics" id="add_box_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_box_pic')" />
+		</li>
+		<li id="show_box_pic">
+					
+		</li>
+		<li style="width: 80%; text-align: center;">
+			<input type="button" value="添加" onclick="add_box()" class="mybtn" />
+		</li>
+	</ul>
+</form>
+
+<script type="text/javascript">
+	function add_box() {
+		var name = $.trim($("#add_box_name").val());
+		var boxprice = $.trim($("#add_box_price").val());
+		var quantiy = $.trim($("#add_box_quantiy").val());
+		
+		if (name == "" || boxprice == "" || quantiy == ""  {
+			return;
+		}
+		
+		$.ajaxFileUpload({
+			url: "../../hardware?op=addBox",
+			secureuri: false,
+			fileElementId: ["add_box_pics"],
+			data: {name: name, boxprice: boxprice, quantiy: quantiy},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					$("#add_form")[0].reset();
+					$("#show_box_pic").html("");
+					alert("机箱添加成功...");
+				} else {
+					alert("机箱添加失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("机箱添加失败...\n" + e);
+			}
+		})
+	}
+
+
+</script>

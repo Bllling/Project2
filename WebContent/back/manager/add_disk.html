@@ -1,0 +1,118 @@
+<style>
+	#add_form .ssd_radio {
+		margin-top: 15px;
+	}
+</style>
+<h2>添加硬盘</h2>
+<form id="add_form">
+	<ul>
+		<li>
+			<label for="add_disk_name">硬盘名称：</label> 
+			<br />
+			<input type="text" name="dname" id="add_disk_name" class="myipt" />
+		</li>
+		<li>
+			<label for="add_disk_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
+			<br />
+			<input type="text" name="dprice" id="add_disk_price" class="myipt" />
+		</li>
+		<li>
+			<label for="add_disk_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
+			<br />
+			<input type="text" name="dquantiy" id="add_disk_quantiy" class="myipt" />
+		</li>
+		<li>
+			<label for="add_disk_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
+			<br />
+			<input type="text" name="dscore" id="add_disk_score" class="myipt" />
+		</li>
+		<li>
+			<label for="add_disk_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
+			<br />
+			<input type="text" name=dpowers" id="add_disk_powers" class="myipt" />
+		</li>
+		<li>
+			<label for="add_disk_volume">硬盘容量：</label> 
+			<br />
+			<input type="text" name="dvolume" id="add_disk_volume" class="myipt" />
+		</li>
+		<li>
+			<label for="add_disk_isssd_y">固&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</label>
+			<br />
+			<input type="radio" id="add_disk_isssd_y" name="ssd" value="y" class="ssd_radio"/><label>是</label>
+			<input type="radio" id="add_disk_isssd_n" name="ssd" value="n" class="ssd_radio"/><label>否</label>
+		</li>
+		<li>
+			<label for="add_disk_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
+			<br />
+			<input type="file" name="dpics" id="add_disk_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_disk_pic')" />
+		</li>
+		<li>
+			<label for="add_disk_rpm">转&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速：&nbsp;</label> 
+			<br />
+			<input type="text" name="drpm" id="add_disk_rpm" class="myipt" />
+		</li>
+		
+		<li id="show_disk_pic">
+					
+		</li>
+		<li style="width: 80%; text-align: center;">
+			<input type="button" value="添加" onclick="add_disk()" class="mybtn" />
+		</li>
+	</ul>
+</form>
+
+<script type="text/javascript">
+	function add_disk() {
+		alert("a");
+		var isssd = $('input:radio[name=ssd]:checked').val();
+		if (isssd == 'y') {
+			isssd = 1;
+		} else {
+			isssd = 0;
+		}
+		alert(isssd);
+		var name = $.trim($("#add_disk_name").val());
+		var diskprice = $.trim($("#add_disk_price").val());
+		var quantiy = $.trim($("#add_disk_quantiy").val());
+		var score = $.trim($("#add_disk_score").val());
+		var powers = $.trim($("#add_disk_powers").val());
+		var volume = $.trim($("#add_disk_volume").val());
+		var rpm = $.trim($("#add_disk_rpm").val());
+		
+		if (name == "" || diskprice == "" || quantiy == "" || score == "" || powers == "" || volume == "" || 
+				rpm == "" || isssd == "") {
+			return;
+		}
+		
+		$.ajaxFileUpload({
+			url: "../../hardware?op=addDisk",
+			secureuri: false,
+			fileElementId: ["add_disk_pics"],
+			data: {name: name, diskprice: diskprice, quantiy: quantiy, score: score, powers: powers, volume: volume, rpm: rpm, isssd: isssd},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					$("#add_form")[0].reset();
+					$("#show_disk_pic").html("");
+					alert("硬盘添加成功...");
+				} else {
+					alert("硬盘添加失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("硬盘添加失败...\n" + e);
+			}
+		})
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>

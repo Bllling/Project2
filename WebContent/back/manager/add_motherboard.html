@@ -1,0 +1,85 @@
+<h2>添加主板</h2>
+<form id="add_form">
+	<ul>
+		<li>
+			<label for="add_board_name">主板名称：</label> 
+			<br />
+			<input type="text" name="bname" id="add_board_name" class="myipt" />
+		</li>
+		<li>
+			<label for="add_board_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
+			<br />
+			<input type="text" name="bprice" id="add_board_price" class="myipt" />
+		</li>
+		<li>
+			<label for="add_board_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
+			<br />
+			<input type="text" name="bquantiy" id="add_board_quantiy" class="myipt" />
+		</li>
+		<li>
+			<label for="add_board_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
+			<br />
+			<input type="text" name="bscore" id="add_board_score" class="myipt" />
+		</li>
+		<li>
+			<label for="add_board_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
+			<br />
+			<input type="text" name=bpowers" id="add_board_powers" class="myipt" />
+		</li>
+		<li>
+			<label for="add_board_maxmemory">最大内存：</label> 
+			<br />
+			<input type="text" name="maxmemory" id="add_board_maxmemory" class="myipt" />
+		</li>
+		<li>
+			<label for="add_board_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
+			<br />
+			<input type="file" name="bpics" id="add_board_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_board_pic')" />
+		</li>
+		<li id="show_board_pic">
+					
+		</li>
+		<li style="width: 80%; text-align: center;">
+			<input type="button" value="添加" onclick="add_motherboard()" class="mybtn" />
+		</li>
+	</ul>
+</form>
+
+<script type="text/javascript">
+	function add_motherboard() {
+		var name = $.trim($("#add_board_name").val());
+		var price = $.trim($("#add_board_price").val());
+		var quantiy = $.trim($("#add_board_quantiy").val());
+		var score = $.trim($("#add_board_score").val());
+		var powers = $.trim($("#add_board_powers").val());
+		var maxmemory = $.trim($("#add_board_maxmemory").val());
+		
+		if (name == "" || price == "" || quantiy == "" || score == "" || powers == "" || maxmemory == "" ){
+			alert("您输入的信息不能为空，请确认后重新输入...");
+			return;
+		}
+		
+		$.ajaxFileUpload({
+			url: "../../hardware?op=addMotherBoard",
+			secureuri: false,
+			fileElementId: ["add_board_pics"],
+			data: {name: name, price: price, quantiy: quantiy, score: score, powers: powers, maxmemory: maxmemory},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					$("#add_form")[0].reset();
+					$("#show_board_pic").html("");
+					alert("主板添加成功...");
+				} else {
+					alert("主板添加失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("主板添加失败...\n" + e);
+			}
+		})
+	}
+</script>

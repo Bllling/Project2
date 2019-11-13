@@ -1,0 +1,100 @@
+<h2>添加内存</h2>
+<form id="add_form">
+	<ul>
+		<li>
+			<label for="add_memory_name">内存名称：</label> 
+			<br />
+			<input type="text" name="mname" id="add_memory_name" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
+			<br />
+			<input type="text" name="mprice" id="add_memory_price" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
+			<br />
+			<input type="text" name="mquantiy" id="add_memory_quantiy" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
+			<br />
+			<input type="text" name="mscore" id="add_memory_score" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
+			<br />
+			<input type="text" name=mpowers" id="add_memory_powers" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_volume">内存容量：</label> 
+			<br />
+			<input type="text" name="volume" id="add_memory_volume" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_memorytype">内存类型：</label> 
+			<br />
+			<input type="text" name="memorytype" id="add_memory_memorytype" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_frequency ">内存主频：</label> 
+			<br />
+			<input type="text" name="frequency" id="add_memory_frequency" class="myipt" />
+		</li>
+		<li>
+			<label for="add_memory_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
+			<br />
+			<input type="file" name="mpics" id="add_memory_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_memory_pic')" />
+		</li>
+		<li id="show_memory_pic">
+					
+		</li>
+		<li style="width: 80%; text-align: center;">
+			<input type="button" value="添加" onclick="add_memory()" class="mybtn" />
+		</li>
+	</ul>
+</form>
+
+<script type="text/javascript">
+	function add_memory() {
+		var name = $.trim($("#add_memory_name").val());
+		var memoryprice = $.trim($("#add_memory_price").val());
+		var quantiy = $.trim($("#add_memory_quantiy").val());
+		var score = $.trim($("#add_memory_score").val());
+		var powers = $.trim($("#add_memory_powers").val());
+		var volume = $.trim($("#add_memory_volume").val());
+		var memorytype = $.trim($("#add_memory_memorytype").val());
+		var frequency = $.trim($("#add_memory_frequency").val());
+		
+		if (name == "" || memoryprice == "" || quantiy == "" || score == "" || powers == "" || volume == "" || 
+				memorytype == "" || frequency == "" {
+			alert("您输入的信息不能为空，请确认后重新输入...");
+			return;
+		}
+		
+		$.ajaxFileUpload({
+			url: "../../hardware?op=addMemory",
+			secureuri: false,
+			fileElementId: ["add_memory_pics"],
+			data: {name: name, memoryprice: memoryprice, quantiy: quantiy, score: score, powers: powers, volume: volume, memorytype: memorytype, frequency: frequency},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					$("#add_form")[0].reset();
+					$("#show_memory_pic").html("");
+					alert("内存添加成功...");
+				} else {
+					alert("内存添加失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("内存添加失败...\n" + e);
+			}
+		})
+	}
+</script>
+
+

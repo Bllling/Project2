@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+h2 {
+	margin-left: 45%;
+}
+
+#add_form {
+	margin-left: 20%;
+}
+
+#add_form ul li {
+	float: left;
+	list-style-type: none;
+	width: 50%;
+	margin-top: 20px;
+}
+
+#add_form ul li>label {
+	width: 100px;
+	text-align: right;
+}
+
+#add_form .myipt {
+	margin-top: 10px;
+	width: 300px;
+	border: 1px solid #016BD1;
+	height: 20px;
+	border-radius: 2px;
+}
+
+#add_form .pics {
+	margin-top: 10px;
+}
+
+.mybtn {
+	padding: 5px 20px;
+}
