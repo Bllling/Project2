@@ -3,9 +3,14 @@ package servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import biz.IUsrBiz;
+import biz.impl.UsrBizImpl;
+
+@WebServlet("/usr")
 public class UsrServlet extends BasicServlet{
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +37,10 @@ public class UsrServlet extends BasicServlet{
 
 	private void login(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO 用户登录
-		
+		String uname = req.getParameter("uname");
+		String upwd = req.getParameter("upwd");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.login(uname, upwd));
 	}
 
 	private void register(HttpServletRequest req, HttpServletResponse resp) {

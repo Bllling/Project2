@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!-- saved from url=(0021)http://zj.zol.com.cn/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
 <title>NO2</title>
 <link href="css/Diy_DiyZj.css" rel="stylesheet">
 
-<script src="css/Diy_ProTopNew.js.����"></script>
+
 <style>	
 	*{ margin:0; padding:0;}
 		button, input{ outline:none;}
@@ -50,9 +50,9 @@
 					<li class="li5">
 						<div class="search-box">
 							<input id="J_keywords" type="text" class="skey" name="kword"
-								value="������ؼ��ʻ����õ�����" data-source="" autocomplete="off">
+								value="请输入关键词或配置单名称" data-source="" autocomplete="off">
 							<!--<input type="hidden" name="f" value="c">-->
-							<input id="submit" type="submit" class="sbtn" value="����">
+							<input id="submit" type="button" class="sbtn" onclick="scan()"  value="搜索">
 						</div>
 					</li>
 				</ul>
@@ -60,155 +60,155 @@
 		</div>
 	</div>
 	
-<!--����-->
+<!--顶部-->
 <div class="nav" >
     <div class="nav-box">
        <ul class="navul" style="min-width: 800px; margin-left: 150px;">
 		   
-         <li id="menu_nav_index"><a class="active">ģ���ܻ�</a></li>
-		 <li id="menu_nav_myplan"><a target="_self" href="front/myplan.html" >�ҵķ���</a></li>
-		 <li id="menu_nav_wyplan"><a target="_self" href="front/netplan.html">���ѷ���</a></li>
-		 <li id="menu_nav_DiyTop"><a target="_self" href="">�������а�</a></li>
-		 <li id="menu_nav_ProTop"><a target="_self" href="front/rank.html">������ѡ���</a></li>
-		 <li id="menu_nav_Smart"><a target="_blank" href="">�����Ƽ��ܻ�</a></li>
+         <li id="menu_nav_index"><a class="active">模拟攒机</a></li>
+		 <li id="menu_nav_myplan"><a target="_self" href="front/myplan.html" >我的方案</a></li>
+		 <li id="menu_nav_wyplan"><a target="_self" href="front/netplan.html">网友方案</a></li>
+		 <li id="menu_nav_DiyTop"><a target="_self" href="">配置排行榜</a></li>
+		 <li id="menu_nav_ProTop"><a target="_self" href="front/rank.html">网友首选配件</a></li>
+		 <li id="menu_nav_Smart"><a target="_blank" href="">智能推荐攒机</a></li>
        </ul>
     </div>
 </div>
 
 <div class="parts wrapper">
-	<div class="parts-head"><h3>��ѡ�����</h3> <i>*</i> ��Ϊ��ѡ��</div>
+	<div class="parts-head"><h3>请选择配件</h3> <i>*</i> 号为必选项</div>
 	<ul class="parts-list clearfix">
 		<li class="more active"><span>CPU <i>*</i></span>
 			<ul>
-			 <li id="topSubSel_383" rel="383" relnum="2"><span>������CPU</span></li>
+			 <li id="topSubSel_383" rel="383" relnum="2"><span>服务器CPU</span></li>
 			 <li id="topSubSel_28" rel="28" relnum="2"><span>CPU</span></li>
 			 </ul>
 		</li>
-		<li id="topSubSel_5" rel="5" class="cur" relnum="1"><span>����<i>*</i></span></li>
-        <li id="topSubSel_3" rel="3" relnum="8"><span>�ڴ�<i>*</i></span></li>
-		<li id="topSubSel_2" rel="2" relnum="4"><span>Ӳ��</span></li>
-        <li id="topSubSel_6" rel="6" relnum="4"><span>�Կ�</span></li>
-        <li id="topSubSel_10" rel="10" relnum="1"><span>����</span></li>
-        <li id="topSubSel_35" rel="35" relnum="1"><span>��Դ</span></li>        
+		<li id="topSubSel_5" rel="5" class="cur" relnum="1"><span>主板<i>*</i></span></li>
+        <li id="topSubSel_3" rel="3" relnum="8"><span>内存<i>*</i></span></li>
+		<li id="topSubSel_2" rel="2" relnum="4"><span>硬盘</span></li>
+        <li id="topSubSel_6" rel="6" relnum="4"><span>显卡</span></li>
+        <li id="topSubSel_10" rel="10" relnum="1"><span>机箱</span></li>
+        <li id="topSubSel_35" rel="35" relnum="1"><span>电源</span></li>        
 	</ul>
 	
 </div>
 <div class="wrapper clearfix">
 	<div class="zj-parts"> <!-- zj-parts have -->
-		<div class="zj-parts-head">װ�����õ�</div>
-		<div class="zj-login" style="display: block" >����δ��¼����¼�����Ԥ���ͷ������á�<button type="button" class="login-btn">��¼</button></div>
+		<div class="zj-parts-head">装机配置单</div>
+		<div class="zj-login" style="display: block" >您还未登录，登录后才能预览和发表配置。<button type="button" class="login-btn">登录</button></div>
 
-		<!-- <div class="zj-login">��ǰ�˺ţ�<a href="javascript:;" target="_self" class="blue">al1wix</a> | <a href="javascript:;" target="_self">�˳�</a></div> -->
+		<!-- <div class="zj-login">当前账号：<a href="javascript:;" target="_self" class="blue">al1wix</a> | <a href="javascript:;" target="_self">退出</a></div> -->
 		<ul>
 			<li id="leftSubSel_28" rel="28" class="active">
 				<h3>CPU<i>*</i></h3>
 				<span class="pic"></span>
-				<div class="zj-parts-con">��ѡ����Ʒ</div>
-				<span class="link-add">����</span>
+				<div class="zj-parts-con">请选择商品</div>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>
 			</li>
 			<li id="leftSubSel_5" rel="5">
-				<h3>����<i>*</i></h3>
+				<h3>主板<i>*</i></h3>
 				<span class="pic"></span>
-				<div class="zj-parts-con">��ѡ����Ʒ</div>
-				<span class="link-add">����</span>
+				<div class="zj-parts-con">请选择商品</div>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>			
 			</li>
 			<li id="leftSubSel_3" rel="3">
-				<h3>�ڴ�<i>*</i></h3>
+				<h3>内存<i>*</i></h3>
 				<span class="pic"></span>
-				<span class="zj-parts-con">��ѡ����Ʒ</span>
-				<span class="link-add">����</span>
+				<span class="zj-parts-con">请选择商品</span>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>
 			</li>
 			<li id="leftSubSel_2" rel="2">
-				<h3>Ӳ��</h3>
+				<h3>硬盘</h3>
 				<span class="pic"></span>
-				<span class="zj-parts-con">��ѡ����Ʒ</span>
-				<span class="link-add">����</span>
+				<span class="zj-parts-con">请选择商品</span>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>			
 			</li>
 			<li id="leftSubSel_6" rel="6">
-				<h3>�Կ�</h3>
+				<h3>显卡</h3>
 				<span class="pic"></span>
-				<span class="zj-parts-con">��ѡ����Ʒ</span>
-				<span class="link-add">����</span>
+				<span class="zj-parts-con">请选择商品</span>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>
 			</li>
 			<li id="leftSubSel_10" rel="10">
-				<h3>����</h3>
+				<h3>机箱</h3>
 				<span class="pic"></span>
-				<span class="zj-parts-con">��ѡ����Ʒ</span>
-				<span class="link-add">����</span>
+				<span class="zj-parts-con">请选择商品</span>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>
 			</li>
 			<li id="leftSubSel_35" rel="35">
-				<h3>��Դ</h3>
+				<h3>电源</h3>
 				<span class="pic"></span>
-				<span class="zj-parts-con">��ѡ����Ʒ</span>
-				<span class="link-add">����</span>
+				<span class="zj-parts-con">请选择商品</span>
+				<span class="link-add">添加</span>
 				<span class="delete"></span>
 			</li>
 			
 			<li class="total">
-				<h3>����0��</h3>
-				<span>�ϼ� <em>��0</em></span>
+				<h3>共计0项</h3>
+				<span>合计 <em>￥0</em></span>
 			</li>
 		</ul>
 		<div class="other-msg">
             
              <div class="item mingcheng">
-               <p class="lable"><em>0/20</em><b>���ƣ�<font>*</font></b> ��Ϊ�˱����ظ����������6������/�ַ�) <span class="inst">����6��20���ֲ��ܷ���</span></p>
+               <p class="lable"><em>0/20</em><b>名称：<font>*</font></b> （为了避免重复请输入大于6个汉字/字符) <span class="inst">名称6到20个字才能发布</span></p>
                <input type="text" class="name " value="" date-n="20">     
              </div>
              <div class="item shuoming">
-               <p class="lable"><em>0/200</em><b>˵����</b><span class="inst">���ݲ��ɳ���120��</span></p>
-               <textarea class="instruct " placeholder="���ܻ���Ŀ��/Ԥ�㣬�����õ����ƣ������������ݣ���ȡ�����ע" date-n="200"></textarea>    
+               <p class="lable"><em>0/200</em><b>说明：</b><span class="inst">内容不可超过120字</span></p>
+               <textarea class="instruct " placeholder="您攒机的目的/预算，该配置的优势，分享更多内容，获取更多关注" date-n="200"></textarea>    
              </div>
              <div class="item clearfix">
-               <p class="lable code-msg"><b>��֤�룺</b><span class="inst">����ȷ��д��֤��</span></p>
+               <p class="lable code-msg"><b>验证码：</b><span class="inst">请正确填写验证码</span></p>
                <div class="code-box">
                   <input type="text" class="code ">
                   <span class="code-img">
-				<a href="javascript:void(0);" target="_self" class="blue" onclick="createCode()" id="checkCode" style="color:blue;font-size: 23px"></a>
-                   <span>���ͼƬˢ��</span>
+				<a href="javascript:void(0);" target="_self" class="blue" onclick="createCode()" id="checkCode" style="background: url('images/person.jpg');"></a>
+                   <span>点击图片刷新</span>
                   </span>
                </div> 
                <div class="synch" style="display: none;">
 				   <img />
-                 <input type="checkbox" class="check" id="idToBBs" value=""> <span class="instr">ͬ������̳�ô�ҵ���</span>
+                 <input type="checkbox" class="check" id="idToBBs" value=""> <span class="instr">同步至论坛让大家点评</span>
                </div>    
              </div>
              
           </div>
           <div class="btn-box">
-              <a href="javascript:void(0);" target="_self" class="publish">�������õ�</a><span class="preview">Ԥ��</span><a href="javascript:void(0);" target="_self" class="empty">���</a>
+              <a href="javascript:void(0);" target="_self" class="publish">发表配置单</a><span class="preview">预览</span><a href="javascript:void(0);" target="_self" class="empty">清空</a>
           </div>
 
 	</div>
 </div>
 		<div class="popOutBg"></div>
 		<div class="popOut">
-		<span title="�ر�"> x </span>
+		<span title="关闭"> x </span>
 		<table>
-			<caption>��ӭ��¼����վ</caption>
-			<a href="front/register.html" class="freeret">���ע��<font>&gt;&gt;</font></a>
+			<caption>欢迎登录本网站</caption>
+			<a href="front/register.html" class="freeret">免费注册<font>&gt;&gt;</font></a>
 			<tr>
-				<td width="120">�û�����</td>
-				<td><input type="text" class="inp" placeholder="�������û����������ַ" /></td>
+				<td width="120">用户名：</td>
+				<td><input type="text" class="inp" id="uname" placeholder="请输入用户名或邮箱地址" /></td>
 			</tr>
 			<tr>
-				<td>���룺</td>
-				<td><input type="password" class="inp" placeholder="����������" /></td>
+				<td>密码：</td>
+				<td><input type="password" class="inp" id="upwd" placeholder="请输入密码" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" class="login" value="��¼" /></td>
-				<a href="front/forgetPwd.html" class="forgetpsw">��������?</a>
+				<td colspan="2"><input type="button" class="login" value="登录" onclick="login()"/></td>
+				<a href="front/forgetPwd.html" class="forgetpsw">忘记密码?</a>
 			</tr>
 		</table>
 		</div>
 		
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 window.onload=function(){
     createCode();    
@@ -240,6 +240,35 @@ window.onload=function(){
 		$(".popOut").style.display = "none";
 		$(".popOutBg").style.display = "none";
 	};
+	function login(){
+	
+		var uname =$("#uname").val();
+		var upwd = $.trim($("#upwd").val());
+		
+		if (uname == "") {
+			alert("请输入手机号或邮箱地址...");
+			return;
+		}
+		
+		if (upwd == "") {
+			alert("请输入密码...");
+			return;
+		}
+		$.post("usr",{op:"login",uname:uname,upwd:upwd},function(data){
+			 data=parseInt($.trim(data));
+			 if(data==1){
+				 $(".popOut").style.display = "none";
+				 $(".popOutBg").style.display = "none";
+				 $(".zj-login").style.display = "none";
+	    	 }else{
+	    		 alert("账号或密码错误，请重新登陆！")
+	    	 }
+		},"text")
+	}
+	function scan(){
+		var ss  =  $(".sbtn").val();
+		console.log(ss);
+	}
 </script>
 
 
