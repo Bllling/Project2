@@ -1,7 +1,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class Rorder implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -13,7 +13,7 @@ public class Rorder implements Serializable {
 	private String city;
 	private String county;
 	private String raddress;
-	private BigDecimal total;
+	private  double total;
 	
 	public String getRorderid() {
 		return rorderid;
@@ -63,10 +63,10 @@ public class Rorder implements Serializable {
 	public void setRaddress(String raddress) {
 		this.raddress = raddress;
 	}
-	public BigDecimal getTotal() {
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(BigDecimal total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 	public static long getSerialversionuid() {

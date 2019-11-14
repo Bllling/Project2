@@ -1,14 +1,14 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class MotherBoard implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int motherboardid;
 	private String name;
 	private String pics;
-	private BigDecimal motherboardprice;
+	private  double motherboardprice;
 	private int quantiy;
 	private int usetimes;
 	private int praise;
@@ -33,10 +33,10 @@ public class MotherBoard implements Serializable {
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public BigDecimal getMotherboardprice() {
+	public double getMotherboardprice() {
 		return motherboardprice;
 	}
-	public void setMotherboardprice(BigDecimal motherboardprice) {
+	public void setMotherboardprice(double motherboardprice) {
 		this.motherboardprice = motherboardprice;
 	}
 	public int getQuantiy() {

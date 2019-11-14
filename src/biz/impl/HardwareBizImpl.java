@@ -5,6 +5,13 @@ import java.util.Map;
 import biz.IHardwareBiz;
 import dao.IHardwareDao;
 import dao.impl.HardwareDaoImpl;
+import entity.Box;
+import entity.Cpu;
+import entity.Disk;
+import entity.Graphics;
+import entity.Memory;
+import entity.MotherBoard;
+import entity.Source;
 import util.StringUtil;
 
 public class HardwareBizImpl implements IHardwareBiz {
@@ -72,6 +79,56 @@ public class HardwareBizImpl implements IHardwareBiz {
 		}
 		IHardwareDao hardwareDao = new HardwareDaoImpl();
 		return hardwareDao.addBox(map);
+	}
+
+	@Override
+	public Cpu findCPU(Integer cpuid) {
+			if(cpuid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findCPU(cpuid);
+		
+	}
+
+	@Override
+	public MotherBoard findMotherboard(Integer motherboardid) {
+			if(motherboardid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findMotherboard(motherboardid);
+	}
+
+	@Override
+	public Memory findMemory(Integer memoryid) {
+			if(memoryid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findMemory(memoryid);
+	}
+
+	@Override
+	public Disk findDisk(Integer diskid) {
+			if(diskid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findDisk(diskid);
+	}
+
+	@Override
+	public Source findSource(Integer sourceid) {
+			if(sourceid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findSource(sourceid);
+	}
+
+	@Override
+	public Graphics findGraphics(Integer graphicsid) {
+			if(graphicsid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findGraphics(graphicsid);
+	}
+
+	@Override
+	public Box findBox(Integer boxid) {
+			if( boxid==null){return null;}
+			IHardwareDao hardwareDao = new HardwareDaoImpl();
+			return hardwareDao.findBox(boxid);
 	}
 
 }

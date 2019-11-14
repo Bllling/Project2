@@ -1,21 +1,21 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class RorderDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String rorderid;
 	private int id;
 	private int uid;
-	private BigDecimal cpuprice;
-	private BigDecimal motherboardprice;
-	private BigDecimal memoryprice;
-	private BigDecimal diskprice;
-	private BigDecimal ssdprice;
-	private BigDecimal sourceprice;
-	private BigDecimal graphicsprice;
-	private BigDecimal boxprice;
+	private  double cpuprice;
+	private  double motherboardprice;
+	private  double memoryprice;
+	private  double diskprice;
+	private  double ssdprice;
+	private  double sourceprice;
+	private  double graphicsprice;
+	private  double boxprice;
 	private int cpuid;
 	private int motherboardid;
 	private int memoryid;
@@ -41,52 +41,52 @@ public class RorderDetail implements Serializable {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-	public BigDecimal getCpuprice() {
+	public double getCpuprice() {
 		return cpuprice;
 	}
-	public void setCpuprice(BigDecimal cpuprice) {
+	public void setCpuprice(double cpuprice) {
 		this.cpuprice = cpuprice;
 	}
-	public BigDecimal getMotherboardprice() {
+	public double getMotherboardprice() {
 		return motherboardprice;
 	}
-	public void setMotherboardprice(BigDecimal motherboardprice) {
+	public void setMotherboardprice(double motherboardprice) {
 		this.motherboardprice = motherboardprice;
 	}
-	public BigDecimal getMemoryprice() {
+	public double getMemoryprice() {
 		return memoryprice;
 	}
-	public void setMemoryprice(BigDecimal memoryprice) {
+	public void setMemoryprice(double memoryprice) {
 		this.memoryprice = memoryprice;
 	}
-	public BigDecimal getDiskprice() {
+	public double getDiskprice() {
 		return diskprice;
 	}
-	public void setDiskprice(BigDecimal diskprice) {
+	public void setDiskprice(double diskprice) {
 		this.diskprice = diskprice;
 	}
-	public BigDecimal getSsdprice() {
+	public double getSsdprice() {
 		return ssdprice;
 	}
-	public void setSsdprice(BigDecimal ssdprice) {
+	public void setSsdprice(double ssdprice) {
 		this.ssdprice = ssdprice;
 	}
-	public BigDecimal getSourceprice() {
+	public double getSourceprice() {
 		return sourceprice;
 	}
-	public void setSourceprice(BigDecimal sourceprice) {
+	public void setSourceprice(double sourceprice) {
 		this.sourceprice = sourceprice;
 	}
-	public BigDecimal getGraphicsprice() {
+	public double getGraphicsprice() {
 		return graphicsprice;
 	}
-	public void setGraphicsprice(BigDecimal graphicsprice) {
+	public void setGraphicsprice(double graphicsprice) {
 		this.graphicsprice = graphicsprice;
 	}
-	public BigDecimal getBoxprice() {
+	public double getBoxprice() {
 		return boxprice;
 	}
-	public void setBoxprice(BigDecimal boxprice) {
+	public void setBoxprice(double boxprice) {
 		this.boxprice = boxprice;
 	}
 	public int getCpuid() {

@@ -147,6 +147,9 @@ create table if not exists computer(
 	sourceid int,    -- 电源编号
 	graphicsid int,   -- 显卡编号
 	boxid int,       -- 机箱编号
+	sumprice decimal(8,2), -- 总价格
+	detail text ,--描述
+	cname varchar(50), --名称
 	constraint FK_computer_uid foreign key(uid) references usr(uid),
 	constraint FK_computer_motherboardid foreign key(motherboardid) references motherboard(motherboardid),
 	constraint FK_computer_cpuid foreign key(cpuid) references cpu(cpuid),
@@ -164,6 +167,7 @@ create table if not exists comment(
 	commenttime datetime not null, -- 评论时间
 	uid int,  -- 用户编号 
 	content varchar(1000), -- 评论内容
+	praise int, -- 点赞数
 	constraint FK_collections_uid foreign key(uid) references usr(uid),
 	constraint FK_collections_id foreign key(id) references computer(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1001 default charset=utf8 collate = utf8_bin;

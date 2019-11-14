@@ -1,14 +1,13 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class Cpu implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int cpuid;
 	private String name;
 	private String pics;
-	private BigDecimal cpuprice;
+	private  double cpuprice;
 	private int quantiy;
 	private int usetimes;
 	private int praise;
@@ -36,10 +35,10 @@ public class Cpu implements Serializable {
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public BigDecimal getCpuprice() {
+	public double getCpuprice() {
 		return cpuprice;
 	}
-	public void setCpuprice(BigDecimal cpuprice) {
+	public void setCpuprice(double cpuprice) {
 		this.cpuprice = cpuprice;
 	}
 	public int getQuantiy() {

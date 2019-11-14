@@ -1,14 +1,14 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class Graphics implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int graphicsid;
 	private String name;
 	private String pics;
-	private BigDecimal graphicsprice;
+	private  double graphicsprice;
 	private int quantiy;
 	private int usetimes;
 	private int praise;
@@ -34,10 +34,10 @@ public class Graphics implements Serializable{
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public BigDecimal getGraphicsprice() {
+	public double getGraphicsprice() {
 		return graphicsprice;
 	}
-	public void setGraphicsprice(BigDecimal graphicsprice) {
+	public void setGraphicsprice(double graphicsprice) {
 		this.graphicsprice = graphicsprice;
 	}
 	public int getQuantiy() {

@@ -2,6 +2,14 @@ package dao;
 
 import java.util.Map;
 
+import entity.Box;
+import entity.Cpu;
+import entity.Disk;
+import entity.Graphics;
+import entity.Memory;
+import entity.MotherBoard;
+import entity.Source;
+
 public interface IHardwareDao {
 	/**
 	 * 添加CPU
@@ -10,12 +18,16 @@ public interface IHardwareDao {
 	 */
 	public int addCPU(Map<String, String> map);
 	
+	public Cpu findCPU(Integer cpuid);
+	
 	/**
 	 * 添加主板
 	 * @param map
 	 * @return
 	 */
 	public int addMotherboard(Map<String, String> map);
+	
+	public MotherBoard findMotherboard(Integer motherboardid);
 	
 	/**
 	 * 添加内存
@@ -24,6 +36,7 @@ public interface IHardwareDao {
 	 */
 	public int addMemory(Map<String, String> map);
 	
+	public Memory findMemory(Integer memoryid);
 	/**
 	 * 添加硬盘
 	 * @param map
@@ -31,6 +44,7 @@ public interface IHardwareDao {
 	 */
 	public int addDisk(Map<String, String> map);
 	
+	public Disk findDisk(Integer diskid);
 	/**
 	 * 添加电源
 	 * @param map
@@ -38,6 +52,7 @@ public interface IHardwareDao {
 	 */
 	public int addSource(Map<String, String> map);
 	
+	public Source findSource(Integer sourceid);
 	/**
 	 * 添加显卡
 	 * @param map
@@ -45,10 +60,13 @@ public interface IHardwareDao {
 	 */
 	public int addGraphics(Map<String, String> map);
 	
+	public Graphics findGraphics(Integer graphicsid);
 	/**
 	 * 添加机箱
 	 * @param map
 	 * @return
 	 */
 	public int addBox(Map<String, String> map);
+	
+	public Box findBox(Integer boxid);
 }
