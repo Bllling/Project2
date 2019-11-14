@@ -16,7 +16,7 @@ create table if not exists usr(
 	upwd varchar(100) not null, 
 	uemail varchar(100) not null unique, 
 	utel varchar(100) not null  unique, 
-	upics varchar(1000)
+	upics varchar(1000) 
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 -- 收货地址表（收货省，收货市，收货县/区，收货详细地址）

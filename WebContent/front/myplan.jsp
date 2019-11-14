@@ -1,11 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="zh-CN" ><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta charset="utf-8" />
 
 <meta name="renderer" content="webkit">
 
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 
-<title>ÎÒµÄ·½°¸</title>
+<title>æˆ‘çš„æ–¹æ¡ˆ</title>
 
 <link href="../css/Diy_NetFriendList.css" rel="stylesheet">
 
@@ -26,8 +28,8 @@
            <ul >
               <li class="li5">
                   <div class="search-box">
-                       <input id="J_keywords" type="text" class="skey" name="kword" value="ÇëÊäÈë¹Ø¼ü´Ê»òÅäÖÃµ¥Ãû³Æ" data-source="" autocomplete="off">
-                       <input id="submit" type="submit" class="sbtn" value="ËÑË÷">
+                       <input id="J_keywords" type="text" class="skey" name="kword" value="è¯·è¾“å…¥å…³é”®è¯æˆ–é…ç½®å•åç§°" data-source="" autocomplete="off">
+                       <input id="submit" type="submit" class="sbtn" value="æœç´¢">
                  </div>
               </li>
            </ul>
@@ -41,12 +43,12 @@
     <div class="nav-box">
        <ul class="navul" style="min-width: 800px;margin-left: 150px;">
 		   
-         <li id="menu_nav_index"><a target="_self" href="../index.html">Ä£ÄâÔÜ»ú</a></li>
-		 <li id="menu_nav_myplan"><a class="active">ÎÒµÄ·½°¸</a></li>
-		 <li id="menu_nav_wyplan"><a target="_self" href="netplan.html">ÍøÓÑ·½°¸</a></li>
-		 <li id="menu_nav_DiyTop"><a target="_self" href="#">ÅäÖÃÅÅÐÐ°ñ</a></li>
-		 <li id="menu_nav_ProTop"><a target="_self" href="rank.html">ÍøÓÑÊ×Ñ¡Åä¼þ</a></li>
-		 <li id="menu_nav_Graphics"><a target="_blank" href="#">ÖÇÄÜÍÆ¼öÔÜ»ú</a></li>
+         <li id="menu_nav_index"><a target="_self" href="../index1.jsp">æ¨¡æ‹Ÿæ”’æœº</a></li>
+		 <li id="menu_nav_myplan"><a class="active">æˆ‘çš„æ–¹æ¡ˆ</a></li>
+		 <li id="menu_nav_wyplan"><a target="_self" href="netplan.jsp">ç½‘å‹æ–¹æ¡ˆ</a></li>
+		 <li id="menu_nav_DiyTop"><a target="_self" href="#">é…ç½®æŽ’è¡Œæ¦œ</a></li>
+		 <li id="menu_nav_ProTop"><a target="_self" href="rank.html">ç½‘å‹é¦–é€‰é…ä»¶</a></li>
+		 <li id="menu_nav_Graphics"><a target="_blank" href="#">æ™ºèƒ½æŽ¨èæ”’æœº</a></li>
        </ul>
       
     </div>
@@ -55,80 +57,80 @@
 
  <div class="wrap" >
    <div class="box netpersonal-plan clearfix">
-     <!--×ó²à start-->
+     <!--å·¦ä¾§ start-->
      <div class="wleft">
      <div style="width: 90% ; float: left">
         <div class="process">
-          <a href="../index.html">ZOLÔÜ»úÊ×Ò³</a>&gt;&nbsp;ÎÒµÄÅäÖÃ·½°¸
+          <a href="../index1.jsp">ZOLæ”’æœºé¦–é¡µ</a>&gt;&nbsp;æˆ‘çš„é…ç½®æ–¹æ¡ˆ
         </div>
         <div class="sort-box clearfix" style="width: 100%">
          <div class="sort netf-sort" >
-            <a href="javascript:show1()" target="_self" class="active myprofile">ÎÒµÄÅäÖÃ</a>
-            <a href="javascript:show2()" class="hovera">ÎÒµÄÊÕ²Ø</a>
+            <a href="javascript:show1()" target="_self" class="active myprofile">æˆ‘çš„é…ç½®</a>
+            <a href="javascript:show2()" class="hovera">æˆ‘çš„æ”¶è—</a>
          </div>
         </div>
         <div class="plan-list-box">
             <div class="my-nothing">
 					<div class="text">
-					   <p class="inst">ÄúÄ¿Ç°ÉÐÎÞÅäÖÃµ¥£¬¿ìÈ¥ÔÜÒ»¸ö°É!</p>
-					   <a href="../index.html" class="link">ÎÒÒªÔÜ»ú<font>&gt;&gt;</font></a>
+					   <p class="inst">æ‚¨ç›®å‰å°šæ— é…ç½®å•ï¼Œå¿«åŽ»æ”’ä¸€ä¸ªå§!</p>
+					   <a href="../index1.jsp" class="link">æˆ‘è¦æ”’æœº<font>&gt;&gt;</font></a>
 					</div>         
 			 </div>    
 				
         </div>
   </div>
-     <!--ÓÒ²à start-->
+     <!--å³ä¾§ start-->
      <div class="wright" style="float: rigth; width: 30%; margin-right: -200px;">
-        <!--µÇÂ¼ start-->
+        <!--ç™»å½• start-->
                  <div class="logo" style="display: block;" >
-                     <p class="title" style=" width: 310px;margin-right: -200px;">ÓÃ»§µÇÂ¼ <a href="register.html" class="more">Ãâ·Ñ×¢²á<font>&gt;&gt;</font></a></p>
+                     <p class="title" style=" width: 310px;margin-right: -200px;">ç”¨æˆ·ç™»å½• <a href="register.html" class="more">å…è´¹æ³¨å†Œ<font>&gt;&gt;</font></a></p>
                      <div class="inf" style=" width: 304px;">
                        
                          <form action="http://zj.zol.com.cn/list_l2_1_1.html" target="noform">
                         <div class="text-inf">
                             <span class="inst"></span>
                          
-                          <input type="text" class="username login" placeholder="ÓÊÏä/ÊÖ»úºÅ"  id="userName1" rel="uname-inst" value=""> 
-                          <input type="password" class="pwd login"   placeholder="ÃÜÂë" id="passWord1" rel="pwd-inst" value="">
+                          <input type="text" class="username login" placeholder="é‚®ç®±/æ‰‹æœºå·"  id="userName1" rel="uname-inst" value=""> 
+                          <input type="password" class="pwd login"   placeholder="å¯†ç " id="passWord1" rel="pwd-inst" value="">
                         </div>
                         <div class="other">
                           
-                           <a href="forgetPwd.html" class="forget">Íü¼ÇÃÜÂë?</a>
+                           <a href="forgetPwd.html" class="forget">å¿˜è®°å¯†ç ?</a>
                         </div>
-                        <input type="button" class="subm" value="µÇÂ¼" onclick="login()">
+                        <input type="button" class="subm" value="ç™»å½•" onclick="login()">
                         
                      </form>
                      </div>
                  </div>
-                 <!--µÇÂ¼ end-->
-        		<!--¸öÈËÐÅÏ¢ start-->
+                 <!--ç™»å½• end-->
+        		<!--ä¸ªäººä¿¡æ¯ start-->
            <div class="per-infor" style="display: none;">
-                    <p class="title">¸öÈËÐÅÏ¢</p>
+                    <p class="title">ä¸ªäººä¿¡æ¯</p>
                     <div class="edit-box clearfix">
-                        <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="Í·Ïñ"></div>
+                        <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="å¤´åƒ"></div>
                        <div class="right">
-                          <p><a href="http://my.zol.com.cn/qq_527456i2c41b/" class="name">ÕÅÈý</a></p>
+                          <p><a href="javascript:void(0)" class="name">${currentAdmin.uname}</a></p>
                           
                        </div>
                     </div>
                     <table >
                         <tbody style="height: 50px;"><tr >
                            <td >
-                              <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link fanan">
+                              <a href="javascript:void(0)" class="item-link fanan">
                                 <h1>xx</h1>
-                                ·½°¸
+                                æ–¹æ¡ˆ
                               </a>
                            </td>
                            <td>
-                             <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link l2 review">
+                             <a href="javascript:void(0)" class="item-link l2 review">
                                  <h1>xx</h1>
-                                ä¯ÀÀ
+                                æµè§ˆ
                               </a>
                            </td>
                            <td>
-                              <a href="http://zj.zol.com.cn/list_l2_1_1.html" class="item-link l3 hitNum">
+                              <a href="javascript:void(0)" class="item-link l3 hitNum">
                                 <h1>xx</h1>
-                                µãÆÀ
+                                ç‚¹è¯„
                               </a>
                            </td>
                         </tr>
@@ -142,14 +144,27 @@
    </div>
    <script src="../js/jquery-3.4.1.min.js"></script>
  <script type="text/javascript">
+ $(function(){
+	
+	    var str=$(".name").html();
+	    
+		if(str!=null&&str.length > 0&&""!=str){
+		
+			 $(".logo").css("display","none");
+			 $(".per-infor").css("display","block");
+			
+		 }
+	 
+ })
  function show1(){
-	 alert("½øÈëÎÒµÄ·½°¸");
+	 alert("è¿›å…¥æˆ‘çš„æ–¹æ¡ˆ");
  }
  function show2(){
-	 alert("½øÈëÎÒµÄÊÕ²Ø");
+	 alert("è¿›å…¥æˆ‘çš„æ”¶è—");
  }
  function login(){
-	 alert("µÇÂ¼");
+	 var user=$("#userName1").val();
+	 alert(user);
  }
  </script>
 

@@ -1,15 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!-- saved from url=(0021)http://zj.zol.com.cn/ -->
+<meta charset="utf-8" />
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
 <title>NO2</title>
 <link href="css/Diy_DiyZj.css" rel="stylesheet">
 
 
-<style>	
-	*{ margin:0; padding:0;}
+ <style>	
+	  *{ margin:0; padding:0;}
 		button, input{ outline:none;}
 		button{border:1px solid;border-radius:6px;}
+		#close{position: relative;left:580px;top:5px; font-size: 20px;}
 		 .login{ width:120px; height:42px; background:rgb(55,145,237); color:#fff; border:none; border-radius:6px; display: block; margin:20px auto; cursor: pointer;}
 		.popOutBg{ width:100%; height:100%; position: fixed; left:0; top:0; background:rgba(0,0,0,.6); display: none;}
 		.popOut{ position:fixed; width:600px; height:300px; top:50%; left:50%; margin-top:-150px; margin-left:-300px; background:#fff; border-radius:8px; overflow: hidden; display: none;}
@@ -37,7 +40,7 @@
     	.pub-element .pub-feedback{ padding:13px 10px 0 16px; width:34px; height:47px; font:14px/16px "Microsoft YaHei","\5FAE\8F6F\96C5\9ED1"; color:#fff;}
     	.header-links i.icon-made{background: url('https://icon.zol-img.com.cn/channel/ico-made.png') no-repeat;margin: 4px 3px 0 0;}	
     	.active{background-color:#307bca;text-decoration:none;}
-</style>			
+</style>	 	
 
 </head>
 <body>
@@ -50,7 +53,7 @@
 					<li class="li5">
 						<div class="search-box">
 							<input id="J_keywords" type="text" class="skey" name="kword"
-								value="请输入关键词或配置单名称" data-source="" autocomplete="off">
+								placeholder="请输入关键词或配置单名称" data-source="" autocomplete="off">
 							<!--<input type="hidden" name="f" value="c">-->
 							<input id="submit" type="button" class="sbtn" onclick="scan()"  value="搜索">
 						</div>
@@ -66,8 +69,8 @@
        <ul class="navul" style="min-width: 800px; margin-left: 150px;">
 		   
          <li id="menu_nav_index"><a class="active">模拟攒机</a></li>
-		 <li id="menu_nav_myplan"><a target="_self" href="front/myplan.html" >我的方案</a></li>
-		 <li id="menu_nav_wyplan"><a target="_self" href="front/netplan.html">网友方案</a></li>
+		 <li id="menu_nav_myplan"><a target="_self" href="front/myplan.jsp" >我的方案</a></li>
+		 <li id="menu_nav_wyplan"><a target="_self" href="front/netplan.jsp">网友方案</a></li>
 		 <li id="menu_nav_DiyTop"><a target="_self" href="">配置排行榜</a></li>
 		 <li id="menu_nav_ProTop"><a target="_self" href="front/rank.html">网友首选配件</a></li>
 		 <li id="menu_nav_Smart"><a target="_blank" href="">智能推荐攒机</a></li>
@@ -93,11 +96,12 @@
 	</ul>
 	
 </div>
+<%session.setMaxInactiveInterval(10); %>
 <div class="wrapper clearfix">
 	<div class="zj-parts"> <!-- zj-parts have -->
 		<div class="zj-parts-head">装机配置单</div>
-		<div class="zj-login" style="display: block" >您还未登录，登录后才能预览和发表配置。<button type="button" class="login-btn">登录</button></div>
-
+		<div class="zj-login" style="display: block" >您还未登录，登录后才能预览和发表配置。<button type="button" class="login-btn" id="btn1" onclick="showlogin()">登录</button></div>
+        <div class="zj-login" style="display: none;color: rgb(55,145,237);font-size: 20px;" ><strong id="my"  >${currentAdmin.uname }</strong>,欢迎你。</div>
 		<!-- <div class="zj-login">当前账号：<a href="javascript:;" target="_self" class="blue">al1wix</a> | <a href="javascript:;" target="_self">退出</a></div> -->
 		<ul>
 			<li id="leftSubSel_28" rel="28" class="active">
@@ -187,9 +191,9 @@
 
 	</div>
 </div>
-		<div class="popOutBg"></div>
-		<div class="popOut">
-		<span title="关闭"> x </span>
+		<div class="popOutBg" id="pop1" style="display: none;"></div>
+		<div class="popOut" id="pop2" style="display: none;">
+		<a title="关闭" id="close" href="javascript:close()"> x </a>
 		<table>
 			<caption>欢迎登录本网站</caption>
 			<a href="front/register.html" class="freeret">免费注册<font>&gt;&gt;</font></a>
@@ -202,49 +206,36 @@
 				<td><input type="password" class="inp" id="upwd" placeholder="请输入密码" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" class="login" value="登录" onclick="login()"/></td>
+				<td colspan="2"><input type="button" class="login" value="登录" onclick="login1()"/></td>
 				<a href="front/forgetPwd.html" class="forgetpsw">忘记密码?</a>
 			</tr>
 		</table>
-		</div>
+		</div>  
 		
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 window.onload=function(){
+	var str=$("#my").html();
+
+	if(str!=null&&str.length > 0&&""!=str){
+	
+	$(".popOut").css('display','none');
+	 $(".popOutBg").css('display','none');
+	 $(".zj-login:eq(0)").css('display','none');
+	 $(".zj-login:eq(1)").css('display','block');
+	 }
     createCode();    
    }
 
    function createCode() {
-       
+      
    }
-   function $(param){
-		if(arguments[1] == true){
-			return document.querySelectorAll(param);
-		}else{
-			return document.querySelector(param);
-		}
-	}
-	function ani(){
-		$(".popOut").className = "popOut ani";
-	}
-	$("button").onclick = function(){
-		$(".popOut").style.display = "block";
-		ani();
-		$(".popOutBg").style.display = "block";
-	};
-	$(".popOut > span").onclick = function(){
-		$(".popOut").style.display = "none";
-		$(".popOutBg").style.display = "none";
-	};
-	$(".popOutBg").onclick = function(){
-		$(".popOut").style.display = "none";
-		$(".popOutBg").style.display = "none";
-	};
-	function login(){
+ 
+	function login1(){
 	
-		var uname =$("#uname").val();
+		var uname =$.trim($("#uname").val());
 		var upwd = $.trim($("#upwd").val());
-		
+	
 		if (uname == "") {
 			alert("请输入手机号或邮箱地址...");
 			return;
@@ -256,20 +247,34 @@ window.onload=function(){
 		}
 		$.post("usr",{op:"login",uname:uname,upwd:upwd},function(data){
 			 data=parseInt($.trim(data));
+		
 			 if(data==1){
-				 $(".popOut").style.display = "none";
-				 $(".popOutBg").style.display = "none";
-				 $(".zj-login").style.display = "none";
+				 $(".popOut").css('display','none');
+				 $(".popOutBg").css('display','none');
+				 $(".zj-login:eq(0)").css('display','none');
+				 $(".zj-login:eq(1)").css('display','block');
+				 window.location.reload();
+				
 	    	 }else{
 	    		 alert("账号或密码错误，请重新登陆！")
 	    	 }
 		},"text")
 	}
+	function showlogin(){
+		 $("#pop1").css('display','block');
+		 $("#pop2").css('display','block');
+	}
+	function close(){
+		 $("#pop1").css('display','none');
+		 $("#pop2").css('display','none');
+	}
 	function scan(){
-		var ss  =  $(".sbtn").val();
+		var ss  =  $("#J_keywords").val();
 		console.log(ss);
 	}
 </script>
 
 
 
+</body>
+</html>
