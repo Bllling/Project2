@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import java.util.Map;
 
 import entity.Box;
@@ -69,4 +70,23 @@ public interface IHardwareDao {
 	public int addBox(Map<String, String> map);
 	
 	public Box findBox(Integer boxid);
+	/**
+	 * 分页查询各硬件
+	 * @param page
+	 * @param rows
+	 * @param id  硬件id名
+	 * @param formName  硬件表名
+	 * @param priceName	硬件价格名称  
+	 * @param c  实体类名
+	 * @return
+	 */
+	public <T>List<T> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c);
+	
+	/**
+	 * 查询总记录数
+	 * @param id  id名
+	 * @param formName  表名
+	 * @return
+	 */
+	public int getTotal(String id, String formName);
 }

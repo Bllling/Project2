@@ -75,6 +75,18 @@ public interface IHardwareBiz {
 	
 	//public Map<String, Object> findHardWareById(Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid) ;
     public Map<String, Object> findHardWareById(Integer id) ;
+    
+    /**
+	 * 分页查询各硬件
+	 * @param page
+	 * @param rows
+	 * @param id  硬件id名
+	 * @param formName  硬件表名
+	 * @param priceName	硬件价格名称  
+	 * @param c  实体类名
+	 * @return
+	 */
+	public Map<String, Object> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c);
 
 
 }
