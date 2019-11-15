@@ -172,4 +172,16 @@ public class HardwareBizImpl implements IHardwareBiz {
 		return map;
 	}
 
+	@Override
+	public int delHardWare(Integer id, String idName, String formName) {
+		if (id == null || "".equals(id)) {
+			return 0;
+		}
+		if (StringUtil.CheckNull(idName, formName)) {
+			return 0;
+		}
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.delHardWare(id, idName, formName);
+	}
+
 }

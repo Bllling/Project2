@@ -11,6 +11,16 @@ import entity.MotherBoard;
 import entity.Source;
 
 public interface IHardwareBiz {
+	
+	/**
+	 * 通过表名和id来删除硬件
+	 * @param id
+	 * @param formName  表名
+	 * @param idName  id名
+	 * @return
+	 */
+	public int delHardWare(Integer id, String idName, String formName);
+	
 	/**
 	 * 添加CPU
 	 * @param map

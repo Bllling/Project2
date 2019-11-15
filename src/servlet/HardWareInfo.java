@@ -26,7 +26,7 @@ public class HardWareInfo extends BasicServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op = request.getParameter("op");
-		if ("findCpuByPage".equals(op)) {
+		if ("findCpuByPage".equals(op)) {   //分页查询数据
 			findCpuByPage(request, response);
 		} else if ("findMotherBoardByPage".equals(op)) {
 			findMotherBoardByPage(request, response);
@@ -40,7 +40,7 @@ public class HardWareInfo extends BasicServlet {
 			findGraphicsByPage(request, response);
 		} else if ("findBoxByPage".equals(op)) {
 			findBoxByPage(request, response);
-		} else if ("findCPUInfo".equals(op)) {
+		} else if ("findCPUInfo".equals(op)) {   //查询详细信息
 			findCPUInfo(request, response); 
 		} else if ("findMotherBoardInfo".equals(op)) {
 			findMotherBoardInfo(request, response);
@@ -54,9 +54,72 @@ public class HardWareInfo extends BasicServlet {
 			findGraphicsInfo(request, response);
 		} else if ("findBoxInfo".equals(op)) {
 			findBoxInfo(request, response);
+		} else if ("delCpu".equals(op)) {
+			delCpu(request, response);  //删除cpu
+		} else if ("delMotherBoard".equals(op)) {
+			delMotherBoard(request, response);
+		} else if ("delMemory".equals(op)) {
+			delMemory(request, response);
+		} else if ("delDisk".equals(op)) {
+			delDisk(request, response);
+		} else if ("delSource".equals(op)) {
+			delSource(request, response);
+		} else if ("delGraphics".equals(op)) {
+			delGraphics(request, response);
+		} else if ("delBox".equals(op)) {
+			delBox(request, response);
 		}
 	}
 	
+	//删除机箱
+	private void delBox(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "boxid", "box"));
+	}
+
+	//删除显卡
+	private void delGraphics(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "graphicsid", "graphics"));
+	}
+
+	//删除电源
+	private void delSource(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "sourceid", "source"));
+	}
+
+	//删除硬盘
+	private void delDisk(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "diskid", "disk"));
+	}
+
+	//删除内存
+	private void delMemory(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "memoryid", "memory"));
+	}
+
+	//删除主板
+	private void delMotherBoard(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "motherboardid", "motherboard"));
+	}
+
+	//删除cpu
+	private void delCpu(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.delHardWare(id, "cpuid", "cpu"));
+	}
+
 	//查询机箱的详细信息
 	private void findBoxInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));

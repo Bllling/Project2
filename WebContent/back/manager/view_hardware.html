@@ -130,23 +130,105 @@
 	}
 	
 	function del(id) {
-		alert(type);
 		if (type == "CPU") {
 			$.post("../../hardwareinfo",{op:"delCpu", id:id}, function(data) {
-				
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'cpu删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_cpu_data("findCpuByPage", "cpuprice");
+				}
 			},"text");
 		} else if ("motherboard" == type) {
-			show_motherboard_data("findMotherBoardByPage", "motherboardprice");
+			$.post("../../hardwareinfo",{op:"delMotherBoard", id:id}, function(data) {
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'主板删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_motherboard_data("findMotherBoardByPage", "motherboardprice");
+				}
+			},"text");
 		} else if ("memory" == type) {
-			show_memory_data("findMemoryByPage","memoryprice");
+			$.post("../../hardwareinfo",{op:"delMemory", id:id}, function(data) {
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'内存删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_memory_data("findMemoryByPage","memoryprice");
+				}
+			},"text");
 		} else if ("disk" == type) {
-			show_disk_data("finddiskByPage","diskprice");
+			$.post("../../hardwareinfo",{op:"delDisk", id:id}, function(data) {
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'硬盘删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_disk_data("finddiskByPage","diskprice");
+				}
+			},"text");
 		} else if ("source" == type) {
-			show_source_data("findSourceByPage", "sourceprice");
+			$.post("../../hardwareinfo",{op:"delSource", id:id}, function(data) {
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'电源删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_source_data("findSourceByPage", "sourceprice");
+				}
+			},"text");
 		} else if ("graphics" == type) {
-			show_graphics_data("findGraphicsByPage","graphicsprice");
+			$.post("../../hardwareinfo",{op:"delGraphics", id:id}, function(data) {
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'显卡删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_graphics_data("findGraphicsByPage","graphicsprice");
+				}
+			},"text");
 		} else if ("box" == type) {
-			show_box_data("findBoxByPage","boxprice");
+			$.post("../../hardwareinfo",{op:"delBox", id:id}, function(data) {
+				if (data <= 0) {
+					alert("删除失败");
+				} else if (data > 0) {
+					$.messager.show({
+						title:'温馨提示',
+						msg:'机箱删除成功',
+						timeout:2000,
+						showType:'slide'
+					});
+					show_box_data("findBoxByPage","boxprice");
+				}
+			},"text");
+			
 		}
 	}
 	
@@ -206,7 +288,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='openmotherboardWin("+row.motherboardid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.motherboardid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -238,7 +320,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='openmemoryWin("+row.memoryid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.memoryid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -270,7 +352,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='opendiskWin("+row.diskid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.diskid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -302,7 +384,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='opensourceWin("+row.sourceid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.sourceid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -334,7 +416,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='opengraphicsWin("+row.graphicsid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.graphicsid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -366,7 +448,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='openboxWin("+row.boxid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.boxid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],

@@ -135,7 +135,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public int delHardWare(Integer id, String idName, String formName) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "update "+ formName +" set state = '0' where "+idName + " = ?";
+		String sql = "update "+ formName +" set state = '0' where "+ idName + " = ?";
 		return dbHelper.update(sql, id);
 	}
 
