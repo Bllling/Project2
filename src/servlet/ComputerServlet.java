@@ -30,8 +30,21 @@ private static final long serialVersionUID = 1L;
 			findById(request,response);
 		}else if("findHardWare".equals(op)){
 			findHardWare(request,response);
+		}else if("findByPart".equals(op)){
+			findByPart(request,response);
 		}
 		
+	}
+
+	private void findByPart(HttpServletRequest request, HttpServletResponse response) {
+
+		String sumpriceMin=request.getParameter("sumpriceMin");
+		String sumpriceMax=request.getParameter("sumpriceMax");
+		String rtime=request.getParameter("rtime");
+		System.out.println(rtime);
+		String type = request.getParameter("type");
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findPart(type, sumpriceMin, sumpriceMax, rtime));
 	}
 
 	private void findHardWare(HttpServletRequest request, HttpServletResponse response) {
@@ -39,6 +52,7 @@ private static final long serialVersionUID = 1L;
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz  = new HardwareBizImpl();
 		this.send(response, hardwareBiz.findHardWareById(id));
+		
 		
 	}
 

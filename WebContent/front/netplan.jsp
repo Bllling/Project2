@@ -203,82 +203,166 @@ function clear(){
 	$("#J_FilterSelected").html("<a href='javascript:clear()' class='reset' target='_self'>清空</a>"); 
 	$("#J_ParamPrice1 a").removeClass("active");
 	$("#J_ParamPrice a").removeClass("active");
+	find();
 }
 function clear1(){
 	$("#J_FilterSelected").html("<a href='javascript:clear()' class='reset' target='_self'>清空</a>"); 
 	$("#J_ParamPrice1 a").removeClass("active");
 	$("#J_ParamPrice1 a").eq(0).addClass("active");
+	find();
 }
 function clear2(){
 	$("#J_FilterSelected").html("<a href='javascript:clear()' class='reset' target='_self'>清空</a>"); 
 	$("#J_ParamPrice a").removeClass("active");
 	$("#J_ParamPrice a").eq(0).addClass("active");
+	find();
 }
 function add3(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">3000元以下</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">3000元以下</a> ');
 	$("#J_ParamPrice1 a").eq(1).addClass("active");
+	find();
 }
 function add34(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">3000-4000元</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">3000-4000元</a> ');
 	$("#J_ParamPrice1 a").eq(2).addClass("active");
+	find();
 }
 function add45(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">4000-5000元</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">4000-5000元</a> ');
 	$("#J_ParamPrice1 a").eq(3).addClass("active");
+	find();
 }
 function add56(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">5000-6000元</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">5000-6000元</a> ');
 	$("#J_ParamPrice1 a").eq(4).addClass("active");
+	find();
 }
 function add67(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">6000-7000元</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">6000-7000元</a> ');
 	$("#J_ParamPrice1 a").eq(5).addClass("active");
+	find();
 }
 function add78(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">7000-8000元</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">7000-8000元</a> ');
 	$("#J_ParamPrice1 a").eq(6).addClass("active");
+	find();
 }
 function add8(){
 	$("#J_ParamPrice1 a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">8000元以上</a> ');
+	if(($("#J_FilterSelected #price1").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price1" href="javascript:void(0)" target="_self">8000元以上</a> ');
 	$("#J_ParamPrice1 a").eq(7).addClass("active");
+	find();
+	
 }
 
 function add2019(){
 	$("#J_ParamPrice a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2019年</a> ');
+	if(($("#J_FilterSelected #price").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">2019年</a> ');
 	$("#J_ParamPrice a").eq(1).addClass("active");
+	find();
 }
 function add2018(){
 	$("#J_ParamPrice a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2018年</a> ');
+	if(($("#J_FilterSelected #price").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">2018年</a> ');
 	$("#J_ParamPrice a").eq(2).addClass("active");
+	find();
 }
 function add2017(){
 	$("#J_ParamPrice a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2017年</a> ');
+	if(($("#J_FilterSelected #price").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">2017年</a> ');
 	$("#J_ParamPrice a").eq(3).addClass("active");
+	find();
 }
 function add2016(){
 	$("#J_ParamPrice a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2016年</a> ');
+	if(($("#J_FilterSelected #price").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">2016年</a> ');
 	$("#J_ParamPrice a").eq(4).addClass("active");
+	find();
 }
 function add2015(){
 	$("#J_ParamPrice a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2015年</a> ');
+	if(($("#J_FilterSelected #price").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">2015年</a> ');
 	$("#J_ParamPrice a").eq(5).addClass("active");
+	find();
 }
 function add2014(){
 	$("#J_ParamPrice a").eq(0).removeClass("active");
-	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2014年</a> ');
+	if(($("#J_FilterSelected #price").html())!=null){
+		return;
+	}
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">2014年</a> ');
 	$("#J_ParamPrice a").eq(6).addClass("active");
+	find();
+}
+function find(){
+	var str="";
+	var rtime=null;
+	var sumpriceMin=null;
+	var sumpriceMax=null;
+	for(var i=0;;i++){
+		 str=$("#J_FilterSelected a").eq(i).html();
+		   if(str=="2019年"){rtime="2019";}
+		   if(str=="2018年"){rtime="2018";}
+		   if(str=="2017年"){rtime="2017";}
+		   if(str=="2016年"){rtime="2016";}
+		   if(str=="2015年"){rtime="2015";}
+		   if(str=="2014年"){rtime="2014";}
+		   if(str=="3000元以下"){sumpriceMax="3000";}
+		   if(str=="3000-4000元"){sumpriceMin="3000";sumpriceMax="4000";}
+		   if(str=="4000-5000元"){sumpriceMin="4000";sumpriceMax="5000";}
+		   if(str=="5000-6000元"){sumpriceMin="5000";sumpriceMax="6000";}
+		   if(str=="6000-7000元"){sumpriceMin="6000";sumpriceMax="7000";}
+		   if(str=="7000-8000元"){sumpriceMin="7000";sumpriceMax="8000";}
+		   if(str=="8000元以上"){sumpriceMin="8000";}
+			if(str==null){
+				break;
+				}
+			}
+	
+	     hot(sumpriceMin,sumpriceMax,rtime);
+	     
 }
 function login(){
 	 var uname =$.trim($("#userName1").val());
@@ -322,16 +406,20 @@ function login(){
 		
 	 },"json")
  }
-function hot(){
+function hot(sumpriceMin,sumpriceMax,rtime){
 	 $('#select1').css('background','#FAFAFA ');
 	 $('#select2').css('background','#3891ed');
 	 $('#select3').css('background','#FAFAFA ');
 	 $(".howera").attr("class",".sort .active");
- $.post("../computer",{op:"findAll",type:"bnumber"},function(data){
+	 var sumpriceMin=sumpriceMin;
+	 var sumpriceMax=sumpriceMax;
+	 var rtime = rtime;
+	 console.log(rtime+"----"+sumpriceMin+"------"+sumpriceMax);
+ $.post("../computer",{op:"findByPart",type:"bnumber",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime},function(data){
 	 $("#list").html("");
 	 var str = "";
 	 $.each(data,function(index,item){
-		console.log(item);
+		
 		str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:;" target="_self">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
 	
 	 })
