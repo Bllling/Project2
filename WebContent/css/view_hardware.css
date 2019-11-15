@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+.view_data {
+	width: 900px;
+	height: 300px;
+}
+
+.data_item {
+	/*margin: 30px 0 0;*/
+	padding: 8px 0;
+	border: 1px solid #eee;
+	list-style: none;
+	height: 300px;
+}
+
+.data_item li {
+	position: relative;
+	float: left;
+	width: 400px;
+	height: 48px;
+	margin: 10px 0 10px 10px;
+}
+
+.data_item li p {
+	margin: 2px 0 4px 70px;
+}
+
+.data_item  .picon1 {
+	float: left;
+	background-image: url(../images/price.png);
+	width: 46px;
+	height: 46px;
+	/* overflow: hidden; */
+}
+
+.data_item  .picon2 {
+	float: left;
+	background-image: url(../images/usetimes.png);
+	width: 46px;
+	height: 46px;
+	/* overflow: hidden; */
+}
+
+.data_item  .picon3 {
+	float: left;
+	background-image: url(../images/powers.png);
+	width: 46px;
+	height: 46px;
+	/* overflow: hidden; */
+}
+
+.data_item  .picon4 {
+	float: left;
+	background-image: url(../images/cores.png);
+	width: 46px;
+	height: 46px;
+	/* overflow: hidden; */
+}
+
+.data_item  .picon5 {
+	float: left;
+	background-image: url(../images/frequence.png);
+	width: 46px;
+	height: 46px;
+	/* overflow: hidden; */
+}
+
+.data_item .img1 {
+	width: 100px;
+	height: 100px;
+}

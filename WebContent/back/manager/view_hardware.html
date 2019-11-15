@@ -1,15 +1,354 @@
-<table id="tt" style="width:600px;height:400px"></table>
+
+<div id="news_search">
+	<lable>硬件类型:</lable>
+	<select id="news_search_tid" class="new_ipt" style="width: 100px">
+		<option value="CPU" onmousedown="checkField(this.value)">CPU</option>
+		<option value="motherboard" onmousedown="checkField(this.value)">主板</option>
+		<option value="memory" onmousedown="checkField(this.value)">内存</option>
+		<option value="disk" onmousedown="checkField(this.value)">硬盘</option>
+		<option value="source" onmousedown="checkField(this.value)">电源</option>
+		<option value="graphics" onmousedown="checkField(this.value)">显卡</option>
+		<option value="box" onmousedown="checkField(this.value)">机箱</option>
+	</select>
+	
+	<a href="" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+</div>
+<input type="hidden" id="fatherid" value="" />
+<div id="win">
+	
+</div>
+
+<table id="show_data" data-options="fit:true"></table>
 
 <script>
-$('#tt').treegrid({    
-    url:'get_data.php',    
-    idField:'id',    
-    treeField:'name',    
-    columns:[[    
-        {title:'Task Name',field:'name',width:180},    
-        {field:'persons',title:'Persons',width:60,align:'right'},    
-        {field:'begin',title:'Begin Date',width:80},    
-        {field:'end',title:'End Date',width:80}    
-    ]]    
-}); 
+	$(function() {
+		show_cpu_data("findCpuByPage", "cpuprice");
+	})
+	
+	function assgVal() {
+		
+	}
+	
+	function openCpuWin(id) {
+		$('#win').window({ 
+		    width:950,    
+		    height:380,    
+		    modal:true,
+		    
+		    href: "test.html"
+		    
+		});
+		$("#fatherid").val(id);
+	}
+	
+	function openmotherboardWin(id) {
+			$('#win').window({    
+			    width:950,    
+			    height:380,    
+			    modal:true,
+			    href: "motherboard.html"
+			});
+			$("#fatherid").val(id);
+		}
+	
+	function openmemoryWin(id) {
+		
+		$('#win').window({    
+		    width:950,    
+		    height:380,    
+		    modal:true,
+		    href: "memory.html"
+		    
+		});
+		$("#fatherid").val(id);
+	}
+	
+	function opendiskWin(id) {
+		
+		$('#win').window({    
+		    width:950,    
+		    height:380,    
+		    modal:true,
+		    href: "disk.html"
+		});
+		$("#fatherid").val(id);
+	}
+	
+	function opensourceWin(id) {
+		
+		$('#win').window({    
+		    width:950,    
+		    height:380,    
+		    modal:true,
+		    href: "source.html"
+		});
+		$("#fatherid").val(id);
+	}
+	
+	function opengraphicsWin(id) {
+		
+		$('#win').window({    
+		    width:950,    
+		    height:380,    
+		    modal:true,
+		    href: "graphics.html"
+		});
+		$("#fatherid").val(id);
+	}
+	
+	function openboxWin(id) {
+		
+		$('#win').window({    
+		    width:950,    
+		    height:380,    
+		    modal:true,
+		    href: "box.html"
+		});
+		$("#fatherid").val(id);
+	}
+	
+	var type = "CPU";
+	function checkField(val) {
+		type = val;
+		if (type == "CPU") {
+			show_cpu_data("findCpuByPage", "cpuprice");
+		} else if ("motherboard" == type) {
+			show_motherboard_data("findMotherBoardByPage", "motherboardprice");
+		} else if ("memory" == type) {
+			show_memory_data("findMemoryByPage","memoryprice");
+		} else if ("disk" == type) {
+			show_disk_data("finddiskByPage","diskprice");
+		} else if ("source" == type) {
+			show_source_data("findSourceByPage", "sourceprice");
+		} else if ("graphics" == type) {
+			show_graphics_data("findGraphicsByPage","graphicsprice");
+		} else if ("box" == type) {
+			show_box_data("findBoxByPage","boxprice");
+		}
+	}
+	
+	function show_cpu_data(op,  priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "cpuid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:'cpuid',title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a onclick='openCpuWin("+row.cpuid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+	}
+		
+		function show_motherboard_data(op, priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "motherboardid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:'motherboardid',title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a href='javascript:void(0)' onclick='openmotherboardWin("+row.motherboardid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+		}
+		
+		function show_memory_data(op, priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "memoryid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:'memoryid',title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a href='javascript:void(0)' onclick='openmemoryWin("+row.memoryid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+		}
+		
+		function show_disk_data(op,priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "diskid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:'diskid',title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a href='javascript:void(0)' onclick='opendiskWin("+row.diskid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+		}
+		
+		function show_source_data(op,priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "sourceid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:'sourceid',title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a href='javascript:void(0)' onclick='opensourceWin("+row.sourceid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+		}
+		
+		function show_graphics_data(op,priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "graphicsid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:'graphicsid',title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a href='javascript:void(0)' onclick='opengraphicsWin("+row.graphicsid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+		}
+		
+		function show_box_data(op, priceName) {
+		$('#show_data').datagrid({    
+		    url:'../../hardwareinfo', 
+		    queryParams: {op: op},
+		    fitColumns: true,
+		    loadMsg: "数据加载中...",
+		    striped: true,
+		    pagination: true,
+		    pageSize: 5,
+		    pageList: [5,10,15,20],
+		    sortName: "boxid",
+		    remoteSort: false,
+		    sortOrder: "desc",
+		    singleSelect: true,
+		    columns:[[
+		        {checkbox: true},
+		        {field:"boxid",title:'编号',width:100,align:'center', sortable: true},    
+		        {field:'name',title:'名称',width:100,align:'center'},    
+		        {field:priceName,title:'价格',width:100,align:'center'},
+		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
+		        {field:'score',title:'跑分',width:100,align:'center'},
+		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
+		        	var str = "<a href='javascript:void(0)' onclick='openboxWin("+row.boxid+")'>[详细]</a>&nbsp";
+		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	return str;
+		        }} 
+		    ]],
+		    toolbar: "#news_search"
+		})
+	}
+	
 </script>

@@ -1,0 +1,88 @@
+
+<div class="view_data">
+	<ul class="data_item">
+		<li>
+			<div class="icon">
+				<span class="picon1"></span>
+			</div>
+			<p id="diskprice">
+				<span>硬盘价格：</span> 
+			</p>
+			<p id="quantiy">
+				<span>库存：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon2"></span>
+			</div>
+			<p id="usetimes">
+				<span>使用次数：</span> 
+			</p>
+			<p id="praise">
+				<span>点赞数：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon3"></span>
+			</div>
+			<p id="score">
+				<span>跑分：</span> 
+			</p>
+			<p id="powers">
+				<span>功率：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon4"></span>
+			</div>
+			<p id="volume">
+				<span>硬盘容量：</span> 
+			</p>
+			<p id="isssd">
+				<span>是否为固态：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon5"></span>
+			</div>
+			<p id="rpm">
+				<span>转数：</span> 
+			</p>
+			
+		</li>
+		<li id="imgs"></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+	var id = parent.document.getElementById('fatherid').value;
+		
+	$.post("../../hardwareinfo", {op:"findDiskInfo", id:id}, function(data) {
+		$("#diskprice").append(data.diskprice);
+		$("#quantiy").append(data.quantiy);
+		$("#usetimes").append(data.usetimes);
+		$("#praise").append(data.praise);
+		$("#score").append(data.score);
+		$("#powers").append(data.powers);
+		$("#volume").append(data.volume);
+		$("#isssd").append(data.isssd);
+		$("#rpm").append(data.rpm);
+		
+		var pics = data.pics;
+		var strs = pics.split(";");
+		var imgstr = "";
+		for (var i = 0; i < strs.length; i++) {
+			imgstr += "<img class='img1' src='../../"+ strs[i] +"' />";
+		}
+		$("#imgs").append($(imgstr));
+	}, "json");
+	
+})
+
+</script>

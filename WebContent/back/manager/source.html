@@ -1,0 +1,65 @@
+
+<div class="view_data">
+	<ul class="data_item">
+		<li>
+			<div class="icon">
+				<span class="picon1"></span>
+			</div>
+			<p id="sourceprice">
+				<span>电源价格：</span> 
+			</p>
+			<p id="quantiy">
+				<span>库存：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon2"></span>
+			</div>
+			<p id="usetimes">
+				<span>使用次数：</span> 
+			</p>
+			<p id="praise">
+				<span>点赞数：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon3"></span>
+			</div>
+			<p id="score">
+				<span>跑分：</span> 
+			</p>
+			<p id="maxpowers">
+				<span>最大功率：</span> 
+			</p>
+		</li>
+		<li id="imgs"></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+	var id = parent.document.getElementById('fatherid').value;
+		
+	$.post("../../hardwareinfo", {op:"findSourceInfo", id:id}, function(data) {
+		$("#sourceprice").append(data.sourceprice);
+		$("#quantiy").append(data.quantiy);
+		$("#usetimes").append(data.usetimes);
+		$("#praise").append(data.praise);
+		$("#score").append(data.score);
+		$("#maxpowers").append(data.maxpowers);
+		
+		var pics = data.pics;
+		var strs = pics.split(";");
+		var imgstr = "";
+		for (var i = 0; i < strs.length; i++) {
+			imgstr += "<img class='img1' src='../../"+ strs[i] +"' />";
+		}
+		$("#imgs").append($(imgstr));
+	}, "json");
+	
+})
+
+</script>

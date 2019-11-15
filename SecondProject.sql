@@ -167,7 +167,11 @@ create table if not exists comment(
 	commenttime datetime not null, -- 评论时间
 	uid int,  -- 用户编号 
 	content varchar(1000), -- 评论内容
+<<<<<<< HEAD
+	praise int,  --点赞数
+=======
 	praise int, -- 点赞数
+>>>>>>> 752c8ff8b6f904328efc71dfe4e22641a2264ed5
 	constraint FK_collections_uid foreign key(uid) references usr(uid),
 	constraint FK_collections_id foreign key(id) references computer(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1001 default charset=utf8 collate = utf8_bin;
