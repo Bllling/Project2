@@ -59,6 +59,14 @@ $(function() {
 		$("#score").append(data.score);
 		$("#powers").append(data.powers);
 		$("#maxmemory").append(data.maxmemory);
+		
+		var pics = data.pics;
+		var strs = pics.split(";");
+		var imgstr = "";
+		for (var i = 0; i < strs.length; i++) {
+			imgstr += "<img class='img1' src='../../"+ strs[i] +"' />";
+		}
+		$("#imgs").append($(imgstr));
 	}, "json");
 	
 })

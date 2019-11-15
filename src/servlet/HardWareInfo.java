@@ -138,7 +138,7 @@ public class HardWareInfo extends BasicServlet {
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		int page = Integer.parseInt(request.getParameter("page"));
 		int rows = Integer.parseInt(request.getParameter("rows"));
-		//this.send(response, hardwareBiz.findByPage(page, rows, id, formName, priceName, c));
+		this.send(response, hardwareBiz.findByPage(page, rows, id, formName, priceName, c));
 	}
 	
 
