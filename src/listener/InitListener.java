@@ -7,7 +7,10 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+
 import util.FileUploadUtil;
+import util.StringUtil;
+import util.VerificationCode;
 
 
 @WebListener
@@ -26,6 +29,7 @@ public class InitListener implements ServletContextListener {
 		if (temp != null && !"".equals(temp)) {
 			path = temp;
 		}
+
 		
 		//判断这个路径是否存在
 		String basepath = sc.getRealPath("/");  //当前项目在服务器的绝对路径
@@ -35,6 +39,20 @@ public class InitListener implements ServletContextListener {
 		}
 		
 		FileUploadUtil.PICPATH = "../" + path;
+		
+		/**
+		 * 验证码
+		 */
+    	temp = sc.getInitParameter("vcode");
+    	if (!StringUtil.CheckNull(temp)) {
+    		path = temp;
+    	}
+    	fl = new File(new File(basepath).getParent(), path);
+    	if (!fl.exists()) {
+    		fl.mkdirs();
+    	}
+    	
+    	VerificationCode.VCODEPATH = "../" + path;
 	}
 
 }

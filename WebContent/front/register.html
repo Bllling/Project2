@@ -144,7 +144,8 @@
 		var check =document.getElementById("agree").checked;
 		var psw =document.getElementById("pwd").value;
 		var psw1 =document.getElementById("pwd1").value;
-	
+	    var pwd=$("#pwd").val();
+	    console.log(pwd);
 		if(check==0){
 			alert("请勾选用户协议和隐私声明！");
 			return;
@@ -187,12 +188,12 @@
 			return;
 		}
        
-        else if (inputCode.toUpperCase() != checkCode.toUpperCase())
+       /* else if (inputCode.toUpperCase() != checkCode.toUpperCase())
         {
             alert("验证码输入有误！");
             createCode(4);
 			return;
-        }
+        }*/
        
 		 $.post("../usr",{op:"register",uemail:email,utel:tel,uname:name,upwd:psw},function(data){
 			if(data>0){

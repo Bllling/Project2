@@ -61,49 +61,49 @@ public class HardWareInfo extends BasicServlet {
 	private void findBoxInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findBoxInfo(id));
+		this.send(response, hardwareBiz.findBox(id));
 	}
 
 	//查询显卡的详细信息
 	private void findGraphicsInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findGraphicsInfo(id));
+		this.send(response, hardwareBiz.findGraphics(id));
 	}
 
 	//查询电源的详细信息
 	private void findSourceInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findSourceInfo(id));
+		this.send(response, hardwareBiz.findSource(id));
 	}
 
 	//查询硬盘的详细信息
 	private void findDiskInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findDiskInfo(id));
+		this.send(response, hardwareBiz.findDisk(id));
 	}
 
 	//查询内存的详细信息
 	private void findMemoryInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findMemoryInfo(id));
+		this.send(response, hardwareBiz.findMemory(id));
 	}
 
 	//查询主板的详细信息
 	private void findMotherBoardInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findMotherBoardInfo(id));
+		this.send(response, hardwareBiz.findMotherboard(id));
 	}
 
 	//查询CPU的详细信息
 	private void findCPUInfo(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.findCpuInfo(id));
+		this.send(response, hardwareBiz.findCPU(id));
 	}
 
 	private void findBoxByPage(HttpServletRequest request, HttpServletResponse response) {
@@ -138,7 +138,7 @@ public class HardWareInfo extends BasicServlet {
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		int page = Integer.parseInt(request.getParameter("page"));
 		int rows = Integer.parseInt(request.getParameter("rows"));
-		this.send(response, hardwareBiz.findByPage(page, rows, id, formName, priceName, c));
+		//this.send(response, hardwareBiz.findByPage(page, rows, id, formName, priceName, c));
 	}
 	
 

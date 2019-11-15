@@ -5,6 +5,12 @@
     <param-name>uploadPic</param-name>
     <param-value>No2pics</param-value>
   </context-param>
+  
+  <context-param>
+    <param-name>vcode</param-name>
+    <param-value>vcode</param-value>
+  </context-param>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

@@ -16,7 +16,7 @@ create table if not exists usr(
 	upwd varchar(100) not null, 
 	uemail varchar(100) not null unique, 
 	utel varchar(100) not null  unique, 
-	upics varchar(1000)
+	upics varchar(1000) 
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 -- 收货地址表（收货省，收货市，收货县/区，收货详细地址）
@@ -147,6 +147,9 @@ create table if not exists computer(
 	sourceid int,    -- 电源编号
 	graphicsid int,   -- 显卡编号
 	boxid int,       -- 机箱编号
+	sumprice decimal(8,2), -- 总价格
+	detail text ,--描述
+	cname varchar(50), --名称
 	constraint FK_computer_uid foreign key(uid) references usr(uid),
 	constraint FK_computer_motherboardid foreign key(motherboardid) references motherboard(motherboardid),
 	constraint FK_computer_cpuid foreign key(cpuid) references cpu(cpuid),
@@ -164,7 +167,11 @@ create table if not exists comment(
 	commenttime datetime not null, -- 评论时间
 	uid int,  -- 用户编号 
 	content varchar(1000), -- 评论内容
+<<<<<<< HEAD
 	praise int,  --点赞数
+=======
+	praise int, -- 点赞数
+>>>>>>> 752c8ff8b6f904328efc71dfe4e22641a2264ed5
 	constraint FK_collections_uid foreign key(uid) references usr(uid),
 	constraint FK_collections_id foreign key(id) references computer(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1001 default charset=utf8 collate = utf8_bin;
