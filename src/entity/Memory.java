@@ -1,14 +1,14 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class Memory implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int memoryid;
 	private String name;
 	private String pics;
-	private BigDecimal memoryprice;
+	private  double memoryprice;
 	private int quantiy;
 	private int usetimes;
 	private int praise;
@@ -35,10 +35,10 @@ public class Memory implements Serializable{
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public BigDecimal getMemoryprice() {
+	public double getMemoryprice() {
 		return memoryprice;
 	}
-	public void setMemoryprice(BigDecimal memoryprice) {
+	public void setMemoryprice(double memoryprice) {
 		this.memoryprice = memoryprice;
 	}
 	public int getQuantiy() {

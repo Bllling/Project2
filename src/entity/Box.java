@@ -1,14 +1,13 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class Box implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int boxid;
 	private String name;
 	private String pics;
-	private BigDecimal boxprice;
+	private double boxprice;
 	private int quantiy;
 	private int usetimes;
 	private int praise;
@@ -30,10 +29,10 @@ public class Box implements Serializable {
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public BigDecimal getBoxprice() {
+	public double getBoxprice() {
 		return boxprice;
 	}
-	public void setBoxprice(BigDecimal boxprice) {
+	public void setBoxprice(double boxprice) {
 		this.boxprice = boxprice;
 	}
 	public int getQuantiy() {

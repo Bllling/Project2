@@ -1,14 +1,14 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class Disk implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int diskid;
 	private String name;
 	private String pics;
-	private BigDecimal diskprice;
+	private  double diskprice;
 	private int quantiy;
 	private int usetimes;
 	private int praise;
@@ -35,10 +35,10 @@ public class Disk implements Serializable{
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public BigDecimal getDiskprice() {
+	public double getDiskprice() {
 		return diskprice;
 	}
-	public void setDiskprice(BigDecimal diskprice) {
+	public void setDiskprice(double diskprice) {
 		this.diskprice = diskprice;
 	}
 	public int getQuantiy() {

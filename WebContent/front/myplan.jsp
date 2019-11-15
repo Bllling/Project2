@@ -163,8 +163,30 @@
 	 alert("进入我的收藏");
  }
  function login(){
-	 var user=$("#userName1").val();
-	 alert(user);
+	 var uname =$.trim($("#userName1").val());
+		var upwd = $.trim($("#passWord1").val());
+	
+		if (uname == "") {
+			alert("请输入手机号或邮箱地址...");
+			return;
+		}
+		
+		if (upwd == "") {
+			alert("请输入密码...");
+			return;
+		}
+		$.post("../usr",{op:"login",uname:uname,upwd:upwd},function(data){
+			 data=parseInt($.trim(data));
+		
+			 if(data==1){
+				 $(".logo").css("display","none");
+				 $(".per-infor").css("display","block");
+				 window.location.reload();
+				
+	    	 }else{
+	    		 alert("账号或密码错误，请重新登陆！")
+	    	 }
+		},"text")
  }
  </script>
 

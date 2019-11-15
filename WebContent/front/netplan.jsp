@@ -50,7 +50,7 @@
  <div class="wrap">
    <div class="box netfriend-plan clearfix">
 	 <!--左侧 start-->
-	 <div class="wleft">
+	 <div class="wleft" id="show">
 		<div class="process">
 			<a href="../index1.jsp">ZOL攒机首页</a>&gt;&nbsp;<span>网友方案</span> 
 		  
@@ -64,8 +64,9 @@
 				<div id="sel-cond" class="filter-item">
 						<strong class="filter-type">已选条件：</strong>
 						<div id="J_FilterSelected" class="param-selected clearfix">
-						           <a target="_self" href="#">2018年<i></i></a>    
-						 <a href="#" class="reset" target="_self">清空</a>
+						  <a href="javascript:clear()" class="reset" target="_self">清空</a>         
+						           
+						  
 						</div>
 					 </div>			   <div id="pamItem1" class="filter-item">
 				 
@@ -73,12 +74,15 @@
 			   </div>
 			   <div id="priceItem" class="filter-item filter-price" style="height: 80px; margin-top: 20px;">
 					<strong class="filter-type">价格区间：</strong>
-					<div id="J_ParamPrice" class="param-value-list">
-						<a href="#" target="_self" class="all active">不限</a><a href="#" target="_self">3000以下</a>
-						<a href="www.baidu.com" target="_self">3000-4000元</a>
-						<a href="#" target="_self">4000-5000元</a>
-						<a href="#" target="_self">5000-6000元</a><a href="#" target="_self">6000-7000元</a><a href="#" target="_self">7000-8000元</a>
-						<a href="#" target="_self">8000元以上</a>				
+					<div id="J_ParamPrice1" class="param-value-list" >
+						<a href="javascript:clear1()" target="_self" >不限</a>
+						<a href="javascript:add3()" target="_self">3000以下</a>
+						<a href="javascript:add34()" target="_self">3000-4000元</a>
+						<a href="javascript:add45()" target="_self">4000-5000元</a>
+						<a href="javascript:add56()" target="_self">5000-6000元</a>
+						<a href="javascript:add67()" target="_self">6000-7000元</a>
+						<a href="javascript:add78()" target="_self">7000-8000元</a>
+						<a href="javascript:add8()" target="_self">8000元以上</a>				
 						</div>        
 				  
 			   </div>
@@ -86,11 +90,13 @@
 			   <div id="pamItem3" class="filter-item filter-price" style="margin-top: 6px;">
 					<strong class="filter-type">配置时间：</strong>
 					<div id="J_ParamPrice" class="param-value-list">
-						<a href="#" target="_self" class="all">不限</a><a href="#" target="_self">2019年</a>
-						<a class="active" href="#" target="_self">2018年</a><a href="#" target="_self">2017年</a>
-						<a href="#" target="_self">2016年</a>
-						<a href="#" target="_self">2015年</a>
-						<a href="#" target="_self">2014年</a>						
+						<a href="javascript:clear2()" target="_self" class="all">不限</a>
+						<a href="javascript:add2019()" target="_self">2019年</a>
+						<a href="javascript:add2018()" target="_self">2018年</a>
+						<a href="javascript:add2017()" target="_self">2017年</a>
+						<a href="javascript:add2016()" target="_self">2016年</a>
+						<a href="javascript:add2015()" target="_self">2015年</a>
+						<a href="javascript:add2014()" target="_self">2014年</a>						
 				   </div>        
 				   
 			   </div>
@@ -105,101 +111,14 @@
 		 </div>      
 		 <span class="total">共 <b style="color: #999;">11111</b>款</span>
 		 <div class="sort">
-			 			 <a class="hovera" href="#" target="_self" title="价格由低到高"><em>最新</em><i class=""></i></a>
-			 <a class="active" href="#" target="_self"><em>最热门</em></a> 
-			<a class="hovera" href="#" target="_self"><em>价格</em><i class="up"></i></a>
+			 			 <a class="hovera" id="select1" href="javascript:new1()" target="_self" title="价格由低到高"><em>最新</em><i class=""></i></a>
+			 <a class="hovera" id="select2" href="javascript:hot()" target="_self"><em>最热门</em></a> 
+			<a class="hovera" id="select3" href="javascript:price()" target="_self"><em>价格</em><i class="up"></i></a>
 			
 		 </div>
 		</div>
-		<div class="plan-list-box" >
-				 <ul class="list show-list">
-		   <li class="outli" reluser="qq_mn26f">
-								<p class="tit big-title" rel="9162614">
-								  <a href="buy.html" class="link" title="锐龙r52600">锐龙r52600</a>
-					               <span class="collect" hadrel="0"><i></i><a href="javascript:;" target="_self">收藏此配置</a></span>
-								</p>
-					            
-								<p class="total-box">
-					               
-								   <span class="user"><i></i><a href="#">qq_mn26f</a></span>
-								   <span class="time">2018-05-01 21:17:41 </span>
-								   <span class="total">总计：<font>6831元</font></span>
-								</p>
-								<p class="text">第一次配请多指教</p>
-								<div class="pics">
-								<i class="iprev"></i>
-								 <i class="inext"></i>  
-								   <div class="lunbo-box">
-									  <ul>
-										<li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src="" alt="AMD Ryzen 5 2600X">
-								  </div>
-								  <p class="titl" title="AMD Ryzen 5 2600X">AMD Ryzen 5 2600X</p>
-								</a>
-							  </li><li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src="" alt="金士顿HyperX Savage 8GB DDR4 2400（HX424C12SB/8）">
-								  </div>
-								  <p class="titl" title="金士顿HyperX Savage 8GB DDR4 2400（HX424C12SB/8）">金士顿HyperX Savage 8GB DDR4 2400（HX424C12SB/8）</p>
-								</a>
-							  </li><li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src="" alt="影驰GeForce GTX 1050Ti大将">
-								  </div>
-								  <p class="titl" title="影驰GeForce GTX 1050Ti大将">影驰GeForce GTX 1050Ti大将</p>
-								</a>
-							  </li><li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src="" alt="金士顿A400（240GB）">
-								  </div>
-								  <p class="titl" title="金士顿A400（240GB）">金士顿A400（240GB）</p>
-								</a>
-							  </li><li>
-								<a href="#">
-								  <div class="ig">
-									 <img src="" alt="西部数据1TB 7200转 64MB SATA3 蓝盘（WD10EZEX）">
-								  </div>
-								  <p class="titl" title="西部数据1TB 7200转 64MB SATA3 蓝盘（WD10EZEX）">西部数据1TB 7200转 64MB SATA3 蓝盘（WD10EZEX）</p>
-								</a>
-							  </li><li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src=" " alt="航嘉MVP K650（全模版）">
-								  </div>
-								  <p class="titl" title="航嘉MVP K650（全模版）">航嘉MVP K650（全模版）</p>
-								</a>
-							  </li><li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src=" " alt="先马黑洞">
-								  </div>
-								  <p class="titl" title="先马黑洞">先马黑洞</p>
-								</a>
-							  </li><li>
-								<a href="javascript:void(0)">
-								  <div class="ig">
-									 <img src=" " alt="微星B350M MORTAR">
-								  </div>
-								  <p class="titl" title="微星B350M MORTAR">微星B350M MORTAR</p>
-								</a>
-							  </li>
-										
-									  </ul>
-								   </div>                
-								</div>
-								<div class="other clearfix">
-								
-
-                                    <span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span>
-								  </div> 
-							  </li>
-			<div class="page-box">
-								</div>
+		<div id="list">
+		
 		</div>
 	</div>
 	 <!--左侧 end-->
@@ -256,7 +175,7 @@
                            
                            <a href="forgetPwd.html" class="forget">忘记密码?</a>
                         </div>
-                        <input type="submit" class="subm" value="登录">
+                        <input type="buttons" class="subm" value="登录" onclick="login()">
                         
                      </form>
                      </div>
@@ -269,7 +188,9 @@
 <script src="../js/picLazyLoad.js.下载"></script>
 <script type="../js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+var page=0,pics=null,pLen=0,mWidth=625;
 $(function(){
+	hot();
     var str=$(".name").html();
 	if(str!=null&&str.length > 0&&""!=str){
 	
@@ -278,5 +199,198 @@ $(function(){
 	 }
  
 })
+function clear(){
+	$("#J_FilterSelected").html("<a href='javascript:clear()' class='reset' target='_self'>清空</a>"); 
+	$("#J_ParamPrice1 a").removeClass("active");
+	$("#J_ParamPrice a").removeClass("active");
+}
+function clear1(){
+	$("#J_FilterSelected").html("<a href='javascript:clear()' class='reset' target='_self'>清空</a>"); 
+	$("#J_ParamPrice1 a").removeClass("active");
+	$("#J_ParamPrice1 a").eq(0).addClass("active");
+}
+function clear2(){
+	$("#J_FilterSelected").html("<a href='javascript:clear()' class='reset' target='_self'>清空</a>"); 
+	$("#J_ParamPrice a").removeClass("active");
+	$("#J_ParamPrice a").eq(0).addClass("active");
+}
+function add3(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">3000元以下</a> ');
+	$("#J_ParamPrice1 a").eq(1).addClass("active");
+}
+function add34(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">3000-4000元</a> ');
+	$("#J_ParamPrice1 a").eq(2).addClass("active");
+}
+function add45(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">4000-5000元</a> ');
+	$("#J_ParamPrice1 a").eq(3).addClass("active");
+}
+function add56(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">5000-6000元</a> ');
+	$("#J_ParamPrice1 a").eq(4).addClass("active");
+}
+function add67(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">6000-7000元</a> ');
+	$("#J_ParamPrice1 a").eq(5).addClass("active");
+}
+function add78(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">7000-8000元</a> ');
+	$("#J_ParamPrice1 a").eq(6).addClass("active");
+}
+function add8(){
+	$("#J_ParamPrice1 a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a id="price" href="javascript:void(0)" target="_self">8000元以上</a> ');
+	$("#J_ParamPrice1 a").eq(7).addClass("active");
+}
+
+function add2019(){
+	$("#J_ParamPrice a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2019年</a> ');
+	$("#J_ParamPrice a").eq(1).addClass("active");
+}
+function add2018(){
+	$("#J_ParamPrice a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2018年</a> ');
+	$("#J_ParamPrice a").eq(2).addClass("active");
+}
+function add2017(){
+	$("#J_ParamPrice a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2017年</a> ');
+	$("#J_ParamPrice a").eq(3).addClass("active");
+}
+function add2016(){
+	$("#J_ParamPrice a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2016年</a> ');
+	$("#J_ParamPrice a").eq(4).addClass("active");
+}
+function add2015(){
+	$("#J_ParamPrice a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2015年</a> ');
+	$("#J_ParamPrice a").eq(5).addClass("active");
+}
+function add2014(){
+	$("#J_ParamPrice a").eq(0).removeClass("active");
+	$("#J_FilterSelected").append('<a class="" href="javascript:void(0)" target="_self">2014年</a> ');
+	$("#J_ParamPrice a").eq(6).addClass("active");
+}
+function login(){
+	 var uname =$.trim($("#userName1").val());
+		var upwd = $.trim($("#passWord1").val());
+	
+		if (uname == "") {
+			alert("请输入手机号或邮箱地址...");
+			return;
+		}
+		
+		if (upwd == "") {
+			alert("请输入密码...");
+			return;
+		}
+		$.post("../usr",{op:"login",uname:uname,upwd:upwd},function(data){
+			 data=parseInt($.trim(data));
+		
+			 if(data==1){
+				 $(".logo").css("display","none");
+				 $(".per-infor").css("display","block");
+				 window.location.reload();
+				
+	    	 }else{
+	    		 alert("账号或密码错误，请重新登陆！")
+	    	 }
+		},"text")
+ }
+ function new1(){
+	 $('#select1').css('background','#3891ed');
+	 $('#select2').css('background','#FAFAFA ');
+	 $('#select3').css('background','#FAFAFA ');
+	 $.post("../computer",{op:"findAll",type:"rtime"},function(data){
+		 $("#list").html("");
+		 var str = "";
+		 $.each(data,function(index,item){
+		
+				str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:;" target="_self">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+		 
+		 })
+		 $("#list").append($(str));
+		
+	 },"json")
+ }
+function hot(){
+	 $('#select1').css('background','#FAFAFA ');
+	 $('#select2').css('background','#3891ed');
+	 $('#select3').css('background','#FAFAFA ');
+	 $(".howera").attr("class",".sort .active");
+ $.post("../computer",{op:"findAll",type:"bnumber"},function(data){
+	 $("#list").html("");
+	 var str = "";
+	 $.each(data,function(index,item){
+		console.log(item);
+		str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:;" target="_self">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+	
+	 })
+	 $("#list").append($(str));
+	 },"json")
+
+
+	
+ }
+function price(){
+	 $('#select1').css('background','#FAFAFA ');
+	 $('#select2').css('background','#FAFAFA ');
+	 $('#select3').css('background','#3891ed');
+	 $(".howera").attr("class",".sort .active");
+     $.post("../computer",{op:"findAll",type:"sumprice"},function(data){
+	 $("#list").html("");
+	 var str = "";
+	 $.each(data,function(index,item){
+		
+			str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:;" target="_self">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+		
+	 })
+	 $("#list").append($(str));
+	 },"json")
+ }
+ function prev(){
+	
+	 $(".plan-list-box .pics i.iprev").click(function(){var $this=$(this);changePage(-1,$this)});
+ }
+ function next(){
+	
+	 $(".plan-list-box .pics i.inext").click(function(){var $this2=$(this);changePage(1,$this2)});
+	
+ }
+
+ function changePage(u,_this)
+ {	
+	 
+	console.log(page);
+ 	 pics=_this.parent().find(".lunbo-box ul li");
+ 	 pLen=Math.ceil((pics.length)/5);
+ 	 if(u<0){
+ 		 page--;
+ 		 if(page<0){page=pLen-1;}
+ 		 if(!$(".lunbo-box ul").is(":animated")) {
+ 			 _this.parent().find(".lunbo-box ul").animate({"left":-page*mWidth},500);
+ 			 }
+ 		 }
+ 	 else{
+ 		 if(u>0)
+ 		 {page++;
+ 		 if(page>pLen-1){
+ 			 page=0;}
+ 		 if(!$(".lunbo-box ul").is(":animated")){
+ 			 _this.parent().find(".lunbo-box ul").animate({"left":-page*mWidth},500);
+ 			 }
+ 		 }
+ 		 }
+ 	 }
+
 </script>
 </body></html>
