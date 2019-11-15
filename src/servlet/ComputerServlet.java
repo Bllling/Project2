@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import biz.IComputerBiz;
+import biz.IHardwareBiz;
 import biz.impl.ComputerBizImpl;
+import biz.impl.HardwareBizImpl;
 import entity.Computer;
 
 
@@ -24,7 +26,26 @@ private static final long serialVersionUID = 1L;
 		String op = request.getParameter("op");
 		if("findAll".equals(op)){
 			findAll(request,response);
+		}else if("findById".equals(op)){
+			findById(request,response);
+		}else if("findHardWare".equals(op)){
+			findHardWare(request,response);
 		}
+		
+	}
+
+	private void findHardWare(HttpServletRequest request, HttpServletResponse response) {
+
+		int id = Integer.parseInt(request.getParameter("id"));
+		IHardwareBiz hardwareBiz  = new HardwareBizImpl();
+		this.send(response, hardwareBiz.findHardWareById(id));
+		
+	}
+
+	private void findById(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findById(id));
 		
 	}
 

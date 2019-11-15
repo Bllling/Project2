@@ -1,11 +1,15 @@
 package biz.impl;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import biz.IComputerBiz;
 import biz.IHardwareBiz;
 import dao.IHardwareDao;
 import dao.impl.HardwareDaoImpl;
 import entity.Box;
+import entity.Computer;
 import entity.Cpu;
 import entity.Disk;
 import entity.Graphics;
@@ -129,6 +133,35 @@ public class HardwareBizImpl implements IHardwareBiz {
 			if( boxid==null){return null;}
 			IHardwareDao hardwareDao = new HardwareDaoImpl();
 			return hardwareDao.findBox(boxid);
+	}
+
+	@Override
+	public Map<String, Object> findHardWareById(Integer id) {
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		Computer computer =computerBiz.findHardWardIdById(id);
+		int cpuid = computer.getCpuid();
+		int motherboardid = computer.getMotherboardid();
+		int memoryid = computer.getMemoryid();
+		int diskid = computer.getDiskid();
+		int sourceid = computer.getSourceid();
+		int graphicsid = computer.getGraphicsid();
+		int boxid = computer.getBoxid();
+		Map<String, Object> map = new HashMap<String, Object>(); 
+		Cpu cpu = this.findCPU(cpuid);
+		MotherBoard motherboard = this.findMotherboard(motherboardid);
+		Memory memory = this.findMemory(memoryid);
+		Disk  disk = this.findDisk(diskid);
+		Source source = this.findSource(sourceid);
+		Graphics graphics =this.findGraphics(graphicsid);
+		Box box = this.findBox(boxid);
+		map.put("cpu", cpu);
+		map.put("motherboard", motherboard);
+		map.put("memory", memory);
+		map.put("disk", disk);
+		map.put("source", source);
+		map.put("graphics", graphics);
+		map.put("box", box);
+		return map;
 	}
 
 }

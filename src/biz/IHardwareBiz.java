@@ -72,5 +72,9 @@ public interface IHardwareBiz {
 	public int addBox(Map<String, String> map);
 	
 	public Box findBox(Integer boxid);
+	
+	//public Map<String, Object> findHardWareById(Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid) ;
+    public Map<String, Object> findHardWareById(Integer id) ;
+
 
 }
