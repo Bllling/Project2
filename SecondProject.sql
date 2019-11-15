@@ -45,7 +45,8 @@ create table cpu(
 	cores int,	  -- 核心数
 	threads int,	  -- 线程数
 	frequency varchar(5), -- 默认主频
-	maxfrequency varchar(5) --最大主频
+	maxfrequency varchar(5), --最大主频
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 
@@ -59,7 +60,8 @@ create table motherboard(
 	praise int,   -- 点赞数
 	score varchar(50),	  -- 跑分
 	powers varchar(50),  -- 功率
-	maxmemory varchar(50) -- 最大内存
+	maxmemory varchar(50),-- 最大内存
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 
@@ -75,7 +77,8 @@ create table memory(
 	powers varchar(50),  -- 功率
 	volume varchar(50),   -- 内存容量
 	memorytype varchar(50), -- 内存类型
-	frequency varchar(50)  -- 内存主频
+	frequency varchar(50),  -- 内存主频
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table disk(
@@ -90,7 +93,8 @@ create table disk(
 	powers varchar(50),  -- 功率
 	volume varchar(50),   -- 硬盘容量
 	isssd int, -- 是否为固态
-	rpm varchar(50)  -- 转数
+	rpm varchar(50),  -- 转数
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table source(
@@ -102,7 +106,8 @@ create table source(
 	usetimes int, -- 使用次数
 	praise int,   -- 点赞数
 	score varchar(50),	  -- 跑分
-	maxpowers varchar(50)  -- 最大功率
+	maxpowers varchar(50),  -- 最大功率
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table graphics(
@@ -116,7 +121,8 @@ create table graphics(
 	score varchar(50),	  -- 跑分
 	powers varchar(50),  -- 功率
 	memory varchar(50),  -- 显存大小
-	width varchar(50)   -- 显存带宽
+	width varchar(50),   -- 显存带宽
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table box(
@@ -126,7 +132,8 @@ create table box(
 	boxprice decimal(8,2), -- 价格
 	quantiy int, -- 库存
 	usetimes int, -- 使用次数
-	praise int   -- 点赞数
+	praise int, -- 点赞数
+	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 

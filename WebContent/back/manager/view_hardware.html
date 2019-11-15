@@ -1,7 +1,7 @@
 
 <div id="news_search">
 	<lable>硬件类型:</lable>
-	<select id="news_search_tid" class="new_ipt" style="width: 100px">
+	<select id="search_tid" class="new_ipt" style="width: 100px">
 		<option value="CPU" onmousedown="checkField(this.value)">CPU</option>
 		<option value="motherboard" onmousedown="checkField(this.value)">主板</option>
 		<option value="memory" onmousedown="checkField(this.value)">内存</option>
@@ -35,7 +35,7 @@
 		    height:380,    
 		    modal:true,
 		    
-		    href: "test.html"
+		    href: "cpu.html"
 		    
 		});
 		$("#fatherid").val(id);
@@ -107,11 +107,34 @@
 		$("#fatherid").val(id);
 	}
 	
+	
+	
 	var type = "CPU";
 	function checkField(val) {
 		type = val;
 		if (type == "CPU") {
 			show_cpu_data("findCpuByPage", "cpuprice");
+		} else if ("motherboard" == type) {
+			show_motherboard_data("findMotherBoardByPage", "motherboardprice");
+		} else if ("memory" == type) {
+			show_memory_data("findMemoryByPage","memoryprice");
+		} else if ("disk" == type) {
+			show_disk_data("finddiskByPage","diskprice");
+		} else if ("source" == type) {
+			show_source_data("findSourceByPage", "sourceprice");
+		} else if ("graphics" == type) {
+			show_graphics_data("findGraphicsByPage","graphicsprice");
+		} else if ("box" == type) {
+			show_box_data("findBoxByPage","boxprice");
+		}
+	}
+	
+	function del(id) {
+		alert(type);
+		if (type == "CPU") {
+			$.post("../../hardwareinfo",{op:"delCpu", id:id}, function(data) {
+				
+			},"text");
 		} else if ("motherboard" == type) {
 			show_motherboard_data("findMotherBoardByPage", "motherboardprice");
 		} else if ("memory" == type) {
@@ -151,7 +174,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a onclick='openCpuWin("+row.cpuid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -183,7 +206,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='openmotherboardWin("+row.motherboardid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -215,7 +238,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='openmemoryWin("+row.memoryid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -247,7 +270,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='opendiskWin("+row.diskid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -279,7 +302,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='opensourceWin("+row.sourceid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -311,7 +334,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='opengraphicsWin("+row.graphicsid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],
@@ -343,7 +366,7 @@
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
 		        	var str = "<a href='javascript:void(0)' onclick='openboxWin("+row.boxid+")'>[详细]</a>&nbsp";
-		        	str += "<a href='javascript:void(0)'>[删除]</a>";
+		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
 		    ]],

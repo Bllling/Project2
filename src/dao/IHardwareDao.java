@@ -70,6 +70,16 @@ public interface IHardwareDao {
 	public int addBox(Map<String, String> map);
 	
 	public Box findBox(Integer boxid);
+	
+	/**
+	 * 通过表名和id来删除硬件
+	 * @param id
+	 * @param formName  表名
+	 * @param idName  id名
+	 * @return
+	 */
+	public int delHardWare(Integer id, String idName, String formName);
+	
 	/**
 	 * 分页查询各硬件
 	 * @param page
@@ -89,4 +99,6 @@ public interface IHardwareDao {
 	 * @return
 	 */
 	public int getTotal(String id, String formName);
+	
+	
 }

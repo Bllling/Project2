@@ -118,9 +118,9 @@ public class HardwareDaoImpl implements IHardwareDao {
 		DBHelper dbHelper = new DBHelper();
 		String sql = null;
 		if ("box".equalsIgnoreCase(formName)) {
-			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes from "+ formName +" limit ?, ?";
+			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes from "+ formName +" where state = '1' limit ?, ?";
 		} else {
-			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes, score from "+ formName +" limit ?, ?";
+			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes, score from "+ formName +" where state = '1' limit ?, ?";
 		}
 		return dbHelper.finds(sql, c, (page - 1) * rows, rows);
 	}
@@ -130,6 +130,13 @@ public class HardwareDaoImpl implements IHardwareDao {
 		DBHelper dbHelper = new DBHelper();
 		String sql = "select count(?) from " + formName;
 		return dbHelper.getTotal(sql, id);
+	}
+
+	@Override
+	public int delHardWare(Integer id, String idName, String formName) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "update "+ formName +" set state = '0' where "+idName + " = ?";
+		return dbHelper.update(sql, id);
 	}
 
 
