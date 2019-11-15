@@ -174,7 +174,8 @@
                <div class="code-box">
                   <input type="text" class="code ">
                   <span class="code-img">
-				<a href="javascript:void(0);" target="_self" class="blue" onclick="createCode()" id="checkCode" style="background: url('images/person.jpg');"></a>
+                  &nbsp;&nbsp;
+				<a href="javascript:void(0);" target="_self" class="blue" onclick="createCode()" id="checkCode" style="display:inline-block"></a>
                    <span>点击图片刷新</span>
                   </span>
                </div> 
@@ -214,6 +215,10 @@
 		
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+
+var vcode;
+var vcodePath;
+
 window.onload=function(){
 	var str=$("#my").html();
 
@@ -226,9 +231,20 @@ window.onload=function(){
 	 }
     createCode();    
    }
-
+	
+	
    function createCode() {
-      
+		$.post("vcode", function(data) {
+			vcode = data.code;
+			console.log(vcode);
+			fileName = data.filename;
+			console.log(fileName);
+			
+			$("#checkCode").css("width", "90px");
+			$("#checkCode").css("height", "20px");
+			$("#checkCode").css("background-image", "url('../vcode/" + fileName + ".jpg')");
+
+		},"json");
    }
  
 	function login1(){

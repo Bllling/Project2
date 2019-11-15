@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.servlet.jsp.PageContext;
 
 public class VerificationCode {
 	private static int width = 90;// 定义图片的width
@@ -24,6 +26,8 @@ public class VerificationCode {
 	private static char[] codeSequence = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
 			'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
+	public static String VCODEPATH = "vcode";
+	
 	/**
 	 * 生成一个map集合 code为生成的验证码 codePic为生成的验证码BufferedImage对象
 	 * 
@@ -91,14 +95,19 @@ public class VerificationCode {
 		return map;
 	}
 	
-	public Map<String, Object> getVCode() {
+	public Map<String, String> getVCode(PageContext pageContext) {
 		Map<String, Object> map= null;
-		Map<String, Object> rMap = new HashMap<String, Object>();
+		Map<String, String> rMap = new HashMap<String, String>();
+		
+		File file = new File("");
+		
+		String basePath = pageContext.getServletContext().getRealPath("/");
+
 		
 		Long FileName = System.currentTimeMillis();
 
 		try {
-			OutputStream out = new FileOutputStream(System.getProperty("user.dir") + "/src/VCode/" + FileName + ".jpg");
+			OutputStream out = new FileOutputStream(basePath + "\\" + VCODEPATH +"\\" + FileName + ".jpg");
 			map = VerificationCode.generateCodeAndPic();
 			ImageIO.write((RenderedImage) map.get("codePic"), "jpeg", out);
 		} catch (FileNotFoundException e) {
@@ -109,18 +118,15 @@ public class VerificationCode {
 			e.printStackTrace();
 		}
 		
-		rMap.put("code", map.get("code"));
-		rMap.put("path", System.getProperty("user.dir") + "/src/VCode/" + FileName + ".jpg");
+		
+		
+		rMap.put("code", map.get("code").toString());
+		rMap.put("filename",FileName.toString());
 		
 		return rMap;
 	}
 
 	public static void main(String[] args) throws Exception {
-		// 创建文件输出流对象
-		Long FileName = System.currentTimeMillis();
-		OutputStream out = new FileOutputStream(System.getProperty("user.dir") + "/src/VCode/" + FileName + ".jpg");
-		Map<String, Object> map = VerificationCode.generateCodeAndPic();
-		ImageIO.write((RenderedImage) map.get("codePic"), "jpeg", out);
-		System.out.println("验证码的值为：" + map.get("code"));
+
 	}
 }
