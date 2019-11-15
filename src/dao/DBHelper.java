@@ -449,7 +449,6 @@ public class DBHelper {
 							}
 							//获取值的类型
 							typeName = obj.getClass().getName();
-						
 							if("java.math.BigDecimal".equals(typeName)){
 								try {
 									m.invoke(t, rs.getInt(columnName));

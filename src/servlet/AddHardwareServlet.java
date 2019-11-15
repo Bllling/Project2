@@ -24,7 +24,6 @@ public class AddHardwareServlet extends BasicServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op = request.getParameter("op");
 		if ("addCPU".equals(op)) {
-			System.out.println("1111");
 			addCPU(request, response);
 		} else if ("addDisk".equals(op)) {
 			addDisk(request, response);
@@ -43,20 +42,14 @@ public class AddHardwareServlet extends BasicServlet{
 	
 	//添加电源
 	private void addSource(HttpServletRequest request, HttpServletResponse response) {
-		FileUploadUtil fuu = new FileUploadUtil();
-		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
-		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
+		Map<String, String> map = fileUpload(request, response);
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		this.send(response, hardwareBiz.addSource(map));
 	}
 
 	//添加主板
 	private void addMotherBoard(HttpServletRequest request, HttpServletResponse response) {
-		FileUploadUtil fuu = new FileUploadUtil();
-		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
-		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
+		Map<String, String> map = fileUpload(request, response);
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		this.send(response, hardwareBiz.addMotherboard(map));
 		
@@ -64,10 +57,7 @@ public class AddHardwareServlet extends BasicServlet{
 
 	//添加内存
 	private void addMemory(HttpServletRequest request, HttpServletResponse response) {
-		FileUploadUtil fuu = new FileUploadUtil();
-		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
-		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
+		Map<String, String> map = fileUpload(request, response);
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		this.send(response, hardwareBiz.addMemory(map));
 		
@@ -75,10 +65,7 @@ public class AddHardwareServlet extends BasicServlet{
 
 	//添加显卡
 	private void addGraphics(HttpServletRequest request, HttpServletResponse response) {
-		FileUploadUtil fuu = new FileUploadUtil();
-		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
-		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
+		Map<String, String> map = fileUpload(request, response);
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		this.send(response, hardwareBiz.addGraphics(map));
 		
@@ -86,10 +73,7 @@ public class AddHardwareServlet extends BasicServlet{
 
 	//添加机箱
 	private void addBox(HttpServletRequest request, HttpServletResponse response) {
-		FileUploadUtil fuu = new FileUploadUtil();
-		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
-		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
+		Map<String, String> map = fileUpload(request, response);
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		this.send(response, hardwareBiz.addBox(map));
 		
@@ -97,10 +81,7 @@ public class AddHardwareServlet extends BasicServlet{
 
 	//添加硬盘
 	private void addDisk(HttpServletRequest request, HttpServletResponse response) {
-		FileUploadUtil fuu = new FileUploadUtil();
-		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
-		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
+		Map<String, String> map = fileUpload(request, response);
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
 		this.send(response, hardwareBiz.addDisk(map));
 		
@@ -108,11 +89,16 @@ public class AddHardwareServlet extends BasicServlet{
 	
 	//添加CPU
 	private void addCPU(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, String> map = fileUpload(request, response);
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.addCPU(map));
+	}
+	
+	//数据保存到map
+	private Map<String, String> fileUpload(HttpServletRequest request, HttpServletResponse response) {
 		FileUploadUtil fuu = new FileUploadUtil();
 		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
 		Map<String, String> map = fuu.upload(pagecontext);
-		System.out.println(map);
-		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		this.send(response, hardwareBiz.addCPU(map));
+		return map;
 	}
 }

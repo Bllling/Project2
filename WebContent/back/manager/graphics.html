@@ -1,0 +1,71 @@
+
+<div class="view_data">
+	<ul class="data_item">
+		<li>
+			<div class="icon">
+				<span class="picon1"></span>
+			</div>
+			<p id="graphicsprice">
+				<span>显卡价格：</span> 
+			</p>
+			<p id="quantiy">
+				<span>库存：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon2"></span>
+			</div>
+			<p id="usetimes">
+				<span>使用次数：</span> 
+			</p>
+			<p id="praise">
+				<span>点赞数：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon3"></span>
+			</div>
+			<p id="score">
+				<span>跑分：</span> 
+			</p>
+			<p id="powers">
+				<span>功率：</span> 
+			</p>
+		</li>
+		<li>
+			<div class="icon">
+				<span class="picon4"></span>
+			</div>
+			<p id="memory">
+				<span>显存大小：</span> 
+			</p>
+			<p id="width">
+				<span>显存带宽：</span> 
+			</p>
+		</li>
+		
+		<li id="imgs"></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+	var id = parent.document.getElementById('fatherid').value;
+		
+	$.post("../../hardwareinfo", {op:"findGraphicsInfo", id:id}, function(data) {
+		$("#graphicsprice").append(data.graphicsprice);
+		$("#quantiy").append(data.quantiy);
+		$("#usetimes").append(data.usetimes);
+		$("#praise").append(data.praise);
+		$("#score").append(data.score);
+		$("#powers").append(data.powers);
+		$("#memory").append(data.memory);
+		$("#width").append(data.width);
+	}, "json");
+	
+})
+
+</script>

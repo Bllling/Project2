@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../../easyui/css/wu.css" />
 <link rel="stylesheet" type="text/css" href="../../easyui/css/icon.css" />
 <link rel="stylesheet" type="text/css" href="../../css/add_hardware.css" />
+<link rel="stylesheet" type="text/css" href="../../css/view_hardware.css" />
 <script type="text/javascript" src="../../easyui/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="../../easyui/js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="../../easyui/js/easyui-lang-zh_CN.js"></script>
