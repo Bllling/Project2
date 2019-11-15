@@ -163,5 +163,13 @@ public class HardwareBizImpl implements IHardwareBiz {
 		map.put("box", box);
 		return map;
 	}
+	@Override
+	public Map<String, Object> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		map.put("total", hardwareDao.getTotal(id, formName));
+		map.put("rows", hardwareDao.findByPage(page, rows, id, formName, priceName, c));
+		return map;
+	}
 
 }

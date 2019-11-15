@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import dao.DBHelper;
@@ -112,6 +113,24 @@ public class HardwareDaoImpl implements IHardwareDao {
 		String sql="select * from box where boxid = ?";
 		return db.find(sql, Box.class, boxid);
 	}
-	
+	@Override
+	public <T> List<T> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = null;
+		if ("box".equalsIgnoreCase(formName)) {
+			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes from "+ formName +" limit ?, ?";
+		} else {
+			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes, score from "+ formName +" limit ?, ?";
+		}
+		return dbHelper.finds(sql, c, (page - 1) * rows, rows);
+	}
+
+	@Override
+	public int getTotal(String id, String formName) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "select count(?) from " + formName;
+		return dbHelper.getTotal(sql, id);
+	}
+
 
 }
