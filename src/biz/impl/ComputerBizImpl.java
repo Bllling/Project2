@@ -7,6 +7,7 @@ import biz.ICommentBiz;
 import biz.IComputerBiz;
 import dao.IComputerDao;
 import dao.impl.ComputerDaoImpl;
+import entity.Collection;
 import entity.Computer;
 import util.StringUtil;
 
@@ -60,6 +61,26 @@ public class ComputerBizImpl implements IComputerBiz{
 		IComputerDao  computerDao = new ComputerDaoImpl();
 		return computerDao.findByUid(uid);
 	}
+
+	@Override
+	public List<Computer> findAllByMoreId(List<Collection> list) {
+		if(list==null||list.size()<0){
+			return null;
+		}
+		IComputerDao computerDao = new ComputerDaoImpl();
+		return computerDao.findAllByMoreId(list);
+	}
+
+	@Override
+	public int updateBnumber(Integer id) {
+		if(id == null){
+			return -1;
+		}
+		IComputerDao computerDao = new ComputerDaoImpl();
+		return computerDao.updateBnumber(id);
+	}
+
+
 
 	
 

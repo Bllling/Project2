@@ -4,9 +4,15 @@
 <title>购买</title>
 <link href="../css/Diy_detailNew.css" rel="stylesheet">
 <link href="../css/zLoginDialog.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/share_style0_24.css"></head>
-<body>   
+<link rel="stylesheet" href="../css/share_style0_24.css">
 <link rel="stylesheet" href="../css/global-sitennav.css">
+<style type="text/css">
+.buy{color:white;background: rgb(25,142,246);width: 100px;height: 35px; margin-left: 10px;border: 1px solid;border-radius:5px;}
+.buy:hover{cursor: pointer;background:rgb(241,49,49);}
+</style>
+</head>
+<body>   
+
 
 <div class="nav-search">
     <div class="navs-box clearfix">
@@ -64,7 +70,7 @@
                         来自: <span id="uname"></span>
                         时间：<span id="rtime"></span>
                          
-                       <span>使用数：<font id="bnumber"></font> </span>
+                       <span>浏览次数：<font id="bnumber"></font>次 </span>
 		</div>
                      
                   </div>
@@ -136,7 +142,9 @@
 			 
              <div class="left"><span style="margin: 0 10px 0 20px;" class="cite"><a href="../index.html">引用此配置单进行攒机<font>&gt;&gt;</font></a></span></div>
              <div class="right">
+             <input type="button" value="购买" onclick="buy" class="buy">
                 <span class="total-num">总计&nbsp;:&nbsp;<font color="#ff3333">￥6831元</font></span>
+               
              </div>
         </div>
 
@@ -163,6 +171,7 @@ $(function(){
 	if(id == "" || id == undefined){
 		location.href="netplan.jsp";
 	}
+	$.post("../computer",{op:"updateBnumber",id:id},function(data){})
 	$.post("../computer",{op:"findById",id:id},function(data){
 		$("#cname").html(data.cname);
 		$("#sumprice").html(data.sumprice);
@@ -207,18 +216,18 @@ $(function(){
 	},"json")
 
 })
-function reinitIframe() { 
-var iframe = document.getElementById("urlIframe");
- try 
-{ 
-var bHeight = iframe.contentWindow.document.body.scrollHeight; 
+	function reinitIframe() { 
+		var iframe = document.getElementById("urlIframe");
+ 			try 
+				{ 
+				var bHeight = iframe.contentWindow.document.body.scrollHeight; 
 /* 
 var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
 var height = Math.max(bHeight, dHeight); 
 iframe.height = height; */ 
-iframe.height = bHeight; 
-} 
-catch (ex) { } 
+				iframe.height = bHeight; 
+				} 
+			catch (ex) { } 
 }</script>
 
 

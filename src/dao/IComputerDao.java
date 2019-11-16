@@ -4,6 +4,7 @@ package dao;
 import java.util.List;
 import java.util.Map;
 
+import entity.Collection;
 import entity.Computer;
 
 public interface IComputerDao {
@@ -53,4 +54,18 @@ public interface IComputerDao {
       * @return
       */
      public List<Computer> findByUid(Integer uid);
+     
+     /**
+      *  通过多个用户ID查询所有
+      * @param list
+      * @return
+      */
+     public List<Computer> findAllByMoreId(List<Collection> list);
+     
+     /**
+      * 更新浏览次数
+      * @param id
+      * @return
+      */
+     public int updateBnumber(Integer id);
 }

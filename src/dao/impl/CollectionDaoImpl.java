@@ -1,5 +1,7 @@
 package dao.impl;
 
+import java.util.List;
+
 import dao.DBHelper;
 import dao.ICollectionDao;
 import entity.Collection;
@@ -19,5 +21,9 @@ public class CollectionDaoImpl implements ICollectionDao {
 		String  sql = "select id from collection where uid = ?";
 		return db.find(sql, Collection.class, uid);
 	}
-
+	public List<Collection> findsByID(Integer uid) {
+		DBHelper db = new DBHelper();
+		String  sql = "select id from collection where uid = ?";
+		return db.finds(sql, Collection.class, uid);
+	}
 }

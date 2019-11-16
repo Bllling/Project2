@@ -1,5 +1,7 @@
 package biz.impl;
 
+import java.util.List;
+
 import biz.ICollectionBiz;
 import dao.ICollectionDao;
 import dao.impl.CollectionDaoImpl;
@@ -21,5 +23,14 @@ public class CollectionBizImpl implements ICollectionBiz {
 		}
 		ICollectionDao collectionDao = new CollectionDaoImpl();
 		return collectionDao.findByID(uid);
+	}
+
+	@Override
+	public List<Collection> findsByID(Integer uid) {
+		if (uid==null){
+			return null;
+		}
+		ICollectionDao collectionDao = new CollectionDaoImpl();
+		return collectionDao.findsByID(uid);
 	}
 }

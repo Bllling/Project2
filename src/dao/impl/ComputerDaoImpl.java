@@ -7,6 +7,7 @@ import java.util.Map;
 import dao.DBHelper;
 import dao.IComputerDao;
 import dao.IUsrDao;
+import entity.Collection;
 import entity.Computer;
 import entity.Usr;
 import util.StringUtil;
@@ -37,13 +38,6 @@ public class ComputerDaoImpl implements IComputerDao {
 	public Computer findHardWardIdById(Integer id) {
 		DBHelper db = new DBHelper();
 		String sql="select cpuid,motherboardid, memoryid,diskid,sourceid,graphicsid,boxid from computer where id = ?";
-//		String sql2="select motherboardid from computer where id = ?";
-//		String sql3="select memoryid from computer where id = ?";
-//		String sql4="select diskid from computer where id = ?";
-//		String sql5="select sourceid from computer where id = ?";
-//		String sql6="select graphicsid from computer where id = ?";
-//		String sql7="select boxid from computer where id = ?";
-		
 		return db.find(sql, Computer.class, id);
 	}
 
@@ -98,6 +92,26 @@ public class ComputerDaoImpl implements IComputerDao {
 		DBHelper db = new DBHelper();
 	    String sql = "select cname,detail,sumprice,id,u.uname,cp.name,cp.pics,me.name as name1,me.pics as pics1,m.name as name2,m.pics as pics2,d.name as name3,d.pics as pics3,s.name as name4,s.pics as pics4,g.name as name5,g.pics as pics5,b.name as name6,b.pics as pics6, id ,c.uid,date_format(rtime,'%Y-%m-%d %H:%i:%s') rtime,znumber,bnumber from  computer c,cpu cp ,memory m,motherboard me ,disk d,source s,graphics g,box b,usr u where c.cpuid = cp.cpuid and c.memoryid=m.memoryid and me.motherboardid=c.motherboardid and d.diskid=c.diskid and s.sourceid=c.sourceid and g.graphicsid=c.graphicsid and b.boxid=c.boxid and u.uid = c.uid and c.uid = ? order by rtime desc ";
 		return db.finds(sql, Computer.class, uid);
+	}
+
+	@Override
+	public List<Computer> findAllByMoreId(List<Collection> list) {
+		DBHelper db = new DBHelper();
+		List <Object> list1 = new ArrayList<>();
+	    String sql = "select cname,detail,sumprice,id,u.uname,cp.name,cp.pics,me.name as name1,me.pics as pics1,m.name as name2,m.pics as pics2,d.name as name3,d.pics as pics3,s.name as name4,s.pics as pics4,g.name as name5,g.pics as pics5,b.name as name6,b.pics as pics6, id ,c.uid,date_format(rtime,'%Y-%m-%d %H:%i:%s') rtime,znumber,bnumber from  computer c,cpu cp ,memory m,motherboard me ,disk d,source s,graphics g,box b,usr u where c.cpuid = cp.cpuid and c.memoryid=m.memoryid and me.motherboardid=c.motherboardid and d.diskid=c.diskid and s.sourceid=c.sourceid and g.graphicsid=c.graphicsid and b.boxid=c.boxid and u.uid = c.uid and";
+        for (Collection c:list){
+        	sql+=" id = ? or";
+        	list1.add(c.getId());
+        }
+        sql+=" 1=0";
+	   return db.finds(sql, Computer.class, list1);
+	}
+
+	@Override
+	public int updateBnumber(Integer id) {
+		DBHelper db = new DBHelper();
+		String sql="update computer set bnumber=bnumber+1 where id = ?";
+		return db.update(sql, id);
 	}
 
 	

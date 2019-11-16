@@ -10,10 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import biz.ICollectionBiz;
 import biz.IComputerBiz;
 import biz.IHardwareBiz;
+import biz.impl.CollectionBizImpl;
 import biz.impl.ComputerBizImpl;
 import biz.impl.HardwareBizImpl;
+import entity.Collection;
 import entity.Computer;
 
 
@@ -35,9 +38,29 @@ private static final long serialVersionUID = 1L;
 			findByPart(request,response);
 		}else if(("getTotalPart").equals(op)){
 			getTotalPart(request,response);
+		}else if("findByCollection".equals(op)){
+			findByCollection(request,response);
 		}else if("findByUid".equals(op)){
 			findByUid(request,response);
+		}else if("updateBnumber".equals(op)){
+			updateBnumber(request,response);
 		}
+		
+	}
+
+	private void updateBnumber(HttpServletRequest request, HttpServletResponse response) {
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.updateBnumber(id));
+		
+	}
+
+	private void findByCollection(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		ICollectionBiz collectionBiz = new CollectionBizImpl();
+		List<Collection> collection = collectionBiz.findsByID(uid);
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findAllByMoreId(collection));
 		
 	}
 
