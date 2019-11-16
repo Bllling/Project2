@@ -65,8 +65,8 @@
         </div>
         <div class="sort-box clearfix" style="width: 100%">
          <div class="sort netf-sort" >
-            <a href="javascript:show1()" target="_self" class="active myprofile">我的配置</a>
-            <a href="javascript:show2()" class="hovera">我的收藏</a>
+            <a href="javascript:show1()" id="my1" >我的配置</a>
+            <a href="javascript:show2()" id="my2">我的收藏</a>
          </div>
         </div>
         <div class="plan-list-box">
@@ -140,12 +140,13 @@
         </div>
      
     </div>
-
+              <p id="uid" style="display:none">${currentAdmin.uid}</p>
    </div>
    <script src="../js/jquery-3.4.1.min.js"></script>
  <script type="text/javascript">
+ 
  $(function(){
-	
+	 
 	    var str=$(".name").html();
 	    
 		if(str!=null&&str.length > 0&&""!=str){
@@ -154,13 +155,34 @@
 			 $(".per-infor").css("display","block");
 			
 		 }
+		show1();
 	 
  })
  function show1(){
-	 alert("进入我的方案");
+	 $("#my1").attr("class","active myprofile");
+	  $("#my2").removeClass("active myprofile");
+		 $(".plan-list-box").html('<div class="my-nothing"><div class="text"><p class="inst">您目前尚无配置单，快去攒一个吧!</p><a href="../index1.jsp" class="link">我要攒机<font>&gt;&gt;</font></a></div></div>');
+
+	 var str="";
+	 var uid = $("#uid").html();
+	 if(uid==null||uid==""){
+		 return;
+	 }
+	 $.post("../computer",{op:"findByUid",uid:uid},function(data){
+
+		 if(data==null){
+			 return;
+		 }
+		 $.each(data,function(index,item){
+			str+='<ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="javascript:void(0)" class="link" title="">'+item.cname+'</a></p><p class="total-box"> <span class="time">'+item.rtime+' </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div>';
+		 })
+		 $(".plan-list-box").html(str);
+	 },"json")
  }
  function show2(){
-	 alert("进入我的收藏");
+	 $("#my2").attr("class","active myprofile");
+	 $("#my1").removeClass("active myprofile");
+	 $(".plan-list-box").html('<div class="my-nothing"><div class="text"><p class="inst">您目前尚无收藏，快去收藏一个吧!</p><a href="netplan.jsp" class="link">我要收藏<font>&gt;&gt;</font></a></div></div>');
  }
  function login(){
 	 var uname =$.trim($("#userName1").val());

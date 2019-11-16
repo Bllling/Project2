@@ -44,14 +44,22 @@ public class ComputerBizImpl implements IComputerBiz{
 	}
 
 	@Override
-	public List<Computer> findPart(String type, String sumpriceMin, String sumpriceMax, String rtime) {
+	public List<Computer> findPart(String type, String sumpriceMin, String sumpriceMax, String rtime,int page,int rows) {
 		IComputerDao  computerDao = new ComputerDaoImpl();
-		return computerDao.findPart(type, sumpriceMin, sumpriceMax, rtime);
+		return computerDao.findPart(type, sumpriceMin, sumpriceMax, rtime,page,rows);
 	}
 
+	@Override
+	public int getTotalPart(String sumpriceMin, String sumpriceMax, String rtime) {
+		IComputerDao  computerDao = new ComputerDaoImpl();
+		return computerDao.getTotalPart(sumpriceMin, sumpriceMax, rtime);
+	}
 
-
-	
+	@Override
+	public List<Computer> findByUid(Integer uid) {
+		IComputerDao  computerDao = new ComputerDaoImpl();
+		return computerDao.findByUid(uid);
+	}
 
 	
 

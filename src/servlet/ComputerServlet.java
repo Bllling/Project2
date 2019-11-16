@@ -24,6 +24,7 @@ private static final long serialVersionUID = 1L;
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op = request.getParameter("op");
+		System.out.println(op);
 		if("findAll".equals(op)){
 			findAll(request,response);
 		}else if("findById".equals(op)){
@@ -32,7 +33,27 @@ private static final long serialVersionUID = 1L;
 			findHardWare(request,response);
 		}else if("findByPart".equals(op)){
 			findByPart(request,response);
+		}else if(("getTotalPart").equals(op)){
+			getTotalPart(request,response);
+		}else if("findByUid".equals(op)){
+			findByUid(request,response);
 		}
+		
+	}
+
+	private void findByUid(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findByUid(uid));
+	}
+
+	private void getTotalPart(HttpServletRequest request, HttpServletResponse response) {
+		String sumpriceMin=request.getParameter("sumpriceMin");
+		
+		String sumpriceMax=request.getParameter("sumpriceMax");
+		String rtime=request.getParameter("rtime");
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getTotalPart(sumpriceMin, sumpriceMax, rtime));
 		
 	}
 
@@ -41,10 +62,11 @@ private static final long serialVersionUID = 1L;
 		String sumpriceMin=request.getParameter("sumpriceMin");
 		String sumpriceMax=request.getParameter("sumpriceMax");
 		String rtime=request.getParameter("rtime");
-		System.out.println(rtime);
 		String type = request.getParameter("type");
+		int page=Integer.parseInt(request.getParameter("page"));
+		int rows=Integer.parseInt(request.getParameter("rows"));
 		IComputerBiz computerBiz = new ComputerBizImpl();
-		this.send(response, computerBiz.findPart(type, sumpriceMin, sumpriceMax, rtime));
+		this.send(response, computerBiz.findPart(type, sumpriceMin, sumpriceMax, rtime,page,rows));
 	}
 
 	private void findHardWare(HttpServletRequest request, HttpServletResponse response) {

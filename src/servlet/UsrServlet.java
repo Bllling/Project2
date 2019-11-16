@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
+import biz.ICollectionBiz;
 import biz.IUsrBiz;
+import biz.impl.CollectionBizImpl;
 import biz.impl.UsrBizImpl;
 import entity.Usr;
 
@@ -29,8 +31,38 @@ public class UsrServlet extends BasicServlet{
 			login(req,resp);
 		} else if ("update".equals(op)) {
 			update(req,resp);
-		} 
+		} else if("collection".equals(op)){
+			collection(req,resp);
+		} else if("findByID".equals(op)){
+			findByID(req,resp);
+		}
 
+	}
+	/**
+	 *  在收藏夹表中根据用户ID查找配置单号
+	 * @param req
+	 * @param resp
+	 */
+
+	private void findByID(HttpServletRequest req, HttpServletResponse resp) {
+		int uid = Integer.parseInt(req.getParameter("uid"));
+		System.out.println(uid);
+		ICollectionBiz collectionBiz = new CollectionBizImpl();
+		this.send(resp, collectionBiz.findByID(uid));
+		
+		
+	}
+
+	/**
+	 * 用户收藏
+	 * @param req
+	 * @param resp
+	 */
+	private void collection(HttpServletRequest req, HttpServletResponse resp) {
+		int id = Integer.parseInt(req.getParameter("id"));
+		int uid = Integer.parseInt(req.getParameter("uid"));
+		ICollectionBiz collectionBiz = new CollectionBizImpl();
+		this.send(resp, collectionBiz.add(id, uid));
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) {
