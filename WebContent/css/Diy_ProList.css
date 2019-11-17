@@ -1,0 +1,384 @@
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p,
+	blockquote, pre, form, fieldset, legend, input, button, textarea, hr,
+	div, i {
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+body {
+	font: 12px/1.5 "Microsoft YaHei";
+	color: #333;
+}
+
+fieldset, img {
+	border: 0 none;
+}
+
+em {
+	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover {
+	color: #f60;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+img {
+	display: block;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: grey;
+}
+
+
+
+.conditions {
+	min-height: 220px;
+	margin-bottom: 20px;
+}
+
+.list-title {
+	zoom: 1;
+	padding: 0 0 2px 0;
+	background: #fafafa;
+	border: 1px solid #e6e6e6;
+	border-bottom: 0;
+	position: relative;
+	z-index: 9;
+}
+
+
+.list-title .search-box {
+	position: absolute;
+	right: 0;
+	top: 8px;
+	width: 150px;
+	height: 24px;
+	margin: 0 20px 0 0;
+}
+
+.list-title .search-box input {
+	color: #666;
+	padding: 0 26px 0 8px;
+	display: inline-block;
+	width: 116px;
+	height: 24px;
+	border: 1px solid #e6e6e6;
+	line-height: 24px;
+	background-color: #fff;
+	border-radius: 3px;
+}
+
+.list-title .search-box i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png)
+		no-repeat -76px -7px;
+	position: absolute;
+	right: 10px;
+	top: 6px;
+}
+
+.list-title .search-box:hover i {
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png)
+		no-repeat -76px -43px;
+	cursor: pointer;
+}
+
+
+a {
+	color: #0a50a1;
+	text-decoration: none;
+}
+
+
+.filter-item, .filter-brand, .filter-other {
+	position: relative;
+	padding: 0 66px 0 90px;
+	zoom: 1;
+	z-index: 5;
+	border-bottom: 1px dashed #e6e6e6;
+	z-index: 1;
+}
+
+.filter-brand {
+	max-height: 186px;
+	overflow: hidden;
+	_height: 66px;
+}
+
+.filter-type, .filter-item .filter-type, .filter-brand .filter-type,
+	.filter-other .filter-type {
+	position: absolute;
+	left: 0;
+	top: 9px;
+	width: 90px;
+	height: 18px;
+	font: 12px/18px arial;
+	color: #666;
+	text-align: right;
+}
+
+.param-value-list, .brand-list, .cond-list {
+	padding: 3px 16px 3px 52px;
+	position: relative;
+	zoom: 1;
+	overflow: hidden;
+	line-height: 26px;
+}
+
+/*鼠标移动到标签上的时候 */
+.param-value-list .active, .param-value-list a:hover, .filter-brand .brand-list .active,
+	.filter-brand .brand-list a:hover {
+	background-color: #3891ed;
+	color: #fff;
+	text-decoration: none;
+}
+
+.param-value-list .all, .filter-brand .brand-list .all {
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 3px;
+	margin: 6px 0 0 -43px;
+}
+
+.filter-brand .brand-list a, .filter-brand .brand-list .null {
+	margin-right: 3px;
+	padding: 0 3px;
+}
+
+
+#sel-cond {
+	height: 38px;
+	padding: 0 6px 0 90px;
+}
+
+.param-selected .reset:hover {
+	color: #c00;
+	background-position: -54px 2px;
+	background-image:
+		url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png);
+}
+
+.filter-price {
+	padding-right: 218px;
+	height: 36px;
+	overflow: hidden;
+}
+
+.param-value-list a, .filter-brand .brand-list a, .param-value-list .null,
+	.filter-brand .brand-list .null {
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 3px;
+	margin: 6px 12px 6px 0;
+	white-space: nowrap;
+}
+
+.price-self {
+	position: absolute;
+	right: 67px;
+	top: 7px;
+	width: 152px;
+	height: 22px;
+	overflow: hidden;
+}
+
+.price-self input {
+	float: left;
+	width: 36px;
+	padding: 1px 3px;
+	height: 18px;
+	font: 12px/18px arial;
+	border: 1px solid #e6e6e6;
+	text-align: center;
+}
+
+.price-self em {
+	float: left;
+	color: #666;
+	padding: 0 2px 0 3px;
+	line-height: 22px;
+	font-family: 'simsun', '\u5B8B\u4F53';
+}
+
+.price-self .price-button {
+	float: right;
+	width: 44px;
+	height: 20px;
+	border: 1px solid #e6e6e6;
+	line-height: 20px;
+	background: #fff;
+	text-align: center;
+	color: #666;
+	cursor: pointer;
+}
+
+.filter-item {
+	height: 36px;
+	overflow: hidden;
+}
+
+.param-value-list .khl, .param-value-list .khr {
+	margin: 2px 0 0 0;
+	float: left;
+	color: #0a50a1;
+}
+
+.param-value-list .khr {
+	margin: 2px 12px 0 -3px;
+}
+
+.param-value-list a {
+	margin: 6px 3px 6px 0;
+}
+
+.more-filter {
+	position: relative;
+	margin: 0 0 20px 0;
+	height: 28px;
+	border: 1px solid #f0f0f0;
+	border-top: 0 none;
+	background: #f5f5f5;
+	text-align: center;
+}
+
+.more-filter-button {
+	position: relative;
+	margin-top: -1px;
+	display: inline-block;
+	vertical-align: top;
+	height: 24px;
+	line-height: 24px;
+	padding: 1px 34px 0 20px;
+	border: 1px solid #e6e6e6;
+	border-top: 0 none;
+	background: #fff;
+	cursor: pointer;
+	color: #666;
+}
+
+.more-filter i {
+	position: absolute;
+	right: 20px;
+	top: 11px;
+	width: 9px;
+	height: 6px;
+	background-position: 0 -37px;
+}
+
+#J_MoreFilter:hover {
+	color: #c00;
+	cursor: pointer;
+}
+
+#J_MoreFilter:hover i {
+	background-position: -79px -74px;
+	background-image:
+		url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png);
+}
+
+.clkafter i {
+	background-position: -68px -37px;
+}
+
+.clkafter:hover i {
+	background-position: -79px -97px !important;
+	background-image:
+		url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png) !important;
+}
+
+
+
+
+.view-more i, .view-more b {
+	background-image:
+		url(//icon.zol-img.com.cn/products/v3/list/list20150210.png);
+	background-repeat: no-repeat;
+}
+
+.view-more {
+	position: absolute;
+	right: 15px;
+	top: 8px;
+	padding: 0 0 0 5px;
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	color: #666;
+}
+
+.view-more i, .view-more b {
+	position: absolute;
+	right: 5px;
+	top: 8px;
+	width: 7px;
+	height: 4px;
+	font: 0/0 arial;
+	background-position: -13px -38px;
+}
+
+.view-more:hover, .multi:hover {
+	color: #c00;
+	text-decoration: none;
+}
+
+.view-more b {
+	background-position: -25px -38px;
+}
+
+.sel-cond-hide {
+	display: none;
+}
+
+
+
+#J_FilterSelected a {
+	max-width: 120px;
+}
+
+
+
+
+
+#sel-cond {
+	height: auto;
+}
+
+#J_FilterSelected {
+	position: relative;
+	max-width: 560px;
+}
+
+.param-selected .reset {
+	position: absolute;
+	top: 0;
+	right: -25px;
+}
+
+
+.pitem:hover {
+	background-color: #fafafa;
+}
+
+
+#pamItem4 {
+	border-bottom: 0;
+}

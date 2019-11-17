@@ -1,3 +1,2131 @@
-body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr,div,i{margin:0;padding:0;}ul,ol{list-style:none;}body{font:12px/1.5 "Microsoft YaHei";color:#666;background:#fff;}fieldset,img{border:0 none;}em{font-style:normal;}a{text-decoration:none;color:#333;}a:hover,.zj-header .more:hover,.news-list a:hover,.dealer .title:hover{color:#c00;text-decoration:underline;}img{display:block;}table{display:table;border-collapse:separate;border-spacing:2px;border-color:grey;}.clear{clear:both;display:block;height:0;visibility:hidden;}.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;font-size:0;}.clearfix{*zoom:1;}table,tr,td,th{border-spacing:0;border-collapse:collapse;}.blue{color:#3891ed;}.navs-box{width:1200px;height:32px;margin:23px auto 10px;background:url(//icon.zol-img.com.cn/zj2011/images/2015/zj20th.png) no-repeat 0 50%;}.navs-box .list{float:left;padding:0 0 0 105px;line-height:34px;}.navs-box .list li{float:left;margin-right:18px;}.navs-box .list .li1 a{padding-left:20px;}.navs-box .list a{float:left;white-space:nowrap;color:#333;position:relative;padding-left:18px;}.navs-box .list a:hover{color:#c00;outline:0 none;}.navs-box .list i{float:left;width:16px;height:16px;margin:3px 3px 0 0;margin-top:2px\9;_margin-right:0;background-image:url(//icon.zol-img.com.cn/channel/channel_nav_icon_2013.png);background-repeat:no-repeat;position:absolute;top:5px;left:0;}.navs-box .list i.icon-recommend{background:url(//icon.zol-img.com.cn/zj2011/images/2015/hand.png) no-repeat;}.navs-box .list .icon-price{background-position:0 2px;}.icon-bbs{background-position:0 -16px;}.icon-mall{background-position:0 -54px;}.navs-box .search-box{float:right;margin-top:1px;height:30px;}.navs-box .skey{float:left;padding:4px;height:22px;width:284px;border:1px solid #ccc;border-right:0 none;font:14px/20px "Microsoft YaHei";color:#999;}.navs-box .sbtn{border:0 none;float:left;width:70px;height:32px;padding-bottom:3px;font:14px/30px 'Microsoft YaHei',arial;color:#fff;cursor:pointer;background:#3891ed;}.navs-box .sbtn:hover{background-color:#307CCA;}.nav{background-color:#3891ed;}.nav .nav-box{width:1200px;height:38px;margin:0 auto;}.nav .navul{line-height:38px;float:left;}.nav .navul li{float:left;}.nav .navul a{padding:0 14px;color:#fffefe;font-size:16px;display:block;}.nav .navul a:hover{background-color:#307bca;text-decoration:none;}.nav .channel{float:right;margin-right:8px;color:#90cdf1;font-size:14px;line-height:38px;}.nav .channel .cname{color:#fff;margin-left:8px;}.wrapper{width:1200px;margin:0 auto;}.week-hot{height:40px;line-height:40px;border-bottom:1px solid #eee;position:relative;overflow:hidden;}.week-hot dt{width:70px;}.week-hot dd{position:absolute;left:70px;width:1130px;top:0;}.week-hot li{display:inline-block;*display:inline;*zoom:1;white-space:nowrap;margin-right:30px;}.parts-head{margin-top:20px;}.parts-head h3{font-size:16px;font-family:'Microsoft YaHei';color:#333;display:inline-block;*display:inline;*zoom:1;}.parts-head i,.parts-list span i,.zj-parts i{color:#f00;font-style:normal;}.parts-list{position:relative;margin:12px 0 20px -10px;font-size:14px;}.parts-list>li{float:left;width:82px;line-height:34px;text-align:center;margin-left:11px;background-color:#fff;}.parts-list li{position:relative;}.parts.pa{position:fixed;z-index:99;left:50%;top:0;margin-left:-620px;background-color:#fafafa;padding:0 20px;border-top:2px solid #3891ed;box-shadow:0 3px 3px #ccc;}.parts.pa .parts-head{display:none;}.parts-list>li>span{display:block;cursor:pointer;border:1px solid #E7E7E7;height:34px;overflow:hidden;}.parts-list>li>span:hover,.parts-list li.hover>span{border-color:#3791ED;background-color:#3791ED;color:#fafafa;padding:;}.parts-list>li>span:hover i,.parts-list li.hover i{color:#fff;}.parts-list>li.more>span{background-image:url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png);background-repeat:no-repeat;padding-right:10px;}.parts-list>li.more.hover>span{background-position:0 -70px;}.parts-list b{position:absolute;z-index:1;width:21px;height:14px;right:0;bottom:0;background:url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) -65px -536px no-repeat;display:none;}.parts-list li.on b{display:block;}.parts-list ul{display:none;border:1px solid #E7E7E7;background-color:#FAFAFA;color:#333;border-bottom:0;position:absolute;left:0;top:36px;width:80px;}.parts-list ul li{border-bottom:1px solid #E7E7E7;}.parts-list ul span{display:block;cursor:pointer;}.parts-list ul span:hover{color:#1f4f88;background-color:#fff;}.parts-list li.hover ul{display:block;}.parts-list>li.active>span{border-color:#3791ED;}.zj-parts{width:498px;float:left;border:#E7E7E7 1px solid;}.zj-parts-head{background-color:#3791ED;color:#fff;font-size:16px;line-height:45px;text-align:center;}.zj-login{line-height:24px;padding:5px 10px;}.login-btn{display:inline-block;*display:inline;*zoom:1;background-color:#E4393B;width:55px;text-align:center;color:#fff;}.login-btn:hover{color:#fff;text-decoration:none;}.zj-parts ul{border-bottom:1px solid #E7E7E7;}.zj-parts li{border-top:1px solid #E7E7E7;height:40px;padding:16px 20px;position:relative;vertical-align:top;}.zj-parts li:hover,.zj-parts li.active{background-color:#F9F9F9;}.zj-parts .delete{position:absolute;right:0;top:27px;width:20px;height:20px;background:url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) -70px -508px no-repeat;cursor:pointer;display:none;}.zj-parts .delete:hover{background-position:-70px -491px;}.zj-parts li:hover .delete,.zj-parts li.active .delete{display:block;}.zj-parts h3{float:left;width:45px;font:14px/22px 'Microsoft YaHei';margin-top:10px;}.zj-parts .h3-mt0{margin-top:0;width:40px;padding-right:5px;}.zj-parts .pic{width:40px;height:40px;float:left;margin:0 10px;background-image:url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png);}.zj-parts .zj-parts-con{text-align:center;line-height:40px;float:left;width:260px;color:#999;}.zj-parts .link-add{color:#0A4FA1;float:right;line-height:40px;cursor:pointer;}.zj-parts a.link-add:hover{color:#c00;text-decoration:underline;}.zj-parts .link-add.price{color:#E5393B;font-size:14px;}.zj-parts .title{line-height:20px;color:#333;width:204px;word-break:break-all;text-align:left;float:left;}.zj-parts .zj-parts-con span{cursor:pointer;display:inline-block;*display:inline;*zoom:1;width:12px;}.zj-parts .zj-parts-con span:hover{color:#0A4FA1;}.zj-parts .zj-parts-con em{width:30px;text-align:center;display:inline-block;*display:inline;*zoom:1;background-color:#F7F7F7;margin-top:5px;color:#333;line-height:30px;}.zj-parts .other-msg{padding:20px 0 0 20px;}.other-msg .item{margin-bottom:20px;}.other-msg .item .lable{margin:0 20px 8px 0;color:#666;}.other-msg .item .lable b{font-size:14px;font-weight:bold;color:#333;}.other-msg .item .lable font,.item .inst{color:#f33;}.item .inst{display:none;}.item.error .inst{display:inline-block;}.other-msg .item .lable em{float:right;color:#333;}.other-msg .item .type{display:inline-block;width:105px;position:relative;font-size:14px;border:1px solid #E7E7E7;border-radius:2px;height:28px;color:#999;text-align:center;line-height:28px;margin:0 10px 10px 0;}.other-msg .item .type i{display:none;position:absolute;background:url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) -65px -536px no-repeat;width:21px;height:14px;bottom:0;right:0;}.other-msg .item .type.active i{display:block;}.other-msg .item .name{width:460px;height:28px;line-height:28px;}.other-msg .item .name,.instruct,.item .code{border:1px solid #e6e6e6;}.error1{border:1px solid #ff3636!important;}.instruct{width:440px;height:92px;resize:none;padding:9px;}.error2{border:1px solid #3991ed;}.item .code-box{height:30px;position:relative;line-height:30px;}.item .code{width:105px;height:28px;line-height:28px;float:left;}.item .code-img{float:left;}.item .code-img img{float:left;width:76px;height:22px;vertical-align:middle;margin:3px 10px 0;}.item .instruct,.item .name,.item .code{border-radius:3px;}.btn-box{height:50px;padding:10px 0;text-align:center;}.btn-box a,.btn-box span{display:inline-block;height:40px;width:95px;border:1px solid #E7E7E7;color:#999;font-size:16px;text-align:center;line-height:40px;border-radius:3px;margin-left:10px;cursor:pointer;}.btn-box .publish{width:245px;margin:0;}.btn-box a:hover{text-decoration:none;}.btn-box .empty{border-color:#E5393C;color:#E5393C;}.have .btn-box .publish,.have .btn-box .preview{border-color:#4595E5;color:#333;}.have .btn-box .publish:hover,.have .btn-box .preview:hover{background-color:#4595E5;color:#fff;text-decoration:none;}.have .item .type{color:#333;cursor:pointer;}.have .item .type:hover,.other-msg .item .type.active{border-color:#3991EF;}.synch{height:14px;position:relative;margin:8px 0 0 0;line-height:24px;}.synch .instr{color:#333;font:12px/14px "Microsof YaHei";position:absolute;top:3px;left:20px;}.product li .tit font.short-price{position:absolute;top:0;right:26px;}.other-msg .item .type{width:80px\9;*width:78px;}#leftSubSel_28 .pic{background-position:-45px -245px;}#leftSubSel_5 .pic{background-position:0 -105px;}#leftSubSel_3 .pic{background-position:-45px -105px;}#leftSubSel_2 .pic{background-position:0 -150px;}#leftSubSel_626 .pic{background-position:-45px -150px;}#leftSubSel_6 .pic{background-position:0 -195px;}#leftSubSel_10 .pic{background-position:-45px -195px;}#leftSubSel_35 .pic{background-position:0 -245px;}#leftSubSel_67 .pic{background-position:0 -295px;}#leftSubSel_84 .pic{background-position:-45px -295px;}#leftSubSel_33 .pic{background-position:0 -340px;}#leftSubSel_32 .pic{background-position:-45px -340px;}#leftSubSel_100 .pic{background-position:0 -385px;}#leftSubSel_34 .pic{background-position:-45px -385px;}#leftSubSel_96 .pic{background-position:0 -430px;}#leftSubSel_7 .pic{background-position:-45px -430px;}#leftSubSel_42 .pic{background-position:0 -480px;}.zj-parts .pic.img{width:60px;margin:0;background:none;}.zj-parts .pic.img img{display:block;margin:0 auto;height:40px;}.zj-parts .total h3{width:60px;}.zj-parts .total:hover{background:none;}.zj-parts .total span{float:right;margin-top:10px;}.zj-parts .total em{font-size:18px;color:#E5393B;}.zj-lists{width:680px;float:right;}.zj-item1{width:500px;float:left;}.zj-item2{width:680px;float:right;}.zj-header{position:relative;border-bottom:1px solid #E7E7E7;font-size:14px;padding:40px 0 10px;line-height:24px;height:24px;overflow:hidden;margin-bottom:20px;}.zj-header h3{font-size:22px;display:inline-block;*display:inline;*zoom:1;color:#333;margin-right:20px;}.zj-header .more{right:0;position:absolute;}.zj-header .more i{font-family:'simsun';font-style:normal;}.zj-header .blue{margin-right:10px;display:inline-block;*display:inline;*zoom:1;}.pics{margin-right:-20px;position:relative;}.pics li{position:relative;}.pics li .title{display:block;position:absolute;bottom:0;left:0;line-height:38px;text-align:center;width:100%;font-size:14px;height:38px;z-index:1;color:#fff;background:rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#99000000,endcolorstr=#99000000,gradientType=1);}.pics li .title:hover{color:#c00;text-decoration:underline;}.news-list li{padding-left:9px;height:28px;vertical-align:middle;font-size:14px;line-height:28px;font-family:'simsun';color:#ccc;background:url(//icon.zol-img.com.cn/mainpage/2016/index-icon-201603.png) no-repeat -17px -257px;overflow:hidden;}.news-list a{color:#0C4FA3;}.news-list .date{float:right;color:#999;}.zj-item1 .pics li{width:240px;float:left;margin-right:20px;}.zj-item1 .news-list{padding-top:10px;}.zj-item1 .news-list li{width:240px;float:left;}.zj-item2 .pics{width:320px;float:left;}.zj-item2 .news-list{width:345px;float:right;margin-top:-5px;position:relative;}.hint,.hint2{position:fixed;top:50%;left:50%;margin-left:-175px;margin-top:-95px;z-index:1001;width:380px;height:190px;border:5px solid #6b6b6b;background-color:#fff;display:none;}.hint h3,.hint2 h3{position:relative;height:38px;border:1px solid #eee;background-color:#fafafa;padding-left:12px;color:#333;font-size:14px;line-height:38px;}.hint h3 .close,.hint2 h3 .close{display:inline-block;width:23px;height:23px;background:url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png) no-repeat -22px -50px;position:absolute;top:8px;right:8px;cursor:pointer;}.hint h3 .close:hover,.hint2 h3 .close:hover{top:6px;right:11px;background:url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png) no-repeat -22px -95px;}.hint .inst,.hint2 .inst{height:90px;font-size:16px;color:#333;text-align:center;line-height:90px;}.hint .btn-box,.hint2 .btn-box{height:32px;text-align:center;padding-top:0;background-color:#fff;}.hint .btn-box span,.hint2 .btn-box span{display:inline-block;width:72px;height:30px;border-radius:5px;text-align:center;line-height:30px;cursor:pointer;}.hint .btn-box .sure,.hint2 .btn-box .sure{background-color:#277dd6;color:#fff;}.hint .btn-box .sure:hover,.hint2 .btn-box .sure:hover{background-color:#3891ed;}.hint .btn-box .cancle,.hint2 .btn-box .cancle{color:#666;border:1px solid #d8d8d8;}.hint .btn-box .cancle:hover,.hint2 .btn-box .cancle:hover{background-color:#f7f7f7;}.mc{position:fixed;top:0;top:0;z-index:1000;width:100%;height:100%;background-color:#000;opacity:.4;filter:alpha(opacity=40);display:none;}.sconfig-preview{position:absolute;top:10px;left:50%;margin-left:-360px;z-index:1001;width:680px;height:740px;background-color:#fff;padding:0 20px;display:none;}.configuration{width:752px;float:left;}.config-header{line-height:24px;margin-bottom:20px;height:24px;overflow:hidden;}.config-header h3{font-size:16px;float:left;margin-right:20px;}.config-header .lable-nav{width:500px;height:24px;float:left;line-height:22px;}.config-header .lable-nav span{float:left;height:22px;padding:0 2px;font-size:14px;margin-right:20px;}.config-header .lable-nav span.active{border-bottom:2px solid #4694E6;}.config-header .more{margin-right:0;}.inf td{border:1px solid #e6e6e6;margin:0;padding:0;color:#333;position:relative;}.inf td img{margin:10px 6px 0;}.inf td .tit{font-size:16px;height:20px;padding:8px 14px;line-height:23px;overflow:hidden;text-overflow:ellipsis;color:#333;}.inf td a:hover .tit{color:#c00;text-decoration:underline;}.inf td .price,.inf td .other{display:block;overflow:hidden;}.inf a.buy{float:right;color:#3891ed;}.inf a.buy:hover{color:#c00;}.inf td .price{height:22px;font-size:16px;color:#f33;margin-bottom:10px;padding:0 14px;line-height:22px;}.inf td .other{height:60px;background-color:#fafafa;border-top:1px solid #e6e6e6;font-size:14px;color:#666;line-height:60px;}.inf .pic{position:relative;width:250px;}.other .check{display:inline-block;width:104px;height:34px;background-color:#fff;border:1px solid #e6e6e6;text-align:center;line-height:34px;margin:0 20px 0 16px;color:#666;}.other .check:hover{background-color:#fafafa!important;text-decoration:none;}.configuration .mc,.configuration .usemc{position:absolute;top:0;left:0;width:220px;height:293px;}.configuration .mc{padding:26px 15px 0;color:#fff;font-size:14px;background:none;opacity:1;filter:alpha(opacity=100);}.configuration .usemc{display:none;width:250px;height:320px;background-color:#000;filter:alpha(opacity=65);opacity:.65;}.configuration .mc p{height:28px;line-height:28px;overflow:hidden;text-overflow:ellipsis;}.configuration .mc p a{color:#fff;}.configuration .mc p a:hover{color:#f33;text-decoration:underline;}.configuration .mc p:last-child{margin-bottom:20px;}.configuration .mc span{display:inline-block;width:105px;height:34px;line-height:34px;text-align:center;margin:20px 0 0 0;border-radius:3px;cursor:pointer;}.configuration .mc .check2{background-color:#ff5e3c;margin-right:10px!important;}.configuration .mc .check2:hover{background-color:#eb4f2e;}.configuration .mc .review{background-color:#3891ed;}.configuration .mc .review:hover{background-color:#277dd6;}.configuration .inf td .tit:hover{text-decoration:underline;cursor:pointer;}.configuration .mc .check2,.configuration .mc .review{display:inline-block;*display:inline;*zoom:1;width:105px;height:34px;line-height:34px;text-align:center;margin:20px 0 0 0;border-radius:3px;cursor:pointer;color:#fff;text-decoration:none;}.config-hot{width:430px;float:right;}.config-header .side-news-tab{float:right;width:70px;height:5px;overflow:hidden;margin-top:9px;}.config-header .side-news-tab li{float:left;width:25px;height:5px;margin-left:10px;background-color:#CBCBCB;overflow:hidden;}.config-header .side-news-tab li.active{background-color:#4593E5;}.pic-list li{margin-top:20px;overflow:hidden;}.pic-list img{float:left;margin-right:20px;}.pic-list .title{font-size:14px;line-height:24px;}.pic-list .price{font-size:16px;color:#E5393B;}.pic-list .info{color:#656565;line-height:20px;}.dealer{border-top:1px solid #e6e6e6;border-left:1px solid #e6e6e6;}.dealer li{width:203px;height:84px;float:left;overflow:hidden;border-bottom:1px solid #e6e6e6;border-right:1px solid #e6e6e6;padding:3px 5px 0;}.dealer .title{color:#1d56a3;font-size:14px;display:inline-block;*display:inline;*zoom:1;line-height:24px;}.dealer .guarantee-business{background:url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) 0 -532px no-repeat;display:inline-block;*display:inline;*zoom:1;width:16px;height:18px;margin-left:5px;}.dealer span{color:#999;}.dealer .xinyunb{display:inline-block;}.dealer .xinyunb img{float:left;}.dealer .ln{height:18px;overflow:hidden;}.store-promise{display:inline-block;*display:inline;*zoom:1;margin-right:5px;position:relative;padding-left:18px;}.store-promise i{display:block;position:absolute;top:4px;left:0;background:url(//icon.zol-img.com.cn/newshop/store/smallicon.png?t=2) no-repeat;}.store-promise .icon1{background-position:0 0;width:13px;height:10px;top:5px;}.store-promise .icon2{background-position:0 -37px;width:13px;height:13px;}.store-promise .icon3{background-position:0 -11px;width:9px;height:12px;left:3px;}.store-promise .icon4{background-position:0 -51px;width:15px;height:13px;}.store-promise .icon5{background-position:0 -24px;width:15px;height:13px;left:2px;}.store-promise .icon6{background-position:0 -79px;width:11px;height:12px;top:5px;}.store-promise .icon7{background-position:0 -66px;width:15px;height:11px;top:5px;}.store-promise .icon23{background-position:0 -92px;width:13px;height:13px;top:5px;}.store-promise .icon28{background-position:0 -106px;width:11px;height:14px;top:5px;}.store-promise .icon29{background-position:0 -121px;width:11px;height:12px;top:5px;}.v3-compare-box{position:fixed;right:20px;top:50px;z-index:999;width:110px;background:#fff;font-family:'microsoft yahei',arial;_position:absolute;display:none;}.v3-compare-box .v3-compare-box-header{height:30px;background:#4595e6;line-height:30px;}.v3-compare-box-close,.v3-compare-item-del{background:url(//icon.zol-img.com.cn/products/v3/compare-fixedbox-bg.png) no-repeat;}.v3-compare-box-header .v3-compare-box-close{float:right;width:19px;height:19px;overflow:hidden;background-position:1px 5px;margin:6px 5px 0 0;text-indent:-999em;cursor:pointer;}.v3-compare-box-header .v3-compare-box-title{padding-left:10px;color:#fff;font-size:12px;font-weight:normal;}.v3-compare-box-list li{position:relative;padding:4px 10px 5px;border:1px solid #efefef;border-bottom:0 none;}.v3-compare-box-list span{display:block;max-height:36px;_height:36px;color:#333;text-align:left;overflow:hidden;word-break:break-all;word-wrap:break-word;}.v3-compare-box-list .v3-compare-item-del{display:none;position:absolute;top:-1px;right:-1px;width:17px;height:17px;overflow:hidden;background-position:0 -50px;text-indent:-999em;cursor:pointer;}.v3-compare-box-list .pic{display:block;text-align:center;}.v3-compare-box-list .pic img{padding:4px 0;vertical-align:top;margin:0 auto;}.v3-compare-box-buttons a{display:block;width:80px;height:26px;margin:5px auto 0;-webkit-border-radius:2px;border-radius:2px;background:#4595e6;color:#fff!important;font:normal 12px/26px 'microsoft yahei',arial;text-align:center;line-height:26px;cursor:pointer;outline:0 none;text-decoration:none;}#compare-box{padding:10px 0 12px;text-align:center;border:1px solid #efefef;}#v3CompareParamBtn{color:#fff;}.v3-compare-box-buttons .v3-compare-box-clear{display:inline-block;margin:13px 0 0;color:#0a50a1;vertical-align:middle;cursor:pointer;}.v3-compare-box-list li:hover .v3-compare-item-del,.v3-compare-box-list .hover .v3-compare-item-del{display:block;}.v3-compare-box-list li:hover,.v3-compare-box-list .hover{z-index:10;margin-bottom:-1px;border:1px dashed #4595e6;}.v3-compare-box-list li:hover .pic span{color:#c00;text-decoration:underline;}.v3-compare-box-header .v3-compare-box-close:hover{background-color:#297acc;}.v3-compare-box-buttons button:hover{background:#2575C6;}.v3-compare-box-buttons .v3-compare-box-clear:hover{color:#c00;}.sconfig-preview{position:absolute;top:10px;left:50%;margin-left:-360px;z-index:1001;width:680px;height:740px;background-color:#fff;padding:0 20px;display:none;}.sconfig-preview .title{color:#333;font-weight:bold;font-size:16px;height:44px;border-bottom:1px solid #ccc;line-height:44px;position:relative;}.sconfig-preview .title .close{display:inline-block;width:11px;height:11px;position:absolute;right:1px;top:20px;background:url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png) no-repeat -23px -54px;cursor:pointer;}.sconfig-preview .title .close:hover{background:url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png) no-repeat -23px -74px;}.sconfig-preview .tit{height:62px;color:#333;font-size:22px;position:relative;line-height:62px;}.sconfig-preview .print{position:absolute;top:0;right:0;color:#666;font-size:12px;}.sconfig-preview .print i{display:inline-block;width:20px;height:13px;background:url(//icon.zol-img.com.cn/zj2011/images/2015/icons2.png)no-repeat 0 0;}.sconfig-preview .print:hover{color:#c00;}.sconfig-preview .print:hover i{background:url(//icon.zol-img.com.cn/zj2011/images/2015/icons2.png)no-repeat 0 -25px;}.sconfig-preview .sp-nav{height:32px;background-color:#fafafa;border-bottom:1px solid #d9d9d9;margin-bottom:10px;}.sconfig-preview .sp-nav a,.sconfig-preview .sp-nav span{display:inline-block;width:88px;height:32px;text-align:center;font-size:14px;line-height:32px;}.sconfig-preview .sp-nav .nav-curr{color:#333;border:1px solid #d9d9d9;border-bottom:0;background-color:#fff;}.sconfig-preview .sp-nav a{color:#666;}.sconfig-preview .parameters{height:522px;overflow:hidden;}.config-list{display:none;height:380px;overflow:hidden;overflow-y:auto;}.config-list .cl-head{height:28px;background-color:#fafafa;}.cl-head span,.cl-head a,.cl-content span,.cl-content a{display:inline-block;}.config-list .cl-head span{height:28px;color:#666;text-align:center;line-height:28px;}.config-list .cl-head span.sp1,.config-list .cl-content .cont1{width:100px;text-align:left;padding-left:28px;}.config-list .cl-head span.sp2,.config-list .cl-content .cont2{width:236px;overflow:hidden;}.config-list .cl-head span.sp3,.config-list .cl-content .cont3{width:80px;}.config-list .cl-head span.sp4,.config-list .cl-content .cont4{width:88px;}.config-list .cl-head span.sp5,.config-list .cl-content .cont5{width:108px;}.config-list .cl-content{padding:14px 0 9px 0;}.config-list .cl-content a,.config-list .cl-content span{font-size:14px;text-align:center;}.config-list .cl-content .cont1,.config-list .cl-content .cont3{color:#333;}.config-list .cl-content .cont2{color:#1f4f88;text-align:left;white-space:nowrap;text-overflow:ellipsis;}.config-list .cl-content .cont4{color:#f33;}.config-list .cl-content .cont5{color:#1f4f88;}.config-list .cl-content .cont2:hover{color:#c00;}.config-list span,.config-list a{overflow:hidden;}.cl-bottom{height:50px;background-color:#fafafa;margin-bottom:10px;}.cl-bottom .copy{display:inline-block;width:90px;height:28px;border:1px solid #d8d8d8;border-radius:3px;color:#666;font-size:14px;text-align:center;margin:10px 10px 10px 20px;background-color:#fff;line-height:28px;}.cl-bottom .instr{color:#999;font-size:12px;}.cl-bottom .totalp{color:#333;font-size:18px;float:right;margin:12px 20px 0 0;}.cl-bottom .totalp font{color:#f33;font-weight:bold;}.parameters .oth{height:32px;color:#666;font-size:14px;line-height:32px;}.parameters .oth span{color:#333;}.sconfig-preview .btn-box{height:36px;text-align:center;padding-top:0;background-color:#fff;}.sconfig-preview .btn-box a,.sconfig-preview .btn-box span{display:inline-block;width:105px;height:36px;font-size:14px;border-radius:5px;text-align:center;line-height:36px;}.sconfig-preview .btn-box .subm{color:#fff;background-color:#ff5e3c;margin-right:10px;}.sconfig-preview .btn-box .edite{color:#666;border:1px solid #d8d8d8;cursor:pointer;}.sconfig-preview .parame-box{height:380px;overflow:hidden;overflow-y:auto;}.param1{display:none;}.param{height:380px;overflow:hidden;overflow-y:auto;border-top:1px solid #e6e6e6;}.param .cl-head{height:38px;background-color:#fafafa;text-align:center;border-left:1px solid #e6e6e6;font-size:14px;}.param .cl-head a,.param .cl-head span,.param .cl-content span{border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;float:left;}.param .cl-head a,.param .cl-head span{height:38px;line-height:38px;}.param .cl-head .sp1{width:18%;color:#333;}.param .cl-head .sp2{width:81.7%;color:#1f4f88;}.param .cl-content,.param .cl-content span{color:#666;height:34px;text-align:center;line-height:34px;}.param .cl-content span{height:32px;line-height:32px;}.param .cl-content{border-left:1px solid #e6e6e6;}.param .cl-content .cont1{width:18%;}.param .cl-content .cont2{width:81.7%;}.param2 .cl-head .sp2,.param2 .cl-content .cont2{width:34%;white-space:nowrap;overflow:hidden;*width:32%;}.param2 .cl-head .sp3,.param2 .cl-content .cont3{width:13%;}.other-msg .item .lable{*position:relative;}.other-msg .item .lable .inst{*position:absolute;*right:0;*top:0;}.grli .ig img:hover,.pitem .pic img:hover{opacity:.85;filter:alpha(opacity=85);}.xinyunb img{border:0;}.nbJxS img{width:80px;height:60px;margin:6px 10px 0;}.view-more i,.view-more b{background-image:url(//icon.zol-img.com.cn/products/v3/list/list20150210.png);background-repeat:no-repeat;}.view-more{position:absolute;right:15px;top:8px;padding:0 0 0 5px;width:40px;height:20px;line-height:20px;color:#666;}.view-more i,.view-more b{position:absolute;right:5px;top:8px;width:7px;height:4px;font:0/0 arial;background-position:-13px -38px;}.view-more:hover,.multi:hover{color:#c00;text-decoration:none;}.view-more b{background-position:-25px -38px;}.sel-cond-hide{display:none;}.tiaojian-color{background-color:#3891ed;color:#fff;text-decoration:none;}#J_FilterSelected a{max-width:120px;}.have .msg img{width:90px;height:60px;}.have .product li .tit .short-msg{color:#666;font:12px "Microsof YaHei";margin:0 15px 0 10px;width:116px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.list-box .nothing{position:relative;}.list-box .nothing p.msg{width:100%;height:30px;background-color:#f5f5f5;position:absolute;bottom:0;left:0;color:#666;font-size:14px;text-align:center;line-height:30px;}#sel-cond{height:auto;}#J_FilterSelected{position:relative;max-width:560px;}.param-selected .reset{position:absolute;top:0;right:-25px;}.have .product li .tit{border-bottom:1px solid #fff;}.zol20th{float:left;width:50px;height:36px;margin:-6px 0 0 226px;background:url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png) no-repeat center;}
-.freeret{position: relative;top:82px;left:410px;}
-.forgetpsw{position: relative;top:210px;left:360px;}
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p,
+	blockquote, pre, form, fieldset, legend, input, button, textarea, hr,
+	div, i {
+	margin: 0;
+	padding: 0;
+}
+
+.conditions {
+	width: 670px;
+	height: 1074px;
+	float: left;
+	border: #E7E7E7 1px solid;
+	float: left;
+}
+
+
+ul, ol {
+	list-style: none;
+}
+
+body {
+	font: 12px/1.5 "Microsoft YaHei";
+	color: #666;
+	background: #fff;
+}
+
+fieldset, img {
+	border: 0 none;
+}
+
+em {
+	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover, .zj-header .more:hover, .news-list a:hover, .dealer .title:hover
+	{
+	color: #c00;
+	text-decoration: underline;
+}
+
+img {
+	display: block;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: grey;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	font-size: 0;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+table, tr, td, th {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.blue {
+	color: #3891ed;
+}
+
+.navs-box {
+	width: 1200px;
+	height: 32px;
+	margin: 23px auto 10px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/zj20th.png)
+		no-repeat 0 50%;
+}
+
+.navs-box .list {
+	float: left;
+	padding: 0 0 0 105px;
+	line-height: 34px;
+}
+
+.navs-box .list li {
+	float: left;
+	margin-right: 18px;
+}
+
+.navs-box .list .li1 a {
+	padding-left: 20px;
+}
+
+.navs-box .list a {
+	float: left;
+	white-space: nowrap;
+	color: #333;
+	position: relative;
+	padding-left: 18px;
+}
+
+.navs-box .list a:hover {
+	color: #c00;
+	outline: 0 none;
+}
+
+.navs-box .list i {
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin: 3px 3px 0 0;
+	margin-top: 2px\9;
+	_margin-right: 0;
+	background-image:
+		url(//icon.zol-img.com.cn/channel/channel_nav_icon_2013.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 5px;
+	left: 0;
+}
+
+.navs-box .list i.icon-recommend {
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/hand.png)
+		no-repeat;
+}
+
+.navs-box .list .icon-price {
+	background-position: 0 2px;
+}
+
+.icon-bbs {
+	background-position: 0 -16px;
+}
+
+.icon-mall {
+	background-position: 0 -54px;
+}
+
+.navs-box .search-box {
+	float: right;
+	margin-top: 1px;
+	height: 30px;
+}
+
+.navs-box .skey {
+	float: left;
+	padding: 4px;
+	height: 22px;
+	width: 284px;
+	border: 1px solid #ccc;
+	border-right: 0 none;
+	font: 14px/20px "Microsoft YaHei";
+	color: #999;
+}
+
+.navs-box .sbtn {
+	border: 0 none;
+	float: left;
+	width: 70px;
+	height: 32px;
+	padding-bottom: 3px;
+	font: 14px/30px 'Microsoft YaHei', arial;
+	color: #fff;
+	cursor: pointer;
+	background: #3891ed;
+}
+
+.navs-box .sbtn:hover {
+	background-color: #307CCA;
+}
+
+.nav {
+	background-color: #3891ed;
+}
+
+.nav .nav-box {
+	width: 1200px;
+	height: 38px;
+	margin: 0 auto;
+}
+
+.nav .navul {
+	line-height: 38px;
+	float: left;
+}
+
+.nav .navul li {
+	float: left;
+}
+
+.nav .navul a {
+	padding: 0 14px;
+	color: #fffefe;
+	font-size: 16px;
+	display: block;
+}
+
+.nav .navul a:hover {
+	background-color: #307bca;
+	text-decoration: none;
+}
+
+.nav .channel {
+	float: right;
+	margin-right: 8px;
+	color: #90cdf1;
+	font-size: 14px;
+	line-height: 38px;
+}
+
+.nav .channel .cname {
+	color: #fff;
+	margin-left: 8px;
+}
+
+.wrapper {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.week-hot {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	overflow: hidden;
+}
+
+.week-hot dt {
+	width: 70px;
+}
+
+.week-hot dd {
+	position: absolute;
+	left: 70px;
+	width: 1130px;
+	top: 0;
+}
+
+.week-hot li {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	white-space: nowrap;
+	margin-right: 30px;
+}
+
+.parts-head {
+	margin-top: 20px;
+}
+
+.parts-head h3 {
+	font-size: 16px;
+	font-family: 'Microsoft YaHei';
+	color: #333;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+.parts-head i, .parts-list span i, .zj-parts i {
+	color: #f00;
+	font-style: normal;
+}
+
+.parts-list {
+	position: relative;
+	margin: 12px 0 20px -10px;
+	font-size: 14px;
+}
+
+.parts-list>li {
+	float: left;
+	width: 82px;
+	line-height: 34px;
+	text-align: center;
+	margin-left: 11px;
+	background-color: #fff;
+}
+
+.parts-list li {
+	position: relative;
+}
+
+.parts.pa {
+	position: fixed;
+	z-index: 99;
+	left: 50%;
+	top: 0;
+	margin-left: -620px;
+	background-color: #fafafa;
+	padding: 0 20px;
+	border-top: 2px solid #3891ed;
+	box-shadow: 0 3px 3px #ccc;
+}
+
+.parts.pa .parts-head {
+	display: none;
+}
+
+.parts-list>li>span {
+	display: block;
+	cursor: pointer;
+	border: 1px solid #E7E7E7;
+	height: 34px;
+	overflow: hidden;
+}
+
+.parts-list>li>span:hover, .parts-list li.hover>span {
+	border-color: #3791ED;
+	background-color: #3791ED;
+	color: #fafafa;
+	padding:;
+}
+
+.parts-list>li>span:hover i, .parts-list li.hover i {
+	color: #fff;
+}
+
+.parts-list>li.more>span {
+	background-image: url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png);
+	background-repeat: no-repeat;
+	padding-right: 10px;
+}
+
+.parts-list>li.more.hover>span {
+	background-position: 0 -70px;
+}
+
+.parts-list b {
+	position: absolute;
+	z-index: 1;
+	width: 21px;
+	height: 14px;
+	right: 0;
+	bottom: 0;
+	background: url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) -65px
+		-536px no-repeat;
+	display: none;
+}
+
+.parts-list li.on b {
+	display: block;
+}
+
+.parts-list ul {
+	display: none;
+	border: 1px solid #E7E7E7;
+	background-color: #FAFAFA;
+	color: #333;
+	border-bottom: 0;
+	position: absolute;
+	left: 0;
+	top: 36px;
+	width: 80px;
+}
+
+.parts-list ul li {
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.parts-list ul span {
+	display: block;
+	cursor: pointer;
+}
+
+.parts-list ul span:hover {
+	color: #1f4f88;
+	background-color: #fff;
+}
+
+.parts-list li.hover ul {
+	display: block;
+}
+
+.parts-list>li.active>span {
+	border-color: #3791ED;
+}
+
+.zj-parts {
+	width: 498px;
+	float: left;
+	border: #E7E7E7 1px solid;
+	margin-right: 20px;
+}
+
+.zj-parts-head {
+	background-color: #3791ED;
+	color: #fff;
+	font-size: 16px;
+	line-height: 45px;
+	text-align: center;
+}
+
+.zj-login {
+	line-height: 24px;
+	padding: 5px 10px;
+}
+
+.login-btn {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	background-color: #E4393B;
+	width: 55px;
+	text-align: center;
+	color: #fff;
+}
+
+.login-btn:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.zj-parts ul {
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.zj-parts li {
+	border-top: 1px solid #E7E7E7;
+	height: 40px;
+	padding: 16px 20px;
+	position: relative;
+	vertical-align: top;
+}
+
+.zj-parts li:hover, .zj-parts li.active {
+	background-color: #F9F9F9;
+}
+
+.zj-parts .delete {
+	position: absolute;
+	right: 0;
+	top: 27px;
+	width: 20px;
+	height: 20px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) -70px
+		-508px no-repeat;
+	cursor: pointer;
+	display: none;
+}
+
+.zj-parts .delete:hover {
+	background-position: -70px -491px;
+}
+
+.zj-parts li:hover .delete, .zj-parts li.active .delete {
+	display: block;
+}
+
+.zj-parts h3 {
+	float: left;
+	width: 45px;
+	font: 14px/22px 'Microsoft YaHei';
+	margin-top: 10px;
+}
+
+.zj-parts .h3-mt0 {
+	margin-top: 0;
+	width: 40px;
+	padding-right: 5px;
+}
+
+.zj-parts .pic {
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin: 0 10px;
+	background-image: url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png);
+}
+
+.zj-parts .zj-parts-con {
+	text-align: center;
+	line-height: 40px;
+	float: left;
+	width: 260px;
+	color: #999;
+}
+
+.zj-parts .link-add {
+	color: #0A4FA1;
+	float: right;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+.zj-parts a.link-add:hover {
+	color: #c00;
+	text-decoration: underline;
+}
+
+.zj-parts .link-add.price {
+	color: #E5393B;
+	font-size: 14px;
+}
+
+.zj-parts .title {
+	line-height: 20px;
+	color: #333;
+	width: 204px;
+	word-break: break-all;
+	text-align: left;
+	float: left;
+}
+
+.zj-parts .zj-parts-con span {
+	cursor: pointer;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 12px;
+}
+
+.zj-parts .zj-parts-con span:hover {
+	color: #0A4FA1;
+}
+
+.zj-parts .zj-parts-con em {
+	width: 30px;
+	text-align: center;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	background-color: #F7F7F7;
+	margin-top: 5px;
+	color: #333;
+	line-height: 30px;
+}
+
+.zj-parts .other-msg {
+	padding: 20px 0 0 20px;
+}
+
+.other-msg .item {
+	margin-bottom: 20px;
+}
+
+.other-msg .item .lable {
+	margin: 0 20px 8px 0;
+	color: #666;
+}
+
+.other-msg .item .lable b {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+}
+
+.other-msg .item .lable font, .item .inst {
+	color: #f33;
+}
+
+.item .inst {
+	display: none;
+}
+
+.item.error .inst {
+	display: inline-block;
+}
+
+.other-msg .item .lable em {
+	float: right;
+	color: #333;
+}
+
+.other-msg .item .type {
+	display: inline-block;
+	width: 105px;
+	position: relative;
+	font-size: 14px;
+	border: 1px solid #E7E7E7;
+	border-radius: 2px;
+	height: 28px;
+	color: #999;
+	text-align: center;
+	line-height: 28px;
+	margin: 0 10px 10px 0;
+}
+
+.other-msg .item .type i {
+	display: none;
+	position: absolute;
+	background: url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) -65px
+		-536px no-repeat;
+	width: 21px;
+	height: 14px;
+	bottom: 0;
+	right: 0;
+}
+
+.other-msg .item .type.active i {
+	display: block;
+}
+
+.other-msg .item .name {
+	width: 460px;
+	height: 28px;
+	line-height: 28px;
+}
+
+.other-msg .item .name, .instruct, .item .code {
+	border: 1px solid #e6e6e6;
+}
+
+.error1 {
+	border: 1px solid #ff3636 !important;
+}
+
+.instruct {
+	width: 440px;
+	height: 92px;
+	resize: none;
+	padding: 9px;
+}
+
+.error2 {
+	border: 1px solid #3991ed;
+}
+
+.item .code-box {
+	height: 30px;
+	position: relative;
+	line-height: 30px;
+}
+
+.item .code {
+	width: 105px;
+	height: 28px;
+	line-height: 28px;
+	float: left;
+}
+
+.item .code-img {
+	float: left;
+}
+
+.item .code-img img {
+	float: left;
+	width: 76px;
+	height: 22px;
+	vertical-align: middle;
+	margin: 3px 10px 0;
+}
+
+.item .instruct, .item .name, .item .code {
+	border-radius: 3px;
+}
+
+.btn-box {
+	height: 50px;
+	padding: 10px 0;
+	text-align: center;
+}
+
+.btn-box a, .btn-box span {
+	display: inline-block;
+	height: 40px;
+	width: 95px;
+	border: 1px solid #E7E7E7;
+	color: #999;
+	font-size: 16px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 3px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.btn-box .publish {
+	width: 245px;
+	margin: 0;
+}
+
+.btn-box a:hover {
+	text-decoration: none;
+}
+
+.btn-box .empty {
+	border-color: #E5393C;
+	color: #E5393C;
+}
+
+.have .btn-box .publish, .have .btn-box .preview {
+	border-color: #4595E5;
+	color: #333;
+}
+
+.have .btn-box .publish:hover, .have .btn-box .preview:hover {
+	background-color: #4595E5;
+	color: #fff;
+	text-decoration: none;
+}
+
+.have .item .type {
+	color: #333;
+	cursor: pointer;
+}
+
+.have .item .type:hover, .other-msg .item .type.active {
+	border-color: #3991EF;
+}
+
+.synch {
+	height: 14px;
+	position: relative;
+	margin: 8px 0 0 0;
+	line-height: 24px;
+}
+
+.synch .instr {
+	color: #333;
+	font: 12px/14px "Microsof YaHei";
+	position: absolute;
+	top: 3px;
+	left: 20px;
+}
+
+.product li .tit font.short-price {
+	position: absolute;
+	top: 0;
+	right: 26px;
+}
+
+.other-msg .item .type {
+	width: 80px\9;
+	*width: 78px;
+}
+
+#leftSubSel_28 .pic {
+	background-position: -45px -245px;
+}
+
+#leftSubSel_5 .pic {
+	background-position: 0 -105px;
+}
+
+#leftSubSel_3 .pic {
+	background-position: -45px -105px;
+}
+
+#leftSubSel_2 .pic {
+	background-position: 0 -150px;
+}
+
+#leftSubSel_626 .pic {
+	background-position: -45px -150px;
+}
+
+#leftSubSel_6 .pic {
+	background-position: 0 -195px;
+}
+
+#leftSubSel_10 .pic {
+	background-position: -45px -195px;
+}
+
+#leftSubSel_35 .pic {
+	background-position: 0 -245px;
+}
+
+#leftSubSel_67 .pic {
+	background-position: 0 -295px;
+}
+
+#leftSubSel_84 .pic {
+	background-position: -45px -295px;
+}
+
+#leftSubSel_33 .pic {
+	background-position: 0 -340px;
+}
+
+#leftSubSel_32 .pic {
+	background-position: -45px -340px;
+}
+
+#leftSubSel_100 .pic {
+	background-position: 0 -385px;
+}
+
+#leftSubSel_34 .pic {
+	background-position: -45px -385px;
+}
+
+#leftSubSel_96 .pic {
+	background-position: 0 -430px;
+}
+
+#leftSubSel_7 .pic {
+	background-position: -45px -430px;
+}
+
+#leftSubSel_42 .pic {
+	background-position: 0 -480px;
+}
+
+.zj-parts .pic.img {
+	width: 60px;
+	margin: 0;
+	background: none;
+}
+
+.zj-parts .pic.img img {
+	display: block;
+	margin: 0 auto;
+	height: 40px;
+}
+
+.zj-parts .total h3 {
+	width: 60px;
+}
+
+.zj-parts .total:hover {
+	background: none;
+}
+
+.zj-parts .total span {
+	float: right;
+	margin-top: 10px;
+}
+
+.zj-parts .total em {
+	font-size: 18px;
+	color: #E5393B;
+}
+
+.zj-lists {
+	width: 680px;
+	float: right;
+}
+
+.zj-item1 {
+	width: 500px;
+	float: left;
+}
+
+.zj-item2 {
+	width: 680px;
+	float: right;
+}
+
+.zj-header {
+	position: relative;
+	border-bottom: 1px solid #E7E7E7;
+	font-size: 14px;
+	padding: 40px 0 10px;
+	line-height: 24px;
+	height: 24px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.zj-header h3 {
+	font-size: 22px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	color: #333;
+	margin-right: 20px;
+}
+
+.zj-header .more {
+	right: 0;
+	position: absolute;
+}
+
+.zj-header .more i {
+	font-family: 'simsun';
+	font-style: normal;
+}
+
+.zj-header .blue {
+	margin-right: 10px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+.pics {
+	margin-right: -20px;
+	position: relative;
+}
+
+.pics li {
+	position: relative;
+}
+
+.pics li .title {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	line-height: 38px;
+	text-align: center;
+	width: 100%;
+	font-size: 14px;
+	height: 38px;
+	z-index: 1;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#99000000,
+		endcolorstr=#99000000, gradientType=1);
+}
+
+.pics li .title:hover {
+	color: #c00;
+	text-decoration: underline;
+}
+
+.news-list li {
+	padding-left: 9px;
+	height: 28px;
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 28px;
+	font-family: 'simsun';
+	color: #ccc;
+	background:
+		url(//icon.zol-img.com.cn/mainpage/2016/index-icon-201603.png)
+		no-repeat -17px -257px;
+	overflow: hidden;
+}
+
+.news-list a {
+	color: #0C4FA3;
+}
+
+.news-list .date {
+	float: right;
+	color: #999;
+}
+
+.zj-item1 .pics li {
+	width: 240px;
+	float: left;
+	margin-right: 20px;
+}
+
+.zj-item1 .news-list {
+	padding-top: 10px;
+}
+
+.zj-item1 .news-list li {
+	width: 240px;
+	float: left;
+}
+
+.zj-item2 .pics {
+	width: 320px;
+	float: left;
+}
+
+.zj-item2 .news-list {
+	width: 345px;
+	float: right;
+	margin-top: -5px;
+	position: relative;
+}
+
+.hint, .hint2 {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -175px;
+	margin-top: -95px;
+	z-index: 1001;
+	width: 380px;
+	height: 190px;
+	border: 5px solid #6b6b6b;
+	background-color: #fff;
+	display: none;
+}
+
+.hint h3, .hint2 h3 {
+	position: relative;
+	height: 38px;
+	border: 1px solid #eee;
+	background-color: #fafafa;
+	padding-left: 12px;
+	color: #333;
+	font-size: 14px;
+	line-height: 38px;
+}
+
+.hint h3 .close, .hint2 h3 .close {
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png)
+		no-repeat -22px -50px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+}
+
+.hint h3 .close:hover, .hint2 h3 .close:hover {
+	top: 6px;
+	right: 11px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png)
+		no-repeat -22px -95px;
+}
+
+.hint .inst, .hint2 .inst {
+	height: 90px;
+	font-size: 16px;
+	color: #333;
+	text-align: center;
+	line-height: 90px;
+}
+
+.hint .btn-box, .hint2 .btn-box {
+	height: 32px;
+	text-align: center;
+	padding-top: 0;
+	background-color: #fff;
+}
+
+.hint .btn-box span, .hint2 .btn-box span {
+	display: inline-block;
+	width: 72px;
+	height: 30px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.hint .btn-box .sure, .hint2 .btn-box .sure {
+	background-color: #277dd6;
+	color: #fff;
+}
+
+.hint .btn-box .sure:hover, .hint2 .btn-box .sure:hover {
+	background-color: #3891ed;
+}
+
+.hint .btn-box .cancle, .hint2 .btn-box .cancle {
+	color: #666;
+	border: 1px solid #d8d8d8;
+}
+
+.hint .btn-box .cancle:hover, .hint2 .btn-box .cancle:hover {
+	background-color: #f7f7f7;
+}
+
+.mc {
+	position: fixed;
+	top: 0;
+	top: 0;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: .4;
+	filter: alpha(opacity = 40);
+	display: none;
+}
+
+.sconfig-preview {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -360px;
+	z-index: 1001;
+	width: 680px;
+	height: 740px;
+	background-color: #fff;
+	padding: 0 20px;
+	display: none;
+}
+
+.configuration {
+	width: 752px;
+	float: left;
+}
+
+.config-header {
+	line-height: 24px;
+	margin-bottom: 20px;
+	height: 24px;
+	overflow: hidden;
+}
+
+.config-header h3 {
+	font-size: 16px;
+	float: left;
+	margin-right: 20px;
+}
+
+.config-header .lable-nav {
+	width: 500px;
+	height: 24px;
+	float: left;
+	line-height: 22px;
+}
+
+.config-header .lable-nav span {
+	float: left;
+	height: 22px;
+	padding: 0 2px;
+	font-size: 14px;
+	margin-right: 20px;
+}
+
+.config-header .lable-nav span.active {
+	border-bottom: 2px solid #4694E6;
+}
+
+.config-header .more {
+	margin-right: 0;
+}
+
+.inf td {
+	border: 1px solid #e6e6e6;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	position: relative;
+}
+
+.inf td img {
+	margin: 10px 6px 0;
+}
+
+.inf td .tit {
+	font-size: 16px;
+	height: 20px;
+	padding: 8px 14px;
+	line-height: 23px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #333;
+}
+
+.inf td a:hover .tit {
+	color: #c00;
+	text-decoration: underline;
+}
+
+.inf td .price, .inf td .other {
+	display: block;
+	overflow: hidden;
+}
+
+.inf a.buy {
+	float: right;
+	color: #3891ed;
+}
+
+.inf a.buy:hover {
+	color: #c00;
+}
+
+.inf td .price {
+	height: 22px;
+	font-size: 16px;
+	color: #f33;
+	margin-bottom: 10px;
+	padding: 0 14px;
+	line-height: 22px;
+}
+
+.inf td .other {
+	height: 60px;
+	background-color: #fafafa;
+	border-top: 1px solid #e6e6e6;
+	font-size: 14px;
+	color: #666;
+	line-height: 60px;
+}
+
+.inf .pic {
+	position: relative;
+	width: 250px;
+}
+
+.other .check {
+	display: inline-block;
+	width: 104px;
+	height: 34px;
+	background-color: #fff;
+	border: 1px solid #e6e6e6;
+	text-align: center;
+	line-height: 34px;
+	margin: 0 20px 0 16px;
+	color: #666;
+}
+
+.other .check:hover {
+	background-color: #fafafa !important;
+	text-decoration: none;
+}
+
+.configuration .mc, .configuration .usemc {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 220px;
+	height: 293px;
+}
+
+.configuration .mc {
+	padding: 26px 15px 0;
+	color: #fff;
+	font-size: 14px;
+	background: none;
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+
+.configuration .usemc {
+	display: none;
+	width: 250px;
+	height: 320px;
+	background-color: #000;
+	filter: alpha(opacity = 65);
+	opacity: .65;
+}
+
+.configuration .mc p {
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.configuration .mc p a {
+	color: #fff;
+}
+
+.configuration .mc p a:hover {
+	color: #f33;
+	text-decoration: underline;
+}
+
+.configuration .mc p:last-child {
+	margin-bottom: 20px;
+}
+
+.configuration .mc span {
+	display: inline-block;
+	width: 105px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	margin: 20px 0 0 0;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.configuration .mc .check2 {
+	background-color: #ff5e3c;
+	margin-right: 10px !important;
+}
+
+.configuration .mc .check2:hover {
+	background-color: #eb4f2e;
+}
+
+.configuration .mc .review {
+	background-color: #3891ed;
+}
+
+.configuration .mc .review:hover {
+	background-color: #277dd6;
+}
+
+.configuration .inf td .tit:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.configuration .mc .check2, .configuration .mc .review {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 105px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	margin: 20px 0 0 0;
+	border-radius: 3px;
+	cursor: pointer;
+	color: #fff;
+	text-decoration: none;
+}
+
+.config-hot {
+	width: 430px;
+	float: right;
+}
+
+.config-header .side-news-tab {
+	float: right;
+	width: 70px;
+	height: 5px;
+	overflow: hidden;
+	margin-top: 9px;
+}
+
+.config-header .side-news-tab li {
+	float: left;
+	width: 25px;
+	height: 5px;
+	margin-left: 10px;
+	background-color: #CBCBCB;
+	overflow: hidden;
+}
+
+.config-header .side-news-tab li.active {
+	background-color: #4593E5;
+}
+
+.pic-list li {
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+.pic-list img {
+	float: left;
+	margin-right: 20px;
+}
+
+.pic-list .title {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.pic-list .price {
+	font-size: 16px;
+	color: #E5393B;
+}
+
+.pic-list .info {
+	color: #656565;
+	line-height: 20px;
+}
+
+.dealer {
+	border-top: 1px solid #e6e6e6;
+	border-left: 1px solid #e6e6e6;
+}
+
+.dealer li {
+	width: 203px;
+	height: 84px;
+	float: left;
+	overflow: hidden;
+	border-bottom: 1px solid #e6e6e6;
+	border-right: 1px solid #e6e6e6;
+	padding: 3px 5px 0;
+}
+
+.dealer .title {
+	color: #1d56a3;
+	font-size: 14px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	line-height: 24px;
+}
+
+.dealer .guarantee-business {
+	background: url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png) 0
+		-532px no-repeat;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 16px;
+	height: 18px;
+	margin-left: 5px;
+}
+
+.dealer span {
+	color: #999;
+}
+
+.dealer .xinyunb {
+	display: inline-block;
+}
+
+.dealer .xinyunb img {
+	float: left;
+}
+
+.dealer .ln {
+	height: 18px;
+	overflow: hidden;
+}
+
+.store-promise {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin-right: 5px;
+	position: relative;
+	padding-left: 18px;
+}
+
+.store-promise i {
+	display: block;
+	position: absolute;
+	top: 4px;
+	left: 0;
+	background: url(//icon.zol-img.com.cn/newshop/store/smallicon.png?t=2)
+		no-repeat;
+}
+
+.store-promise .icon1 {
+	background-position: 0 0;
+	width: 13px;
+	height: 10px;
+	top: 5px;
+}
+
+.store-promise .icon2 {
+	background-position: 0 -37px;
+	width: 13px;
+	height: 13px;
+}
+
+.store-promise .icon3 {
+	background-position: 0 -11px;
+	width: 9px;
+	height: 12px;
+	left: 3px;
+}
+
+.store-promise .icon4 {
+	background-position: 0 -51px;
+	width: 15px;
+	height: 13px;
+}
+
+.store-promise .icon5 {
+	background-position: 0 -24px;
+	width: 15px;
+	height: 13px;
+	left: 2px;
+}
+
+.store-promise .icon6 {
+	background-position: 0 -79px;
+	width: 11px;
+	height: 12px;
+	top: 5px;
+}
+
+.store-promise .icon7 {
+	background-position: 0 -66px;
+	width: 15px;
+	height: 11px;
+	top: 5px;
+}
+
+.store-promise .icon23 {
+	background-position: 0 -92px;
+	width: 13px;
+	height: 13px;
+	top: 5px;
+}
+
+.store-promise .icon28 {
+	background-position: 0 -106px;
+	width: 11px;
+	height: 14px;
+	top: 5px;
+}
+
+.store-promise .icon29 {
+	background-position: 0 -121px;
+	width: 11px;
+	height: 12px;
+	top: 5px;
+}
+
+.v3-compare-box {
+	position: fixed;
+	right: 20px;
+	top: 50px;
+	z-index: 999;
+	width: 110px;
+	background: #fff;
+	font-family: 'microsoft yahei', arial;
+	_position: absolute;
+	display: none;
+}
+
+.v3-compare-box .v3-compare-box-header {
+	height: 30px;
+	background: #4595e6;
+	line-height: 30px;
+}
+
+.v3-compare-box-close, .v3-compare-item-del {
+	background:
+		url(//icon.zol-img.com.cn/products/v3/compare-fixedbox-bg.png)
+		no-repeat;
+}
+
+.v3-compare-box-header .v3-compare-box-close {
+	float: right;
+	width: 19px;
+	height: 19px;
+	overflow: hidden;
+	background-position: 1px 5px;
+	margin: 6px 5px 0 0;
+	text-indent: -999em;
+	cursor: pointer;
+}
+
+.v3-compare-box-header .v3-compare-box-title {
+	padding-left: 10px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.v3-compare-box-list li {
+	position: relative;
+	padding: 4px 10px 5px;
+	border: 1px solid #efefef;
+	border-bottom: 0 none;
+}
+
+.v3-compare-box-list span {
+	display: block;
+	max-height: 36px;
+	_height: 36px;
+	color: #333;
+	text-align: left;
+	overflow: hidden;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.v3-compare-box-list .v3-compare-item-del {
+	display: none;
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	width: 17px;
+	height: 17px;
+	overflow: hidden;
+	background-position: 0 -50px;
+	text-indent: -999em;
+	cursor: pointer;
+}
+
+.v3-compare-box-list .pic {
+	display: block;
+	text-align: center;
+}
+
+.v3-compare-box-list .pic img {
+	padding: 4px 0;
+	vertical-align: top;
+	margin: 0 auto;
+}
+
+.v3-compare-box-buttons a {
+	display: block;
+	width: 80px;
+	height: 26px;
+	margin: 5px auto 0;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #4595e6;
+	color: #fff !important;
+	font: normal 12px/26px 'microsoft yahei', arial;
+	text-align: center;
+	line-height: 26px;
+	cursor: pointer;
+	outline: 0 none;
+	text-decoration: none;
+}
+
+#compare-box {
+	padding: 10px 0 12px;
+	text-align: center;
+	border: 1px solid #efefef;
+}
+
+#v3CompareParamBtn {
+	color: #fff;
+}
+
+.v3-compare-box-buttons .v3-compare-box-clear {
+	display: inline-block;
+	margin: 13px 0 0;
+	color: #0a50a1;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.v3-compare-box-list li:hover .v3-compare-item-del, .v3-compare-box-list .hover .v3-compare-item-del
+	{
+	display: block;
+}
+
+.v3-compare-box-list li:hover, .v3-compare-box-list .hover {
+	z-index: 10;
+	margin-bottom: -1px;
+	border: 1px dashed #4595e6;
+}
+
+.v3-compare-box-list li:hover .pic span {
+	color: #c00;
+	text-decoration: underline;
+}
+
+.v3-compare-box-header .v3-compare-box-close:hover {
+	background-color: #297acc;
+}
+
+.v3-compare-box-buttons button:hover {
+	background: #2575C6;
+}
+
+.v3-compare-box-buttons .v3-compare-box-clear:hover {
+	color: #c00;
+}
+
+.sconfig-preview {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -360px;
+	z-index: 1001;
+	width: 680px;
+	height: 740px;
+	background-color: #fff;
+	padding: 0 20px;
+	display: none;
+}
+
+.sconfig-preview .title {
+	color: #333;
+	font-weight: bold;
+	font-size: 16px;
+	height: 44px;
+	border-bottom: 1px solid #ccc;
+	line-height: 44px;
+	position: relative;
+}
+
+.sconfig-preview .title .close {
+	display: inline-block;
+	width: 11px;
+	height: 11px;
+	position: absolute;
+	right: 1px;
+	top: 20px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png)
+		no-repeat -23px -54px;
+	cursor: pointer;
+}
+
+.sconfig-preview .title .close:hover {
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/cj-iocns.png)
+		no-repeat -23px -74px;
+}
+
+.sconfig-preview .tit {
+	height: 62px;
+	color: #333;
+	font-size: 22px;
+	position: relative;
+	line-height: 62px;
+}
+
+.sconfig-preview .print {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #666;
+	font-size: 12px;
+}
+
+.sconfig-preview .print i {
+	display: inline-block;
+	width: 20px;
+	height: 13px;
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/icons2.png)
+		no-repeat 0 0;
+}
+
+.sconfig-preview .print:hover {
+	color: #c00;
+}
+
+.sconfig-preview .print:hover i {
+	background: url(//icon.zol-img.com.cn/zj2011/images/2015/icons2.png)
+		no-repeat 0 -25px;
+}
+
+.sconfig-preview .sp-nav {
+	height: 32px;
+	background-color: #fafafa;
+	border-bottom: 1px solid #d9d9d9;
+	margin-bottom: 10px;
+}
+
+.sconfig-preview .sp-nav a, .sconfig-preview .sp-nav span {
+	display: inline-block;
+	width: 88px;
+	height: 32px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 32px;
+}
+
+.sconfig-preview .sp-nav .nav-curr {
+	color: #333;
+	border: 1px solid #d9d9d9;
+	border-bottom: 0;
+	background-color: #fff;
+}
+
+.sconfig-preview .sp-nav a {
+	color: #666;
+}
+
+.sconfig-preview .parameters {
+	height: 522px;
+	overflow: hidden;
+}
+
+.config-list {
+	display: none;
+	height: 380px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.config-list .cl-head {
+	height: 28px;
+	background-color: #fafafa;
+}
+
+.cl-head span, .cl-head a, .cl-content span, .cl-content a {
+	display: inline-block;
+}
+
+.config-list .cl-head span {
+	height: 28px;
+	color: #666;
+	text-align: center;
+	line-height: 28px;
+}
+
+.config-list .cl-head span.sp1, .config-list .cl-content .cont1 {
+	width: 100px;
+	text-align: left;
+	padding-left: 28px;
+}
+
+.config-list .cl-head span.sp2, .config-list .cl-content .cont2 {
+	width: 236px;
+	overflow: hidden;
+}
+
+.config-list .cl-head span.sp3, .config-list .cl-content .cont3 {
+	width: 80px;
+}
+
+.config-list .cl-head span.sp4, .config-list .cl-content .cont4 {
+	width: 88px;
+}
+
+.config-list .cl-head span.sp5, .config-list .cl-content .cont5 {
+	width: 108px;
+}
+
+.config-list .cl-content {
+	padding: 14px 0 9px 0;
+}
+
+.config-list .cl-content a, .config-list .cl-content span {
+	font-size: 14px;
+	text-align: center;
+}
+
+.config-list .cl-content .cont1, .config-list .cl-content .cont3 {
+	color: #333;
+}
+
+.config-list .cl-content .cont2 {
+	color: #1f4f88;
+	text-align: left;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.config-list .cl-content .cont4 {
+	color: #f33;
+}
+
+.config-list .cl-content .cont5 {
+	color: #1f4f88;
+}
+
+.config-list .cl-content .cont2:hover {
+	color: #c00;
+}
+
+.config-list span, .config-list a {
+	overflow: hidden;
+}
+
+.cl-bottom {
+	height: 50px;
+	background-color: #fafafa;
+	margin-bottom: 10px;
+}
+
+.cl-bottom .copy {
+	display: inline-block;
+	width: 90px;
+	height: 28px;
+	border: 1px solid #d8d8d8;
+	border-radius: 3px;
+	color: #666;
+	font-size: 14px;
+	text-align: center;
+	margin: 10px 10px 10px 20px;
+	background-color: #fff;
+	line-height: 28px;
+}
+
+.cl-bottom .instr {
+	color: #999;
+	font-size: 12px;
+}
+
+.cl-bottom .totalp {
+	color: #333;
+	font-size: 18px;
+	float: right;
+	margin: 12px 20px 0 0;
+}
+
+.cl-bottom .totalp font {
+	color: #f33;
+	font-weight: bold;
+}
+
+.parameters .oth {
+	height: 32px;
+	color: #666;
+	font-size: 14px;
+	line-height: 32px;
+}
+
+.parameters .oth span {
+	color: #333;
+}
+
+.sconfig-preview .btn-box {
+	height: 36px;
+	text-align: center;
+	padding-top: 0;
+	background-color: #fff;
+}
+
+.sconfig-preview .btn-box a, .sconfig-preview .btn-box span {
+	display: inline-block;
+	width: 105px;
+	height: 36px;
+	font-size: 14px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 36px;
+}
+
+.sconfig-preview .btn-box .subm {
+	color: #fff;
+	background-color: #ff5e3c;
+	margin-right: 10px;
+}
+
+.sconfig-preview .btn-box .edite {
+	color: #666;
+	border: 1px solid #d8d8d8;
+	cursor: pointer;
+}
+
+.sconfig-preview .parame-box {
+	height: 380px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.param1 {
+	display: none;
+}
+
+.param {
+	height: 380px;
+	overflow: hidden;
+	overflow-y: auto;
+	border-top: 1px solid #e6e6e6;
+}
+
+.param .cl-head {
+	height: 38px;
+	background-color: #fafafa;
+	text-align: center;
+	border-left: 1px solid #e6e6e6;
+	font-size: 14px;
+}
+
+.param .cl-head a, .param .cl-head span, .param .cl-content span {
+	border-right: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+	float: left;
+}
+
+.param .cl-head a, .param .cl-head span {
+	height: 38px;
+	line-height: 38px;
+}
+
+.param .cl-head .sp1 {
+	width: 18%;
+	color: #333;
+}
+
+.param .cl-head .sp2 {
+	width: 81.7%;
+	color: #1f4f88;
+}
+
+.param .cl-content, .param .cl-content span {
+	color: #666;
+	height: 34px;
+	text-align: center;
+	line-height: 34px;
+}
+
+.param .cl-content span {
+	height: 32px;
+	line-height: 32px;
+}
+
+.param .cl-content {
+	border-left: 1px solid #e6e6e6;
+}
+
+.param .cl-content .cont1 {
+	width: 18%;
+}
+
+.param .cl-content .cont2 {
+	width: 81.7%;
+}
+
+.param2 .cl-head .sp2, .param2 .cl-content .cont2 {
+	width: 34%;
+	white-space: nowrap;
+	overflow: hidden;
+	*width: 32%;
+}
+
+.param2 .cl-head .sp3, .param2 .cl-content .cont3 {
+	width: 13%;
+}
+
+.other-msg .item .lable {
+	*position: relative;
+}
+
+.other-msg .item .lable .inst {
+	*position: absolute;
+	*right: 0;
+	*top: 0;
+}
+
+.grli .ig img:hover, .pitem .pic img:hover {
+	opacity: .85;
+	filter: alpha(opacity = 85);
+}
+
+.xinyunb img {
+	border: 0;
+}
+
+.nbJxS img {
+	width: 80px;
+	height: 60px;
+	margin: 6px 10px 0;
+}
+
+.view-more i, .view-more b {
+	background-image:
+		url(//icon.zol-img.com.cn/products/v3/list/list20150210.png);
+	background-repeat: no-repeat;
+}
+
+.view-more {
+	position: absolute;
+	right: 15px;
+	top: 8px;
+	padding: 0 0 0 5px;
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	color: #666;
+}
+
+.view-more i, .view-more b {
+	position: absolute;
+	right: 5px;
+	top: 8px;
+	width: 7px;
+	height: 4px;
+	font: 0/0 arial;
+	background-position: -13px -38px;
+}
+
+.view-more:hover, .multi:hover {
+	color: #c00;
+	text-decoration: none;
+}
+
+.view-more b {
+	background-position: -25px -38px;
+}
+
+.sel-cond-hide {
+	display: none;
+}
+
+.tiaojian-color {
+	background-color: #3891ed;
+	color: #fff;
+	text-decoration: none;
+}
+
+#J_FilterSelected a {
+	max-width: 120px;
+}
+
+.have .msg img {
+	width: 90px;
+	height: 60px;
+}
+
+.have .product li .tit .short-msg {
+	color: #666;
+	font: 12px "Microsof YaHei";
+	margin: 0 15px 0 10px;
+	width: 116px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.list-box .nothing {
+	position: relative;
+}
+
+.list-box .nothing p.msg {
+	width: 100%;
+	height: 30px;
+	background-color: #f5f5f5;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: #666;
+	font-size: 14px;
+	text-align: center;
+	line-height: 30px;
+}
+
+#sel-cond {
+	height: auto;
+}
+
+#J_FilterSelected {
+	position: relative;
+	max-width: 560px;
+}
+
+.param-selected .reset {
+	position: absolute;
+	top: 0;
+	right: -25px;
+}
+
+.have .product li .tit {
+	border-bottom: 1px solid #fff;
+}
+
+.zol20th {
+	float: left;
+	width: 50px;
+	height: 36px;
+	margin: -6px 0 0 226px;
+	background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png)
+		no-repeat center;
+}
+
+.freeret {
+	position: relative;
+	top: 82px;
+	left: 410px;
+}
+
+.forgetpsw {
+	position: relative;
+	top: 210px;
+	left: 360px;
+}
