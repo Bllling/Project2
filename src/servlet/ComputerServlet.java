@@ -81,7 +81,6 @@ private static final long serialVersionUID = 1L;
 	}
 
 	private void findByPart(HttpServletRequest request, HttpServletResponse response) {
-
 		String sumpriceMin=request.getParameter("sumpriceMin");
 		String sumpriceMax=request.getParameter("sumpriceMax");
 		String rtime=request.getParameter("rtime");

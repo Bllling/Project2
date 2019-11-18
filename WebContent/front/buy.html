@@ -154,6 +154,8 @@
 
 </div>
          </div>   
+         		 <input type="hidden" id="conputerID" value="">
+         		 <input type="hidden" id="uid" value="">
 				 <iframe id="commentsiframe" align="middle" src="comment.html" frameborder="0" width="1350px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: -170px; height: 1180px;" onload="reinitIframe()"></iframe>
      </div>
    </div>
@@ -173,6 +175,10 @@ $(function(){
 	}
 	$.post("../computer",{op:"updateBnumber",id:id},function(data){})
 	$.post("../computer",{op:"findById",id:id},function(data){
+		
+		$("#conputerID").val(id);
+		//alert($("#conputerID").val());
+		$("#uid").val(data.uid);
 		$("#cname").html(data.cname);
 		$("#sumprice").html(data.sumprice);
 		$("#uname").html(data.uname);
@@ -214,10 +220,14 @@ $(function(){
 		
 		 
 	},"json")
+	
+	
 
 })
 	function reinitIframe() { 
 		var iframe = document.getElementById("urlIframe");
+		var Iframeid = location.hash.replace("#","");
+		document.getElementById('commentsiframe').contentWindow.show_comment(Iframeid,"praise");
  			try 
 				{ 
 				var bHeight = iframe.contentWindow.document.body.scrollHeight; 

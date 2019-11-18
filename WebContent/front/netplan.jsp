@@ -486,9 +486,11 @@ function hot(sumpriceMin,sumpriceMax,rtime){
 	 var str = "";
 	 var page=$("#nowpage").html();
      $.post("../computer",{op:"findByPart",type:"bnumber",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime,page:page,rows:"3"},function(data){
-	 $("#list").html("");
+	//console.log(data);
+    	 $("#list").html("");
 	
 	 $.each(data,function(index,item){
+		 console.log(item);
 		str1=$(".name").html();
 		if(str1!=null&&str1.length > 0&&""!=str1){
 			$.post("../usr",{op:"findByID",uid:item.uid},function(data1){

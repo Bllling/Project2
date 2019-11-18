@@ -68,9 +68,65 @@ public class HardWareInfo extends BasicServlet {
 			delGraphics(request, response);
 		} else if ("delBox".equals(op)) {
 			delBox(request, response);
+		} else if ("findCpus".equals(op)) {  //查询排序后的CPU
+			findCpus(request, response);
+		} else if ("findMemorys".equals(op)) {
+			findMemorys(request, response);
+		} else if ("findMotherBoards".equals(op)) {
+			findMotherBoards(request, response);
+		} else if ("findDisks".equals(op)) {
+			findDisks(request, response);
+		} else if ("findGraphics".equals(op)) {
+			findGraphics(request, response);
+		} else if ("findSources".equals(op)) {
+			findSources(request, response);
+		} else if ("findBoxs".equals(op)) {
+			findBoxs(request, response);
 		}
 	}
 	
+	private void findBoxs(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "boxprice", "box", Box.class);
+		
+	}
+
+	//查询排序后的电源
+	private void findSources(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "sourceprice", "source", Source.class);
+		
+	}
+
+	//查询排序后的显卡
+	private void findGraphics(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "graphicsprice", "graphics", Graphics.class);
+	}
+
+	//查询排序后的硬盘
+	private void findDisks(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "diskprice", "disk", Disk.class);
+	}
+
+	//查询排序后的主板
+	private void findMotherBoards(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "motherboardprice", "motherboard", MotherBoard.class);
+	}
+
+	//查询排序后的内存
+	private void findMemorys(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "memoryprice", "memory", Memory.class);
+	}
+
+	//查询排序后的CPU
+	private void findCpus(HttpServletRequest request, HttpServletResponse response) {
+		findHardWares(request, response, "cpuprice", "cpu", Cpu.class);
+	}
+	
+	private void findHardWares(HttpServletRequest request, HttpServletResponse response, String priceName, String formName, Class<?> c ) {
+		String type = request.getParameter("type");
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.findHardWares(priceName, formName, type, c));
+	}
+
 	//删除机箱
 	private void delBox(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));

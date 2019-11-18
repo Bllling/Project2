@@ -1,5 +1,6 @@
 package biz;
 
+import java.util.List;
 import java.util.Map;
 
 import entity.Box;
@@ -11,6 +12,16 @@ import entity.MotherBoard;
 import entity.Source;
 
 public interface IHardwareBiz {
+	
+	/**
+	 * 查询所有硬件 通过点赞数或使用次数排序
+	 * @param priceName 价格名称
+	 * @param formName  表名
+	 * @param type      排序类型
+	 * @param c         类名
+	 * @return
+	 */
+	public <T> List<T> findHardWares(String priceName, String formName, String type, Class<?> c);
 	
 	/**
 	 * 通过表名和id来删除硬件

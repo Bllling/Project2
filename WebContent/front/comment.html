@@ -63,8 +63,13 @@
 			
 			
 		}
-		.a1：hower{
+		.a1:hover{
 			cursor: pointer;
+			background: url("../images/hottestComment-bg.png") no-repeat  0  -70px;
+			color: red;
+		}
+		.selectComment:hover{
+			color: red;
 		}
 	</style>
 </head>
@@ -72,42 +77,86 @@
 	<p class="topp">我要评论</p>
 	<div>
 		<textarea rows="7" cols="131" placeholder="我有话说"   id="mytext"></textarea>
-		<input type="button" value="发表评论" class="btn" onClick="login()">
+		<input type="button" value="发表评论" class="btn" onClick="SubmitComment()">
 	</div>
-	<div class="content">
+	<div class="content" id="comment">
 		<div class="content1">
 	    	<ul>
-				<li style="margin-left: -30px;">热门评论</li>
-				<li>最新评论</li>
+				<li class="selectComment" onclick="sort_hotComment()" style="margin-left: -30px;">热门评论</li>
+				<li class="selectComment" onclick="sort_NewComment()">最新评论</li>
 			</ul>
-		</div>
-		
-		<div class="comment">
-			
-			<img src="../images/null.jpg" class="img1">
-			[<span >xx</span>楼]&nbsp;&nbsp;&nbsp;&nbsp;<span >用户昵称</span>
-			<span style="margin-left: 950px;">2019-06-04 21:31:00</span>
-			<p style="margin-left: 130px;">真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好
-				真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好</p>
-			<a href="javascript:void(0)" class="a1">点赞(<span>100</span>)</a>
-		</div>
-		<div class="comment">
-			
-			<img src="../images/null.jpg" class="img1">
-			[<span >xx</span>楼]&nbsp;&nbsp;&nbsp;&nbsp;<span >用户昵称</span>
-			<span style="margin-left: 950px;">2019-06-04 21:31:00</span>
-			<p style="margin-left: 130px;">真好真好真好真好真好真好真好真好真好真好真好真好真好真好真好
-				真好真好真好真好真好真好真好真好真好真好真好真好真好真好真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香真香</p>
-			<a href="javascript:void(0)" class="a1">点赞(<span>100</span>)</a>
-		</div>
-		<div class="comment">
-			
-			<img src="../images/null.jpg" class="img1">
-			[<span >xx</span>楼]&nbsp;&nbsp;&nbsp;&nbsp;<span >用户昵称</span>
-			<span style="margin-left: 950px;">2019-06-04 21:31:00</span>
-			<p style="margin-left: 150px;">11111111111111111111111111真香真香真香</p>
-			<a href="javascript:void(0)" class="a1">点赞(<span>100</span>)</a>
 		</div>
 	</div>
 </body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//alert("加载评论页面");
+		//var c = window.top.document.referrer;
+		//alert(c);
+		//show_comment(conputerID2);
+	})
+	
+	function sort_hotComment() {
+		var conputerID = $("#conputerID", window.parent.document).val();  //获取是哪个配置单
+		show_comment(conputerID,"praise");
+	}
+	
+	function sort_NewComment() {
+		var conputerID = $("#conputerID", window.parent.document).val();  //获取是哪个配置单
+		show_comment(conputerID,"commenttime");
+	}
+
+	function praise(id,times) {
+		$.post("../comment", {op:"updatePraise",id:id}, function(data){
+			if (data > 0) {
+				$("#praise"+id+"").css("color","blue");
+				$("#praise"+id+"").css("background","url('../images/hottestComment-bg.png') no-repeat  0  -40px");
+				
+				times = times + 1;
+				$("#spanPraise"+id+"").html(times);
+			}
+		},"text");
+	}
+	
+	function show_comment(id, sortType) {
+		$(".comment").remove();
+		$.post("../comment", {op:"findAllComent", conputerID:id, sortType:sortType}, function(data) {
+			var str = "";
+			var i = 0;
+			$.each(data, function(index, item) {
+				console.log(data);
+				i = i + 1;
+				str += "<div class='comment'>"
+					+"<img src='../images/null.jpg' class='img1'>"
+					+"[<span>"+i+"</span>楼]&nbsp;&nbsp;&nbsp;&nbsp;<span>"+item.uname+"</span>"
+					+"<span style='margin-left: 950px;'>"+item.commenttime+"</span>"
+					+"<p style='margin-left: 150px;'>"+item.content+"</p><a href='javascript:void(0)' class='a1' id='praise"+item.commentid+"' onclick='praise("+item.commentid+","+item.praise+")'>点赞(<span id='spanPraise"+item.commentid+"'>"+item.praise+"</span>)</a>"
+				+"</div>";
+			})
+			$("#comment").append($(str));
+		},"json")
+	}
+
+	function SubmitComment(){
+		var conputerID = $("#conputerID", window.parent.document).val();
+		alert(conputerID);
+		var uid = $("#uid", window.parent.document).val();
+		if (uid == "") {
+			//alert("请先登录");
+			//return;
+		}
+		var comment = $("#mytext").val();
+		$.post("../commenta", {op:"addComment", conputerID:conputerID, uid:uid, comment:comment}, function(data){
+			if (data < 0) {
+				alert("评论失败");
+			} else {
+				$("#mytext").val("");
+				$(".comment").remove();
+				alert("评论成功");
+				show_comment();
+			}
+		},"text")
+	}
+</script>
 </html>

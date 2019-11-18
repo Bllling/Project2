@@ -22,6 +22,16 @@ public interface IHardwareDao {
 	public Cpu findCPU(Integer cpuid);
 	
 	/**
+	 * 查询所有硬件 通过点赞数或使用次数排序
+	 * @param priceName 价格名称
+	 * @param formName  表名
+	 * @param type      排序类型
+	 * @param c         类名
+	 * @return
+	 */
+	public <T> List<T> findHardWares(String priceName, String formName, String type, Class<?> c);
+	
+	/**
 	 * 添加主板
 	 * @param map
 	 * @return

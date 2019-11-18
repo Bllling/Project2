@@ -9,6 +9,20 @@ public class Comment implements Serializable{
 	private String commenttime;
 	private int uid;
 	private String content;
+	private int praise;
+	private String uname;
+	public int getPraise() {
+		return praise;
+	}
+	public void setPraise(int praise) {
+		this.praise = praise;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	public int getCommentid() {
 		return commentid;
 	}

@@ -139,5 +139,12 @@ public class HardwareDaoImpl implements IHardwareDao {
 		return dbHelper.update(sql, id);
 	}
 
+	@Override
+	public <T> List<T> findHardWares(String priceName, String formName, String type, Class<?> c) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "select name, "+priceName+", praise, usetimes, pics from "+formName+" order by " + type +" desc";
+		return dbHelper.finds(sql, c);
+	}
+
 
 }

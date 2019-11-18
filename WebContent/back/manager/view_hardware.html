@@ -29,79 +29,85 @@
 		
 	}
 	
-	function openCpuWin(id) {
+	function openCpuWin(id,name) {
 		$('#win').window({ 
 		    width:950,    
 		    height:380,    
 		    modal:true,
-		    
+		    title:name,
 		    href: "cpu.html"
 		    
 		});
 		$("#fatherid").val(id);
 	}
 	
-	function openmotherboardWin(id) {
+	function openmotherboardWin(id,name) {
 			$('#win').window({    
 			    width:950,    
 			    height:380,    
 			    modal:true,
+			    title:name,
 			    href: "motherboard.html"
 			});
 			$("#fatherid").val(id);
 		}
 	
-	function openmemoryWin(id) {
+	function openmemoryWin(id,name) {
 		
 		$('#win').window({    
 		    width:950,    
 		    height:380,    
 		    modal:true,
+		    title:name,
 		    href: "memory.html"
 		    
 		});
 		$("#fatherid").val(id);
 	}
 	
-	function opendiskWin(id) {
+	function opendiskWin(id,name) {
 		
 		$('#win').window({    
 		    width:950,    
 		    height:380,    
 		    modal:true,
+		    title:name,
 		    href: "disk.html"
 		});
 		$("#fatherid").val(id);
 	}
 	
-	function opensourceWin(id) {
+	function opensourceWin(id,name) {
 		
 		$('#win').window({    
 		    width:950,    
 		    height:380,    
 		    modal:true,
+		    title:name,
 		    href: "source.html"
 		});
 		$("#fatherid").val(id);
 	}
 	
-	function opengraphicsWin(id) {
+	function opengraphicsWin(id,name) {
 		
 		$('#win').window({    
 		    width:950,    
 		    height:380,    
 		    modal:true,
+		    title:name,
 		    href: "graphics.html"
 		});
 		$("#fatherid").val(id);
 	}
 	
-	function openboxWin(id) {
+	function openboxWin(id,name) {
 		
 		$('#win').window({    
 		    width:950,    
 		    height:380,    
 		    modal:true,
+		    title:name,
 		    href: "box.html"
 		});
 		$("#fatherid").val(id);
@@ -255,7 +261,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a onclick='openCpuWin("+row.cpuid+")'>[详细]</a>&nbsp";
+		        	var str = "<a onclick='openCpuWin("+row.cpuid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.cpuid+")'>[删除]</a>";
 		        	return str;
 		        }} 
@@ -287,7 +293,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a href='javascript:void(0)' onclick='openmotherboardWin("+row.motherboardid+")'>[详细]</a>&nbsp";
+		        	var str = "<a href='javascript:void(0)' onclick='openmotherboardWin("+row.motherboardid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.motherboardid+")'>[删除]</a>";
 		        	return str;
 		        }} 
@@ -319,7 +325,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a href='javascript:void(0)' onclick='openmemoryWin("+row.memoryid+")'>[详细]</a>&nbsp";
+		        	var str = "<a href='javascript:void(0)' onclick='openmemoryWin("+row.memoryid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.memoryid+")'>[删除]</a>";
 		        	return str;
 		        }} 
@@ -351,7 +357,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a href='javascript:void(0)' onclick='opendiskWin("+row.diskid+")'>[详细]</a>&nbsp";
+		        	var str = "<a href='javascript:void(0)' onclick='opendiskWin("+row.diskid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.diskid+")'>[删除]</a>";
 		        	return str;
 		        }} 
@@ -383,7 +389,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a href='javascript:void(0)' onclick='opensourceWin("+row.sourceid+")'>[详细]</a>&nbsp";
+		        	var str = "<a href='javascript:void(0)' onclick='opensourceWin("+row.sourceid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.sourceid+")'>[删除]</a>";
 		        	return str;
 		        }} 
@@ -415,7 +421,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a href='javascript:void(0)' onclick='opengraphicsWin("+row.graphicsid+")'>[详细]</a>&nbsp";
+		        	var str = "<a href='javascript:void(0)' onclick='opengraphicsWin("+row.graphicsid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.graphicsid+")'>[删除]</a>";
 		        	return str;
 		        }} 
@@ -447,7 +453,7 @@
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-		        	var str = "<a href='javascript:void(0)' onclick='openboxWin("+row.boxid+")'>[详细]</a>&nbsp";
+		        	var str = "<a href='javascript:void(0)' onclick='openboxWin("+row.boxid+",\""+row.name+"\")'>[详细]</a>&nbsp";
 		        	str += "<a href='javascript:void(0)' onclick='del("+row.boxid+")'>[删除]</a>";
 		        	return str;
 		        }} 
