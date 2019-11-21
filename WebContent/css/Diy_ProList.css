@@ -51,27 +51,9 @@ table {
 	margin-bottom: 20px;
 }
 
-.list-title {
-	zoom: 1;
-	padding: 0 0 2px 0;
-	background: #fafafa;
-	border: 1px solid #e6e6e6;
-	border-bottom: 0;
-	position: relative;
-	z-index: 9;
-}
 
 
-.list-title .search-box {
-	position: absolute;
-	right: 0;
-	top: 8px;
-	width: 150px;
-	height: 24px;
-	margin: 0 20px 0 0;
-}
-
-.list-title .search-box input {
+.search-box input {
 	color: #666;
 	padding: 0 26px 0 8px;
 	display: inline-block;
@@ -83,20 +65,18 @@ table {
 	border-radius: 3px;
 }
 
-.list-title .search-box i {
+.search-box i {
 	display: inline-block;
 	width: 12px;
 	height: 12px;
-	background: url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png)
+	background: url(../css/icons3.png)
 		no-repeat -76px -7px;
 	position: absolute;
-	right: 10px;
-	top: 6px;
+	left: 185px;
+	top: 9px;
 }
 
-.list-title .search-box:hover i {
-	background: url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png)
-		no-repeat -76px -43px;
+.search-box:hover i {
 	cursor: pointer;
 }
 
@@ -292,7 +272,7 @@ a {
 #J_MoreFilter:hover i {
 	background-position: -79px -74px;
 	background-image:
-		url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png);
+		url(../css/icons3.png);
 }
 
 .clkafter i {
@@ -302,7 +282,7 @@ a {
 .clkafter:hover i {
 	background-position: -79px -97px !important;
 	background-image:
-		url(//icon.zol-img.com.cn/zj2011/images/2015/icons3.png) !important;
+		url(../css/icons3.png) !important;
 }
 
 
