@@ -10,6 +10,8 @@
 <link href="css/Diy_DiyZj.css" rel="stylesheet">
 <link href="css/Diy_ProList.css" rel="stylesheet">
 
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/HardwarePage.js"></script>
 
 <style>
 * {
@@ -43,6 +45,7 @@ button {
 	display: block;
 	margin: 20px auto;
 	cursor: pointer;
+	
 }
 
 .popOutBg {
@@ -53,6 +56,7 @@ button {
 	top: 0;
 	background: rgba(0, 0, 0, .6);
 	display: none;
+	z-index:999;
 }
 
 .popOut {
@@ -67,6 +71,8 @@ button {
 	border-radius: 8px;
 	overflow: hidden;
 	display: none;
+	z-index:999;
+	position: fixed;
 }
 
 .popOut>span {
@@ -126,44 +132,20 @@ keyframes ani {from { transform:translateX(-100%)rotate(-60deg)scale(.5);
 
 50%{
 transform
-
-
-
-
 :translateX(0)
-
-
- 
-
 
 rotate
 
-
-
-
 (0)
 scale
-
-
-
-
 (1);
 }
 90%{
 transform
 
-
-
-
 :translateX(20px)
 
-
- 
-
-
 rotate
-
-
 
 
 (0)
@@ -366,37 +348,37 @@ to {
 					<h3>
 						CPU<i>*</i>
 					</h3> <span class="pic"></span>
-					<div class="zj-parts-con">请选择商品</div> <span class="link-add">添加</span>
+					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="cpuPage()">添加</span>
 					<span class="delete"></span>
 				</li>
 				<li id="leftSubSel_5" rel="5">
 					<h3>
 						主板<i>*</i>
 					</h3> <span class="pic"></span>
-					<div class="zj-parts-con">请选择商品</div> <span class="link-add">添加</span>
+					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="boardPage()">添加</span>
 					<span class="delete"></span>
 				</li>
 				<li id="leftSubSel_3" rel="3">
 					<h3>
 						内存<i>*</i>
 					</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="memoryPage()">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_2" rel="2">
 					<h3>硬盘</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="diskPage()">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_6" rel="6">
 					<h3>显卡</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="graphicsPage()">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_10" rel="10">
 					<h3>机箱</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="boxPage()">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_35" rel="35">
 					<h3>电源</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="sourcePage()">添加</span> <span class="delete"></span>
 				</li>
 
 				<li class="total">
@@ -449,6 +431,7 @@ to {
 
 
 		<!-- 右侧筛选栏 -->
+<<<<<<< HEAD
 		<div class="conditions">
 			<div class="list-title">
 				<div class="search-box">
@@ -456,6 +439,7 @@ to {
 				</div>
 			</div>
 			<!--list-title end-->
+		
 			<div id="J_ManuFilter" class="filter-brand filter-brand-multi">
 				<strong class="filter-type">推荐品牌：</strong>
 				<div id="J_ParamBrand" class="brand-hot brand-list"
@@ -579,11 +563,13 @@ to {
 						style="display: none;">更多<i></i></a>
 				</div>
 			</div>
+			
 			<!--hide end-->
 		</div>
 
 		<!--  -->
 	</div>
+	
 	<div class="popOutBg" id="pop1" style="display: none;"></div>
 	<div class="popOut" id="pop2" style="display: none;">
 		<a title="关闭" id="close" href="javascript:close()"> x </a>
@@ -607,8 +593,79 @@ to {
 			</tr>
 		</table>
 	</div>
+	</div>
+=======
+	<div class="conditions"> 
+	   <!--list-title end--> 
+	   <div id="J_ManuFilter" class="filter-brand filter-brand-multi"> 
+	    <strong class="filter-type">CPU名称：</strong> 
+	    <div id="J_ParamBrand" class="brand-hot brand-list" style="display: block;"> 
+	     <span class="all active" reldate="0">不限</span> 
+	      <div class="search-box"> 
+			<input type="text" value="请输入名称" /> 
+	     	<i></i>
+	     </div>
+	    </div> 
+	   </div> 
+	   
+	   <div id="priceItem" class="filter-item filter-price"> 	   
+	    <strong class="filter-type">价格区间：</strong> 
+	    <div id="J_ParamPrice" class="param-value-list"> 
+	     <span reldate="noPrice" class="all active">不限</span> 
+	     <a href="javascript:void(0);" target="_self" reldate="0">500元以下</a> 
+	     <a href="javascript:void(0);" target="_self" reldate="500">500-1499元</a> 
+	     <a href="javascript:void(0);" target="_self" reldate="1500">1500元以上</a> 
+	    </div> 
+	    <div class="price-self"> 
+	     <input id="minPrice" type="text" /> 
+	     <em>-</em> 
+	     <input id="maxPrice" type="text" /> 
+	     <span id="subPri" class="price-button">确定</span> 
+	    </div> 
+	   </div>
+	   
+	    
+	   <div id="pamItem1" class="filter-item"> 
+	    <strong class="filter-type">CPU主频：</strong> 
+	    <div id="J_ParamItem1" class="param-value-list"> 
+	     <span class="all active" reldate="0">不限</span> 
+	     <a href="javascript:void(0);" target="_self" reldate="s8179">2.0GHz以上</a> 
+	     <a href="javascript:void(0);" target="_self" reldate="s8180">2.5GHz以上</a> 
+	     <a href="javascript:void(0);" target="_self" reldate="s8188">3.0GHz以上</a> 
+	     <a href="javascript:void(0);" target="_self" reldate="s8189">3.5GHz以上</a> 
+	     <a href="javascript:void(0);" target="_self" reldate="s8190">4.0GHz以上</a> 
 
-	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	    </div> 	    
+	   </div> 
+	   
+	   
+
+	   
+	   <div id="J_MoreFilterItem" class="hide"> 
+	    <div id="pamItem3" class="filter-item"> 
+	     <strong class="filter-type">核心数量：</strong> 
+	     <div id="J_ParamItem3" class="param-value-list"> 
+	      <span class="all active" reldate="0">不限</span> 
+	      <a href="javascript:void(0);" target="_self" reldate="s7420">十六核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s7419">十二核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s7315">十核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s6801">八核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s6802">六核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s6803">四核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s6804">三核心</a> 
+	      <a href="javascript:void(0);" target="_self" reldate="s6805">双核心</a> 
+	     </div> 
+	     <a class="J_ViewMore view-more" data-target="J_ParamItem4" href="javascript:;" target="_self" data-on="0" style="display: none;">更多<i></i></a> 
+	    </div> 
+	    
+
+	   <!--hide end--> 
+	  </div> 
+		<!--  -->
+	</div>
+>>>>>>> b5e6f668d76f56e02cbcc6327babc274f38c116e
+
+
 	<script type="text/javascript">
 		var vcode;
 		var vcodePath;
@@ -690,3 +747,27 @@ to {
 
 </body>
 </html>
+
+	<div class="popOutBg" id="pop1" style="display: none;"></div>
+	<div class="popOut" id="pop2" style="display: none;">
+		<a title="关闭" id="close" href="javascript:close()"> x </a>
+		<table>
+			<caption>欢迎登录本网站</caption>
+			<a href="front/register.html" class="freeret">免费注册<font>&gt;&gt;</font></a>
+			<tr>
+				<td width="120">用户名：</td>
+				<td><input type="text" class="inp" id="uname"
+					placeholder="请输入用户名或邮箱地址" /></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" class="inp" id="upwd"
+					placeholder="请输入密码" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" class="login" value="登录"
+					onclick="login1()" /></td>
+				<a href="front/forgetPwd.html" class="forgetpsw">忘记密码?</a>
+			</tr>
+		</table>
+	</div>
