@@ -169,7 +169,9 @@
 <script src="../js/jquery-3.4.1.min.js"></script>
 <script>
 $(function(){
-	var id = location.hash.replace("#","");
+	var line = location.hash.replace("#","");
+	var id=line.substring(0,1);
+	var uid=line.substring(2,3);
 	if(id == "" || id == undefined){
 		location.href="netplan.jsp";
 	}
