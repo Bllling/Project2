@@ -44,8 +44,17 @@ private static final long serialVersionUID = 1L;
 			findByUid(request,response);
 		}else if("updateBnumber".equals(op)){
 			updateBnumber(request,response);
+		}else if ("findDetailByID".equals(op)) {
+			findDetailByID(request, response);
 		}
 		
+	}
+
+	//通过配置单ID查配置单的描述信息
+	private void findDetailByID(HttpServletRequest request, HttpServletResponse response) {
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findDetailByID(id));
 	}
 
 	private void updateBnumber(HttpServletRequest request, HttpServletResponse response) {
@@ -109,6 +118,7 @@ private static final long serialVersionUID = 1L;
 
 	private void findAll(HttpServletRequest request, HttpServletResponse response) {
 		String type = request.getParameter("type");
+		System.out.println("11111");
 		IComputerBiz computerBiz = new ComputerBizImpl();
 		this.send(response, computerBiz.findAll(type));
 		

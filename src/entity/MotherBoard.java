@@ -15,6 +15,14 @@ public class MotherBoard implements Serializable {
 	private String score;
 	private String powers;
 	private String maxmemory;
+	private int state;  //状态
+	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getMotherboardid() {
 		return motherboardid;
 	}

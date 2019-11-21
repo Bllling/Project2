@@ -13,6 +13,14 @@ public class Source implements Serializable {
 	private int praise;
 	private String score;
 	private String maxpowers;
+	private int state;  //状态
+	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getSourceid() {
 		return sourceid;
 	}

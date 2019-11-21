@@ -17,6 +17,14 @@ public class Memory implements Serializable{
 	private String volume;
 	private String memorytype;
 	private String frequency;
+	private int state;  //状态
+	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getMemoryid() {
 		return memoryid;
 	}

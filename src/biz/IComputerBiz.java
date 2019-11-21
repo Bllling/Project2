@@ -16,4 +16,10 @@ public interface IComputerBiz {
      public List<Computer> findByUid(Integer uid);
      public  List<Computer> findAllByMoreId(List<Collection> list);
      public int updateBnumber(Integer id);
+     /**
+      * 通过配置单ID查配置描述
+      * @param id
+      * @return
+      */
+     public Computer findDetailByID(Integer id);
 }

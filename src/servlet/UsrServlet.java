@@ -35,9 +35,50 @@ public class UsrServlet extends BasicServlet{
 			collection(req,resp);
 		} else if("findByID".equals(op)){
 			findByID(req,resp);
+		} else if ("findByUsrName".equals(op)) {
+			findByUsrName(req, resp);
+		} else if ("findAllByID".equals(op)) {
+			findAllByID(req, resp);
+		} else if ("findAddrsById".equals(op)) {
+			findAddrsById(req, resp);
 		}
 
 	}
+	
+	/**
+	 * 通过用户ID查询地址表 查找该用户的 所有地址
+	 * @param req
+	 * @param resp
+	 */
+	private void findAddrsById(HttpServletRequest req, HttpServletResponse resp) {
+		int uid = Integer.parseInt(req.getParameter("uid"));
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.findAddrsById(uid));
+	}
+
+	/**
+	 * 通过ID在用户表查询所有
+	 * @param req
+	 * @param resp
+	 */
+	private void findAllByID(HttpServletRequest req, HttpServletResponse resp) {
+		int uid = Integer.parseInt(req.getParameter("uid"));
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.findAllByID(uid));
+		
+	}
+
+	/**
+	 * 通过用户名查询，检查是否用户名已经被使用
+	 * @param req
+	 * @param resp
+	 */
+	private void findByUsrName(HttpServletRequest req, HttpServletResponse resp) {
+		String uname = req.getParameter("usrName");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.findByName(uname));
+	}
+	
 	/**
 	 *  在收藏夹表中根据用户ID查找配置单号
 	 * @param req
