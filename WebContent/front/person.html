@@ -131,7 +131,7 @@
 					</th>
 				</tr>
 			</thead>
-			<tbody class="next_table_body">
+			<tbody id="ad_body" class="next_table_body">
 				<tr class="next_table_row" role="row">
 					<td>
 						<div id="tb_addrname1" class="next_table_cell_wrapper">xxx</div>
@@ -210,10 +210,15 @@
 		
 	}
 	
-	function showAddrInfo() {   //要修改表
+	function showAddrInfo() {   
 		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		$.post("../usr", {op:"findAddrsById", uid:uid}, function(data) {
-			
+			var str = "";
+			var index = 0;
+			$.each(data, function(index, item) {
+				index = index + 1;
+				str += "<tr></tr>";
+			});
 		},"json");
 	}
 	
@@ -311,7 +316,8 @@
 		showUserInfo();
 	}
 
-	function address() {
+	function address() { //进入收货地址主页
+		showAddrInfo();
 		$("#person").attr("style", "display: none");
 		$("#address").attr("style", "display: block");
 	}

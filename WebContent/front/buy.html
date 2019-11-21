@@ -180,7 +180,8 @@ $(function(){
 		
 		$("#conputerID").val(id);
 		//alert($("#conputerID").val());
-		$("#uid").val(uid1);
+		var ii = $("#uid").val(uid1);
+		console.log("uid: " + $("#uid").val() );
 		$("#cname").html(data.cname);
 		$("#sumprice").html(data.sumprice);
 		$("#uname").html(data.uname);
