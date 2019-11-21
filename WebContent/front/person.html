@@ -61,8 +61,8 @@
 		<div class="main-person">
 			<p>
 				<label style="float: left;"> <em>*</em> 地址信息
-				</label> <span id="demo3" class="citys"> <select name="province"></select>
-					<select name="city"></select> <select name="area"></select> <select
+				</label> <span id="demo3" class="citys"> <select id="sl_province" name="province"></select>
+					<select id="sl_city" name="city"></select> <select id="sl_area" name="area"></select> <select
 					name="town"></select>
 				</span> <span class="hint" style="margin-left: 10px;">请选择省/市/区/街道</span>
 			</p>
@@ -148,8 +148,8 @@
 						<div id="tb_postcode1" class="next_table_cell_wrapper">410600</div>
 					</td>
 					<td>
-						<div id="tb_tel1" class="next_table_cell_wrapper">
-							<span> 15*******62 <br />
+						<div  class="next_table_cell_wrapper">
+							<span id="tb_tel1"> 15*******62 <br />
 							</span>
 						</div>
 					</td>
@@ -191,8 +191,23 @@
 	}
 	
 	function showAddr(index) {
-		var name = $("#tb_area1").val();
-		alert(name);
+		var name = $("#tb_addrname" + index).text();
+		$("#consigneeName").val(name);
+		var area = $("#tb_area" + index).text();
+		var areas = area.split(" ");
+		var province = areas[0];  //省份
+		var city = areas[1];  //市
+		var county = areas[2];  //区/县
+		$("#sl_province").val(province);
+		$("#sl_city").val(city);
+		$("#sl_area").val(county);
+		var address = $("#tb_address" + index).text();
+		$("#area-textare").val(address);
+		var postcode = $("#tb_postcode" + index).text();
+		$("#p_num").val(postcode);
+		var tel = $("#tb_tel" + index).text();
+		$("#adPhone").val(tel);
+		
 	}
 	
 	function showAddrInfo() {   //要修改表
