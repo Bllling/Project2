@@ -147,7 +147,7 @@
 			//return;
 		}
 		var comment = $("#mytext").val();
-		$.post("../commenta", {op:"addComment", conputerID:conputerID, uid:uid, comment:comment}, function(data){
+		$.post("../comment", {op:"addComment", conputerID:conputerID, uid:uid, comment:comment}, function(data){
 			if (data < 0) {
 				alert("评论失败");
 			} else {

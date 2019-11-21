@@ -171,7 +171,7 @@
 $(function(){
 	var line = location.hash.replace("#","");
 	var id=line.substring(0,1);
-	var uid=line.substring(2,3);
+	var uid1=line.substring(2,3);
 	if(id == "" || id == undefined){
 		location.href="netplan.jsp";
 	}
@@ -180,7 +180,7 @@ $(function(){
 		
 		$("#conputerID").val(id);
 		//alert($("#conputerID").val());
-		$("#uid").val(data.uid);
+		$("#uid").val(uid1);
 		$("#cname").html(data.cname);
 		$("#sumprice").html(data.sumprice);
 		$("#uname").html(data.uname);
@@ -228,7 +228,8 @@ $(function(){
 })
 	function reinitIframe() { 
 		var iframe = document.getElementById("urlIframe");
-		var Iframeid = location.hash.replace("#","");
+		var line = location.hash.replace("#","");
+		var Iframeid=line.substring(0,1);
 		document.getElementById('commentsiframe').contentWindow.show_comment(Iframeid,"praise");
  			try 
 				{ 
