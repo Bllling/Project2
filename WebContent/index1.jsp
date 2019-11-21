@@ -43,6 +43,7 @@ button {
 	display: block;
 	margin: 20px auto;
 	cursor: pointer;
+	
 }
 
 .popOutBg {
@@ -53,6 +54,7 @@ button {
 	top: 0;
 	background: rgba(0, 0, 0, .6);
 	display: none;
+	z-index:999;
 }
 
 .popOut {
@@ -67,6 +69,8 @@ button {
 	border-radius: 8px;
 	overflow: hidden;
 	display: none;
+	z-index:999;
+	position: fixed;
 }
 
 .popOut>span {
@@ -126,44 +130,20 @@ keyframes ani {from { transform:translateX(-100%)rotate(-60deg)scale(.5);
 
 50%{
 transform
-
-
-
-
 :translateX(0)
-
-
- 
-
 
 rotate
 
-
-
-
 (0)
 scale
-
-
-
-
 (1);
 }
 90%{
 transform
 
-
-
-
 :translateX(20px)
 
-
- 
-
-
 rotate
-
-
 
 
 (0)
@@ -456,6 +436,7 @@ to {
 				</div>
 			</div>
 			<!--list-title end-->
+		
 			<div id="J_ManuFilter" class="filter-brand filter-brand-multi">
 				<strong class="filter-type">推荐品牌：</strong>
 				<div id="J_ParamBrand" class="brand-hot brand-list"
@@ -579,11 +560,13 @@ to {
 						style="display: none;">更多<i></i></a>
 				</div>
 			</div>
+			
 			<!--hide end-->
 		</div>
 
 		<!--  -->
 	</div>
+	
 	<div class="popOutBg" id="pop1" style="display: none;"></div>
 	<div class="popOut" id="pop2" style="display: none;">
 		<a title="关闭" id="close" href="javascript:close()"> x </a>
@@ -606,6 +589,7 @@ to {
 				<a href="front/forgetPwd.html" class="forgetpsw">忘记密码?</a>
 			</tr>
 		</table>
+	</div>
 	</div>
 
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
