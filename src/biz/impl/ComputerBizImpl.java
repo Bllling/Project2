@@ -80,6 +80,15 @@ public class ComputerBizImpl implements IComputerBiz{
 		return computerDao.updateBnumber(id);
 	}
 
+	@Override
+	public Computer findDetailByID(Integer id) {
+		if (id == null) {
+			return null;
+		}
+		IComputerDao computerDao = new ComputerDaoImpl();
+		return computerDao.findDetailByID(id);
+	}
+
 
 
 	

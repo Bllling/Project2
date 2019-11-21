@@ -28,6 +28,8 @@ create table if not exists address(
 	raddress varchar(1000) not null,
 	isdefault int not null,
 	uid int ,
+	addrname varchar(50) not null,  --收货人姓名
+	addrtel varchar(20)  --收货人电话
 	constraint FK_address_uid foreign key(uid) references usr(uid)
 )ENGINE=InnoDB AUTO_INCREMENT=1 default charset=utf8 collate = utf8_bin;
 

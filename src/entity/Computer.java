@@ -5,12 +5,12 @@ import java.io.Serializable;
 
 public class Computer implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private int id;		  //配置单号
 	private int uid;
-	private String rtime;
-	private String uname;
-	private int znumber;
-	private int bnumber;
+	private String rtime; //配置单发布时间
+	private String uname; //用户名
+	private int znumber;  //点赞数
+	private int bnumber;  //浏览数
 	private int cpuid;
 	private int motherboardid;
 	private int memoryid;
@@ -19,22 +19,22 @@ public class Computer implements Serializable {
 	private int graphicsid;
 	private int boxid;
 	private  double sumprice;
-	private String cname;
-	private String detail;
-	private String name;
-	private String pics;
-	private String name1;
-	private String pics1;
-	private String name2;
-	private String pics2;
-	private String name3;
-	private String pics3;
-	private String name4;
-	private String pics4;
-	private String name5;
-	private String pics5;
-	private String name6;
-	private String pics6;
+	private String cname;  //配置单名
+	private String detail; //配置说明
+	private String name;   //cpu名
+	private String pics;   //cpu价格
+	private String name1;  //主板名
+	private String pics1;  //主板价格
+	private String name2;  //内存名
+	private String pics2;  //内存价格
+	private String name3;  //硬盘名
+	private String pics3;  //硬盘价格
+	private String name4;  //电源名
+	private String pics4;  //电源价格
+	private String name5;  //显卡名
+	private String pics5;  //显卡价格
+	private String name6;  //机箱名
+	private String pics6;  //机箱价格
 	
 	
 	

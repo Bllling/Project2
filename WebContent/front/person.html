@@ -1,0 +1,334 @@
+
+<link rel="stylesheet" href="../css/PersonPage.css">
+
+
+<div class="left-nav">
+	<div class="usrimg">
+		<a><img id="nav_img" src="../images/null.jpg" /></a>
+	</div>
+	<div>
+		<dl>
+			<dt id="usrName"></dt>
+			<dd>
+				<a href="#" onclick="person()">个人资料</a>
+			</dd>
+			<dd>
+				<a href="#" onclick="address()">收获地址</a>
+			</dd>
+		</dl>
+	</div>
+
+</div>
+<div id="person" class="right-person">
+	<form>
+		<div class="main-person">
+			<p>
+				<label>当前头像：</label> <a href="#"> <img id="p_img" src="../images/null.jpg" />
+				</a>
+			</p>
+			<p>
+				<label> <em>*</em> 昵称
+				</label> <input id="p_usrName" class="p-txt" type="text" value=""
+					maxlength="25" onchange="checkName()" /> <br /> <span
+					class="nullNameEr">昵称不能为空！</span> <span class="nameEr">该昵称已被使用，请重新输入！</span>
+			</p>
+
+			<p>
+				<label> <em>*</em> 邮箱
+				</label> <input id="p_email" class="p-txt" type="text" value=""
+					maxlength="25" onblur="checkEmail()" /> <br /> <span
+					class="emailEr">邮箱格式错误，请重新输入！</span>
+			</p>
+			<p>
+				<label> <em>*</em> 电话号码
+				</label> <input id="p_phone" class="p-txt" type="text" value=""
+					maxlength="25" onblur="checkPhone()" /> <br /> <span
+					class="phoneEr">号码格式错误，请重新输入！</span>
+			</p>
+
+		</div>
+		<div class="p-btn" style="width: 700px;">
+			<input class="p-subm" type="button" value="保存" onclick="sumbit()" />
+		</div>
+	</form>
+</div>
+<div id="address" class="right-address">
+	<div class="a-head"
+		style="width: 100%; height: 30px; background-color: #f3f8fe;">
+		<span style="line-height: 27px; margin-left: 5px; font-size: 15px;">收货地址</span>
+	</div>
+	<form>
+		<div class="main-person">
+			<p>
+				<label style="float: left;"> <em>*</em> 地址信息
+				</label> <span id="demo3" class="citys"> <select name="province"></select>
+					<select name="city"></select> <select name="area"></select> <select
+					name="town"></select>
+				</span> <span class="hint" style="margin-left: 10px;">请选择省/市/区/街道</span>
+			</p>
+			<p>
+				<label style="float: left;"> <em>*</em> 详细地址
+				</label>
+				<textarea id="area-textare" class="area-textare" rows="2" cols="20"
+					placeholder="请输入详细地址,如道路, 门牌号, 小区, 楼栋号, 单元等信息" onblur="checkArea()"></textarea>
+				<span class="areaEr" style="margin-left: 10px;">详细地址不能为空</span>
+			</p>
+			<p>
+				<label style="margin-left: 7.28334px;"> 邮政编号 </label> <input
+					id="p_num" class="p-txt" type="text" value="" maxlength="25"
+					placeholder="请填写邮编" onblur="checkNum()" /> <span class="numEr"
+					style="color: red; display: none">邮编填写错误</span>
+			</p>
+			<p>
+				<label> <em>*</em> 收货人姓名
+				</label> <input id="consigneeName" class="p-txt" type="text" value=""
+					maxlength="25" placeholder="长度不超过25个字符" onblur="checkCName()" /> <span
+					class="lengthEr">姓名不能为空</span>
+			</p>
+			<p>
+				<label> <em>*</em> 电话号码
+				</label> <input id="adPhone" class="p-txt" type="text" value=""
+					maxlength="25" onblur="checkAdPhone()" /> <span class="adPhoneEr">电话号码不能为空或格式错误</span>
+			</p>
+			<p>
+				<input class="" type="checkbox" aria-checked="false" />是否设置为默认地址
+			</p>
+		</div>
+		<div class="p-btn" style="width: 700px;">
+			<input class="p-subm" type="button" value="保存" onclick="sumbitAdr()" />
+		</div>
+	</form>
+
+	<div class="next_table">
+		<table role="table" style="box-sizing: border-box;">
+			<colgroup>
+				<col style="width: 90px;" />
+				<col "/>
+				<col style="width: 200px;" />
+				<col style="width: 100px;" />
+				<col style="width: 140px;" />
+				<col style="width: 100px;" />
+			</colgroup>
+			<thead class="next_table_header">
+				<tr>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">收货人</div>
+					</th>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">所在地区</div>
+					</th>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">详细地址</div>
+					</th>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">邮编</div>
+					</th>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">电话/手机</div>
+					</th>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">操作</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody class="next_table_body">
+				<tr class="next_table_row" role="row">
+					<td>
+						<div id="tb_addrname1" class="next_table_cell_wrapper">xxx</div>
+					</td>
+					<td>
+						<div class="next_table_cell_wrapper">
+							<span id="tb_area1">xx省 xx市 xx县 xx镇</span>
+						</div>
+					</td>
+					<td>
+						<div id="tb_address1" class="next_table_cell_wrapper">xx市xx镇</div>
+					</td>
+					<td>
+						<div id="tb_postcode1" class="next_table_cell_wrapper">410600</div>
+					</td>
+					<td>
+						<div id="tb_tel1" class="next_table_cell_wrapper">
+							<span> 15*******62 <br />
+							</span>
+						</div>
+					</td>
+					<td>
+						<div class="next_table_cell_wrapper">
+							<div class="tAction">
+								<a href="#" style="color: #333333;" onclick="showAddr(1)">修改</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.citys.js"></script>
+<script type="text/javascript">
+	window.currentName;   //当前用户名
+	window.currentEmail;  //当前用户的邮箱
+	window.currentPhone;  //当前用户的电话号码
+	function showUserInfo() {
+		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		$.post("../usr", {op:"findAllByID", uid:uid}, function(data) {
+			window.currentName = data.uname;
+			window.currentEmail = data.uemail;
+			window.currentPhone = data.utel;
+			$("#nav_img").attr("src","../" + data.upics);
+			console.log(data.upics);
+			$("#usrName").val(data.uname);
+			$("#p_img").attr("src", "../" + data.upics);
+			$("#p_usrName").val(data.uname);
+			$("#p_email").val(data.uemail);
+			$("#p_phone").val(data.utel);
+		},"json")
+	}
+	
+	function showAddr(index) {
+		var name = $("#tb_area1").val();
+		alert(name);
+	}
+	
+	function showAddrInfo() {   //要修改表
+		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		$.post("../usr", {op:"findAddrsById", uid:uid}, function(data) {
+			
+		},"json");
+	}
+	
+	function checkArea() {
+		$(".areaEr").attr("style", "display: none");
+		//检查详细地址是否为空
+		var area = $("#area-textare").val();
+		if (area == "") {
+			$(".areaEr").attr("style", "display: block");
+		}
+	}
+	
+	function checkAdPhone() {
+		$(".adPhoneEr").attr("style", "display: none");
+		var phone = $("#adPhone").val();
+		var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+		if (!reg.test(phone)) {
+			$(".adPhoneEr").attr("style", "display: block");
+		}
+	}
+	
+	function checkCName() {
+		$(".lengthEr").attr("style", "display: none");
+		//检查收货人名字长度
+		var consigneeName = $("#consigneeName").val();
+		
+		if (consigneeName == "") {
+			$(".lengthEr").attr("style", "display: block");
+		}
+	}
+	
+	function checkNum() {
+		//检查邮编号
+		$(".numEr").attr("style", "color: red; display: none");
+		var num = $("#p_num").val();
+		var reg = /[1-9]\d{5}(?!\d)/;
+		if (num == "") {
+			return;
+		}
+		if (!reg.test(num)){
+			$(".numEr").attr("style", "color: red; display: block");
+		}
+	}
+	
+	function checkPhone() {
+		$(".phoneEr").attr("style", "display: none");
+		//检查电话号码格式
+		var phone = $("#p_phone").val();
+		var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+		if (!reg.test(phone)) {
+			$(".phoneEr").attr("style", "display: block");
+		}
+	}
+	
+	function checkEmail() {
+		//检查邮箱格式
+		$(".emailEr").attr("style", "display: none");
+		var email = $("#p_email").val();
+		var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		if (!reg.test(email)) {
+			$(".emailEr").attr("style", "display: block");
+		}
+	}
+	
+	function checkName() {
+		$(".nullNameEr").attr("style", "display: none");
+		$(".nameEr").attr("style", "display: none");
+		//检查昵称是否已经被使用
+		var usrName = $("#p_usrName").val();
+		if (usrName == window.currentName) {
+			return;
+		}
+		if (usrName == "") {
+			$(".nullNameEr").attr("style", "display: block");
+			return;
+		}
+		$.post("../usr", {op:"findByUsrName", usrName:usrName}, function(data) {
+			if (data.uname != "") {
+				$(".nameEr").attr("style", "display: block");
+			}
+		},"json");
+	}
+		
+	function sumbitAdr() {
+		$(".lengthEr").attr("style", "display: block");
+		$(".adPhoneEr").attr("style", "display: block");
+	}
+
+	function sumbit() {
+	}
+
+	function person() {  //进入个人资料页面
+		$("#address").attr("style", "display: none");
+		$("#person").attr("style", "display: block");
+		showUserInfo();
+	}
+
+	function address() {
+		$("#person").attr("style", "display: none");
+		$("#address").attr("style", "display: block");
+	}
+
+	var $town = $('#demo3 select[name="town"]');
+	var townFormat = function(info) {
+		$town.hide().empty();
+		if (info['code'] % 1e4 && info['code'] < 7e5) { //是否为“区”且不是港澳台地区
+			$.ajax({
+				url : 'http://passer-by.com/data_location/town/' + info['code']
+						+ '.json',
+				dataType : 'json',
+				success : function(town) {
+					$town.show();
+					for (i in town) {
+						$town.append('<option value="'+i+'">' + town[i]
+								+ '</option>');
+					}
+				}
+			});
+		}
+	};
+	$('#demo3').citys({
+		province : '湖南',
+		city : '衡阳',
+		area : '珠晖',
+		onChange : function(info) {
+			townFormat(info);
+			var text = info['direct'] ? '(直辖市)' : '';
+		}
+	}, function(api) {
+		var info = api.getInfo();
+		townFormat(info);
+	});
+</script>

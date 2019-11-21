@@ -1,8 +1,11 @@
 package biz.impl;
 
+import java.util.List;
+
 import biz.IUsrBiz;
 import dao.IUsrDao;
 import dao.impl.UsrDaoImpl;
+import entity.Address;
 import entity.Usr;
 import util.StringUtil;
 
@@ -33,6 +36,33 @@ public class UsrBizImpl implements IUsrBiz {
 		}
 		IUsrDao dao = new UsrDaoImpl();
 		return dao.register(uname, upwd, uemail, utel, upics);
+	}
+
+	@Override
+	public Usr findByName(String uname) {
+		if (StringUtil.CheckNull(uname)) {
+			return null;
+		}
+		IUsrDao usrDao = new UsrDaoImpl();
+		return usrDao.findByName(uname);
+	}
+
+	@Override
+	public Usr findAllByID(Integer uid) {
+		if (uid == null) {
+			return null;
+		}
+		IUsrDao usrDao = new UsrDaoImpl();
+		return usrDao.findAllByID(uid);
+	}
+
+	@Override
+	public List<Address> findAddrsById(Integer uid) {
+		if (uid == null) {
+			return null;
+		}
+		IUsrDao usrDao = new UsrDaoImpl();
+		return usrDao.findAddrsById(uid);
 	}
 
 	

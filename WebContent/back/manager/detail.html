@@ -1,0 +1,18 @@
+<div id="detail">
+	
+</div>
+
+<script type="text/javascript">
+$(function() {
+	var deid = parent.document.getElementById('fatherid').value;
+	$.post("../../computer", {op:"findDetailByID" ,id:deid}, function(data) {
+		var str = "";
+		if (typeof(data.detail) == "undefined") {
+			str = "<p>此配置单没有描述!</p>";
+		} else {
+			str = "<p>描述："+data.detail+"</p>";
+		}
+		$("#detail").append($(str));
+	}, "json");
+})
+</script>
