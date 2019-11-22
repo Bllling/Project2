@@ -59,6 +59,7 @@ public class FileUploadUtil {
 			//处理请求中的文件
 			Files files = su.getFiles();
 			if (files == null || files.getCount() <= 0) {
+				System.out.println("没有文件");
 				return map;
 			}
 			
