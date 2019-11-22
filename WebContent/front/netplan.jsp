@@ -127,7 +127,7 @@
 		<!--登录 start-->
 		<!--个人信息 start-->
                 <div class="per-infor" style="display: none;">
-                    <p class="title">个人信息<a href="register.html#'+${currentAdmin.uid}+'" class="more" style="color:rgb(56,145,237);font-size:5px;">个人主页<font>&gt;&gt;</font></a></p>
+                    <p class="title">个人信息<a href="homepage.html#${currentAdmin.uid}" class="more" style="color:rgb(56,145,237);font-size:5px;">个人主页<font>&gt;&gt;</font></a></p>
                     <div class="edit-box clearfix">
                         <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="头像"></div>
                        <div class="right">
@@ -447,7 +447,7 @@ function new1(sumpriceMin,sumpriceMax,rtime){
 	 var rtime = rtime; 
 	 var str1="";
 	 var str = "";
-	 var uid=$(".name").html();
+	 var uid=$("#uid").html();
 	 var page=$("#nowpage").html();
      $.post("../computer",{op:"findByPart",type:"rtime",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime,page:page,rows:"3"},function(data){
 	 $("#list").html("");
