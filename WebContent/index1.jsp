@@ -333,7 +333,8 @@ to {
 				<ul>
 					<li id="topSubSel_383" rel="383" relnum="2"><span>服务器CPU</span></li>
 					<li id="topSubSel_28" rel="28" relnum="2"><span>CPU</span></li>
-				</ul></li>
+				</ul>
+			</li>
 			<li id="topSubSel_5" rel="5" class="cur" relnum="1"><span>主板<i>*</i></span></li>
 			<li id="topSubSel_3" rel="3" relnum="8"><span>内存<i>*</i></span></li>
 			<li id="topSubSel_2" rel="2" relnum="4"><span>硬盘</span></li>
@@ -453,70 +454,7 @@ to {
 		<!-- 右侧筛选栏 -->
 	<div class="conditions"> 
 	   <!--list-title end--> 
-	   <div id="J_ManuFilter" class="filter-brand filter-brand-multi"> 
-	    <strong class="filter-type">CPU名称：</strong> 
-	    <div id="J_ParamBrand" class="brand-hot brand-list" style="display: block;"> 
-	     <span class="all active" reldate="0">不限</span> 
-	      <div class="search-box"> 
-			<input type="text" value="请输入名称" /> 
-	     	<i></i>
-	     </div>
-	    </div> 
-	   </div> 
 	   
-	   <div id="priceItem" class="filter-item filter-price"> 	   
-	    <strong class="filter-type">价格区间：</strong> 
-	    <div id="J_ParamPrice" class="param-value-list"> 
-	     <span reldate="noPrice" class="all active">不限</span> 
-	     <a href="javascript:void(0);" target="_self" reldate="0">500元以下</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="500">500-1499元</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="1500">1500元以上</a> 
-	    </div> 
-	    <div class="price-self"> 
-	     <input id="minPrice" type="text" /> 
-	     <em>-</em> 
-	     <input id="maxPrice" type="text" /> 
-	     <span id="subPri" class="price-button">确定</span> 
-	    </div> 
-	   </div>
-	   
-	    
-	   <div id="pamItem1" class="filter-item"> 
-	    <strong class="filter-type">CPU主频：</strong> 
-	    <div id="J_ParamItem1" class="param-value-list"> 
-	     <span class="all active" reldate="0">不限</span> 
-	     <a href="javascript:void(0);" target="_self" reldate="s8179">2.0GHz以上</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="s8180">2.5GHz以上</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="s8188">3.0GHz以上</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="s8189">3.5GHz以上</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="s8190">4.0GHz以上</a> 
-
-	    </div> 	    
-	   </div> 
-	   
-	   
-
-	   
-	   <div id="J_MoreFilterItem" class="hide"> 
-	    <div id="pamItem3" class="filter-item"> 
-	     <strong class="filter-type">核心数量：</strong> 
-	     <div id="J_ParamItem3" class="param-value-list"> 
-	      <span class="all active" reldate="0">不限</span> 
-	      <a href="javascript:void(0);" target="_self" reldate="s7420">十六核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s7419">十二核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s7315">十核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s6801">八核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s6802">六核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s6803">四核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s6804">三核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="s6805">双核心</a> 
-	     </div> 
-	     <a class="J_ViewMore view-more" data-target="J_ParamItem4" href="javascript:;" target="_self" data-on="0" style="display: none;">更多<i></i></a> 
-	    </div> 
-	    
-
-	   <!--hide end--> 
-	  </div> 
 		<!--  -->
 	</div>
 
@@ -524,6 +462,11 @@ to {
 	<script type="text/javascript">
 		var vcode;
 		var vcodePath;
+		
+		//当DOM加载完成后要执行的函数
+		$(function(){
+			cpuPage();
+			});
 
 		window.onload = function() {
 			var str = $("#my").html();
@@ -620,8 +563,7 @@ to {
 					placeholder="请输入密码" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" class="login" value="登录"
-					onclick="login1()" /></td>
+				<td colspan="2"><input type="button" class="login" value="登录" onclick="login1()" /></td>
 				<a href="front/forgetPwd.html" class="forgetpsw">忘记密码?</a>
 			</tr>
 		</table>
