@@ -158,7 +158,6 @@ create table if not exists computer(
 	graphicsid int,   -- 显卡编号
 	boxid int,       -- 机箱编号
 	sumprice decimal(8,2), -- 总价格
-	cname varchar(50), -- 名称
 	constraint FK_computer_uid foreign key(uid) references usr(uid),
 	constraint FK_computer_motherboardid foreign key(motherboardid) references motherboard(motherboardid),
 	constraint FK_computer_cpuid foreign key(cpuid) references cpu(cpuid),
