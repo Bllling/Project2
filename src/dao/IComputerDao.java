@@ -68,4 +68,11 @@ public interface IComputerDao {
       * @return
       */
      public int updateBnumber(Integer id);
+     
+     /**
+      * 通过配置单ID查配置描述
+      * @param id
+      * @return
+      */
+     public Computer findDetailByID(Integer id);
 }

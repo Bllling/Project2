@@ -45,6 +45,7 @@ button {
 	display: block;
 	margin: 20px auto;
 	cursor: pointer;
+	
 }
 
 .popOutBg {
@@ -55,6 +56,7 @@ button {
 	top: 0;
 	background: rgba(0, 0, 0, .6);
 	display: none;
+	z-index:999;
 }
 
 .popOut {
@@ -69,6 +71,8 @@ button {
 	border-radius: 8px;
 	overflow: hidden;
 	display: none;
+	z-index:999;
+	position: fixed;
 }
 
 .popOut>span {
@@ -128,44 +132,20 @@ keyframes ani {from { transform:translateX(-100%)rotate(-60deg)scale(.5);
 
 50%{
 transform
-
-
-
-
 :translateX(0)
-
-
- 
-
 
 rotate
 
-
-
-
 (0)
 scale
-
-
-
-
 (1);
 }
 90%{
 transform
 
-
-
-
 :translateX(20px)
 
-
- 
-
-
 rotate
-
-
 
 
 (0)
@@ -452,11 +432,176 @@ to {
 
 
 		<!-- 右侧筛选栏 -->
+<<<<<<< HEAD
+		<div class="conditions">
+			<div class="list-title">
+				<div class="search-box">
+					<input type="text" value="请输入品牌或型号" /> <i></i>
+				</div>
+			</div>
+			<!--list-title end-->
+		
+			<div id="J_ManuFilter" class="filter-brand filter-brand-multi">
+				<strong class="filter-type">推荐品牌：</strong>
+				<div id="J_ParamBrand" class="brand-hot brand-list"
+					style="display: block;">
+					<span class="all active" reldate="0">不限</span> <a
+						href="javascript:void(0);" target="_self" class="intel"
+						relen="intel" reldate="125">Intel</a> <a
+						href="javascript:void(0);" target="_self" class="amd" relen="amd"
+						reldate="55">AMD</a>
+				</div>
+				<div class="brand-all" style="display: none;">
+					<ul id="J_BrandTab" class="brand-all-tab">
+						<li class="active" data-letter-value="all"><span>全部品牌</span><i></i></li>
+						<li data-letter-value="0-9"><span>0-9</span><i></i></li>
+						<li data-letter-value="65-71"><span>A-G</span><i></i></li>
+						<li data-letter-value="72-78"><span>H-N</span><i></i></li>
+						<li data-letter-value="79-84"><span>O-T</span><i></i></li>
+						<li data-letter-value="85-90"><span>U-Z</span><i></i></li>
+					</ul>
+				</div>
+			</div>
+			<div id="priceItem" class="filter-item filter-price">
+				<strong class="filter-type">价格区间：</strong>
+				<div id="J_ParamPrice" class="param-value-list">
+					<span reldate="noPrice" class="all active">不限</span> <a
+						href="javascript:void(0);" target="_self" reldate="0">500元以下</a> <a
+						href="javascript:void(0);" target="_self" reldate="500">500-1499元</a>
+					<a href="javascript:void(0);" target="_self" reldate="1500">1500元以上</a>
+				</div>
+				<div class="price-self">
+					<input id="minPrice" type="text" /> <em>-</em> <input
+						id="maxPrice" type="text" /> <span id="subPri"
+						class="price-button">确定</span>
+				</div>
+			</div>
+			<div id="pamItem1" class="filter-item">
+				<strong class="filter-type">CPU系列：</strong>
+				<div id="J_ParamItem1" class="param-value-list">
+					<span class="all active" reldate="0">不限</span> <a
+						href="javascript:void(0);" target="_self" reldate="s8179">Intel</a>
+					<em class="khl">（</em> <a href="javascript:void(0);" target="_self"
+						reldate="s7313">酷睿i9</a> <a href="javascript:void(0);"
+						target="_self" reldate="s1584">酷睿i7</a> <a
+						href="javascript:void(0);" target="_self" reldate="s1079">酷睿i5</a>
+					<a href="javascript:void(0);" target="_self" reldate="s1739">酷睿i3</a>
+					<a href="javascript:void(0);" target="_self" reldate="s727">奔腾</a>
+					<a href="javascript:void(0);" target="_self" reldate="s7280">赛扬</a>
+					<a href="javascript:void(0);" target="_self" reldate="s8208">Xeon
+						W</a> <a href="javascript:void(0);" target="_self" reldate="s8209">Xeon
+						E</a> <em class="khr">）</em> <a href="javascript:void(0);"
+						target="_self" reldate="s8180">AMD</a> <em class="khl">（</em> <a
+						href="javascript:void(0);" target="_self" reldate="s7329">Ryzen
+						Threadripper</a> <a href="javascript:void(0);" target="_self"
+						reldate="s8259">Ryzen 9</a> <a href="javascript:void(0);"
+						target="_self" reldate="s7274">Ryzen 7</a> <a
+						href="javascript:void(0);" target="_self" reldate="s7275">Ryzen
+						5</a> <a href="javascript:void(0);" target="_self" reldate="s7328">Ryzen
+						3</a> <a href="javascript:void(0);" target="_self" reldate="s4269">APU
+					</a> <a href="javascript:void(0);" target="_self" reldate="s3734">推土机FX</a>
+					<em class="khr">）</em>
+				</div>
+				<a class="J_ViewMore view-more" data-target="J_ParamItem4"
+					href="javascript:;" target="_self" data-on="0">更多<i></i></a>
+			</div>
+			<div id="pamItem2" class="filter-item">
+				<strong class="filter-type">插槽类型：</strong>
+				<div id="J_ParamItem2" class="param-value-list">
+					<span class="all active" reldate="0">不限</span> <a
+						href="javascript:void(0);" target="_self" reldate="s8125">Intel</a>
+					<em class="khl">（</em> <a href="javascript:void(0);" target="_self"
+						reldate="s7314">LGA 2066</a> <a href="javascript:void(0);"
+						target="_self" reldate="s6810">LGA 2011-v3</a> <a
+						href="javascript:void(0);" target="_self" reldate="s6811">LGA
+						2011</a> <a href="javascript:void(0);" target="_self" reldate="s6814">LGA
+						1151</a> <a href="javascript:void(0);" target="_self" reldate="s6815">LGA
+						1150</a> <a href="javascript:void(0);" target="_self" reldate="s6813">LGA
+						1155</a> <a href="javascript:void(0);" target="_self" reldate="s6812">LGA
+						1170</a> <a href="javascript:void(0);" target="_self" reldate="s6821">LGA
+						775</a> <a href="javascript:void(0);" target="_self" reldate="s6822">BGA</a>
+					<em class="khr">）</em> <a href="javascript:void(0);" target="_self"
+						reldate="s8126">AMD</a> <em class="khl">（</em> <a
+						href="javascript:void(0);" target="_self" reldate="s7418">Socket
+						TR4</a> <a href="javascript:void(0);" target="_self" reldate="s7272">Socket
+						AM4</a> <a href="javascript:void(0);" target="_self" reldate="s6816">Socket
+						AM3+ </a> <a href="javascript:void(0);" target="_self" reldate="s6817">Socket
+						AM3</a> <a href="javascript:void(0);" target="_self" reldate="s6818">Socket
+						FM2+</a> <a href="javascript:void(0);" target="_self" reldate="s6819">Socket
+						FM2</a> <a href="javascript:void(0);" target="_self" reldate="s6820">Socket
+						FM1</a> <em class="khr">）</em>
+				</div>
+				<a class="J_ViewMore view-more" data-target="J_ParamItem4"
+					href="javascript:;" target="_self" data-on="0">更多<i></i></a>
+			</div>
+			<div id="J_MoreFilterItem" class="hide">
+				<div id="pamItem3" class="filter-item">
+					<strong class="filter-type">核心数量：</strong>
+					<div id="J_ParamItem3" class="param-value-list">
+						<span class="all active" reldate="0">不限</span> <a
+							href="javascript:void(0);" target="_self" reldate="s7420">十六核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s7419">十二核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s7315">十核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s6801">八核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s6802">六核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s6803">四核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s6804">三核心</a>
+						<a href="javascript:void(0);" target="_self" reldate="s6805">双核心</a>
+					</div>
+					<a class="J_ViewMore view-more" data-target="J_ParamItem4"
+						href="javascript:;" target="_self" data-on="0"
+						style="display: none;">更多<i></i></a>
+				</div>
+				<div id="pamItem4" class="filter-item">
+					<strong class="filter-type">集成显卡：</strong>
+					<div id="J_ParamItem4" class="param-value-list">
+						<span class="all active" reldate="0">不限</span> <a
+							href="javascript:void(0);" target="_self" reldate="s7192">是</a> <a
+							href="javascript:void(0);" target="_self" reldate="s7193">否</a>
+					</div>
+					<a class="J_ViewMore view-more" data-target="J_ParamItem4"
+						href="javascript:;" target="_self" data-on="0"
+						style="display: none;">更多<i></i></a>
+				</div>
+			</div>
+			
+			<!--hide end-->
+		</div>
+
+		<!--  -->
+	</div>
+	
+	<div class="popOutBg" id="pop1" style="display: none;"></div>
+	<div class="popOut" id="pop2" style="display: none;">
+		<a title="关闭" id="close" href="javascript:close()"> x </a>
+		<table>
+			<caption>欢迎登录本网站</caption>
+			<a href="front/register.html" class="freeret">免费注册<font>&gt;&gt;</font></a>
+			<tr>
+				<td width="120">用户名：</td>
+				<td><input type="text" class="inp" id="uname"
+					placeholder="请输入用户名或邮箱地址" /></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" class="inp" id="upwd"
+					placeholder="请输入密码" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" class="login" value="登录"
+					onclick="login1()" /></td>
+				<a href="front/forgetPwd.html" class="forgetpsw">忘记密码?</a>
+			</tr>
+		</table>
+	</div>
+	</div>
+=======
 	<div class="conditions"> 
 	   <!--list-title end--> 
 	   
 		<!--  -->
 	</div>
+>>>>>>> b5e6f668d76f56e02cbcc6327babc274f38c116e
 
 
 	<script type="text/javascript">

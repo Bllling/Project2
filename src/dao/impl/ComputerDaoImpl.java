@@ -114,6 +114,13 @@ public class ComputerDaoImpl implements IComputerDao {
 		return db.update(sql, id);
 	}
 
+	@Override
+	public Computer findDetailByID(Integer id) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "select detail from computer where id = ?";
+		return dbHelper.find(sql, Computer.class, id);
+	}
+
 	
 
 	

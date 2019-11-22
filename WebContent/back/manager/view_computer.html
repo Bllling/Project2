@@ -1,9 +1,25 @@
 <table id="conputer_data" data-options="fit:true"></table>
-
+<input type="hidden" id="fatherid" value="" />
+<div id="win">
+	
+</div>
 <script>
+
+function detail(id,name) {
+	
+	$('#win').window({    
+	    width:950,    
+	    height:380,    
+	    modal:true,
+	    title:name,
+	    href: "detail.html"
+	});
+	$("#fatherid").val(id);
+}
+
 $('#conputer_data').datagrid({    
-    url:'../../conputers', 
-    queryParams: {op: "findByPage"},
+    url:'../../computer', 
+    queryParams: {op: "findAll", type:"id"},
     fitColumns: true,
     loadMsg: "数据加载中...",
     striped: true,
@@ -16,20 +32,22 @@ $('#conputer_data').datagrid({
     singleSelect: true,
     columns:[[
         {checkbox: true},
-        {field:'id',title:'配置单号',width:100,align:'center', sortable: true},    
-        {field:'uname',title:'用户名',width:100,align:'center'},    
-        {field:'cname',title:'配置单名',width:100,align:'center'},
+        {field:'id',title:'配置单号',width:50,align:'center', sortable: true},    
+        {field:'uname',title:'用户名',width:80,align:'center'},    
+        {field:'cname',title:'配置单名',width:80,align:'center'},
         {field:'rtime',title:'配置时间',width:100,align:'center'},
-        {field:'bnumber',title:'浏览次数',width:100,align:'center'},
-        {field:'mbname',title:'主板名',width:100,align:'center'},
-        {field:'mname',title:'内存名',width:100,align:'center'},
-        {field:'diskname',title:'硬盘名',width:100,align:'center'},
-        {field:'sourcename',title:'电源名',width:100,align:'center'},
-        {field:'graphicsname',title:'显卡名',width:100,align:'center'},
-        {field:'boxname',title:'机箱名',width:100,align:'center'},
+        {field:'bnumber',title:'浏览次数',width:50,align:'center'},
+        {field:'name',title:'CPU名',width:100,align:'center'},
+        {field:'name1',title:'主板名',width:100,align:'center'},
+        {field:'name2',title:'内存名',width:100,align:'center'},
+        {field:'name3',title:'硬盘名',width:100,align:'center'},
+        {field:'name4',title:'电源名',width:100,align:'center'},
+        {field:'name5',title:'显卡名',width:100,align:'center'},
+        {field:'name6',title:'机箱名',width:100,align:'center'},
+        {field:'sumprice',title:'总价格',width:100,align:'center'},
         {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
-        	var str = "<a href='javascript:void(0)'>[详细]</a>&nbsp";
-        	str += "<a href='javascript:void(0)'>[删除]</a>";
+        	var str = "<a href='javascript:void(0)' onclick='detail("+row.id+",\""+row.cname+"\")'>[详细]</a>&nbsp";
+        	
         	return str;
         }} 
     ]],

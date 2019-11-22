@@ -1,5 +1,5 @@
-create database project2 default character set utf8 collate utf8_bin;
-use project2;
+create database project3 default character set utf8 collate utf8_bin;
+use project3;
 -- 管理员表 (管理员编号，管理员昵称，管理员密码，管理员邮箱，管理员手机号)
 create table if not exists admin(
 	aid int primary key auto_increment, 
@@ -27,9 +27,9 @@ create table if not exists address(
 	county varchar(1000) not null, 
 	raddress varchar(1000) not null,
 	isdefault int not null,
+	addrname varchar(50) not null,  -- 收货人姓名
+	addrtel varchar(20),  -- 收货人电话
 	uid int not null,
-	addrname varchar(50) not null,
-	addrtel varchar(10) not null,
 	constraint FK_address_uid foreign key(uid) references usr(uid)
 )ENGINE=InnoDB AUTO_INCREMENT=1 default charset=utf8 collate = utf8_bin;
 
@@ -47,8 +47,8 @@ create table cpu(
 	cores int,	  -- 核心数
 	threads int,	  -- 线程数
 	frequency varchar(5), -- 默认主频
-	maxfrequency varchar(5), --最大主频
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	maxfrequency varchar(5), -- 最大主频
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 
@@ -63,7 +63,7 @@ create table motherboard(
 	score varchar(50),	  -- 跑分
 	powers varchar(50),  -- 功率
 	maxmemory varchar(50),-- 最大内存
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 
@@ -80,7 +80,7 @@ create table memory(
 	volume varchar(50),   -- 内存容量
 	memorytype varchar(50), -- 内存类型
 	frequency varchar(50),  -- 内存主频
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table disk(
@@ -96,7 +96,7 @@ create table disk(
 	volume varchar(50),   -- 硬盘容量
 	isssd int, -- 是否为固态
 	rpm varchar(50),  -- 转数
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table source(
@@ -109,7 +109,7 @@ create table source(
 	praise int,   -- 点赞数
 	score varchar(50),	  -- 跑分
 	maxpowers varchar(50),  -- 最大功率
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table graphics(
@@ -124,7 +124,7 @@ create table graphics(
 	powers varchar(50),  -- 功率
 	memory varchar(50),  -- 显存大小
 	width varchar(50),   -- 显存带宽
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 create table box(
@@ -135,7 +135,8 @@ create table box(
 	quantiy int, -- 库存
 	usetimes int, -- 使用次数
 	praise int, -- 点赞数
-	state int  --是否被删除的状态   1：未删除  0：已删除 默认为1
+	score int, 
+	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
 
@@ -157,8 +158,6 @@ create table if not exists computer(
 	graphicsid int,   -- 显卡编号
 	boxid int,       -- 机箱编号
 	sumprice decimal(8,2), -- 总价格
-	detail text ,--描述
-	cname varchar(50), --名称
 	constraint FK_computer_uid foreign key(uid) references usr(uid),
 	constraint FK_computer_motherboardid foreign key(motherboardid) references motherboard(motherboardid),
 	constraint FK_computer_cpuid foreign key(cpuid) references cpu(cpuid),
@@ -176,7 +175,7 @@ create table if not exists comment(
 	commenttime datetime not null, -- 评论时间
 	uid int,  -- 用户编号 
 	content varchar(1000), -- 评论内容
-	praise int,  --点赞数
+	praise int,  -- 点赞数
 	constraint FK_collections_uid foreign key(uid) references usr(uid),
 	constraint FK_collections_id foreign key(id) references computer(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1001 default charset=utf8 collate = utf8_bin;

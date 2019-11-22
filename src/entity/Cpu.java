@@ -17,6 +17,13 @@ public class Cpu implements Serializable {
 	private int threads;
     private String frequency;
     private String maxfrequency;
+    private int state;  //状态
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getCpuid() {
 		return cpuid;
 	}

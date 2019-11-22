@@ -11,6 +11,27 @@ public class Address implements Serializable {
 	private String raddress;
 	private int isdefault;
 	private int uid;
+	private String addrname;
+	private String addrtel;
+	private String postcode;
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	public String getAddrname() {
+		return addrname;
+	}
+	public void setAddrname(String addrname) {
+		this.addrname = addrname;
+	}
+	public String getAddrtel() {
+		return addrtel;
+	}
+	public void setAddrtel(String addrtel) {
+		this.addrtel = addrtel;
+	}
 	public int getArid() {
 		return arid;
 	}

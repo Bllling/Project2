@@ -105,7 +105,7 @@
                  <!--登录 end-->
         		<!--个人信息 start-->
            <div class="per-infor" style="display: none;">
-                    <p class="title">个人信息</p>
+                    <p class="title">个人信息<a href="homepage.html#${currentAdmin.uid}" class="more" style="color:rgb(56,145,237);font-size:5px;">个人主页<font>&gt;&gt;</font></a></p>
                     <div class="edit-box clearfix">
                         <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="头像"></div>
                        <div class="right">
