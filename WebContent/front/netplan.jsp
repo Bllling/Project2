@@ -173,7 +173,7 @@
                         </div>
                         <div class="other">
                            
-                           <a href="forgetPwd.html" class="forget">忘记密码?</a>
+                           <a href="forgetPwd2.html" class="forget">忘记密码?</a>
                         </div>
                         <input type="buttons" class="subm" value="登录" onclick="login()">
                         

@@ -1,5 +1,5 @@
-create database project3 default character set utf8 collate utf8_bin;
-use project3;
+create database project2 default character set utf8 collate utf8_bin;
+use project2;
 -- 管理员表 (管理员编号，管理员昵称，管理员密码，管理员邮箱，管理员手机号)
 create table if not exists admin(
 	aid int primary key auto_increment, 

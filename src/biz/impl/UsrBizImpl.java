@@ -65,6 +65,15 @@ public class UsrBizImpl implements IUsrBiz {
 		return usrDao.findAddrsById(uid);
 	}
 
+	@Override
+	public Usr findUemailByUid(Integer uid) {
+		if (uid == null) {
+			return null;
+		}
+		IUsrDao usrDao = new UsrDaoImpl();
+		return usrDao.findUemailByUid(uid);
+	}
+
 	
 
 }

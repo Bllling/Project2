@@ -33,7 +33,7 @@ public class UsrDaoImpl implements IUsrDao {
 	@Override
 	public int updatepwd(String newpwd,String uemail) {
 		DBHelper db = new DBHelper();
-		String sql = "update usr set upwd = ? where uemail = ?";
+		String sql = "update usr set upwd = password(?) where uemail = ?";
 		return db.update(sql, newpwd,uemail);
 	}
 
@@ -65,6 +65,13 @@ public class UsrDaoImpl implements IUsrDao {
 		DBHelper dbHelper = new DBHelper();
 		String sql = "select province, city, county, raddress, addrname, addrtel from address where uid = ?";
 		return dbHelper.finds(sql, Address.class, uid);
+	}
+
+	@Override
+	public Usr findUemailByUid(Integer uid) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select uemail from usr where uid = ?";
+		return dbHelper.find(sql, Usr.class, uid);
 	}
 
 }

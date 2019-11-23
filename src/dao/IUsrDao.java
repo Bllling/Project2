@@ -12,4 +12,5 @@ public interface IUsrDao {
 	public Usr findByName(String uname);
 	public Usr findAllByID(Integer uid);
 	public List<Address> findAddrsById(Integer uid);
+	public Usr findUemailByUid(Integer uid);
 }
