@@ -23,8 +23,9 @@
 	<form>
 		<div class="main-person">
 			<p>
-				<label>当前头像：</label> <a href="#"> <img id="p_img" src="../images/null.jpg" />
+				<label>当前头像：</label> <a href="#" onclick="changeImg()"> <img id="p_img" src="../images/null.jpg" />
 				</a>
+				<input id="imgFile" type="file" onchange="setImg()" style="display: none;" />
 			</p>
 			<p>
 				<label> <em>*</em> 昵称
@@ -63,7 +64,7 @@
 				<label style="float: left;"> <em>*</em> 地址信息
 				</label> <span id="demo3" class="citys"> <select id="sl_province" name="province"></select>
 					<select id="sl_city" name="city"></select> <select id="sl_area" name="area"></select> <select
-					name="town"></select>
+					id="sl_town" name="town"></select>
 				</span> <span class="hint" style="margin-left: 10px;">请选择省/市/区/街道</span>
 			</p>
 			<p>
@@ -91,11 +92,11 @@
 					maxlength="25" onblur="checkAdPhone()" /> <span class="adPhoneEr">电话号码不能为空或格式错误</span>
 			</p>
 			<p>
-				<input class="" type="checkbox" aria-checked="false" />是否设置为默认地址
+				<input id="isDefault" class="" type="checkbox" aria-checked="false" />是否设置为默认地址
 			</p>
 		</div>
 		<div class="p-btn" style="width: 700px;">
-			<input class="p-subm" type="button" value="保存" onclick="sumbitAdr()" />
+			<input id="adBtn" class="p-subm" type="button" value="保存" onclick="sumbitAdr()" />
 		</div>
 	</form>
 
@@ -132,35 +133,7 @@
 				</tr>
 			</thead>
 			<tbody id="ad_body" class="next_table_body">
-				<tr class="next_table_row" role="row">
-					<td>
-						<div id="tb_addrname1" class="next_table_cell_wrapper">xxx</div>
-					</td>
-					<td>
-						<div class="next_table_cell_wrapper">
-							<span id="tb_area1">xx省 xx市 xx县 xx镇</span>
-						</div>
-					</td>
-					<td>
-						<div id="tb_address1" class="next_table_cell_wrapper">xx市xx镇</div>
-					</td>
-					<td>
-						<div id="tb_postcode1" class="next_table_cell_wrapper">410600</div>
-					</td>
-					<td>
-						<div  class="next_table_cell_wrapper">
-							<span id="tb_tel1"> 15*******62 <br />
-							</span>
-						</div>
-					</td>
-					<td>
-						<div class="next_table_cell_wrapper">
-							<div class="tAction">
-								<a href="#" style="color: #333333;" onclick="showAddr(1)">修改</a>
-							</div>
-						</div>
-					</td>
-				</tr>
+				
 
 			</tbody>
 		</table>
@@ -170,17 +143,25 @@
 <script src="../js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery.citys.js"></script>
+<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
 <script type="text/javascript">
 	window.currentName;   //当前用户名
 	window.currentEmail;  //当前用户的邮箱
 	window.currentPhone;  //当前用户的电话号码
+	window.addrIndex;     //需要需改地址信息的编号
+	window.uid = location.hash.replace("#","");
+	
+	$(function() {
+		showAddrInfo();
+	});
+	
 	function showUserInfo() {
 		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		$.post("../usr", {op:"findAllByID", uid:uid}, function(data) {
 			window.currentName = data.uname;
 			window.currentEmail = data.uemail;
 			window.currentPhone = data.utel;
-			$("#nav_img").attr("src","../" + data.upics);
+			$("#nav_img").attr("src", "../" + data.upics);
 			console.log(data.upics);
 			$("#usrName").val(data.uname);
 			$("#p_img").attr("src", "../" + data.upics);
@@ -190,17 +171,41 @@
 		},"json")
 	}
 	
+	function setImg(){
+		//更改头像的方法
+		var src = $("#imgFile").val()
+		$("#p_img").attr("src", "/" + src);
+	}
+	
+	function changeImg() {
+		//a标签的点击事件
+		$("#imgFile").click();
+	}
+	
 	function showAddr(index) {
+		$("#adBtn").val("修改");
+		window.addrIndex = index;
+		//点击修改展示地址信息
 		var name = $("#tb_addrname" + index).text();
 		$("#consigneeName").val(name);
 		var area = $("#tb_area" + index).text();
 		var areas = area.split(" ");
+		console.log(areas);
 		var province = areas[0];  //省份
 		var city = areas[1];  //市
 		var county = areas[2];  //区/县
-		$("#sl_province").val(province);
-		$("#sl_city").val(city);
-		$("#sl_area").val(county);
+		$('#demo3').citys({
+			province : province,
+			city : city,
+			area : county,
+			onChange : function(info) {
+				townFormat(info);
+				var text = info['direct'] ? '(直辖市)' : '';
+			}
+		}, function(api) {
+			var info = api.getInfo();
+			townFormat(info);
+		});
 		var address = $("#tb_address" + index).text();
 		$("#area-textare").val(address);
 		var postcode = $("#tb_postcode" + index).text();
@@ -210,15 +215,34 @@
 		
 	}
 	
-	function showAddrInfo() {   
+	function showAddrInfo() { 
+		$("#ad_body").html("");
+		$("#adBtn").val("保存");
+		$("#consigneeName").val("");
+		$("#area-textare").val("");
+		$("#p_num").val("");
+		$("#adPhone").val("");
 		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		$.post("../usr", {op:"findAddrsById", uid:uid}, function(data) {
 			var str = "";
 			var index = 0;
 			$.each(data, function(index, item) {
 				index = index + 1;
-				str += "<tr></tr>";
+				var addr = item.province + " " + item.city + " " + item.county;
+				var pCode = item.postcode;
+				if (pCode == null) {
+					pCode = '000000';
+				}
+				str +='<tr class="next_table_row" role="row">'
+					+'<td><div id="tb_addrname'+index+'" class="next_table_cell_wrapper">'+item.addrname+'</div></td>'
+					+'<td><div class="next_table_cell_wrapper"><span id="tb_area'+index+'">'+ addr +'</span></div></td>'
+					+'<td><div id="tb_address'+index+'" class="next_table_cell_wrapper">'+item.raddress+'</div></td>'
+					+'<td><div id="tb_postcode'+index+'" class="next_table_cell_wrapper">'+pCode+'</div></td>'
+					+'<td><div  class="next_table_cell_wrapper"><span id="tb_tel'+index+'">'+item.addrtel+'<br /></span></div></td>'
+					+'<td><div class="next_table_cell_wrapper"><div class="tAction"><a href="#" style="color: #333333;" onclick="showAddr('+index+')">修改</a></div></div></td>'
+					+'</tr>';
 			});
+			$("#ad_body").append($(str));
 		},"json");
 	}
 	
@@ -296,18 +320,101 @@
 			return;
 		}
 		$.post("../usr", {op:"findByUsrName", usrName:usrName}, function(data) {
-			if (data.uname != "") {
-				$(".nameEr").attr("style", "display: block");
+			if (data == null) {
+				return;
 			}
+			$(".nameEr").attr("style", "display: block");
+			
 		},"json");
 	}
 		
 	function sumbitAdr() {
-		$(".lengthEr").attr("style", "display: block");
-		$(".adPhoneEr").attr("style", "display: block");
+		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		var lengthEr = $(".lengthEr").css("display");
+		var adPhoneEr = $(".adPhoneEr").css("display");
+		var numEr = $(".numEr").css("display");
+		var areaEr = $(".areaEr").css("display");
+		if (lengthEr == "block" || adPhoneEr == "block" || numEr == "block" || areaEr == "block" ) {
+			alert("操作失败，消息填写有误...");
+			return;
+		}
+		var consigneeName = $("#consigneeName").val();
+		var area_textare = $("#area-textare").val();
+		var p_num = $("#p_num").val();
+		var adPhone = $("#adPhone").val();
+		var province = $("#sl_province").find("option:selected").text();
+		var city = $("#sl_city").find("option:selected").text();
+		var county = $("#sl_area").find("option:selected").text();  //区/县
+		var town = $("#sl_town").find("option:selected").text();
+		var raddress = town + "" + area_textare;   //详细信息
+		var isDefault = $("#isDefault").is(':checked');
+		if (isDefault) {
+			isDefault = 1;
+		} else {
+			isDefault = 0;
+		}
+		if (consigneeName == "" || area_textare == "" || adPhone == "") {
+			alert("消息不能为空");
+			return;
+		}
+		var type = $("#adBtn").val();
+		if (type == "保存") {
+			//新增地址信息
+			$.post("../address", {op: "addAddress",province: province, city: city, county: county,raddress:raddress,isDefault:isDefault, uid: uid,consigneeName:consigneeName, adPhone:adPhone, p_num:p_num  }, function(data) {
+				if (data > 0) {
+					showAddrInfo();
+				} else {
+					alert("保存失败...");
+				}
+			},"text")
+		} else if (type == "修改") {
+			var arid = window.addrIndex;
+			//修改地址信息
+			$.post("../address", {op: "updateAddress",province: province, city: city, county: county,raddress:raddress,isDefault:isDefault, arid: arid,consigneeName:consigneeName, adPhone:adPhone, p_num:p_num  }, function(data) {
+				if (data > 0) {
+					showAddrInfo();
+				} else {
+					alert("修改失败...");
+				}
+			},"text")
+		}
+		
 	}
 
 	function sumbit() {
+		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		//个人资料的提交
+		var nullNameEr = $(".nullNameEr").css("display");
+		var nameEr = $(".nameEr").css("display");
+		var emailEr = $(".emailEr").css("display");
+		var phoneEr = $(".phoneEr").css("display");
+		if (nullNameEr == "block" || nameEr == "block" || emailEr == "block" || phoneEr == "block" ) {
+			alert("保存失败，消息填写有误...");
+			return;
+		}
+		var p_usrName = $("#p_usrName").val();  //昵称
+		var p_email = $("#p_email").val();  //邮箱
+		var p_phone = $("#p_phone").val();  //电话号码
+		$.ajaxFileUpload({
+			url: "../usr?op=updateUsrInfo&uid=" + uid,
+			secureuri: false,
+			fileElementId: ["imgFile"],
+			data: {p_usrName: p_usrName, p_email: p_email, p_phone: p_phone},
+			dataType: "text",
+			success: function(data, status) {
+				data = parseInt($.trim(data));
+				if (data == -1) {
+					alert("您输入的信息不完整，请确认后重新输入...");
+				} else if (data > 0) {
+					alert("修改成功...");
+				} else {
+					alert("修改失败...");
+				}
+			},
+			error: function(data, status, e) {
+				alert("修改失败...\n" + e);
+			}
+		})
 	}
 
 	function person() {  //进入个人资料页面

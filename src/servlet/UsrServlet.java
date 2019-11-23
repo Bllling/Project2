@@ -1,11 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspFactory;
+import javax.servlet.jsp.PageContext;
 import javax.websocket.Session;
 
 import biz.ICollectionBiz;
@@ -14,6 +17,8 @@ import biz.impl.CollectionBizImpl;
 import biz.impl.UsrBizImpl;
 import entity.Usr;
 import util.EmailSend;
+import util.FileUploadUtil;
+
 
 @WebServlet("/usr")
 public class UsrServlet extends BasicServlet{
@@ -46,9 +51,26 @@ public class UsrServlet extends BasicServlet{
 			findAllByID(req, resp);
 		} else if ("findAddrsById".equals(op)) {
 			findAddrsById(req, resp);
+		} else if ("updateUsrInfo".equals(op)) {
+			updateUsrInfo(req, resp);
 		}
 
 	}
+	
+	/**
+	 * 用户信息修改
+	 * @param req
+	 * @param resp
+	 */
+	private void updateUsrInfo(HttpServletRequest req, HttpServletResponse resp) {
+		String uid = req.getParameter("uid");
+		System.out.println(uid);
+		Map<String, String> map = fileUpload(req, resp);
+		System.out.println(map);
+		this.send(resp, -1);
+	}
+
+	
 	
 	/**
 	 * 通过用户ID查询地址表 查找该用户的 所有地址
@@ -147,5 +169,13 @@ public class UsrServlet extends BasicServlet{
 		EmailSend emailSend = new EmailSend(email);
 		emailSend.send();
 		this.send(resp, emailSend.getCoding());
+	}
+	
+	//数据保存到map
+	private Map<String, String> fileUpload(HttpServletRequest request, HttpServletResponse response) {
+		FileUploadUtil fuu = new FileUploadUtil();
+		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
+		Map<String, String> map = fuu.upload(pagecontext);
+		return map;
 	}
 }

@@ -63,7 +63,7 @@ public class UsrDaoImpl implements IUsrDao {
 	@Override
 	public List<Address> findAddrsById(Integer uid) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "select province, city, county, raddress, addrname, addrtel from address where uid = ?";
+		String sql = "select province, city, county, raddress, addrname, addrtel, postcode from address where uid = ?";
 		return dbHelper.finds(sql, Address.class, uid);
 	}
 
