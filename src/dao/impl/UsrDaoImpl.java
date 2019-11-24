@@ -18,14 +18,14 @@ public class UsrDaoImpl implements IUsrDao {
 //			upics="../../WebContent/images";
 //		}
 		DBHelper db = new DBHelper();
-		String sql = "insert into usr values (0,?,?,?,?,?)";
+		String sql = "insert into usr values (0,?,password(?),?,?,?)";
 		return db.update(sql, uname, upwd, uemail, utel, upics);
 	}
 
 	@Override
 	public Usr login(String uname, String upwd) {
 		DBHelper db = new DBHelper();
-		String sql = "select uid,uname,upwd,uemail from usr where (utel=? or uemail=?) and upwd= ?";
+		String sql = "select uid,uname,upwd,uemail from usr where (utel=? or uemail=?) and upwd=password(?)";
 		return db.find(sql, Usr.class,uname,uname,upwd);
 		
 	}

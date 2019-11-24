@@ -53,7 +53,7 @@ public class UsrServlet extends BasicServlet{
 			findAddrsById(req, resp);
 		} else if ("updateUsrInfo".equals(op)) {
 			updateUsrInfo(req, resp);
-		}
+		} 
 
 	}
 	
@@ -161,6 +161,12 @@ public class UsrServlet extends BasicServlet{
 
 	private void register(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO 用户注册
+		String uname=req.getParameter("uname");
+		String upwd=req.getParameter("upwd");
+		String uemail=req.getParameter("uemail");
+		String utel=req.getParameter("utel");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.register(uname, upwd, uemail, utel, null));
 		
 	}
 
