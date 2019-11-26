@@ -41,9 +41,7 @@
          <li id="menu_nav_index"><a target="_self" href="../index1.jsp">模拟攒机</a></li>
 		 <li id="menu_nav_myplan"><a  href="myplan.jsp">我的方案</a></li>
 		 <li id="menu_nav_wyplan"><a class="active"  target="_self" >网友方案</a></li>
-		 <li id="menu_nav_DiyTop"><a target="_self" href="#">配置排行榜</a></li>
 		 <li id="menu_nav_ProTop"><a target="_self" href="rank.html">网友首选配件</a></li>
-		 <li id="menu_nav_Graphics"><a target="_blank" href="#">智能推荐攒机</a></li>
        </ul>
       
     </div>

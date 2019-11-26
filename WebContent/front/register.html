@@ -214,7 +214,7 @@
 		 $.post("../usr",{op:"register",uemail:email,utel:tel,uname:name,upwd:psw},function(data){
 			if(data>0){
 				confirm("注册成功");
-				window.location.href();
+				window.history.back(-1);
 			}else{
 				alert("注册失败");
 			}
