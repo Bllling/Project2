@@ -18,14 +18,14 @@ public class UsrDaoImpl implements IUsrDao {
 //			upics="../../WebContent/images";
 //		}
 		DBHelper db = new DBHelper();
-		String sql = "insert into usr values (0,?,?,?,?,?)";
+		String sql = "insert into usr values (0,?,password(?),?,?,?)";
 		return db.update(sql, uname, upwd, uemail, utel, upics);
 	}
 
 	@Override
 	public Usr login(String uname, String upwd) {
 		DBHelper db = new DBHelper();
-		String sql = "select uid,uname,upwd,uemail from usr where (utel=? or uemail=?) and upwd= ?";
+		String sql = "select uid,uname,upwd,uemail from usr where (utel=? or uemail=?) and upwd=password(?)";
 		return db.find(sql, Usr.class,uname,uname,upwd);
 		
 	}
@@ -33,7 +33,7 @@ public class UsrDaoImpl implements IUsrDao {
 	@Override
 	public int updatepwd(String newpwd,String uemail) {
 		DBHelper db = new DBHelper();
-		String sql = "update usr set upwd = ? where uemail = ?";
+		String sql = "update usr set upwd = password(?) where uemail = ?";
 		return db.update(sql, newpwd,uemail);
 	}
 
@@ -65,6 +65,13 @@ public class UsrDaoImpl implements IUsrDao {
 		DBHelper dbHelper = new DBHelper();
 		String sql = "select province, city, county, raddress, addrname, addrtel, postcode from address where uid = ?";
 		return dbHelper.finds(sql, Address.class, uid);
+	}
+
+	@Override
+	public Usr findUemailByUid(Integer uid) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select uemail from usr where uid = ?";
+		return dbHelper.find(sql, Usr.class, uid);
 	}
 
 }

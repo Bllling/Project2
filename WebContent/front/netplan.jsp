@@ -6,6 +6,7 @@
 <link rel="../css/share_style0_16.css">
 <link rel="../css/global-sitennav.css">
 <style>
+ 
   .navs-box .inf{width:684px;}
   .navs-box .inf .list{float:right;}
   .zol20th{float: left;width: 50px;height: 36px;margin: 8px 0 0 219px;background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png) no-repeat center;}
@@ -137,21 +138,21 @@
                     </div>
                     <table >
                         <tbody style="height: 50px;"><tr >
-                           <td >
+                             <td >
                               <a href="javascript:void(0)" class="item-link fanan">
-                                <h1>xx</h1>
+                                <h1 id="h1">xx</h1>
                                 方案
                               </a>
                            </td>
                            <td>
                              <a href="javascript:void(0)" class="item-link l2 review">
-                                 <h1>xx</h1>
+                                 <h1 id="h2">xx</h1>
                                 浏览
                               </a>
                            </td>
                            <td>
                               <a href="javascript:void(0)" class="item-link l3 hitNum">
-                                <h1>xx</h1>
+                                <h1 id="h3">xx</h1>
                                 点评
                               </a>
                            </td>
@@ -173,7 +174,7 @@
                         </div>
                         <div class="other">
                            
-                           <a href="forgetPwd.html" class="forget">忘记密码?</a>
+                           <a href="forgetPwd2.html" class="forget">忘记密码?</a>
                         </div>
                         <input type="buttons" class="subm" value="登录" onclick="login()">
                         
@@ -197,6 +198,7 @@ $(function(){
 	
 		 $(".logo").css("display","none");
 		 $(".per-infor").css("display","block");
+		 getTbody();
 	 }
 })
 function clear(){
@@ -630,6 +632,23 @@ function collection(id,uid){
  		 }
  		 }
  	 }
-
+ function getTbody(){
+	 var uid = $("#uid").html();
+	 $.post("../computer",{op:"getTotalByUid",uid:uid},function(data){
+		 if(data>-1){
+			$("#h1").html(data); 
+		 }
+	 })
+	 $.post("../computer",{op:"findBnumber",uid:uid},function(data){
+		 if(data>-1){
+			$("#h2").html(data); 
+		 }
+	 })
+	 $.post("../computer",{op:"findZnumber",uid:uid},function(data){
+		 if(data>-1){
+			$("#h3").html(data); 
+		 }
+	 })
+ }
 </script>
 </body></html>

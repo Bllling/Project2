@@ -89,6 +89,33 @@ public class ComputerBizImpl implements IComputerBiz{
 		return computerDao.findDetailByID(id);
 	}
 
+	@Override
+	public int getTotalByUid(Integer uid) {
+		if (uid == null) {
+			return -1;
+		}
+		IComputerDao computerDao = new ComputerDaoImpl();
+		return computerDao.getTotalByUid(uid);
+	}
+
+	@Override
+	public int getBnumebrByUid(Integer uid) {
+		if (uid == null) {
+			return -1;
+		}
+		IComputerDao computerDao = new ComputerDaoImpl();
+		return computerDao.getBnumebrByUid(uid);
+	}
+
+	@Override
+	public int getZnumebrByUid(Integer uid) {
+		if (uid == null) {
+			return -1;
+		}
+		IComputerDao computerDao = new ComputerDaoImpl();
+		return computerDao.getZnumebrByUid(uid);
+	}
+
 
 
 	

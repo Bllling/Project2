@@ -16,7 +16,9 @@ import biz.IUsrBiz;
 import biz.impl.CollectionBizImpl;
 import biz.impl.UsrBizImpl;
 import entity.Usr;
+import util.EmailSend;
 import util.FileUploadUtil;
+
 
 @WebServlet("/usr")
 public class UsrServlet extends BasicServlet{
@@ -28,7 +30,11 @@ public class UsrServlet extends BasicServlet{
 		String op = req.getParameter("op");
 		System.out.println(op);
 		if ("sendemail".equals(op)) {
-			sendemail(req,resp);
+			try {
+				sendemail(req,resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if ("register".equals(op)) {
 			register(req,resp);
 		} else if ("login".equals(op)) {
@@ -47,7 +53,7 @@ public class UsrServlet extends BasicServlet{
 			findAddrsById(req, resp);
 		} else if ("updateUsrInfo".equals(op)) {
 			updateUsrInfo(req, resp);
-		}
+		} 
 
 	}
 	
@@ -128,7 +134,10 @@ public class UsrServlet extends BasicServlet{
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO 用户更新密码
+		String pwd=req.getParameter("upwd");
+		String uemail=req.getParameter("email");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.updatepwd(pwd, uemail));
 		
 	}
 
@@ -152,12 +161,20 @@ public class UsrServlet extends BasicServlet{
 
 	private void register(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO 用户注册
+		String uname=req.getParameter("uname");
+		String upwd=req.getParameter("upwd");
+		String uemail=req.getParameter("uemail");
+		String utel=req.getParameter("utel");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.register(uname, upwd, uemail, utel, null));
 		
 	}
 
-	private void sendemail(HttpServletRequest req, HttpServletResponse resp) {
-	//TODO:发送邮箱验证码到用户邮箱
-		
+	private void sendemail(HttpServletRequest req, HttpServletResponse resp) throws Exception  {
+		String email=req.getParameter("email");
+		EmailSend emailSend = new EmailSend(email);
+		emailSend.send();
+		this.send(resp, emailSend.getCoding());
 	}
 	
 	//数据保存到map

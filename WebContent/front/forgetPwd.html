@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 	<style>
+	  body{
+	   width: 100%;
+	  height: auto;
+	  background: rgb(246,246,246) url("../images/backpic.jpg");
+	  }
+	
 		.top{
-			background: rgb(246,246,246) url("../images/backpic.jpg");
+		
 			margin-top: -10px;
 			margin-left: -10px;
 			width: 1349px;
@@ -38,11 +44,13 @@
 			color: white
 		}
 		.btn1{
-			width: 60px;
+			width: 100px;
 			height:30px;
 			border:rgb(230,230,230) 1px solid;
-			font-size: 15px;
-			color: white
+			font-size: 10px;
+			color: white;
+			border-radius:5px;
+			background-color: rgb(23,123,183);
 		}
 		.span1:hover{
 			cursor: pointer;
@@ -75,22 +83,19 @@
 			
 		      <tr>
 				  <td><img src="../images/emailicon.jpg" style="margin-left: 5px "></td>
-				  <td><input type="email" id="email1"  style="width: 225px;height:25px; " placeholder="请点击发送后输入邮箱中获取的动态码">
-				  <input type="button" id="button1" onclick="go()" class="btn1" value="发送"></td>
+				  <td><input type="email" id="email1"  style="width: 190px;height:25px;border:1px solid rgb(220,220,220);border-radius:5px; " placeholder="邮箱验证码">
+				  <input type="button" id="button1" onclick="go()" class="btn1" value="发送邮箱验证码"></td>
 			 </tr>
 			
 			  <tr>
 				  <td><img src="../images/pswicon.jpg" style="margin-left: -4px "></td>
-				  <td><input type="password" id="pwd"  placeholder="请修改密码" style="width: 285px;height:25px; "></td>
+				  <td><input type="password" id="pwd"  placeholder="请修改密码" style="width: 285px;border:1px solid rgb(220,220,220);border-radius:5px;height:25px; "></td>
 			 </tr>
 			 <tr>
 				  <td><img src="../images/pswicon.jpg" style="margin-left: -4px "></td>
-				  <td><input type="password" id="pwd1"  placeholder="确认密码" style="width: 285px;height:25px; "></td>
+				  <td><input type="password" id="pwd1"  placeholder="确认密码" style="width: 285px;border:1px solid rgb(220,220,220);border-radius:5px;height:25px; "></td>
 			 </tr>
-			<!-- <tr>
-				 <td></td>
-				 <td><input type="text" id="text1" style="width: 90px ;height:25px;margin-left: 0px;"><input type="button" value="获取邮箱验证码" class="btn1" ></td>
-			 </tr>-->
+	
 			  
 			 
 			 <tr>
@@ -104,13 +109,16 @@
 	</div>
 	 <script src="../js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
+	var code="";
+	var index=60;
 	function validateCode(){
 		var psw=$("#pwd").val();
 		var psw1=$("#pwd1").val();
 		var email1=$("#email1").val();
+		var email = location.hash.replace("#","");
 		var reg2=/^[a-zA-Z]\w{5,17}$/;
 		if(email1.length<=0||email1==""){
-			alert("请输入动态码！");
+			alert("请输入邮箱验证码！");
 			return;
 		}
 		if(psw.length<=0||psw==""){
@@ -129,15 +137,49 @@
 			 alert("两次密码不一致！");
 			return;
 		}
-		//DOTO:邮箱发送确认
+		if(email1!=code){
+			 alert("邮箱验证码不正确！");
+			return;
+		}
+		$.post("../usr",{op:"update",upwd:psw,email:email},function(data){
+			if(data>0){
+				confirm("修改密码成功！")
+			}else{
+				alert("修改密码失败！")
+			}
+		})
 		
-		confirm("修改密码成功")
+		
 		
 	}
 	function go(){
-		//发送邮箱验证码
-	
+		var email = location.hash.replace("#","");
+		$.post("../usr",{op:"sendemail",email:email},function(data){
+			if(data!=null){
+				code=data;
+				timer();
+			}else{
+				alert("发送失败!")
+			}
+		})
 	}
+  function timer(){
+	    $(".btn1").css("background-color","rgb(230,230,230)");
+		$(".btn1").css("color","black");
+		var timer=setInterval(	function(){
+			$(".btn1").attr("value",--index);
+			
+		},1000);
+		var timer1=setInterval(function(){
+			if(index==0){
+				$(".btn1").css("background-color","rgb(23,123,183)");
+				$(".btn1").attr("value","重新发送");
+				$(".btn1").css("color","white");
+				index=60;
+				clearInterval(timer);
+			}
+		},1000);
+  }
 	</script>
 </body>
 </html>

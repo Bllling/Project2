@@ -46,7 +46,35 @@ private static final long serialVersionUID = 1L;
 			updateBnumber(request,response);
 		}else if ("findDetailByID".equals(op)) {
 			findDetailByID(request, response);
+		}else if("findBnumber".equals(op)){
+			findBnumber(request, response);
 		}
+		else if("findZnumber".equals(op)){
+			findZnumber(request, response);
+		}else if("getTotalByUid".equals(op)){
+			getTotalByUid(request, response);
+		}
+		
+	}
+
+	private void getTotalByUid(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getTotalByUid(uid));
+		
+	}
+
+	private void findZnumber(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getZnumebrByUid(uid));
+		
+	}
+
+	private void findBnumber(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getBnumebrByUid(uid));
 		
 	}
 
