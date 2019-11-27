@@ -135,7 +135,7 @@ create table box(
 	quantiy int, -- 库存
 	usetimes int, -- 使用次数
 	praise int, -- 点赞数
-	score int, 
+	score varchar(50), 
 	state int default 1  -- 是否被删除的状态   1：未删除  0：已删除 默认为1
 )ENGINE=InnoDB AUTO_INCREMENT=10001 default charset=utf8 collate = utf8_bin;
 
@@ -198,10 +198,7 @@ create table if not exists rorder(
 	id int , -- 配置单号
 	uid int,  -- 用户编号,
 	rtime datetime , -- 交易时间
-	province varchar(1000) not null, -- 收货省
-	city varchar(1000) not null,  -- 收货市
-	county varchar(1000) not null,  -- 收货县/区
-	raddress varchar(1000) not null, -- 收货详细地址
+	state int,  -- 0已经删除  1待发货 2已经发货   3已经收货
 	total decimal(8,2) not null,    -- 总价
 	constraint FK_rorder_uid foreign key(uid) references usr(uid),
 	constraint FK_rorder_id foreign key(id) references computer(id)
@@ -209,8 +206,7 @@ create table if not exists rorder(
 
 create table if not exists rorderdetail(
 	rorderid varchar(50) primary key ,
-	id int , -- 配置单号
-	uid int,  -- 用户编号,
+    arid int not null,
 	cpuprice decimal(8,2), -- cpu价格
 	motherboardprice decimal(8,2), -- 主板价格
 	memoryprice decimal(8,2),    -- 内存价格
@@ -219,23 +215,10 @@ create table if not exists rorderdetail(
 	sourceprice decimal(8,2),   -- 电源价格
 	graphicsprice decimal(8,2), -- 显卡价格
 	boxprice decimal(8,2), -- 机箱价格
-	cpuid int,   -- cpu编号
-	motherboardid int,  -- 主板编号
-	memoryid int,   -- 内存编号
-	diskid int,     -- 硬盘编号
-	sourceid int,    -- 电源编号
-	graphicsid int,   -- 显卡编号
-	boxid int,       -- 机箱编号
+
 	constraint FK_rorder1_rorderid foreign key(rorderid) references rorder(rorderid),
-	constraint FK_rorder1_motherboardid foreign key(motherboardid) references motherboard(motherboardid),
-	constraint FK_rorder1_cpuid foreign key(cpuid) references cpu(cpuid),
-	constraint FK_rorder1_memoryid foreign key(memoryid) references memory(memoryid),
-	constraint FK_rorder1_diskid foreign key(diskid) references disk(diskid),
-	constraint FK_rorder1_sourceid foreign key(sourceid) references source(sourceid),
-	constraint FK_rorder1_graphicsid foreign key(graphicsid) references graphics(graphicsid),
-	constraint FK_rorder1_boxid foreign key(boxid) references box(boxid),
-	constraint FK_rorder1_uid foreign key(uid) references usr(uid),
-	constraint FK_rorder1_id foreign key(id) references computer(id)
+	constraint FK_rorder1_arid foreign key(arid) references address(arid)
+
 )ENGINE=InnoDB  default charset=utf8 collate = utf8_bin;
 
 

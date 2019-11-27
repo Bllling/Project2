@@ -25,6 +25,6 @@ public interface IComputerBiz {
      public int getTotalByUid(Integer uid);
  
      public int getBnumebrByUid(Integer uid);
-  
+     public Computer findID(String cname,Integer id);
       public int getZnumebrByUid(Integer uid);
 }

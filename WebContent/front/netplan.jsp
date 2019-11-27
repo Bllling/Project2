@@ -22,8 +22,8 @@
            <ul >
               <li class="li5">
                   <div class="search-box">
-                       <input id="J_keywords" type="text" class="skey" name="kword" value="请输入关键词或配置单名称" data-source="" autocomplete="off">
-                       <input id="submit" type="submit" class="sbtn" value="搜索">
+                       <input id="J_keywords" type="text" class="skey" name="kword" placeholder="请输入配置单号或配置单名称" data-source="" autocomplete="off">
+                       <input id="sb" type="button" class="sbtn" value="搜索" onclick="findC()">
                  </div>
               </li>
            </ul>
@@ -41,9 +41,7 @@
          <li id="menu_nav_index"><a target="_self" href="../index1.jsp">模拟攒机</a></li>
 		 <li id="menu_nav_myplan"><a  href="myplan.jsp">我的方案</a></li>
 		 <li id="menu_nav_wyplan"><a class="active"  target="_self" >网友方案</a></li>
-		 <li id="menu_nav_DiyTop"><a target="_self" href="#">配置排行榜</a></li>
 		 <li id="menu_nav_ProTop"><a target="_self" href="rank.html">网友首选配件</a></li>
-		 <li id="menu_nav_Graphics"><a target="_blank" href="#">智能推荐攒机</a></li>
        </ul>
       
     </div>
@@ -450,6 +448,7 @@ function new1(sumpriceMin,sumpriceMax,rtime){
 	 var str1="";
 	 var str = "";
 	 var uid=$("#uid").html();
+	 $("#list").html("");	
 	 var page=$("#nowpage").html();
      $.post("../computer",{op:"findByPart",type:"rtime",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime,page:page,rows:"3"},function(data){
 	 $("#list").html("");
@@ -460,10 +459,11 @@ function new1(sumpriceMin,sumpriceMax,rtime){
 	
 			$.post("../usr",{op:"findByID",uid:uid},function(data1){
 				if (data1 == null){
-					str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					str='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					 $("#list").append($(str));	
 				} else if(data1.id>0){
-					str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">已收藏</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
-
+					str='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">已收藏</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					 $("#list").append($(str));	
 				}
 				 $("#list").append($(str));	
 			},"json")
@@ -490,30 +490,29 @@ function hot(sumpriceMin,sumpriceMax,rtime){
 	 var rtime = rtime; 
 	 var str1="";
 	 var str = "";
+	 var count=1;
 	 var uid=$("#uid").html();
 	 var page=$("#nowpage").html();
+	 $("#list").html("");	
      $.post("../computer",{op:"findByPart",type:"bnumber",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime,page:page,rows:"3"},function(data){
 	//console.log(data);
     	 $("#list").html("");
 	
 	 $.each(data,function(index,item){
-		 console.log(item);
 		str1=$(".name").html();
 		if(str1!=null&&str1.length > 0&&""!=str1){
-			$.post("../usr",{op:"findByID",uid:uid},function(data1){
-			
-				if (data1 == null){
-					str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
-					
-				} else if(data1.id>0){
-					str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">已收藏</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';			
-
-				}
-				
-				 $("#list").append($(str));	
+			$.post("../usr",{op:"findByID",uid:uid},function(data1){	
+				if (data1 == null){				
+					str='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					 $("#list").append($(str));	
+				} else {			
+					str='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">已收藏</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';			
+					 $("#list").append($(str));	
+				}			
 			},"json")
 			
 		}else{
+			
 		str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="javascript:remind();" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
 
 		}
@@ -547,12 +546,13 @@ function sumprice(sumpriceMin,sumpriceMax,rtime){
 
 			$.post("../usr",{op:"findByID",uid:uid},function(data1){
 				if (data1 == null){
-					str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					str='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">收藏此配置</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					 $("#list").append($(str));
 				} else if(data1.id>0){
-					str+='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">已收藏</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
-
+					str='<div class="plan-list-box" id="list"><ul class="list show-list"><li class="outli" ><p class="tit big-title" > <a href="buy.html#'+item.id+'&'+uid+'" class="link" title="">'+item.cname+'</a><span class="collect" hadrel="0"><i></i><a href="javascript:collection('+item.id+','+item.uid+')	;" id="collection"+"'+item.uid+'">已收藏</a></span></p><p class="total-box"> <span class="user"><i></i><a href="javascript:void(0)">'+item.uname+'</a></span><span class="time">'+item.rtime+' </span><span class="time">   浏览次数:'+item.bnumber+'次 </span><span class="total">总计：<font>'+item.sumprice+'</font>元</span></p><p class="text">'+item.detail+'</p><div class="pics"><i class="iprev" onclick="prev()"></i><i class="inext" onclick="next()"></i>  <div class="lunbo-box"><ul><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics+'" alt="CPU"></div> <p class="titl" title="">'+item.name+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics1+'" alt="主板"></div><p class="titl" title="">'+item.name1+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics2+'" alt="内存"></div><p class="titl" title="">'+item.name2+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics3+'" alt="硬盘"></div><p class="titl" title="">'+item.name3+'</p></a> </li><li><a href="javascript:void(0)"><div class="ig"> <img src="../'+item.pics4+'" alt="电源"></div><p class="titl" title="">'+item.name4+'</p></a></li><li><a href="#"><div class="ig"><img src="../'+item.pics5+'" alt="显卡"></div> <p class="titl" title="">'+item.name5+'</p></a></li><li><a href="javascript:void(0)"><div class="ig"><img src="../'+item.pics6+'" alt="机箱"></div><p class="titl" title="">'+item.name6+'</p></a></li> </ul></div> </div><div class="other clearfix"><span class="editss cite"><a href="#" class="editss">引用此配置单进行攒机<font>&gt;&gt;</font></a></span> </div> </li><div class="page-box"></div></div>';
+					 $("#list").append($(str));
 				}
-				 $("#list").append($(str));	
+					
 			},"json")
 			
 		}else{
@@ -649,6 +649,50 @@ function collection(id,uid){
 			$("#h3").html(data); 
 		 }
 	 })
+ }
+ function findC(){
+	 var reg=/^[0-9]*$/;
+	 var id=null;
+	 var cname=null;
+	 var line=$("#J_keywords").val();
+	 var str=$("#uid").html();
+	 var uid=$("#uid").html();
+	 if(line==null||line==""||line.length<=0){
+		 alert("请输入配置名或配置单号");
+		 return;
+	 }
+	 if(str!=null&&str.length > 0&&""!=str){
+		 if(reg.test(line)){
+			id=line;
+			$.post("../computer",{op:"isExist",id:id},function(data){
+				if(data==null){
+					alert("你要搜索的配置不存在!");
+					
+			
+				}else{
+					window.location.href="buy.html#"+id+"&"+uid;
+				}
+			},"json")
+		
+			
+		 }else{
+			cname=line;
+			$.post("../computer",{op:"findIdByCname",cname:cname},function(data){
+				if(data==null){
+					alert("你要搜索的配置不存在!");
+				
+				}else{
+					window.location.href="buy.html#"+data.id+"&"+uid;
+				}
+			
+				
+			},"json")
+		 }
+	 }else{
+		 alert("请先登录"); 
+		 $("#J_keywords").html("");
+	 }
+
  }
 </script>
 </body></html>

@@ -663,7 +663,7 @@ to {
 	  </div> 
 		<!--  -->
 	</div>
->>>>>>> b5e6f668d76f56e02cbcc6327babc274f38c116e
+
 
 
 	<script type="text/javascript">
@@ -671,6 +671,7 @@ to {
 		var vcodePath;
 
 		window.onload = function() {
+			alert("1");
 			var str = $("#my").html();
 
 			if (str != null && str.length > 0 && "" != str) {
@@ -743,6 +744,7 @@ to {
 			var ss = $("#J_keywords").val();
 			console.log(ss);
 		}
+		
 	</script>
 
 </body>
@@ -771,3 +773,4 @@ to {
 			</tr>
 		</table>
 	</div>
+

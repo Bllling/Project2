@@ -114,7 +114,6 @@ public class UsrServlet extends BasicServlet{
 
 	private void findByID(HttpServletRequest req, HttpServletResponse resp) {
 		int uid = Integer.parseInt(req.getParameter("uid"));
-		System.out.println(uid);
 		ICollectionBiz collectionBiz = new CollectionBizImpl();
 		this.send(resp, collectionBiz.findByID(uid));
 		
