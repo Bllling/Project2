@@ -116,6 +116,14 @@ public class ComputerBizImpl implements IComputerBiz{
 		return computerDao.getZnumebrByUid(uid);
 	}
 
+	@Override
+	public Computer findID(String cname, Integer id) {
+		IComputerDao  computerDao = new ComputerDaoImpl();
+		return computerDao.findID(cname, id);
+	}
+	
+	
+
 
 
 	

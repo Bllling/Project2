@@ -144,6 +144,13 @@ public class ComputerDaoImpl implements IComputerDao {
 		return dbHelper.getTotal(sql, uid);
 	}
 
+	@Override
+	public Computer findID(String cname,Integer id) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select id from computer where id = ? or cname=?";
+		return dbHelper.find(sql,Computer.class, id, cname);
+	}
+
 	
 
 	

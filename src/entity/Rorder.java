@@ -9,10 +9,7 @@ public class Rorder implements Serializable {
 	private int id;
 	private int uid;
 	private String rtime;
-	private String province;
-	private String city;
-	private String county;
-	private String raddress;
+	private int state;
 	private  double total;
 	
 	private String uname; //配置单作者
@@ -28,6 +25,12 @@ public class Rorder implements Serializable {
 	
 	
 	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public String getUname() {
 		return uname;
 	}
@@ -112,30 +115,7 @@ public class Rorder implements Serializable {
 	public void setRtime(String rtime) {
 		this.rtime = rtime;
 	}
-	public String getProvince() {
-		return province;
-	}
-	public void setProvince(String province) {
-		this.province = province;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getCounty() {
-		return county;
-	}
-	public void setCounty(String county) {
-		this.county = county;
-	}
-	public String getRaddress() {
-		return raddress;
-	}
-	public void setRaddress(String raddress) {
-		this.raddress = raddress;
-	}
+
 	public double getTotal() {
 		return total;
 	}

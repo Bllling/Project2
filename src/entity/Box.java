@@ -12,7 +12,14 @@ public class Box implements Serializable {
 	private int usetimes;
 	private int praise;
 	private int state;  //状态
+	private String score;
 	
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
+	}
 	public int getState() {
 		return state;
 	}

@@ -88,4 +88,6 @@ public interface IComputerDao {
       * 根据Uid查找所有订单的点赞数
       */
      public int getZnumebrByUid(Integer uid);
+     
+     public Computer findID(String cname,Integer id);
 }
