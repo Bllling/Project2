@@ -13,7 +13,7 @@ public class Rorder implements Serializable {
 	private String city;
 	private String county;
 	private String raddress;
-	private  double total;
+	private double total;
 	
 	public String getRorderid() {
 		return rorderid;

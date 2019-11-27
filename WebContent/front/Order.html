@@ -148,36 +148,20 @@
 					<th style="width:20%">交易状态</th>
 					<th style="width:20%">交易操作</th>
 				</tr>
-				<tbody >
+				<tbody id="orderTbody" >
 					<tr class="tr2" >
-						<td align="left">
-							<input type="radio" name="radio"><span>2019-11-12</span>
-							&emsp;订单号:<span>34232484</span>
-						</td>
-						<td colspan="3" align="left">
-					    	 攒机作者:<span>xxxx</span>
-						</td>
-						
+						<td align="left"><input type="radio" name="radio"><span>2019-11-12</span>&emsp;订单号:<span>34232484</span></td>
+						<td colspan="3" align="left"> 攒机作者:<span>xxxx</span></td>
 						<td><a href="javascript:delete1();" id="content" class="imgdel"></a></td>
 					</tr>
 					<tr>
 						<td id="computerbody">
-							<img src="../../No2pics/cpu1.jpg" class="img1" >
-						    <img src="../../No2pics/zhuban1.jpg" class="img">
-						    <img src="../../No2pics/neicun1.jpg" class="img">
-						    <img src="../../No2pics/yingpang1.jpg" class="img">
-						    <img src="../../No2pics/dianyuan1.jpg" class="img">
-						    <img src="../../No2pics/xianka1.jpg" class="img">
-						    <img src="../../No2pics/jixiang1.jpg" class="img">
-							<div class="computerp">
-								<p  class="comp" align="left">配置名字</p>
-								<p class="comp"  align="left">配置介绍好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好好
-								</p>
-							</div>
+							<img src="../../No2pics/cpu1.jpg" class="img1" ><img src="../../No2pics/zhuban1.jpg" class="img"><img src="../../No2pics/neicun1.jpg" class="img"><img src="../../No2pics/yingpang1.jpg" class="img"><img src="../../No2pics/dianyuan1.jpg" class="img"><img src="../../No2pics/xianka1.jpg" class="img"><img src="../../No2pics/jixiang1.jpg" class="img">
+							<div class="computerp"><p  class="comp" align="left">配置名字</p><p class="comp"  align="left">配置介绍</p></div>
 						</td>
 						<td>￥0.30</td>
 						<td>1</td>
-						<td>卖家已发货</td>
+						<td id="orderState">卖家已发货</td>
 						<td><input type="button" value="确定收货" class="btn2"></td>
 					</tr>
 				</tbody>
@@ -200,9 +184,46 @@
      
 	    var index=7;
 	    $(function(){
+	    	showOrder();
 	    	change();
 	    })
-	    function change(){
+	    
+	    function showOrder() {
+	    	$("#orderTbody").html();
+	    	//显示订单信息
+	    	$.post("../order", {op:"findOrderInfo"}, function(data) {
+	    		var str ="";
+	    		$.each(data, function(index, item) {
+	    			var cpupic = pic(item.cpupics);  //cpu土拍你
+	    			var mbpic = pic(item.mbpics);    //主板图片
+	    			var mepic = pic(item.mepics);    //内存图片
+	    			var dpic = pic(item.dpics);      //硬盘图片
+	    			var spic = pic(item.spics);      //电源图片
+	    			var grapic = pic(item.grapics);  //显卡图片
+	    			var bpic = pic(item.bpics);      //机箱图片
+	    			//var detail = item.detail;
+	    			//if (detail == "undefined") {
+	    			//	detail = "无";
+	    			//}
+	    			str += '<tr class="tr2" ><td align="left"><input type="radio" name="radio"><span>'+item.rtime+'</span>&emsp;订单号:<span>'+item.rorderid+'</span></td>'
+	    				+ '<td colspan="3" align="left"> 攒机作者:<span>'+item.uname+'</span></td>'
+	    				+ '<td><a href="javascript:delete1('+item.rorderid+');" id="content" class="imgdel"></a></td></tr>'
+	    				+ '<tr><td id="computerbody">'
+	    				+ '<img src="../'+cpupic+'" class="img1" ><img src="../'+mbpic+'" class="img"><img src="../'+mepic+'" class="img"><img src="../'+dpic+'" class="img"><img src="../'+spic+'" class="img"><img src="../'+grapic+'" class="img"><img src="../'+bpic+'" class="img">'
+	    				+ '<div class="computerp"><p  class="comp" align="left">'+item.cname+'</p><p class="comp"  align="left">'+item.detail+'</p></div></td>'
+	    				+ '<td>￥'+item.sumprice+'</td><td>1</td><td id="orderState">卖家已发货</td><td><input type="button" value="确定收货" class="btn2"></td>'
+	    				+'</tr>';
+	    		})
+	    		$("#orderTbody").append($(str));
+	    	},"json");
+	    }
+	    
+	    function pic(pics) {
+	    	var pic = pics.split(";");
+	    	return pic[0];
+	    }
+	    
+	    function change(){   //更改图片
 	    	var time=setInterval(function(){
 	    		if(index%7==0){
 	    		index=0;
@@ -222,10 +243,12 @@
 	    	
 	    }
 	    function yes(){
+	    	
 	    	$(".popOut").css('display', 'none');
 			$(".popOutBg").css('display', 'none');
 	    }
   		function no(){
+  			
   			$(".popOut").css('display', 'none');
 			$(".popOutBg").css('display', 'none');
 	    }

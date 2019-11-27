@@ -23,6 +23,9 @@ public class RorderDetail implements Serializable {
 	private int sourceid;
 	private int graphicsid;
 	private int boxid;
+	
+	
+	
 	public String getRorderid() {
 		return rorderid;
 	}
