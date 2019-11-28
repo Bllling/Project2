@@ -21,7 +21,19 @@ public class addressServlet extends BasicServlet{
 			addAddress(request, response);
 		} else if ("updateAddress".equals(op)) {
 			updateAddress(request, response);
+		} else if("findAllByUid".equals(op)){
+			findAllByUid(request, response);
 		}
+	}
+	/**
+	 * 通过Uid 查找所有地址
+	 * @param request
+	 * @param response
+	 */
+	private void findAllByUid(HttpServletRequest request, HttpServletResponse response) {
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		IAddressBiz addressBiz = new AddressBizImpl();
+		this.send(response, addressBiz.findAllByUid(uid));
 	}
 
 	/**

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>购买</title>
+<link href="../css/Diy_detailNew.css" rel="stylesheet">
+<link href="../css/zLoginDialog.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/share_style0_24.css">
+<link rel="stylesheet" href="../css/global-sitennav.css">
+<style type="text/css">
+.buy {
+	color: white;
+	background: rgb(25, 142, 246);
+	width: 100px;
+	height: 35px;
+	margin-left: 10px;
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+.buy:hover {
+	cursor: pointer;
+	background: rgb(241, 49, 49);
+}
+
+.popOutBg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0, .6);
+	display: none;
+	z-index: 999;
+}
+
+.popOut {
+	position: fixed;
+	width: 320px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -180px;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	display: none;
+	z-index: 999;
+	position: fixed;
+	text-align: center;
+}
+.navs-box .inf {
+	width: 684px;
+}
+
+.navs-box .inf .list {
+	float: right;
+}
+
+.zol20th {
+	float: left;
+	width: 50px;
+	height: 36px;
+	margin: 8px 0 0 219px;
+	background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png)
+		no-repeat center;
+}
+.btn2{
+	background-color: #118adb;
+   	border:1px solid #118adb;
+	color: white;
+	border-radius: 5px;
+	}
+	.tr1{
+height: 120px;
+	}
+.im{
+
+ float: left;
+ margin-left: 100px;
+ 
+}
+td{
+   white-space: normal !important;  
+   font-size: 20px  !important;
+   }
+th{
+    font-size: 20px  !important;
+   }
+#pp{
+    float: left;
+    width: 190px;
+    margin-top: 27px;
+    }
+</style>
+</head>
+<body>
+	
+
+	
+
+
+	<!--wrap start-->
+	<div class="wrap">
+		<div class="box">
+			
+			<div class="content clearfix">
+				<div class="left">
+					
+					
+				
+					<div class="whole-inf" id="proShow"
+						style="width: 1200px; margin-left: -100px;">
+						<div class="inf-lable">
+							<div class="nav">
+								<p style="font-size: 25px;">配置清单</p>
+							</div>
+						</div>
+						<div class="details">
+							<div class="detail" style="display: block;">
+								<table class="zj-inf" width="100%" height="462">
+									<tbody>
+										<tr class="inf-head" align="center" >
+											<th style="width: 40%;" colspan="2">配件</th>
+						
+											<th style="width: 20%;">数量</th>
+											<th style="width: 20%;">价格</th>
+											<th style="width: 20%;">跑分</th>
+										</tr>
+										
+									</tbody>
+								</table>
+								<div class="last-tr clearfix">
+									
+								
+								</div>
+							</div>
+						</div>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+$(function(){
+	var sumprice=0;
+	var id = location.hash.replace("#","");
+
+	
+	$.post("../computer",{op:"findHardWare",id:id},function(data){
+		var str = "";
+	
+		
+		 $.each(data,function(index,item){
+			 var no="no"+index;
+			 var pic="../"+item.pics;
+			 var str1 = "";
+			 if(index=="cpu"){str1=item.cpuprice;flag="1";}
+			 if(index=="motherboard"){str1=item.motherboardprice;flag="2";}
+			 if(index=="memory"){str1=item.memoryprice;flag="3";}
+			 if(index=="disk"){str1=item.diskprice;flag="4";}
+			 if(index=="source"){str1=item.sourceprice;flag="5";}
+			 if(index=="graphics"){str1=item.graphicsprice;flag="6";}
+			 if(index=="box"){str1=item.boxprice;flag="7";}
+			 str+='<tr class="tr1" id='+no+'><td align="center" class="ptype" colspan="2"><img src='+pic+' class="im"><p id="pp">'+item.name+'</p></td><td>1</td><td>'+str1+'</td><td>'+item.score+'</td></tr>';
+			 sumprice +=parseInt(str1);
+		 })
+		$(".zj-inf tbody").append($(str));
+		 $("#parent", window.parent.document).val(sumprice);
+	},"json")
+
+})
+
+	
+
+</script>
+
+
+</body>
+</html>

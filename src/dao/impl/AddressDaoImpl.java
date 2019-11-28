@@ -1,7 +1,10 @@
 package dao.impl;
 
+import java.util.List;
+
 import dao.DBHelper;
 import dao.IAddressDao;
+import entity.Address;
 
 public class AddressDaoImpl implements IAddressDao{
 	/**
@@ -24,6 +27,15 @@ public class AddressDaoImpl implements IAddressDao{
 		DBHelper dbHelper = new DBHelper();
 		String sql = "update address set province = ?, city = ?, county = ?, raddress = ?, isdefault = ?, addrname = ?, addrtel = ?, postcode = ? where arid = ?";
 		return dbHelper.update(sql, province, city, county, raddress, isdefault, addrname, addtel, postcode, arid);
+	}
+  /**
+   * 通过uid查找province,city,county,raddress,isdefault,addrname,addrtel
+   */
+	@Override
+	public List<Address> findAllByUid(Integer uid) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select province,city,county,raddress,isdefault,addrname,addrtel from address a , usr u  where a.uid=u.uid and a.uid = ? order by  isdefault desc ";
+		return dbHelper.finds(sql, Address.class, uid);
 	}
 
 }

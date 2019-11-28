@@ -14,6 +14,28 @@ public class Address implements Serializable {
 	private String addrname;
 	private String addrtel;
 	private String postcode;
+	private String utel;
+	private String uname;
+	
+	
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getUtel() {
+		return utel;
+	}
+	public void setUtel(String utel) {
+		this.utel = utel;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	public String getPostcode() {
 		return postcode;
 	}
