@@ -71,7 +71,7 @@ public class FileUploadUtil {
 			
 			// 取出当前项目在服务器中的绝对路径
 			String basePath = pagecontext.getServletContext().getRealPath("/");
-			System.out.println(basePath);
+			
 			
 			Collection<File> fls = files.getCollection();
 			for (File fl : fls) {

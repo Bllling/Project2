@@ -63,11 +63,12 @@ public class UsrServlet extends BasicServlet{
 	 * @param resp
 	 */
 	private void updateUsrInfo(HttpServletRequest req, HttpServletResponse resp) {
-		String uid = req.getParameter("uid");
-		System.out.println(uid);
+		int uid = Integer.parseInt(req.getParameter("uid"));
+		IUsrBiz usrBiz = new UsrBizImpl();
 		Map<String, String> map = fileUpload(req, resp);
 		System.out.println(map);
-		this.send(resp, -1);
+		System.out.println(map.containsKey("pics"));
+		this.send(resp, usrBiz.updateUsrInfo(map, uid));
 	}
 
 	

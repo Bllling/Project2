@@ -25,7 +25,7 @@
 			<p>
 				<label>当前头像：</label> <a href="#" onclick="changeImg()"> <img id="p_img" src="../images/null.jpg" />
 				</a>
-				<input id="imgFile" type="file" onchange="setImg()" style="display: none;" />
+				<input id="imgFile" name="pics" type="file" multiple="multiple" style="display: none;" />
 			</p>
 			<p>
 				<label> <em>*</em> 昵称
@@ -37,14 +37,14 @@
 			<p>
 				<label> <em>*</em> 邮箱
 				</label> <input id="p_email" class="p-txt" type="text" value=""
-					maxlength="25" onblur="checkEmail()" /> <br /> <span
-					class="emailEr">邮箱格式错误，请重新输入！</span>
+					maxlength="25" onchange="checkEmail()" /> <br /> <span
+					class="emailEr">邮箱格式错误，请重新输入！</span> <span class="emailREEr">该邮箱已被使用，请重新输入！</span>
 			</p>
 			<p>
 				<label> <em>*</em> 电话号码
 				</label> <input id="p_phone" class="p-txt" type="text" value=""
-					maxlength="25" onblur="checkPhone()" /> <br /> <span
-					class="phoneEr">号码格式错误，请重新输入！</span>
+					maxlength="25" onchange="checkPhone()" /> <br /> <span
+					class="phoneEr">号码格式错误，请重新输入！</span> <span class="phoneReEr">该号码已被使用，请重新输入！</span>
 			</p>
 
 		</div>
@@ -153,6 +153,7 @@
 	
 	$(function() {
 		showAddrInfo();
+		showUserInfo();
 	});
 	
 	function showUserInfo() {
@@ -171,11 +172,12 @@
 		},"json")
 	}
 	
-	function setImg(){
-		//更改头像的方法
-		var src = $("#imgFile").val()
-		$("#p_img").attr("src", "/" + src);
-	}
+	
+	$("#imgFile").change(function() {
+		//更改图像的方法
+		console.log(URL.createObjectURL($(this)[0].files[0]));
+		$("#p_img").attr("src",URL.createObjectURL($(this)[0].files[0]));
+	})
 	
 	function changeImg() {
 		//a标签的点击事件
@@ -289,22 +291,46 @@
 	
 	function checkPhone() {
 		$(".phoneEr").attr("style", "display: none");
+		$(".phoneReEr").attr("style", "display: none");
 		//检查电话号码格式
 		var phone = $("#p_phone").val();
+		if (phone == window.currentPhone) {
+			return;
+		}
 		var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
 		if (!reg.test(phone)) {
 			$(".phoneEr").attr("style", "display: block");
+			return;
 		}
+		$.post("../usr", {op:"findByUsrName", usrName:phone}, function(data) {
+			if (data == null) {
+				return;
+			}
+			$(".phoneReEr").attr("style", "display: block");
+			
+		},"json");
 	}
 	
 	function checkEmail() {
 		//检查邮箱格式
 		$(".emailEr").attr("style", "display: none");
+		$(".emailREEr").attr("style", "display: none");
 		var email = $("#p_email").val();
+		if (email == window.currentEmail) {
+			return;
+		}
 		var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 		if (!reg.test(email)) {
 			$(".emailEr").attr("style", "display: block");
+			return;
 		}
+		$.post("../usr", {op:"findByUsrName", usrName:email}, function(data) {
+			if (data == null) {
+				return;
+			}
+			$(".emailREEr").attr("style", "display: block");
+			
+		},"json");
 	}
 	
 	function checkName() {
@@ -334,7 +360,8 @@
 		var adPhoneEr = $(".adPhoneEr").css("display");
 		var numEr = $(".numEr").css("display");
 		var areaEr = $(".areaEr").css("display");
-		if (lengthEr == "block" || adPhoneEr == "block" || numEr == "block" || areaEr == "block" ) {
+		
+		if (lengthEr == "block" || adPhoneEr == "block" || numEr == "block" || areaEr == "block"  ) {
 			alert("操作失败，消息填写有误...");
 			return;
 		}
@@ -388,13 +415,18 @@
 		var nameEr = $(".nameEr").css("display");
 		var emailEr = $(".emailEr").css("display");
 		var phoneEr = $(".phoneEr").css("display");
-		if (nullNameEr == "block" || nameEr == "block" || emailEr == "block" || phoneEr == "block" ) {
+		var emailREEr = $(".emailREEr").css("display");
+		var phoneReEr = $(".phoneReEr").css("display");
+		if (nullNameEr == "block" || nameEr == "block" || emailEr == "block" || phoneEr == "block" || emailREEr == "block" || phoneReEr == "block" ) {
 			alert("保存失败，消息填写有误...");
 			return;
 		}
 		var p_usrName = $("#p_usrName").val();  //昵称
 		var p_email = $("#p_email").val();  //邮箱
 		var p_phone = $("#p_phone").val();  //电话号码
+		if (p_usrName == window.currentName && p_email == window.currentEmail && p_phone == window.currentPhone) {
+			return;
+		}
 		$.ajaxFileUpload({
 			url: "../usr?op=updateUsrInfo&uid=" + uid,
 			secureuri: false,

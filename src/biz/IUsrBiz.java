@@ -1,6 +1,7 @@
 package biz;
 
 import java.util.List;
+import java.util.Map;
 
 import entity.Address;
 import entity.Usr;
@@ -23,4 +24,10 @@ public interface IUsrBiz {
 	 * @return
 	 */
 	public List<Address> findAddrsById(Integer uid);
+	/**
+	 * 通过ID在个人主页修改个人信息
+	 * @param map
+	 * @return
+	 */
+	public int updateUsrInfo(Map<String, String> map, Integer uid);
 }

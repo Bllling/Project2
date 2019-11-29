@@ -82,9 +82,22 @@ public class HardWareInfo extends BasicServlet {
 			findSources(request, response);
 		} else if ("findBoxs".equals(op)) {
 			findBoxs(request, response);
+		} else if ("updateHardware".equals(op)) {  //修改属性值
+			updateHardware(request, response);
 		}
 	}
 	
+	private void updateHardware(HttpServletRequest request, HttpServletResponse response) {
+		String idname = request.getParameter("typeid");
+		int id = Integer.parseInt(request.getParameter(idname));
+		String formName = request.getParameter("type");
+		String op = request.getParameter("opname");
+		String value = request.getParameter(op);
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		this.send(response, hardwareBiz.updateHardware(id, idname, formName, op, value));
+		
+	}
+
 	private void findBoxs(HttpServletRequest request, HttpServletResponse response) {
 		findHardWares(request, response, "boxprice", "box", Box.class);
 		
