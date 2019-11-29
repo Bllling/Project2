@@ -445,15 +445,10 @@ to {
 	
 		var vcode;
 		var vcodePath;
-<<<<<<< HEAD
-		
-		//当DOM加载完成后要执行的函数
-		$(function() {
-=======
+
 
 		window.onload = function() {
-			alert("1");
->>>>>>> 3fcd3ca319eb2aada6f8c13ef14b417facdad51c
+
 			var str = $("#my").html();
 
 			if (str != null && str.length > 0 && "" != str) {
@@ -465,7 +460,7 @@ to {
 			}
 			createCode();
 			cpuPage();
-			});
+			};
 
 
 		function createCode() {
