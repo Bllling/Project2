@@ -274,7 +274,7 @@
 	  	    }
 	  	}
 	  	
-		function proList() {
+		function proList(name,minPrice,maxPrice,minMemory,maxMemory) {
 			$.post("../hardwareinfo", 
 			{
 				op : "findMotherBoardByPage",
