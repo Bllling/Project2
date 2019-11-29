@@ -64,6 +64,9 @@
 </div>
 
 <script type="text/javascript">
+
+	  var page = 1;
+	  var showRows = 6;
 	
       var hName = {
               chosed: "name-0",
@@ -235,9 +238,9 @@
 	  	     		}
 					
 	   	     		$.post("../../hardwareinfo", 
-	   	     		{op: findCpuByPage, name: hName.val, price: price.val, 
+	   	     		{op: findCpuByPage, name: hName.val, minPrice: price.minPrice, maxPrice: price.maxPrice, 
 	   	     		minFrequency: frequency.minFrequency, maxFrequency: frequency.maxFrequency, 
-	   	     		cores: cores.val}, 
+	   	     		cores: cores.val, page: page, showRows: showRows}, 
 	   	     		function(data) {
 	   	     				
 	   	     		});

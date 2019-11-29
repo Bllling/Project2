@@ -303,29 +303,10 @@ to {
 
 	<!-- 配件类型选择栏 -->
 	<div class="parts wrapper">
-
-
-		<div class="parts-head">
-			<h3>请选择配件</h3>
-			<i>*</i> 号为必选项
-		</div>
-		<ul class="parts-list clearfix">
-			<li class="more active"><span>CPU <i>*</i></span>
-				<ul>
-					<li id="topSubSel_383" rel="383" relnum="2"><span>服务器CPU</span></li>
-					<li id="topSubSel_28" rel="28" relnum="2"><span>CPU</span></li>
-				</ul>
-			</li>
-			<li id="topSubSel_5" rel="5" class="cur" relnum="1"><span>主板<i>*</i></span></li>
-			<li id="topSubSel_3" rel="3" relnum="8"><span>内存<i>*</i></span></li>
-			<li id="topSubSel_2" rel="2" relnum="4"><span>硬盘</span></li>
-			<li id="topSubSel_6" rel="6" relnum="4"><span>显卡</span></li>
-			<li id="topSubSel_10" rel="10" relnum="1"><span>机箱</span></li>
-			<li id="topSubSel_35" rel="35" relnum="1"><span>电源</span></li>
-		</ul>
-	</div>
-
-
+	
+	<br />
+	<br />
+	<br />
 
 	<%
 		session.setMaxInactiveInterval(10);
@@ -394,17 +375,16 @@ to {
 
 				<div class="item mingcheng">
 					<p class="lable">
-						<em>0/20</em><b>名称：<font>*</font></b> （为了避免重复请输入大于6个汉字/字符) <span
-							class="inst">名称6到20个字才能发布</span>
+						<em id="name-str-count">0/20</em><b>名称：<font>*</font></b> （为了避免重复请输入大于6个汉字/字符) <span class="inst">名称6到20个字才能发布</span>
 					</p>
-					<input type="text" class="name " value="" date-n="20">
+					<input type="text" class="name " value="" oninput="countStr(this, 20, 'name-str-count')">
 				</div>
 				<div class="item shuoming">
 					<p class="lable">
-						<em>0/200</em><b>说明：</b><span class="inst">内容不可超过120字</span>
+						<em id="info-str-count">0/200</em><b>说明：</b><span class="inst">内容不可超过120字</span>
 					</p>
 					<textarea class="instruct "
-						placeholder="您攒机的目的/预算，该配置的优势，分享更多内容，获取更多关注" date-n="200"></textarea>
+						placeholder="您攒机的目的/预算，该配置的优势，分享更多内容，获取更多关注"  oninput="countStr(this, 120, 'info-str-count')"></textarea>
 				</div>
 				<div class="item clearfix">
 					<p class="lable code-msg">
@@ -418,17 +398,12 @@ to {
 							<span>点击图片刷新</span>
 						</span>
 					</div>
-					<div class="synch" style="display: none;">
-						<img /> <input type="checkbox" class="check" id="idToBBs"
-							value=""> <span class="instr">同步至论坛让大家点评</span>
-					</div>
 				</div>
 
 			</div>
 			<div class="btn-box">
-				<a href="javascript:void(0);" target="_self" class="publish">发表配置单</a><span
-					class="preview">预览</span><a href="javascript:void(0);"
-					target="_self" class="empty">清空</a>
+				<a href="javascript:void(0);" target="_self" class="publish">发表配置单</a>
+				<a href="javascript:void(0);" target="_self" class="empty">清空</a>
 			</div>
 		</div>
 
@@ -523,6 +498,19 @@ to {
 		function scan() {
 			var ss = $("#J_keywords").val();
 			console.log(ss);
+		}
+		
+		//字数监听
+		function countStr(obj, maxStr, id) {
+			var count = $(obj).val().length;
+			if (count <= maxStr) {
+				$("#" + id).css('color', 'black');
+				$("#" + id).html(count + "/" + maxStr);
+			} else {
+				$("#" + id).css('color', 'red');
+				$("#" + id).html(count + "/" + maxStr);
+			}
+
 		}
 		
 	</script>
