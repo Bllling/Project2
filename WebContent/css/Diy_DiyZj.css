@@ -681,6 +681,21 @@ table, tr, td, th {
 	cursor: pointer;
 }
 
+/* 当满足提交条件时 */
+.submit-active{
+	display: inline-block;
+	height: 40px;
+	width: 95px;
+	border: 1px solid #E7E7E7;
+	color: #999;
+	font-size: 16px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 3px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
 .btn-box .publish {
 	width: 245px;
 	margin: 0;

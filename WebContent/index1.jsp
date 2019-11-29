@@ -402,7 +402,7 @@ to {
 
 			</div>
 			<div class="btn-box">
-				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourced, graphicsd, boxid)">发表配置单</a>
+				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid);">发表配置单</a>
 				<a href="javascript:void(0);" target="_self" class="empty">清空</a>
 			</div>
 		</div>
@@ -528,10 +528,11 @@ to {
 		function addComputer(cpu, motherboard, memory, disk, source, graphics, box) {
 			if (cpu == null || motherboard == null || memory ==null) {
 				alert("CPU,主板和内存为必选硬件，请检查您的配置单！");
+				return;
 			}
 			var inputCode = $(".code").val();
 			
-			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); }
+			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 		}
 		
 	</script>
