@@ -11,7 +11,18 @@
 var str= '<div id="div1" style="background:red;width:50px;height:50px" onclick="d()"></div>';
 $("#pp").append($(str));
 function d(){
-	alert("1");
+	var date = new Date();
+	year=date.getFullYear().toString();
+	month=(date.getMonth()+1).toString();
+	alert(month);
+	day=date.getDate().toString();
+	alert(day);
+	hour=date.getHours().toString();
+	min=date.getMinutes().toString();
+	second=date.getSeconds().toString();
+	var rorderid=year+month+day+hour+min+second;
+	alert(rorderid);
+	
 }
 </script>
 </body>

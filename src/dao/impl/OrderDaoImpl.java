@@ -16,5 +16,11 @@ public class OrderDaoImpl implements IOrderDao{
 		//return dbHelper.finds(sql, RorderDetail.class);
 		return null;
 	}
+	
+	public int addOrder(String rorderid,Integer id,Integer uid,Integer state,Double total ){
+		DBHelper dbHelper = new DBHelper();
+		String sql = "insert into rorder  values(?,?,?,now(),?,?)";
+		return dbHelper.update(sql, rorderid,id,uid,state,total);
+	}
 
 }
