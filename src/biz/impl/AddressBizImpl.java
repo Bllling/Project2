@@ -1,8 +1,11 @@
 package biz.impl;
 
+import java.util.List;
+
 import biz.IAddressBiz;
 import dao.IAddressDao;
 import dao.impl.AddressDaoImpl;
+import entity.Address;
 import util.StringUtil;
 
 public class AddressBizImpl implements IAddressBiz {
@@ -31,6 +34,15 @@ public class AddressBizImpl implements IAddressBiz {
 		}
 		IAddressDao addressDao = new AddressDaoImpl();
 		return addressDao.updateAddress(province, city, county, raddress, isdefault, arid, addrname, addtel, postcode);
+	}
+
+	@Override
+	public List<Address> findAllByUid(Integer uid) {
+		if(uid==null){
+			return null;
+		}
+		IAddressDao addressDao = new AddressDaoImpl();
+		return addressDao.findAllByUid(uid);
 	}
 
 }
