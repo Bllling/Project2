@@ -276,13 +276,33 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 
-	  	     		
+	  	     		proList();
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
+		function proList() {
+			$.post("../hardwareinfo", 
+			{
+				op : "findMemoryByPage",
+				name : hName.val,
+				minPrice : price.minPrice,
+				maxPrice : price.maxPrice,
+				minFrequency : frequency.minFrequency,
+				maxFrequency : frequency.maxFrequency,
+				type : type.val,
+				size : size.val,
+				page : page,
+				showRows : showRows
+			}, 
+			function(data) {
+				
+			});
+		}
+	  	
 	  	init();
+	  	proList();
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  	
