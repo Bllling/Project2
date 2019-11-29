@@ -416,6 +416,14 @@ to {
 
 
 	<script type="text/javascript">
+		var cpuid;
+		var motherboardid;
+		var memoryid;
+		var diskid;
+		var sourceid;
+		var graphicsid;
+		var boxid;
+	
 		var page = 1;
 		var showRows = 6;
 	
@@ -515,6 +523,9 @@ to {
 			}
 
 		}
+		
+		//提交配置单
+		function addComputer
 		
 	</script>
 
