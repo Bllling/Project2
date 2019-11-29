@@ -1,5 +1,7 @@
 package dao.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -152,6 +154,166 @@ public class HardwareDaoImpl implements IHardwareDao {
 		String sql = "update "+formName+" set "+op+" = ? where "+idName+" = ? ";
 		return dbHelper.update(sql, value, id);
 	}
+
+	@Override
+	public List<Cpu> findCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
+			Double maxfrequency, Integer cores ,int page,int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from cpu where 1=1 ";
+		if(minprice!=null){
+			sql+="and minprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and maxprice<? ";
+			list.add(maxprice);
+		}else if(minfrequency!=null){
+			sql+="and ?>SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(minfrequency);
+		}else if(maxfrequency!=null){
+			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(maxfrequency);
+		}else if(cores!=null){
+			sql+="and cores = ? ";
+			list.add(cores);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		sql +="limit ? , ? order by usetimes desc;";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return  dbHelper.finds(sql, Cpu.class, list);
+	}
+
+	@Override
+	public List<MotherBoard> findMotherboardByPage(String name, Double minprice, Double maxprice, Integer minmaxmemory,
+			Integer maxmaxmemory, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from cpu where 1=1  ";
+		if(minprice!=null){
+			sql+="and minprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and maxprice<? ";
+			list.add(maxprice);
+		}else if(minmaxmemory!=null){
+			sql+="and ?>SUBSTRING_INDEX(maxmemory,'G',1) ";
+			list.add(minmaxmemory);
+		}else if(maxmaxmemory!=null){
+			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
+			list.add(maxmaxmemory);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		sql +="limit ? , ? order by usetimes desc;";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return dbHelper.finds(sql, MotherBoard.class, list);
+	}
+
+	@Override
+	public List<Memory> findMemoryByPage(String name, Double minprice, Double maxprice, Integer minfrequency,
+			Integer maxfrequency, Integer memorytype, Integer volume, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from memory where 1=1  ";
+		if(minprice!=null){
+			sql+="and minprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and maxprice<? ";
+			list.add(maxprice);
+		}else if(minfrequency!=null){
+			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(minfrequency);
+		}else if(maxfrequency!=null){
+			sql+="and ?>SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(maxfrequency);
+		}else if(memorytype!=null){
+			sql+="and ?=SUBSTRING(memorytype, 4) ";
+			list.add(memorytype);
+		}else if(volume!=null){
+			sql+="and ?=SUBSTRING_INDEX(volume,'G',1) ";
+			list.add(volume);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		sql +="limit ? , ? order by usetimes desc;";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return dbHelper.finds(sql, Memory.class, list);
+	}
+
+	@Override
+	public List<Disk> findDiskByPage(String name, Double minprice, Double maxprice, Integer minvolume,
+			Integer maxvolume, Integer isssd,int page,int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from disk where 1=1  ";
+		if(minprice!=null){
+			sql+="and minprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and maxprice<? ";
+			list.add(maxprice);
+		}else if(minvolume!=null){
+			sql+="and ?<SUBSTRING_INDEX(volume,'G',1) ";
+			list.add(minvolume);
+		}else if(maxvolume!=null){
+			sql+="and ?>SUBSTRING_INDEX(volume,'G',1) ";
+			list.add(maxvolume);
+		}else if(isssd!=null){
+			sql+="and isssd=? ";
+			list.add(isssd);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		sql +="limit ? , ? order by usetimes desc;";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return dbHelper.finds(sql, Disk.class, list);
+	}
+
+	@Override
+	public List<Source> findSourceByPage(String name, Double minprice, Double maxprice, Integer minmemory,
+			Integer maxmemory, Integer minwidth, Integer maxwidth,int page,int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from disk where 1=1  ";
+		if(minprice!=null){
+			sql+="and minprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and maxprice<? ";
+			list.add(maxprice);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}else if(minmemory!=null){
+			sql+="and ?<SUBSTRING_INDEX(memory,'G',1) ";
+			list.add(minmemory);
+		}else if(maxmemory!=null){
+			sql+="and ?>SUBSTRING_INDEX(memory,'G',1) ";
+			list.add(maxmemory);
+		}else if(minwidth!=null){
+			sql+="and ?<SUBSTRING_INDEX(width,'b',1) ";
+			list.add(minwidth);
+		}else if(maxwidth!=null){
+			sql+="and ?>SUBSTRING_INDEX(width,'b',1) ";
+			list.add(maxwidth);
+		}
+		sql +="limit ? , ? order by usetimes desc;";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return dbHelper.finds(sql, Memory.class, list);
+	}
+
+
 
 
 }

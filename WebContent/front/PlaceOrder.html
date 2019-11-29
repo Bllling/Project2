@@ -246,7 +246,7 @@ body {
 	   <input type="text" id="aid" style="opacity:0;">
 	   <div class="popOutBg" id="pop1" style="display: none;"></div>
 		<div class="popOut" id="pop2" style="display: none;">
-			<p style="margin-top: 20px;font-size: 15px; font-family: initial;">支付成功</p>
+			<p id="result" style="margin-top: 20px;font-size: 15px; font-family: initial;">购买成功</p>
 			<input type="button" value="确定" onclick="yes()" class="btn2" style="margin-top: 20px;  width: 50px;"> 
 
 		</div>
@@ -345,8 +345,11 @@ body {
            if(data>0){
         		$(".popOut").css('display', 'block');
         		$(".popOutBg").css('display', 'block');
+        		$("#result").html("购买成功");
            }else{
-        	   alert("支付失败");
+        	   $(".popOut").css('display', 'block');
+       		   $(".popOutBg").css('display', 'block');
+       		$("#result").html("购买失败");
            }
         })
         

@@ -120,5 +120,14 @@ public interface IHardwareDao {
 	 */
 	public int updateHardware(Integer id, String idName, String formName, String op, String value);
 	
+	public List<Cpu> findCpuByPage(String name,Double minprice,Double maxprice,Double minfrequency,Double maxfrequency,Integer cores,int page,int rows);
+	public List<MotherBoard> findMotherboardByPage(String name,Double minprice,Double maxprice,Integer minmaxmemory,Integer maxmaxmemory,int page,int rows);
+	public List<Memory> findMemoryByPage(String name,Double minprice,Double maxprice,Integer minfrequency,Integer maxfrequency,Integer memorytype,Integer volume,int page,int rows);
+	public List<Disk> findDiskByPage(String name,Double minprice,Double maxprice,Integer minvolume,Integer maxvolume,Integer isssd,int page,int rows);
+	public List<Source> findSourceByPage(String name,Double minprice,Double maxprice,Integer minmemory,Integer maxmemory,Integer minwidth,Integer maxwidth,int page,int rows);
+	//public List<Graphics> findGraphicsByPage(String name,Double minprice,Double maxprice);
+	public List<Box> findBoxByPage(String name,Double minprice,Double maxprice);
+	
+	
 	
 }

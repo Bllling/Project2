@@ -84,9 +84,27 @@ public class HardWareInfo extends BasicServlet {
 			findBoxs(request, response);
 		} else if ("updateHardware".equals(op)) {  //修改属性值
 			updateHardware(request, response);
+		} else if("findCpuByPage1".equals(op)){
+			findCpuByPage1(request, response);
 		}
 	}
 	
+	private void findCpuByPage1(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+	    Double minFrequency=Double.parseDouble(request.getParameter("minFrequency"));
+	    Double maxFrequency=Double.parseDouble(request.getParameter("maxFrequency"));
+        Integer cores =Integer.parseInt(request.getParameter("cores"));
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        String name = request.getParameter("name");
+        if(name=="null"){
+        	name=null;
+        }
+        this.send(response, hardwareBiz.findCpuByPage(name, minprice, maxprice, minFrequency, maxFrequency, cores, page, rows));
+	}
+
 	private void updateHardware(HttpServletRequest request, HttpServletResponse response) {
 		String idname = request.getParameter("typeid");
 		int id = Integer.parseInt(request.getParameter(idname));
