@@ -234,18 +234,9 @@
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
-<<<<<<< HEAD
-	   	     		$.post("hardwareinfo", 
-	   	     		{op:"findCpuByPage", name: hName.val, minPrice: price.minPrice, maxPrice: price.maxPrice, 
-	   	     		minFrequency: frequency.minFrequency, maxFrequency: frequency.maxFrequency, 
-	   	     		cores: cores.val, page: page, rows: showRows}, 
-	   	     		function(data){
-	   	     				
-	   	     		},"json");
-=======
-					
-	  	     		proList();
->>>>>>> 1be9483df92d2accca033fa8a1250f6a2e0a47fb
+	   	     		
+					console.log("sda"+price.minPrice);
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,showRows);
 	   	     		
 	  	     		$(this).addClass("active");
 	  	     	}
@@ -253,22 +244,22 @@
 	  	}
 	  	
 
-	function proList() {
-		$.post("../hardwareinfo", 
+	function proList(name,minPrice,maxPrice,minFrequency,maxFrequency,cores,page,rows) {
+		$.post("hardwareinfo", 
 		{
-			op : "findCpuByPage",
-			name : hName.val,
-			minPrice : price.minPrice,
-			maxPrice : price.maxPrice,
-			minFrequency : frequency.minFrequency,
-			maxFrequency : frequency.maxFrequency,
-			cores : cores.val,
+			op : "findCpuByPage1",
+			name : name,
+			minPrice :minPrice,
+			maxPrice : maxPrice,
+			minFrequency : minFrequency,
+			maxFrequency : maxFrequency,
+			cores : cores,
 			page : page,
-			showRows : showRows
+			rows : rows
 		}, 
 		function(data) {
 
-		});
+		},"json");
 	}
 
 	init();
