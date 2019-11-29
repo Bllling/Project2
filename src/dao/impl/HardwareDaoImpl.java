@@ -195,10 +195,10 @@ public class HardwareDaoImpl implements IHardwareDao {
 		List <Object > list = new ArrayList<Object>(); 
 		String sql="select * from cpu where 1=1  ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and motherboardprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and motherboardprice<? ";
 			list.add(maxprice);
 		}else if(minmaxmemory!=null){
 			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
@@ -210,7 +210,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, MotherBoard.class, list);
@@ -244,7 +244,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, Memory.class, list);
@@ -275,7 +275,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, Disk.class, list);
@@ -309,7 +309,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and ?>SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, Graphics.class, list);
@@ -330,7 +330,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, Box.class, list);
