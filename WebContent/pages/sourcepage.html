@@ -52,20 +52,20 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var powers = {
               chosed: "powers-0",
-              minPowers: null,
-              maxPowers: null
+              minPowers: 0,
+              maxPowers: 999999999
       }
 	  	
       function unActivePrice() {
@@ -121,7 +121,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-100")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-100";
@@ -141,7 +141,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-null";
 	  	     				price.minPrice = 400;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("powers")) {
 	  	     			//给对象赋值
@@ -149,7 +149,7 @@
 	  	     				$("#" + powers.chosed).removeClass("active");
 	  	     				powers.chosed = "powers-0";
 	  	     				powers.minPowers = 0;
-	  	     				powers.maxPowers = null;
+	  	     				powers.maxPowers = 999999999;
 	  	     			} else if (thisID == ("powers-300")) {
 	  	     				$("#" + powers.chosed).removeClass("active");
 	  	     				powers.chosed = "powers-300";
@@ -179,7 +179,7 @@
 	  	     				$("#" + powers.chosed).removeClass("active");
 	  	     				powers.chosed = "powers-null";
 	  	     				powers.minPowers = 600;
-	  	     				powers.maxPowers = null;
+	  	     				powers.maxPowers = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
@@ -205,7 +205,7 @@
 			}, 
 			function(data) {
 				
-			});
+			}, "json");
 		}
 	  	
 	  	init();

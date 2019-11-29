@@ -68,25 +68,25 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var frequency = {
               chosed: "frequency-0",
-              minFrequency: null,
-              maxFrequency: null
+              minFrequency: 0,
+              maxFrequency: 999999999
       }
 	  	
       var cores = {
       		chosed: "cores-0",
-      		val: null
+      		val: "null"
       }
       
       function unActivePrice() {
@@ -142,7 +142,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-500")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-500";
@@ -157,7 +157,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-1";
 	  	     				price.minPrice = 1500;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("frequency")) {
 	  	     			//给对象赋值
@@ -165,7 +165,7 @@
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-0";
 	  	     				frequency.minFrequency = 0;
-	  	     				frequency.maxFrequency = null;
+	  	     				frequency.maxFrequency = 999999999;
 	  	     			} else if (thisID == ("frequency-2")) {
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-2";
@@ -197,7 +197,7 @@
 	  	     			if (thisID == ("cores-0")) {
 	  	     				$("#" + cores.chosed).removeClass("active");
 	  	     				cores.chosed = "cores-0";
-	  	     				cores.val = null;
+	  	     				cores.val = "null";
 	  	     			} else if (thisID == ("cores-16")) {
 	  	     				$("#" + cores.chosed).removeClass("active");
 	  	     				cores.chosed = "cores-16";
@@ -258,7 +258,7 @@
 		}, 
 		function(data) {
 
-		});
+		}, "json");
 	}
 
 	init();

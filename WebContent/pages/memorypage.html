@@ -85,30 +85,30 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
       
       var frequency = {
     		  chosed: "frequency-0",
-    		  minFrequency: null,
-    		  maxFrequency: null
+    		  minFrequency: 0,
+    		  maxFrequency: 999999999
       }
       
       var type = {
     		  chosed: "type-0",
-    		  val: null
+    		  val: "null"
       }
      
 	  	
       var size = {
               chosed: "size-0",
-              val: null
+              val: "null"
       }
       
 
@@ -166,7 +166,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-100")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-100";
@@ -186,7 +186,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-null";
 	  	     				price.minPrice = 400;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("frequency")) {
 	  	     			//给对象赋值
@@ -194,7 +194,7 @@
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-0";
 	  	     				frequency.minFrequency = 0;
-	  	     				frequency.maxFrequency = null;
+	  	     				frequency.maxFrequency = 999999999;
 	  	     			} else if (thisID == ("frequency-1333")) {
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-1333";
@@ -224,14 +224,14 @@
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-null";
 	  	     				frequency.minFrequency = 3000;
-	  	     				frequency.maxFrequency = null;
+	  	     				frequency.maxFrequency = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("type")) {
 	  	     			//给对象赋值
 	  	     			if (thisID == ("type-0")) {
 	  	     				$("#" + type.chosed).removeClass("active");
 	  	     				type.chosed = "type-0";
-							type.val = null;
+							type.val = "null"";
 	  	     			} else if (thisID == ("type-4")) {
 	  	     				$("#" + type.chosed).removeClass("active");
 	  	     				type.chosed = "type-4";
@@ -250,7 +250,7 @@
 	  	     			if (thisID == ("size-0")) {
 	  	     				$("#" + size.chosed).removeClass("active");
 	  	     				size.chosed = "size-0";
-							size.val = null;
+							size.val = "null";
 	  	     			} else if (thisID == ("size-32")) {
 		     				$("#" + size.chosed).removeClass("active");
 	  	     				size.chosed = "size-32";
@@ -298,7 +298,7 @@
 			}, 
 			function(data) {
 				
-			});
+			}, "json");
 		}
 	  	
 	  	init();

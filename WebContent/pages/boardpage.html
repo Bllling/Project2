@@ -144,20 +144,20 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var memory = {
               chosed: "memory-0",
-              minMemory: null,
-              maxMemory: null
+              minMemory: 0,
+              maxMemory: 999999999
       }
 	  	
       function unActivePrice() {
@@ -213,7 +213,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-200")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-200";
@@ -228,7 +228,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-1";
 	  	     				price.minPrice = 500;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("memory")) {
 	  	     			//给对象赋值
@@ -236,7 +236,7 @@
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-0";
 	  	     				memory.minFrequency = 0;
-	  	     				memory.maxFrequency = null;
+	  	     				memory.maxFrequency = 999999999;
 	  	     			} else if (thisID == ("memory-4")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-4";
@@ -288,7 +288,7 @@
 			}, 
 			function(data) {
 
-			});
+			}, "json");
 		}
 	  	
 	  	
