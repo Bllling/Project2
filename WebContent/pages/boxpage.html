@@ -1,34 +1,140 @@
 
-	  <div class="conditions"> 
-	   <!--list-title end--> 
-	   <div id="J_ManuFilter" class="filter-brand filter-brand-multi"> 
-	    <strong class="filter-type">机箱名称：</strong> 
-	    <div id="J_ParamBrand" class="brand-hot brand-list" style="display: block;"> 
-	     <span class="all active" reldate="0">不限</span> 
-	      <div class="search-box"> 
-			<input type="text" value="请输入名称" /> 
-	     	<i></i>
-	     </div>
-	    </div> 
-	   </div> 
-	   
-	   <div id="priceItem" class="filter-item filter-price"> 	   
-	    <strong class="filter-type">价格区间：</strong> 
-	    <div id="J_ParamPrice" class="param-value-list"> 
-	     <span reldate="noPrice" class="all active">不限</span> 
-	     <a href="javascript:void(0);" target="_self" reldate="0">200元以下</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="200">200-300元</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="300">300-500元</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="500">500元以上</a> 
-	    </div> 
-	    <div class="price-self"> 
-	     <input id="minPrice" type="text" /> 
-	     <em>-</em> 
-	     <input id="maxPrice" type="text" /> 
-	     <span id="subPri" class="price-button">确定</span> 
-	    </div> 
-	   </div>
+<div class="conditions">
+	<!--list-title end-->
+	<div id="J_ManuFilter" class="filter-brand filter-brand-multi">
+	<input id="HardWareType" value="box" style='display:none;'/>
+		<strong class="filter-type">机箱名称：</strong>
+		<div id="name" class="brand-hot brand-list" style="display: block;">
+			<a href="javascript:void(0);" class="all active" target="_self"
+				id="name-0">不限</a>
+			<div class="search-box">
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+			</div>
+		</div>
+	</div>
 
-	   <!--hide end--> 
-	  </div> 
+	<div id="priceItem" class="filter-item filter-price">
+		<strong class="filter-type">价格区间：</strong>
+		<div id="price" class="param-value-list">
+			<a class="all active" id="price-0">不限</span> 
+			<a href="javascript:void(0);" target="_self" id="price-200">200元以下</a> 
+			<a href="javascript:void(0);" target="_self" id="price-300">200-300元</a>
+			<a href="javascript:void(0);" target="_self" id="price-500">300-500元</a>
+			<a href="javascript:void(0);" target="_self" id="price-1">500元以上</a>
+		</div>
+		<div class="price-self">
+			<input id="minPrice" type="text" /> <em>-</em> <input id="maxPrice"
+				type="text" /> <span id="subPri" class="price-button" onclick="unActivePrice();">确定</span>
+		</div>
+	</div>
+
+	<!--hide end-->
+</div>
+
+
+<script type="text/javascript">
+	
+      var hName = {
+              chosed: "name-0",
+              val: null
+      }
+      
+      var price = {
+              chosed: "price-0",
+              minPrice: null,
+              maxPrice: null
+      }
+     
+	  	
+      function unActivePrice() {
+    	  var minPrice = $("#minPrice").val();
+    	  var maxPrice = $("#maxPrice").val();
+    	  
+    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+        	  $("#" + price.chosed).removeClass("active");
+        	  price.minPrice = minPrice;
+        	  price.maxPrice = maxPrice;
+    	  } else {
+    		  alert('请输入正确的数据');
+    	  }
+      }
+      
+      
+      
+      function unActiveName() {
+    	  var str = $("#name-1").val();
+    	  
+    	  if (str == "请输入名称"){
+    		  $("#name-1").val("");
+    		  $("#name-0").removeClass("active");
+    	  }
+    	 
+      }
+      
+      function setName() {
+    	  var str = $("#name-1").val();    	  
+    	  hName.val = $("#name-1").val();
+    	  console.log(hName.val);
+      }
+
+      
+        
+	  	function init(){
+
+	  		
+	  	    var array = $('.conditions a');
+	  	    for(var i=0;i<array.length;i++)
+	  	    {
+	  	     	array[i].onclick = function() {
+	  	     		//获取该节点id
+	  	     		var thisID = this.id;
+	  	     		//获取该结点的父节点id
+	  	     		var parentID = $(this).parent().attr('id');
+	  	     		
+	  	     		
+	   	     		//判断属性
+	  	     		if (parentID == "price") {
+	  	     			//给对象赋值
+	  	     			if (thisID == ("price-0")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-0";
+	  	     				price.minPrice = 0;
+	  	     				price.maxPrice = null;
+	  	     			} else if (thisID == ("price-200")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-200";
+	  	     				price.minPrice = 0;
+	  	     				price.maxPrice = 200;
+	  	     			} else if (thisID == ("price-300")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-300";
+	  	     				price.minPrice = 200;
+	  	     				price.maxPrice = 300;
+	  	     			}  else if (thisID == ("price-500")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-500";
+	  	     				price.minPrice = 300;
+	  	     				price.maxPrice = 500;
+	  	     			}   else if (thisID == ("price-1")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-1";
+	  	     				price.minPrice = 500;
+	  	     				price.maxPrice = null;
+	  	     			} 
+	  	     		} else if (parentID == ("name")) {
+	  	     			$("#name-1").val("请输入名称");
+	  	     		}
+
+	  	     		
+	  	     		$(this).addClass("active");
+	  	     	}
+	  	    }
+	  	}
+	  	
+	  	init();
+	  	hName.val = $("#name-1").val();
+	  	console.log(hName.val);
+	  	
+	  
+	  </script>
 

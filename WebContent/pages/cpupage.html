@@ -1,68 +1,249 @@
 
-	  <div class="conditions"> 
-	   <!--list-title end--> 
-	   <div id="J_ManuFilter" class="filter-brand filter-brand-multi"> 
-	    <strong class="filter-type">CPU名称：</strong> 
-	    <div id="J_ParamBrand" class="brand-hot brand-list" style="display: block;"> 
-	     <span class="all active" reldate="0">不限</span> 
-	      <div class="search-box"> 
-			<input type="text" value="请输入名称" /> 
-	     	<i></i>
-	     </div>
-	    </div> 
-	   </div> 
-	   
-	   <div id="priceItem" class="filter-item filter-price"> 	   
-	    <strong class="filter-type">价格区间：</strong> 
-	    <div id="J_ParamPrice" class="param-value-list"> 
-	     <span reldate="noPrice" class="all active">不限</span> 
-	     <a href="javascript:void(0);" target="_self" reldate="0">500元以下</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="500">500-1499元</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="1500">1500元以上</a> 
-	    </div> 
-	    <div class="price-self"> 
-	     <input id="minPrice" type="text" /> 
-	     <em>-</em> 
-	     <input id="maxPrice" type="text" /> 
-	     <span id="subPri" class="price-button">确定</span> 
-	    </div> 
-	   </div>
-	   
-	    
-	   <div id="pamItem1" class="filter-item"> 
-	    <strong class="filter-type">CPU主频：</strong> 
-	    <div id="J_ParamItem1" class="param-value-list"> 
-	     <span class="all active" reldate="0">不限</span> 
-	     <a href="javascript:void(0);" target="_self" reldate="0">2.0GHz以下</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="2.0">2.0-2.5GHz</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="2.5">2.5-3.0GHz</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="3.0">3.0-3.5GHz</a> 
-	     <a href="javascript:void(0);" target="_self" reldate="3.5">3.5-4.0GHz</a> 
+<div class="conditions">
+	<!--list-title end-->
+	<div id="J_ManuFilter" class="filter-brand filter-brand-multi">
+	<input id="HardWareType" value="cpu" style='display:none;'/>
+		<strong class="filter-type">CPU名称：</strong>
+		<div id="name" class="brand-hot brand-list" style="display: block;">
+			<a href="javascript:void(0);" class="all active" target="_self"
+				id="name-0">不限</a>
+			<div class="search-box">
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+			</div>
+		</div>
+	</div>
 
-	    </div> 	    
-	   </div> 
-	   
-	   
+	<div id="priceItem" class="filter-item filter-price">
+		<strong class="filter-type">价格区间：</strong>
+		<div id="price" class="param-value-list">
+			<a href="javascript:void(0);" class="all active" target="_self"
+				id="price-0">不限</a> <a href="javascript:void(0);" target="_self"
+				id="price-500">500元以下</a> <a href="javascript:void(0);"
+				target="_self" id="price-1500">500-1500元</a> <a
+				href="javascript:void(0);" target="_self" id="price-1">1500元以上</a>
+		</div>
+		<div class="price-self">
+			<input id="minPrice" type="text" /> <em>-</em> <input id="maxPrice"
+				type="text" /> 
+			<span id="subPri" class="price-button" onclick="unActivePrice();">确定</span>
+		</div>
+	</div>
 
-	   
 
-	    <div id="pamItem3" class="filter-item"> 
-	     <strong class="filter-type">核心数量：</strong> 
-	     <div id="J_ParamItem3" class="param-value-list"> 
-	      <span class="all active" reldate="0">不限</span> 
-	      <a href="javascript:void(0);" target="_self" reldate="16">十六核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="12">十二核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="10">十核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="8">八核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="6">六核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="4">四核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="3">三核心</a> 
-	      <a href="javascript:void(0);" target="_self" reldate="2">双核心</a> 
-	     </div> 
-	     <a class="J_ViewMore view-more" data-target="J_ParamItem4" href="javascript:;" target="_self" data-on="0" style="display: none;">更多<i></i></a> 
-	    </div> 
-	    
+	<div id="pamItem1" class="filter-item">
+		<strong class="filter-type">CPU主频：</strong>
+		<div id="frequency" class="param-value-list">
+			<a href="javascript:void(0);" class="all active" target="_self"
+				id="frequency-0">不限</a> <a href="javascript:void(0);" target="_self"
+				id="frequency-2">2.0GHz以下</a> <a href="javascript:void(0);"
+				target="_self" id="frequency-2-5">2.0-2.5GHz</a> <a
+				href="javascript:void(0);" target="_self" id="frequency-3">2.5-3.0GHz</a>
+			<a href="javascript:void(0);" target="_self" id="frequency-3-5">3.0-3.5GHz</a>
+			<a href="javascript:void(0);" target="_self" id="frequency-4">3.5-4.0GHz</a>
+		</div>
+	</div>
 
-	   <!--hide end--> 
-	  </div> 
+
+	<div id="pamItem3" class="filter-item">
+		<strong class="filter-type">核心数量：</strong>
+		<div id="cores" class="param-value-list">
+			<a href="javascript:void(0);" class="all active" target="_self"
+				id="cores-0">不限</a> <a href="javascript:void(0);" target="_self"
+				id="cores-16">十六核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-12">十二核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-10">十核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-8">八核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-6">六核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-4">四核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-3">三核心</a> <a href="javascript:void(0);" target="_self"
+				id="cores-2">双核心</a>
+		</div>
+	</div>
+
+	<!--hide end-->
+</div>
+
+<script type="text/javascript">
+	
+      var hName = {
+              chosed: "name-0",
+              val: null
+      }
+      
+      var price = {
+              chosed: "price-0",
+              minPrice: null,
+              maxPrice: null
+      }
+     
+	  	
+      var frequency = {
+              chosed: "frequency-0",
+              minFrequency: null,
+              maxFrequency: null
+      }
+	  	
+      var cores = {
+      		chosed: "cores-0",
+      		val: null
+      }
+      
+      function unActivePrice() {
+    	  var minPrice = $("#minPrice").val();
+    	  var maxPrice = $("#maxPrice").val();
+    	  
+    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+        	  $("#" + price.chosed).removeClass("active");
+        	  price.minPrice = minPrice;
+        	  price.maxPrice = maxPrice;
+    	  } else {
+    		  alert('请输入正确的数据');
+    	  }
+      }
+      
+      
+      
+      function unActiveName() {
+    	  var str = $("#name-1").val();
+    	  
+    	  if (str == "请输入名称"){
+    		  $("#name-1").val("");
+    		  $("#name-0").removeClass("active");
+    	  }
+    	 
+      }
+      
+      function setName() {
+    	  var str = $("#name-1").val();    	  
+    	  hName.val = $("#name-1").val();
+    	  console.log(hName.val);
+      }
+
+      
+        
+	  	function init(){
+
+	  		
+	  	    var array = $('.conditions a');
+	  	    for(var i=0;i<array.length;i++)
+	  	    {
+	  	     	array[i].onclick = function() {
+	  	     		//获取该节点id
+	  	     		var thisID = this.id;
+	  	     		//获取该结点的父节点id
+	  	     		var parentID = $(this).parent().attr('id');
+	  	     		
+	  	     		
+	   	     		//判断属性
+	  	     		if (parentID == "price") {
+	  	     			//给对象赋值
+	  	     			if (thisID == ("price-0")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-0";
+	  	     				price.minPrice = 0;
+	  	     				price.maxPrice = null;
+	  	     			} else if (thisID == ("price-500")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-500";
+	  	     				price.minPrice = 0;
+	  	     				price.maxPrice = 500;
+	  	     			} else if (thisID == ("price-1500")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-1500";
+	  	     				price.minPrice = 500;
+	  	     				price.maxPrice = 1500;
+	  	     			}  else if (thisID == ("price-1")) {
+	  	     				$("#" + price.chosed).removeClass("active");
+	  	     				price.chosed = "price-1";
+	  	     				price.minPrice = 1500;
+	  	     				price.maxPrice = null;
+	  	     			}
+	  	     		} else if (parentID == ("frequency")) {
+	  	     			//给对象赋值
+	  	     			if (thisID == ("frequency-0")) {
+	  	     				$("#" + frequency.chosed).removeClass("active");
+	  	     				frequency.chosed = "frequency-0";
+	  	     				frequency.minFrequency = 0;
+	  	     				frequency.maxFrequency = null;
+	  	     			} else if (thisID == ("frequency-2")) {
+	  	     				$("#" + frequency.chosed).removeClass("active");
+	  	     				frequency.chosed = "frequency-2";
+	  	     				frequency.minFrequency = 0;
+	  	     				frequency.maxFrequency = 2.0;
+	  	     			} else if (thisID == ("frequency-2-5")) {
+	  	     				$("#" + frequency.chosed).removeClass("active");
+	  	     				frequency.chosed = "frequency-2-5";
+	  	     				frequency.minFrequency = 2.0;
+	  	     				frequency.maxFrequency = 2.5;
+	  	     			}  else if (thisID == ("frequency-3")) {
+	  	     				$("#" + frequency.chosed).removeClass("active");
+	  	     				frequency.chosed = "frequency-3";
+	  	     				frequency.minFrequency = 2.5;
+	  	     				frequency.maxFrequency = 3.0;
+	  	     			}  else if (thisID == ("frequency-3-5")) {
+	  	     				$("#" + frequency.chosed).removeClass("active");
+	  	     				frequency.chosed = "frequency-3-5";
+	  	     				frequency.minFrequency = 3.0;
+	  	     				frequency.maxFrequency = 3.5;
+	  	     			}  else if (thisID == ("frequency-4")) {
+	  	     				$("#" + frequency.chosed).removeClass("active");
+	  	     				frequency.chosed = "frequency-4";
+	  	     				frequency.minFrequency = 3.5;
+	  	     				frequency.maxFrequency = 4;
+	  	     			}
+	  	     		} else if (parentID == ("cores")) {
+	  	     			//给对象赋值
+	  	     			if (thisID == ("cores-0")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-0";
+	  	     				cores.val = null;
+	  	     			} else if (thisID == ("cores-16")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-16";
+	  	     				cores.val = 16;
+	  	     			} else if (thisID == ("cores-12")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-12";
+	  	     				cores.val = 12;
+	  	     			}  else if (thisID == ("cores-10")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-10";
+	  	     				cores.val = 10;
+	  	     			}  else if (thisID == ("cores-8")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-8";
+	  	     				cores.val = 8;
+	  	     			}  else if (thisID == ("cores-6")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-6";
+	  	     				cores.val = 6;
+	  	     			}  else if (thisID == ("cores-4")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-4";
+	  	     				cores.val = 4;
+	  	     			}  else if (thisID == ("cores-3")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-3";
+	  	     				cores.val = 3;
+	  	     			}  else if (thisID == ("cores-2")) {
+	  	     				$("#" + cores.chosed).removeClass("active");
+	  	     				cores.chosed = "cores-2";
+	  	     				cores.val = 2;
+	  	     			}
+	  	     		} else if (parentID == ("name")) {
+	  	     			$("#name-1").val("请输入名称");
+	  	     		}
+
+	  	     		
+	  	     		$(this).addClass("active");
+	  	     	}
+	  	    }
+	  	}
+	  	
+	  	init();
+	  	hName.val = $("#name-1").val();
+	  	console.log(hName.val);
+	  	
+	  
+	  </script>
 

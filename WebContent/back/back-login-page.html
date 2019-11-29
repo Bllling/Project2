@@ -39,6 +39,7 @@
 		}
 		
 		$.post("../admin", {op:"login", aname: account, pwd: pwd}, function(data) {
+			
 			// 请求处理后，拿到服务器的响应数据后怎么处理
 			data = parseInt($.trim(data));
 			if (data > 0) {

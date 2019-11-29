@@ -100,7 +100,8 @@
 			 </tr>-->
 			  <tr>
 				  <td ></td><td> <div id="checkCode" class="code"  onclick="createCode()" ></div>
-                      <span onclick="createCode()"  class="span1" >看不清换一张</span>
+				  <a href="javascript:void(0);" target="_self" class="blue" onclick="createCode()" id="checkCode" style="display: inline-block"></a>
+                      <span class="span1">看不清换一张</span>
 				  </td>
              </tr>
 			 <tr>
@@ -127,7 +128,20 @@
     }
 
     function createCode() {
-       
+    	console.log("1111");
+    	
+    	
+		$.post("../vcode", function(data) {
+			vcode = data.code;
+			console.log(vcode);
+			fileName = data.filename;
+			console.log(fileName);
+
+			$("#checkCode").css("width", "90px");
+			$("#checkCode").css("height", "20px");
+			$("#checkCode").css("background-image",
+					"url('../../vcode/" + fileName + ".jpg')");
+		}, "json");
     }
     
     function validateCode()

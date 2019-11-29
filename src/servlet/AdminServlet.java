@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import biz.IAdminBiz;
 import biz.impl.AdminBizImpl;
+import dao.DBHelper;
 import entity.Admin;
 
 @WebServlet("/admin")
@@ -35,6 +37,9 @@ public class AdminServlet extends BasicServlet {
 		
 		IAdminBiz adminBiz = new AdminBizImpl();
 		Admin admin = adminBiz.login(aname, pwd);
+		DBHelper db = new DBHelper();
+		Map<String, Object> map =  db.get("select * from admin");
+		System.out.println(map);
 		int result = -1;
 		if (admin != null) {  //根据给定的账号和密码能够查到数据
 			//说明登录成功  则把管理员信息存入session， 方便以后的界面获取

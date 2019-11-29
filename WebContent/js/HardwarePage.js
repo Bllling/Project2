@@ -1,4 +1,4 @@
-/**
+/*"*
  * 
  */
 
@@ -12,6 +12,8 @@ function cpuPage() {
 function boardPage() {
 	$(".conditions").html("");
 	$(".conditions").load("pages/boardpage.html");
+	var type = $("#HardWareType").val();
+	console.log(type);
 }
 
 function memoryPage() {
