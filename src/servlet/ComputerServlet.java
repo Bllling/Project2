@@ -48,8 +48,7 @@ private static final long serialVersionUID = 1L;
 			findDetailByID(request, response);
 		}else if("findBnumber".equals(op)){
 			findBnumber(request, response);
-		}
-		else if("findZnumber".equals(op)){
+		}else if("findZnumber".equals(op)){
 			findZnumber(request, response);
 		}else if("getTotalByUid".equals(op)){
 			getTotalByUid(request, response);
@@ -163,7 +162,7 @@ private static final long serialVersionUID = 1L;
 		String type = request.getParameter("type");
 		System.out.println("11111");
 		IComputerBiz computerBiz = new ComputerBizImpl();
-		this.send(response, computerBiz.findAll(type));
-		
+		this.send(response, computerBiz.findAll(type));		
 	}
+	
 }

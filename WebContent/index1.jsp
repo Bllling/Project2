@@ -416,6 +416,9 @@ to {
 
 
 	<script type="text/javascript">
+		var page = 1;
+		var showRows = 6;
+	
 		var hardware;
 	
 		var vcode;

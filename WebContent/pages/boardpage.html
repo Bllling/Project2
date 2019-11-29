@@ -50,11 +50,6 @@
      <a href="javascript:;" target="_self" class="small-page-next">&nbsp;</a> 
     </div> 
     <span class="total totalNum">共 <b>130</b> 款</span> 
-    <div class="sort"> 
-     <a href="javascript:;" target="_self" class="active" reldate="1"><em>最热门</em></a> 
-     <a href="javascript:;" target="_self" class="priceOrder hovera" reldate="4"><em>价格</em><i class="down"></i></a> 
-     <a href="javascript:;" target="_self" title="" class="hovera" reldate="0"><em>最新</em></a> 
-    </div> 
    </div> 
    <div class="loading" style="display: none;">
     内容加载中，请稍候…
@@ -272,13 +267,33 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 
-	  	     		
+	  	     		proList();
+	   	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
+		function proList() {
+			$.post("../hardwareinfo", 
+			{
+				op : "findMotherBoardByPage",
+				name : hName.val,
+				minPrice : price.minPrice,
+				maxPrice : price.maxPrice,
+				minMemory : memory.minMemory,
+				maxMemory : memory.maxMemory,
+				page : page,
+				showRows : showRows
+			}, 
+			function(data) {
+
+			});
+		}
+	  	
+	  	
 	  	init();
+	  	proList();
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  

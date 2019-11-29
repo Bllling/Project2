@@ -217,14 +217,35 @@
 	  	     		}  else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
-
+					
+	  	     		proList();
 	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
+	  	
+		function proList() {
+			$.post("../hardwareinfo", 
+			{
+				op : "finddiskByPage",
+				name : hName.val,
+				minPrice : price.minPrice,
+				maxPrice : price.maxPrice,
+				minSize : size.minSize,
+				maxSize : size.maxSize,
+				type : type.val,
+				page : page,
+				showRows : showRows
+			}, 
+			function(data) {
+
+			});
+		}
+	  	
 	  	init();
+	  	proList();
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  	

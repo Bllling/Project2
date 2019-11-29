@@ -65,8 +65,6 @@
 
 <script type="text/javascript">
 
-	  var page = 1;
-	  var showRows = 6;
 	
       var hName = {
               chosed: "name-0",
@@ -236,6 +234,7 @@
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
+<<<<<<< HEAD
 	   	     		$.post("hardwareinfo", 
 	   	     		{op:"findCpuByPage", name: hName.val, minPrice: price.minPrice, maxPrice: price.maxPrice, 
 	   	     		minFrequency: frequency.minFrequency, maxFrequency: frequency.maxFrequency, 
@@ -243,18 +242,38 @@
 	   	     		function(data){
 	   	     				
 	   	     		},"json");
+=======
+					
+	  	     		proList();
+>>>>>>> 1be9483df92d2accca033fa8a1250f6a2e0a47fb
 	   	     		
-	   	     		
-	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
-	  	init();
-	  	hName.val = $("#name-1").val();
-	  	console.log(hName.val);
-	  	
-	  
-	  </script>
+
+	function proList() {
+		$.post("../hardwareinfo", 
+		{
+			op : "findCpuByPage",
+			name : hName.val,
+			minPrice : price.minPrice,
+			maxPrice : price.maxPrice,
+			minFrequency : frequency.minFrequency,
+			maxFrequency : frequency.maxFrequency,
+			cores : cores.val,
+			page : page,
+			showRows : showRows
+		}, 
+		function(data) {
+
+		});
+	}
+
+	init();
+	proList();
+	hName.val = $("#name-1").val();
+	console.log(hName.val);
+</script>
 

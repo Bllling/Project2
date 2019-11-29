@@ -185,13 +185,31 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 
-	  	     		
+	  	     		proList();
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
+		function proList() {
+			$.post("../hardwareinfo", 
+			{
+				op : "findSourceByPage",
+				name : hName.val,
+				minPrice : price.minPrice,
+				maxPrice : price.maxPrice,
+				minPowers : powers.minPowers,
+				maxPowers : powers.maxPowers,
+				page : page,
+				showRows : showRows
+			}, 
+			function(data) {
+				
+			});
+		}
+	  	
 	  	init();
+	  	proList();
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  	
