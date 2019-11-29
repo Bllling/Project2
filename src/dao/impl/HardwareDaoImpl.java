@@ -193,18 +193,18 @@ public class HardwareDaoImpl implements IHardwareDao {
 			Integer maxmaxmemory, int page, int rows) {
 		DBHelper dbHelper = new DBHelper();
 		List <Object > list = new ArrayList<Object>(); 
-		String sql="select * from cpu where 1=1  ";
+		String sql="select * from motherboard where 1=1  ";
 		if(minprice!=null){
 			sql+="and motherboardprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and motherboardprice<? ";
+			sql+="and motherboardprice=<? ";
 			list.add(maxprice);
 		}else if(minmaxmemory!=null){
 			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
 			list.add(minmaxmemory);
 		}else if(maxmaxmemory!=null){
-			sql+="and ?>SUBSTRING_INDEX(maxmemory,'G',1) ";
+			sql+="and ?>=SUBSTRING_INDEX(maxmemory,'G',1) ";
 			list.add(maxmaxmemory);
 		}else if(name!=null){
 			sql+="and name=? ";
@@ -223,16 +223,16 @@ public class HardwareDaoImpl implements IHardwareDao {
 		List <Object > list = new ArrayList<Object>(); 
 		String sql="select * from memory where 1=1  ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and memoryprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and memoryprice<=? ";
 			list.add(maxprice);
 		}else if(minfrequency!=null){
 			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(minfrequency);
 		}else if(maxfrequency!=null){
-			sql+="and ?>SUBSTRING_INDEX(frequency,'G',1) ";
+			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(maxfrequency);
 		}else if(memorytype!=null){
 			sql+="and ?=SUBSTRING(memorytype, 4) ";
@@ -257,16 +257,16 @@ public class HardwareDaoImpl implements IHardwareDao {
 		List <Object > list = new ArrayList<Object>(); 
 		String sql="select * from disk where 1=1  ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and diskprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and diskprice<=? ";
 			list.add(maxprice);
 		}else if(minvolume!=null){
 			sql+="and ?<SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(minvolume);
 		}else if(maxvolume!=null){
-			sql+="and ?>SUBSTRING_INDEX(volume,'G',1) ";
+			sql+="and ?>=SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(maxvolume);
 		}else if(isssd!=null){
 			sql+="and isssd=? ";
@@ -286,12 +286,12 @@ public class HardwareDaoImpl implements IHardwareDao {
 			Integer maxmemory, Integer minwidth, Integer maxwidth,int page,int rows) {
 		DBHelper dbHelper = new DBHelper();
 		List <Object > list = new ArrayList<Object>(); 
-		String sql="select * from disk where 1=1  ";
+		String sql="select * from graphics where 1=1  ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and graphicsprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and graphicsprice<=? ";
 			list.add(maxprice);
 		}else if(name!=null){
 			sql+="and name=? ";
@@ -300,13 +300,13 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and ?<SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(minmemory);
 		}else if(maxmemory!=null){
-			sql+="and ?>SUBSTRING_INDEX(memory,'G',1) ";
+			sql+="and ?>=SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(maxmemory);
 		}else if(minwidth!=null){
 			sql+="and ?<SUBSTRING_INDEX(width,'b',1) ";
 			list.add(minwidth);
 		}else if(maxwidth!=null){
-			sql+="and ?>SUBSTRING_INDEX(width,'b',1) ";
+			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
 		sql +="order by usetimes desc limit ? , ? ";
@@ -319,12 +319,12 @@ public class HardwareDaoImpl implements IHardwareDao {
 	public List<Box> findBoxByPage(String name, Double minprice, Double maxprice,int page,int rows) {
 		DBHelper dbHelper = new DBHelper();
 		List <Object > list = new ArrayList<Object>(); 
-		String sql="select * from disk where 1=1  ";
+		String sql="select * from box where 1=1  ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and boxprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and boxprice<=? ";
 			list.add(maxprice);
 		}else if(name!=null){
 			sql+="and name=? ";
@@ -339,8 +339,29 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public List<Source> findSourceByPage(String name, Double minprice, Double maxprice, Integer minpowers,
 			Integer maxpowers, int page, int rows) {
-		// TODO Auto-generated method stub
-		return null;
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from source where 1=1  ";
+		if(minprice!=null){
+			sql+="and sourceprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and sourceprice<=? ";
+			list.add(maxprice);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}else if(minpowers!=null){
+			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)>? ";
+			list.add(minpowers);
+		}else if(maxpowers!=null){
+			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
+			list.add(maxpowers);
+		}
+		sql +="order by usetimes desc limit ? , ? ";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return dbHelper.finds(sql, Source.class, list);
 	}
 
 

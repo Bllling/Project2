@@ -67,18 +67,36 @@
        <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="sub28_m_gnoPrice__k_1_1_1_data/ceXUbURc8l4SA.jpg" alt="Intel 酷睿i5 9400F" /> </a> 
       </div> 
       <div class="price-box"> 
-       <span class="price">￥1199</span> 
+       <span class="price">'+item.cpuprice+'</span> 
        <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> 
       </div> 
       <div class="pro-intro"> 
-       <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">Intel 酷睿i5 9400F</a> 本月<i>104780</i>人已选用 </h3> 
+       <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> 
        <div class="paramet"> 
-        <span title="LGA 1151 ">CPU主频：<em>3.5Ghz </em></span>
-        <span title="2.9GHz ">CPU主频：<em>2.9GHz </em></span>
-        <span title="4.1GHz ">动态加速频率：<em>4.1GHz </em></span>
-        <span title="9MB ">三级缓存：<em>9MB </em></span>
-        <span title="六核心  六线程">核心数量：<em>六核心 六线程</em></span> 
-        <span> <a href="http://detail.zol.com.cn/1250/1249003/param.shtml" class="morep">更多参数<font>&gt;&gt;</font></a>&nbsp;&nbsp; <a href="http://detail.zol.com.cn/1250/1249003/review.shtml">22人点赞</a>&nbsp;&nbsp;&nbsp; </span> 
+        <span title="LGA 1151 ">默认主频：<em>'+item.frequency+'</em></span>
+        <span title="2.9GHz ">最大主频：<em>'+item.maxfrequency+' </em></span>
+        <span title="4.1GHz ">跑分：<em>'+item.score+' </em></span>
+        <span title="六核心  六线程">核心数量：<em>'+item.cores+' '+item.threads+'</em></span> 
+         
+       </div> 
+      </div> 
+     </div> 
+      <div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> 
+      <div class="pic"> 
+       <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="sub28_m_gnoPrice__k_1_1_1_data/ceXUbURc8l4SA.jpg" alt="Intel 酷睿i5 9400F" /> </a> 
+      </div> 
+      <div class="price-box"> 
+       <span class="price">'+item.cpuprice+'</span> 
+       <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> 
+      </div> 
+      <div class="pro-intro"> 
+       <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> 
+       <div class="paramet"> 
+        <span title="LGA 1151 ">默认主频：<em>'+item.frequency+'</em></span>
+        <span title="2.9GHz ">最大主频：<em>'+item.maxfrequency+' </em></span>
+        <span title="4.1GHz ">跑分：<em>'+item.score+' </em></span>
+        <span title="六核心  六线程">核心数量：<em>'+item.cores+' '+item.threads+'</em></span> 
+         
        </div> 
       </div> 
      </div> 
@@ -267,33 +285,34 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 
-	  	     		proList();
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,showRows);
 	   	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
-		function proList(name,minPrice,maxPrice,minMemory,maxMemory) {
-			$.post("../hardwareinfo", 
+		function proList(name,minPrice,maxPrice,minMemory,maxMemory,page,showRows) {
+			$.post("hardwareinfo", 
 			{
-				op : "findMotherBoardByPage",
-				name : hName.val,
-				minPrice : price.minPrice,
-				maxPrice : price.maxPrice,
-				minMemory : memory.minMemory,
-				maxMemory : memory.maxMemory,
+				op : "findMotherBoardByPage1",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
+				minMemory : minMemory,
+				maxMemory : maxMemory,
 				page : page,
-				showRows : showRows
+				rows : showRows
 			}, 
 			function(data) {
-
+                console.log(data);
 			}, "json");
 		}
 	  	
 	  	
 	  	init();
-	  	proList();
+   		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,showRows);
+
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  
