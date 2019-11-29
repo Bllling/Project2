@@ -161,18 +161,18 @@ $(function(){
 			 var no="no"+index;
 			 var pic="../"+item.pics;
 			 var str1 = "";
-			 if(index=="cpu"){str1=item.cpuprice;flag="1";}
-			 if(index=="motherboard"){str1=item.motherboardprice;flag="2";}
-			 if(index=="memory"){str1=item.memoryprice;flag="3";}
-			 if(index=="disk"){str1=item.diskprice;flag="4";}
-			 if(index=="source"){str1=item.sourceprice;flag="5";}
-			 if(index=="graphics"){str1=item.graphicsprice;flag="6";}
-			 if(index=="box"){str1=item.boxprice;flag="7";}
+			 if(index=="cpu"){str1=item.cpuprice;flag="1";$("#cpu", window.parent.document).val(str1);}
+			 if(index=="motherboard"){str1=item.motherboardprice;flag="2";$("#motherboard", window.parent.document).val(str1);}
+			 if(index=="memory"){str1=item.memoryprice;flag="3";$("#memory", window.parent.document).val(str1);}
+			 if(index=="disk"){str1=item.diskprice;flag="4";$("#disk", window.parent.document).val(str1);}
+			 if(index=="source"){str1=item.sourceprice;flag="5";$("#source", window.parent.document).val(str1);}
+			 if(index=="graphics"){str1=item.graphicsprice;flag="6";$("#graphics", window.parent.document).val(str1);}
+			 if(index=="box"){str1=item.boxprice;flag="7";$("#box", window.parent.document).val(str1);}
 			 str+='<tr class="tr1" id='+no+'><td align="center" class="ptype" colspan="2"><img src='+pic+' class="im"><p id="pp">'+item.name+'</p></td><td>1</td><td>'+str1+'</td><td>'+item.score+'</td></tr>';
 			 sumprice +=parseInt(str1);
 		 })
 		$(".zj-inf tbody").append($(str));
-		 $("#parent", window.parent.document).val(sumprice);
+		$("#parent", window.parent.document).val(sumprice);
 	},"json")
 
 })

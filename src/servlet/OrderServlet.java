@@ -20,7 +20,20 @@ public class OrderServlet extends BasicServlet {
 		
 		if ("findOrderInfo".equals(op)) {
 			findOrderInfo(request, response);
+		}else if("addOrder".equals(op)){
+			addOrder(request, response);
 		}
+	}
+
+	private void addOrder(HttpServletRequest request, HttpServletResponse response) {
+		IOrderBiz orderBiz = new OrderBizImpl();
+		String rorderid=request.getParameter("rorderid");
+        Integer id=Integer.parseInt(request.getParameter("id"));
+        Integer uid=Integer.parseInt(request.getParameter("uid"));
+        Integer state=Integer.parseInt(request.getParameter("state"));
+        Double total=Double.parseDouble(request.getParameter("state"));
+		this.send(response, orderBiz.addOrder(rorderid, id, uid, state, total));
+		
 	}
 
 	/**

@@ -202,10 +202,10 @@
 		</div>
 		<div class="popOutBg" id="pop1" style="display: none;"></div>
 		<div class="popOut" id="pop2" style="display: none;">
-			<p style="margin-top: 20px;">你确定要购买吗？</p>
+			<p style="margin-top: 20px;font-size: 15px; font-family: initial;">你确定要购买吗？</p>
 			<input type="button" value="确定" onclick="yes()" class="btn2"
-				style="margin-top: -150px; margin-right: 30px;"> <input
-				type="button" value="关闭" onclick="no()" class="btn2">
+				style="margin-top: 20px; margin-right: 30px;    width: 50px;"> <input
+				type="button" value="关闭" onclick="no()" class="btn2" 	style="margin-top: 20px;    width: 50px;">
 
 		</div>
 	</div>
@@ -275,6 +275,13 @@ $(function(){
 	
 
 })
+       function no(){	
+  			$(".popOut").css('display', 'none');
+			$(".popOutBg").css('display', 'none');
+	    }
+       function yes(){
+    	   
+       }
 	function buy(){
 	$(".popOut").css('display', 'block');
 	$(".popOutBg").css('display', 'block');

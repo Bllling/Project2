@@ -26,7 +26,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public int addMotherboard(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into motherboard values(0,?,?,?,?,'0','0',?,?,?)";
+		String sql = "insert into motherboard values(0,?,?,?,?,'0','0',?,?,?,1)";
 		return dbHelper.update(sql, map.get("name"), map.getOrDefault("bpics", ""), map.get("price"), map.get("quantiy"), map.get("score"), map.get("powers"), map.get("maxmemory"));
 	}
 
