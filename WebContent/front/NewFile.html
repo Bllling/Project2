@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <div id="sd"></div>
+<input type="button" onclick="sds()">
+</body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+	function sds(){
+		$("#sd").append(' <input type="radio" name="radio" id="rad" value="1" style="display:block"> ');
+		$("#sd").append(' <input type="radio" name="radio" id="rad" value="2" style="display:block">');
+	}
+	
+	$(":radio").click(function(){console.log($(this).val())});
+	</script>
+</html>

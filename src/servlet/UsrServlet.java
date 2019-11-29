@@ -1,11 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.JspFactory;
+import javax.servlet.jsp.PageContext;
 import javax.websocket.Session;
 
 import biz.ICollectionBiz;
@@ -13,6 +16,9 @@ import biz.IUsrBiz;
 import biz.impl.CollectionBizImpl;
 import biz.impl.UsrBizImpl;
 import entity.Usr;
+import util.EmailSend;
+import util.FileUploadUtil;
+
 
 @WebServlet("/usr")
 public class UsrServlet extends BasicServlet{
@@ -24,7 +30,11 @@ public class UsrServlet extends BasicServlet{
 		String op = req.getParameter("op");
 		System.out.println(op);
 		if ("sendemail".equals(op)) {
-			sendemail(req,resp);
+			try {
+				sendemail(req,resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if ("register".equals(op)) {
 			register(req,resp);
 		} else if ("login".equals(op)) {
@@ -41,9 +51,27 @@ public class UsrServlet extends BasicServlet{
 			findAllByID(req, resp);
 		} else if ("findAddrsById".equals(op)) {
 			findAddrsById(req, resp);
-		}
+		} else if ("updateUsrInfo".equals(op)) {
+			updateUsrInfo(req, resp);
+		} 
 
 	}
+	
+	/**
+	 * 用户信息修改
+	 * @param req
+	 * @param resp
+	 */
+	private void updateUsrInfo(HttpServletRequest req, HttpServletResponse resp) {
+		int uid = Integer.parseInt(req.getParameter("uid"));
+		IUsrBiz usrBiz = new UsrBizImpl();
+		Map<String, String> map = fileUpload(req, resp);
+		System.out.println(map);
+		System.out.println(map.containsKey("pics"));
+		this.send(resp, usrBiz.updateUsrInfo(map, uid));
+	}
+
+	
 	
 	/**
 	 * 通过用户ID查询地址表 查找该用户的 所有地址
@@ -87,7 +115,6 @@ public class UsrServlet extends BasicServlet{
 
 	private void findByID(HttpServletRequest req, HttpServletResponse resp) {
 		int uid = Integer.parseInt(req.getParameter("uid"));
-		System.out.println(uid);
 		ICollectionBiz collectionBiz = new CollectionBizImpl();
 		this.send(resp, collectionBiz.findByID(uid));
 		
@@ -107,7 +134,10 @@ public class UsrServlet extends BasicServlet{
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO 用户更新密码
+		String pwd=req.getParameter("upwd");
+		String uemail=req.getParameter("email");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.updatepwd(pwd, uemail));
 		
 	}
 
@@ -131,11 +161,27 @@ public class UsrServlet extends BasicServlet{
 
 	private void register(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO 用户注册
+		String uname=req.getParameter("uname");
+		String upwd=req.getParameter("upwd");
+		String uemail=req.getParameter("uemail");
+		String utel=req.getParameter("utel");
+		IUsrBiz usrBiz = new UsrBizImpl();
+		this.send(resp, usrBiz.register(uname, upwd, uemail, utel, null));
 		
 	}
 
-	private void sendemail(HttpServletRequest req, HttpServletResponse resp) {
-	//TODO:发送邮箱验证码到用户邮箱
-		
+	private void sendemail(HttpServletRequest req, HttpServletResponse resp) throws Exception  {
+		String email=req.getParameter("email");
+		EmailSend emailSend = new EmailSend(email);
+		emailSend.send();
+		this.send(resp, emailSend.getCoding());
+	}
+	
+	//数据保存到map
+	private Map<String, String> fileUpload(HttpServletRequest request, HttpServletResponse response) {
+		FileUploadUtil fuu = new FileUploadUtil();
+		PageContext pagecontext = JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
+		Map<String, String> map = fuu.upload(pagecontext);
+		return map;
 	}
 }

@@ -41,14 +41,11 @@
   
 <div class="nav"  >
     <div class="nav-box">
-       <ul class="navul" style="min-width: 800px;margin-left: 150px;">
-		   
+       <ul class="navul" style="min-width: 800px;margin-left: 150px;">   
          <li id="menu_nav_index"><a target="_self" href="../index1.jsp">模拟攒机</a></li>
 		 <li id="menu_nav_myplan"><a class="active">我的方案</a></li>
 		 <li id="menu_nav_wyplan"><a target="_self" href="netplan.jsp">网友方案</a></li>
-		 <li id="menu_nav_DiyTop"><a target="_self" href="#">配置排行榜</a></li>
 		 <li id="menu_nav_ProTop"><a target="_self" href="rank.html">网友首选配件</a></li>
-		 <li id="menu_nav_Graphics"><a target="_blank" href="#">智能推荐攒机</a></li>
        </ul>
       
     </div>
@@ -95,7 +92,7 @@
                         </div>
                         <div class="other">
                           
-                           <a href="forgetPwd.html" class="forget">忘记密码?</a>
+                           <a href="forgetPwd2.html" class="forget">忘记密码?</a>
                         </div>
                         <input type="button" class="subm" value="登录" onclick="login()">
                         
@@ -117,19 +114,19 @@
                         <tbody style="height: 50px;"><tr >
                            <td >
                               <a href="javascript:void(0)" class="item-link fanan">
-                                <h1>xx</h1>
+                                <h1 id="h1">xx</h1>
                                 方案
                               </a>
                            </td>
                            <td>
                              <a href="javascript:void(0)" class="item-link l2 review">
-                                 <h1>xx</h1>
+                                 <h1 id="h2">xx</h1>
                                 浏览
                               </a>
                            </td>
                            <td>
                               <a href="javascript:void(0)" class="item-link l3 hitNum">
-                                <h1>xx</h1>
+                                <h1 id="h3">xx</h1>
                                 点评
                               </a>
                            </td>
@@ -153,6 +150,7 @@
 		
 			 $(".logo").css("display","none");
 			 $(".per-infor").css("display","block");
+			 getTbody();
 			
 		 }
 		show1();
@@ -168,6 +166,7 @@
 	 if(uid==null||uid==""){
 		 return;
 	 }
+	 
 	 $.post("../computer",{op:"findByUid",uid:uid},function(data){
 
 		 if(data==null){
@@ -215,12 +214,31 @@
 			 if(data==1){
 				 $(".logo").css("display","none");
 				 $(".per-infor").css("display","block");
-				 window.location.reload();
+				 window.location.reload();	
 				
 	    	 }else{
 	    		 alert("账号或密码错误，请重新登陆！")
 	    	 }
 		},"text")
+		
+ }
+ function getTbody(){
+	 var uid = $("#uid").html();
+	 $.post("../computer",{op:"getTotalByUid",uid:uid},function(data){
+		 if(data>-1){
+			$("#h1").html(data); 
+		 }
+	 })
+	 $.post("../computer",{op:"findBnumber",uid:uid},function(data){
+		 if(data>-1){
+			$("#h2").html(data); 
+		 }
+	 })
+	 $.post("../computer",{op:"findZnumber",uid:uid},function(data){
+		 if(data>-1){
+			$("#h3").html(data); 
+		 }
+	 })
  }
  </script>
 

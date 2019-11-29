@@ -140,22 +140,22 @@
 
 	function SubmitComment(){
 		var conputerID = $("#conputerID", window.parent.document).val();
-		alert(conputerID);
+		//alert(conputerID);
 		var uid = $("#uid", window.parent.document).val();
-		alert(uid);
+		//alert(uid);
 		if (uid == "") {
 			alert("请先登录");
 			return;
 		}
 		var comment = $("#mytext").val();
-		$.post("../commenta", {op:"addComment", conputerID:conputerID, uid:uid, comment:comment}, function(data){
+		$.post("../comment", {op:"addComment", conputerID:conputerID, uid:uid, comment:comment}, function(data){
 			if (data < 0) {
 				alert("评论失败");
 			} else {
 				$("#mytext").val("");
 				$(".comment").remove();
 				alert("评论成功");
-				show_comment();
+				show_comment(conputerID,"praise");
 			}
 		},"text")
 	}

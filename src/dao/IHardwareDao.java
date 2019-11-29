@@ -110,5 +110,15 @@ public interface IHardwareDao {
 	 */
 	public int getTotal(String id, String formName);
 	
+	/**
+	 * 修改硬件的属性 
+	 * @param id         硬件ID
+	 * @param formName   表名字
+	 * @param op		  修改的硬件属性
+	 * @param value      修改的属性值
+	 * @return
+	 */
+	public int updateHardware(Integer id, String idName, String formName, String op, String value);
+	
 	
 }

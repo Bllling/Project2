@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import dao.DBHelper;
 import dao.IComputerDao;
 import dao.IUsrDao;
@@ -119,6 +121,34 @@ public class ComputerDaoImpl implements IComputerDao {
 		DBHelper dbHelper = new DBHelper();
 		String sql = "select detail from computer where id = ?";
 		return dbHelper.find(sql, Computer.class, id);
+	}
+
+	@Override
+	public int getTotalByUid(Integer uid) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select count(uid) from computer where uid = ?";
+		return dbHelper.getTotal(sql, uid);
+	}
+
+	@Override
+	public int getBnumebrByUid(Integer uid) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select sum(bnumber) from computer where uid =?";
+		return dbHelper.getTotal(sql, uid);
+	}
+
+	@Override
+	public int getZnumebrByUid(Integer uid) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select sum(znumber) from computer where uid =?";
+		return dbHelper.getTotal(sql, uid);
+	}
+
+	@Override
+	public Computer findID(String cname,Integer id) {
+		DBHelper dbHelper = new DBHelper();
+		String sql="select id from computer where id = ? or cname=?";
+		return dbHelper.find(sql,Computer.class, id, cname);
 	}
 
 	

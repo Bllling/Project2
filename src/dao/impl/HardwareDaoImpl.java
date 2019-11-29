@@ -142,8 +142,15 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public <T> List<T> findHardWares(String priceName, String formName, String type, Class<?> c) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "select name, "+priceName+", praise, usetimes, pics from "+formName+" order by " + type +" desc";
+		String sql = "select name, "+priceName+", praise, usetimes, pics from "+formName+" order by " + type +" desc limit 0, 10";
 		return dbHelper.finds(sql, c);
+	}
+
+	@Override
+	public int updateHardware(Integer id, String idName, String formName, String op, String value) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "update "+formName+" set "+op+" = ? where "+idName+" = ? ";
+		return dbHelper.update(sql, value, id);
 	}
 
 

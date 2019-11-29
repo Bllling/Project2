@@ -1,6 +1,7 @@
 package biz;
 
 import java.util.List;
+import java.util.Map;
 
 import entity.Address;
 import entity.Usr;
@@ -10,6 +11,7 @@ public interface IUsrBiz {
 	public int updatepwd(String newpwd,String uemail); 
 	public int register(String uname,String upwd,String uemail,String utel,String upics);
 	public Usr findByName(String uname);
+	public Usr findUemailByUid(Integer uid);
 	/**
 	 * 通过ID在用户表查询所有
 	 * @param uid
@@ -22,4 +24,10 @@ public interface IUsrBiz {
 	 * @return
 	 */
 	public List<Address> findAddrsById(Integer uid);
+	/**
+	 * 通过ID在个人主页修改个人信息
+	 * @param map
+	 * @return
+	 */
+	public int updateUsrInfo(Map<String, String> map, Integer uid);
 }

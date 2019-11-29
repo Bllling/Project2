@@ -1,174 +1,219 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>购买</title>
 <link href="../css/Diy_detailNew.css" rel="stylesheet">
 <link href="../css/zLoginDialog.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/share_style0_24.css">
 <link rel="stylesheet" href="../css/global-sitennav.css">
 <style type="text/css">
-.buy{color:white;background: rgb(25,142,246);width: 100px;height: 35px; margin-left: 10px;border: 1px solid;border-radius:5px;}
-.buy:hover{cursor: pointer;background:rgb(241,49,49);}
+.buy {
+	color: white;
+	background: rgb(25, 142, 246);
+	width: 100px;
+	height: 35px;
+	margin-left: 10px;
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+.buy:hover {
+	cursor: pointer;
+	background: rgb(241, 49, 49);
+}
+
+.popOutBg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0, .6);
+	display: none;
+	z-index: 999;
+}
+
+.popOut {
+	position: fixed;
+	width: 320px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -180px;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	display: none;
+	z-index: 999;
+	position: fixed;
+	text-align: center;
+}
+.navs-box .inf {
+	width: 684px;
+}
+
+.navs-box .inf .list {
+	float: right;
+}
+
+.zol20th {
+	float: left;
+	width: 50px;
+	height: 36px;
+	margin: 8px 0 0 219px;
+	background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png)
+		no-repeat center;
+}
+.btn2{
+	background-color: #118adb;
+   	border:1px solid #118adb;
+	color: white;
+	border-radius: 5px;
+	}
 </style>
 </head>
-<body>   
-
-
-<div class="nav-search">
-    <div class="navs-box clearfix">
-        <span class="zol20th"></span>
-        <div class="inf">
-           <ul class="list clearfix">
-         
-              <li class="li5">
-                  <div class="search-box">
-                       <input id="J_keywords" type="text" class="skey" name="kword" value="请输入关键词或配置单名称" data-source="" autocomplete="off">
-                       <!--<input type="hidden" name="f" value="c">-->
-                       <input id="submit" type="submit" class="sbtn" value="搜索">
-                 </div>
-              </li>
-           </ul>
-        </div>
-    </div>
-</div>
-    <style>
-        .navs-box .inf{width:684px;}
-        .navs-box .inf .list{float:right;}
-        .zol20th{float: left;width: 50px;height: 36px;margin: 8px 0 0 219px;background: url(//icon.zol-img.com.cn/article/2011/logo2019/20th.png) no-repeat center;}
-    </style>
-<div class="nav"  >
-    <div class="nav-box">
-       <ul class="navul" style="min-width: 800px;margin-left: 150px;">
-		   
-         <li id="menu_nav_index"><a target="_self" href="../index1.jsp">模拟攒机</a></li>
-		 <li id="menu_nav_myplan"><a class="active" href="myplan">我的方案</a></li>
-		 <li id="menu_nav_wyplan"><a target="_self" href="netplan.jsp">网友方案</a></li>
-		 <li id="menu_nav_DiyTop"><a target="_self" href="#">配置排行榜</a></li>
-		 <li id="menu_nav_ProTop"><a target="_self" href="rank.jsp">网友首选配件</a></li>
-		 <li id="menu_nav_Graphics"><a target="_blank" href="#">智能推荐攒机</a></li>
-       </ul>
-      
-    </div>
-</div>
-
-
-
-     
-<!--wrap start-->
- <div class="wrap">
-     <div class="box">
-         <div class="nav-lable">
-             <a href="../index1.jsp" target="_self">ZOL攒机首页</a>&nbsp;&gt;&nbsp;<a class="lishu" href="netplan.jsp" target="_self">网友方案</a>&nbsp;&gt;&nbsp;
-             
-         </div>
-         <div class="content clearfix">
-                         
-             <div class="left">
-                 <p class="title big-title" ><span id="cname"> </span><span class="total">总计&nbsp;:&nbsp;<font id="sumprice"></font>元</span></p>
-                  <div class="msg">
-                      <div class="text">
-                        来自: <span id="uname"></span>
-                        时间：<span id="rtime"></span>
-                         
-                       <span>浏览次数：<font id="bnumber"></font>次 </span>
+<body>
+	<div class="nav-search">
+		<div class="navs-box clearfix">
+			<span class="zol20th"></span>
+			
 		</div>
-                     
-                  </div>
-                  <ul class="list clearfix" style="margin-left: -50px;">
-    <li><a href="javascript:void(0)" target="_blank">
-	<img id="img1" src=""  title="" width="170" height="120"></a></li>
-	<li><a href=" javascript:void(0)" target="_blank">
-	<img id="img2" src=""  title="" width="150" height="90"></a></li>
-	<li><a href=" javascript:void(0)" target="_blank">
-	<img id="img3"  src="" title="" width="150" height="90"></a></li>
-	<li ><a href=" javascript:void(0)" target="_blank">
-	<img id="img4" src=""  title="" width="150" height="90"></a></li>
-	<li ><a href="javascript:void(0) " target="_blank">
-	<img id="img5" src=""  title="" width="150" height="90"></a></li>
-	<li ><a href=" javascript:void(0)" target="_blank">
-	<img id="img6" src=""  title="" width="150" height="90"></a></li>
-	<li ><a href=" javascript:void(0)" target="_blank">
-	<img id="img7" src=""  title="" width="150" height="90"></a></li>
-	</ul>
+	</div>
 
-    <div class="whole-inf" id="proShow" style="width: 1200px; margin-left: -100px;" >
-          <div class="inf-lable" >
-                  <div class="nav">
-                        <p style="font-size: 25px;">配置清单</p>
-                               
-                                             
-                  </div>         
-             </div>
-		<div class="details">
-    <div class="detail" style="display: block; ">
-         <table class="zj-inf" width="100%" height="462">
-             <tbody><tr class="inf-head" align="center">
-                <th width="100">配件</th>
-                <th width="246">配件名</th>
-                <th width="52">数量</th>
-                <th width="96">价格</th>
-                <th width="116">跑分</th>
-         
-             </tr>
-                   <tr class="tr1" id="no1">
-                                    <td align="center" class="ptype">CPU</td>
-                                    
-                                 </tr><tr class="tr1" id="no2">
-                                    <td align="center" class="ptype">主板</td>
-                                    
-                                    
-                                 </tr><tr class="tr1" id="no3">
-                                    <td align="center" class="ptype">内存</td>
-                                    
-                                    
-                                 </tr><tr class="tr1" id="no4">
-                                    <td align="center" class="ptype">硬盘</td>
-                                    
-                                    
-                                 </tr><tr class="tr1" id="no5">
-                                    <td align="center" class="ptype">电源</td>
-                                  
-                                    
-                                 </tr><tr class="tr1" id="no6">
-                                    <td align="center" class="ptype">显卡</td>
-                                   
-                                    
-                                 </tr><tr class="tr1" id="no7">
-                                    <td align="center" class="ptype">机箱</td>
-     
-                                 </tr>
-        </tbody></table>
-        <div class="last-tr clearfix">
-			 
-             <div class="left"><span style="margin: 0 10px 0 20px;" class="cite"><a href="../index.html">引用此配置单进行攒机<font>&gt;&gt;</font></a></span></div>
-             <div class="right">
-             <input type="button" value="购买" onclick="buy" class="buy">
-                <span class="total-num">总计&nbsp;:&nbsp;<font color="#ff3333">￥6831元</font></span>
-               
-             </div>
-        </div>
+	<div class="nav">
+		<div class="nav-box">
+			<ul class="navul" style="min-width: 800px; margin-left: 150px;">
 
-                          
-    </div>
+				<li id="menu_nav_index"><a target="_self" href="../index1.jsp">模拟攒机</a></li>
+				<li id="menu_nav_myplan"><a  href="myplan.jsp">我的方案</a></li>
+				<li id="menu_nav_wyplan"><a target="_self" href="netplan.jsp">网友方案</a></li>
+				<li id="menu_nav_ProTop"><a target="_self" href="rank.jsp">网友首选配件</a></li>
+			</ul>
+
+		</div>
+	</div>
 
 
-</div>
-         </div>   
-         		 <input type="hidden" id="conputerID" value="">
-         		 <input type="hidden" id="uid" value="">
-				 <iframe id="commentsiframe" align="middle" src="comment.html" frameborder="0" width="1350px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: -170px; height: 1180px;" onload="reinitIframe()"></iframe>
-     </div>
-   </div>
-</div>
-           
-</div>
-</div>
-</div>
-</div>
+	<!--wrap start-->
+	<div class="wrap">
+		<div class="box">
+			<div class="nav-lable">
+				<a href="../index1.jsp" target="_self">ZOL攒机首页</a>&nbsp;&gt;&nbsp;<a
+					class="lishu" href="netplan.jsp" target="_self">网友方案</a>&nbsp;&gt;&nbsp;
+			</div>
+			<div class="content clearfix">
+				<div class="left">
+					<p class="title big-title">
+						<span id="cname"> </span><span class="total">总计&nbsp;:&nbsp;<span
+							id="sum"></span>元
+						</span>
+					</p>
+					<div class="msg">
+						<div class="text">
+							来自: <span id="uname"></span> 时间：<span id="rtime"></span> <span>浏览次数：<font
+								id="bnumber"></font>次
+							</span>
+						</div>
+					</div>
+					<ul class="list clearfix" style="margin-left: -50px;">
+						<li><a href="javascript:void(0)" target="_blank"> <img
+								id="img1" src="" title="" width="170" height="120"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img2" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img3" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img4" src="" title="" width="150" height="90"></a></li>
+						<li><a href="javascript:void(0) " target="_blank"> <img
+								id="img5" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img6" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img7" src="" title="" width="150" height="90"></a></li>
+					</ul>
+					<div class="whole-inf" id="proShow"
+						style="width: 1200px; margin-left: -100px;">
+						<div class="inf-lable">
+							<div class="nav">
+								<p style="font-size: 25px;">配置清单</p>
+							</div>
+						</div>
+						<div class="details">
+							<div class="detail" style="display: block;">
+								<table class="zj-inf" width="100%" height="462">
+									<tbody>
+										<tr class="inf-head" align="center">
+											<th width="100">配件</th>
+											<th width="246">配件名</th>
+											<th width="52">数量</th>
+											<th width="96">价格</th>
+											<th width="116">跑分</th>
+										</tr>
+										<tr class="tr1" id="no1">
+											<td align="center" class="ptype">CPU</td>
+										</tr>
+										<tr class="tr1" id="no2">
+											<td align="center" class="ptype">主板</td>
+										</tr>
+										<tr class="tr1" id="no3">
+											<td align="center" class="ptype">内存</td>
+										</tr>
+										<tr class="tr1" id="no4">
+											<td align="center" class="ptype">硬盘</td>
+										</tr>
+										<tr class="tr1" id="no5">
+											<td align="center" class="ptype">电源</td>
+										</tr>
+										<tr class="tr1" id="no6">
+											<td align="center" class="ptype">显卡</td>
+										</tr>
+										<tr class="tr1" id="no7">
+											<td align="center" class="ptype">机箱</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="last-tr clearfix">
+									<div class="left">
+										<span style="margin: 0 10px 0 20px;" class="cite"><a
+											href="../index.html" style="width: 186px;">引用此配置单进行攒机<font>&gt;&gt;</font></a></span>
+									</div>
+									<div class="right">
+										<input type="button" value="购买" onclick="buy()" class="buy">
+										<span class="total-num">总计&nbsp;:&nbsp;<font
+											color="#ff3333">￥<span id="sum1">1111</span>元
+										</font></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" id="conputerID" value=""> <input
+						type="hidden" id="uid" value="">
+					<iframe id="commentsiframe" align="middle" src="comment.html"
+						frameborder="0" width="1350px" allowtransparency=""
+						marginwidth="0" marginheight="0" scrolling="no"
+						style="margin-bottom: 30px; margin-left: -170px; height: 1180px;"
+						onload="reinitIframe()"></iframe>
+				</div>
+			</div>
+		</div>
+		<div class="popOutBg" id="pop1" style="display: none;"></div>
+		<div class="popOut" id="pop2" style="display: none;">
+			<p style="margin-top: 20px;">你确定要购买吗？</p>
+			<input type="button" value="确定" onclick="yes()" class="btn2"
+				style="margin-top: -150px; margin-right: 30px;"> <input
+				type="button" value="关闭" onclick="no()" class="btn2">
 
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script>
+		</div>
+	</div>
+	
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
 $(function(){
+	var sumprice=0;
 	var line = location.hash.replace("#","");
 	var id=line.substring(0,1);
 	var uid1=line.substring(2,3);
@@ -206,7 +251,9 @@ $(function(){
 	
 	$.post("../computer",{op:"findHardWare",id:id},function(data){
 		var str = "";
+		
 		 $.each(data,function(index,item){
+			 console.log(item);
 			 var str1="";
 		     var flag="";
 			 if(index=="cpu"){str1=item.cpuprice;flag="1";}
@@ -218,15 +265,20 @@ $(function(){
 			 if(index=="box"){str1=item.boxprice;flag="7";}
 		     str = "<td align='center'><a href='javascript:void(0)'>"+item.name+"</a></td><td>"+item.quantiy+"</td><td><font>￥"+str1+"</font></td><td><a href='javascript:void(0)'>"+item.score+"</a></td>";
 				 $("#no"+flag).append($(str));
-			  
+				sumprice +=parseInt(str1);
+				$("#sum").html(sumprice);
+				$("#sum1").html(sumprice);
 		 })
 		
-		 
 	},"json")
-	
+
 	
 
 })
+	function buy(){
+	$(".popOut").css('display', 'block');
+	$(".popOutBg").css('display', 'block');
+    }
 	function reinitIframe() { 
 		var iframe = document.getElementById("urlIframe");
 		var line = location.hash.replace("#","");
@@ -245,4 +297,5 @@ iframe.height = height; */
 }</script>
 
 
-</body></html>
+</body>
+</html>

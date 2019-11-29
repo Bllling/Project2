@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int arid;
-	private String privince;
+	private String province;
 	private String city;
 	private String county;
 	private String raddress;
@@ -14,6 +14,28 @@ public class Address implements Serializable {
 	private String addrname;
 	private String addrtel;
 	private String postcode;
+	private String utel;
+	private String uname;
+	
+	
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getUtel() {
+		return utel;
+	}
+	public void setUtel(String utel) {
+		this.utel = utel;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	public String getPostcode() {
 		return postcode;
 	}
@@ -38,11 +60,11 @@ public class Address implements Serializable {
 	public void setArid(int arid) {
 		this.arid = arid;
 	}
-	public String getPrivince() {
-		return privince;
+	public String getprovince() {
+		return province;
 	}
-	public void setPrivince(String privince) {
-		this.privince = privince;
+	public void setprovince(String province) {
+		this.province = province;
 	}
 	public String getCity() {
 		return city;

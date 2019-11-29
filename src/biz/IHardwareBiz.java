@@ -14,6 +14,16 @@ import entity.Source;
 public interface IHardwareBiz {
 	
 	/**
+	 * 修改硬件的属性 
+	 * @param id         硬件ID
+	 * @param formName   表名字
+	 * @param op		  修改的硬件属性
+	 * @param value      修改的属性值
+	 * @return
+	 */
+	public int updateHardware(Integer id, String idName, String formName, String op, String value);
+	
+	/**
 	 * 查询所有硬件 通过点赞数或使用次数排序
 	 * @param priceName 价格名称
 	 * @param formName  表名

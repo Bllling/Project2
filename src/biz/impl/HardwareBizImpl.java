@@ -193,4 +193,16 @@ public class HardwareBizImpl implements IHardwareBiz {
 		return hardwareDao.findHardWares(priceName, formName, type, c);
 	}
 
+	@Override
+	public int updateHardware(Integer id, String idName, String formName, String op, String value) {
+		if (id == null) {
+			return 0;
+		}
+		if (StringUtil.CheckNull(idName, formName, op, value)) {
+			return 0;
+		}
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.updateHardware(id, idName, formName, op, value);
+	}
+
 }

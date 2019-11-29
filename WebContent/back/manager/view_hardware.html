@@ -11,7 +11,10 @@
 		<option value="box" onmousedown="checkField(this.value)">机箱</option>
 	</select>
 	
-	<a href="" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+	<a class="easyui-linkbutton" data-options="iconCls:'icon-book-edit'" onclick="alterName(1)">修改名称</a>
+	<a class="easyui-linkbutton" data-options="iconCls:'icon-book-edit'" onclick="alterName(2)">修改价格</a>
+	<a class="easyui-linkbutton" data-options="iconCls:'icon-book-edit'" onclick="alterName(3)">修改库存</a>
+	<a class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="saveAlter()">保存更新</a>
 </div>
 <input type="hidden" id="fatherid" value="" />
 <div id="win">
@@ -116,24 +119,170 @@
 	
 	
 	var type = "CPU";
+	var typeid = "cpuid";
 	function checkField(val) {
 		type = val;
 		if (type == "CPU") {
+			typeid = "cpuid";
 			show_cpu_data("findCpuByPage", "cpuprice");
 		} else if ("motherboard" == type) {
+			typeid = "motherboardid";
 			show_motherboard_data("findMotherBoardByPage", "motherboardprice");
 		} else if ("memory" == type) {
+			typeid = "memoryid";
 			show_memory_data("findMemoryByPage","memoryprice");
 		} else if ("disk" == type) {
+			typeid = "diskid";
 			show_disk_data("finddiskByPage","diskprice");
 		} else if ("source" == type) {
+			typeid = "sourceid";
 			show_source_data("findSourceByPage", "sourceprice");
 		} else if ("graphics" == type) {
+			typeid = "graphicsid";
 			show_graphics_data("findGraphicsByPage","graphicsprice");
 		} else if ("box" == type) {
+			typeid = "boxid";
 			show_box_data("findBoxByPage","boxprice");
 		}
 	}
+	var type_datagridObj;
+	var type_editRow = undefined;  //正在被编辑的行
+	var priceName1;  //要编辑的硬件的价格名称
+	var type_op;     //正在编辑的类型  名称 or 价格 or 库存
+	var isSave = true;      //编辑下一个属性时先判断是否保存
+	function alterName(index) {
+		console.log(isSave);
+		if (!isSave) {
+			$.messager.confirm('提示框', '您所修改的数据还未保存是否保存?', function(r){
+				if (r){
+				    // 确认保存操作;
+					saveAlter();
+				} else {
+					isSave = true;
+				}
+			});
+			return;
+		}
+		
+		if (index == 1) {
+			
+			type_op = "name";
+			type_datagridObj.datagrid('removeEditor','quantiy');//这里的priceName是需要移除editor的列的field值
+			type_datagridObj.datagrid('removeEditor',priceName1);//这里的priceName是需要移除editor的列的field值
+			type_datagridObj.datagrid('addEditor',[{ //添加name列editor
+			                                    field:'name',
+												editor:{
+			                                    type:'text',
+			                                    options:{
+			                                        required:true
+			                                    }
+			                                }
+			                            }]);
+		} else if (index == 2) {
+			
+			type_op = priceName1;
+			type_datagridObj.datagrid('addEditor',[{ //添加name列editor
+                field:priceName1,
+				editor:{
+                type:'text',
+                options:{
+                    required:true
+                }
+            }
+        }]);
+			type_datagridObj.datagrid('removeEditor','quantiy');
+			type_datagridObj.datagrid('removeEditor','name');
+		} else if (index == 3) {
+			
+			type_op = "quantiy";
+			type_datagridObj.datagrid('addEditor',[{ //添加name列editor
+                field:'quantiy',
+				editor:{
+                type:'text',
+                options:{
+                    required:true
+                }
+            }
+        }]);
+			type_datagridObj.datagrid('removeEditor',priceName1);
+			type_datagridObj.datagrid('removeEditor','name');
+		}
+		
+		if (type_editRow != undefined) {
+			type_datagridObj.datagrid("endEdit", type_editRow);  //先结束编辑
+			//回滚所有数据
+			type_datagridObj.datagrid("rejectChanges");
+			type_editRow = undefined;
+		}
+		
+		//获取用户选中的需要修改的行数据
+		var row = type_datagridObj.datagrid("getChecked")[0];
+		if (row == undefined) {
+			$.messager.show({
+				title:'温馨提示',
+				msg:'请选择您要修改的数据',
+				timeout:2000,
+				showType:'slide'
+			});
+			return;
+		}
+		
+		//获取选中行的索引值			
+		type_editRow = type_datagridObj.datagrid("getRowIndex",row);
+		
+		//开启编辑
+		type_datagridObj.datagrid("beginEdit", type_editRow); 
+		isSave = false;
+	}
+	
+	function saveAlter() {  //保存更新
+		isSave = true;
+		
+		//结束编辑
+		type_datagridObj.datagrid("endEdit", 0);  //结束编辑第一行
+		
+		//获取编辑的行
+		var row = type_datagridObj.datagrid("getChanges")[0];
+		
+		//获取编辑的数据
+		if (row == undefined) {  //没有任何数据
+			
+			$.messager.show({
+				title:'温馨提示',
+				msg:'请选则您要保存的数据',
+				timeout:2000,
+				showType:'slide'
+			});
+			return;
+		}
+		
+		//发送ajax请求到服务器
+		//因为后台是根据op来分类请求的 ，所以我们提交的数据中需要插入一个op属性
+		row.op = "updateHardware";
+		row.opname= type_op;  //添加或修改op的属性为
+		row.type = type;
+		row.typeid = typeid;
+		console.log(row);
+		$.post("../../hardwareinfo", row, function(data){
+			data = parseInt($.trim(data));
+			if (data == -1) {
+				$.messager.alert('警告','输入的信息不完整...','warning');
+			} else if (data > 0) {
+				$.messager.show({
+					title:'温馨提示',
+					msg:'修改数据成功...',
+					timeout:2000,
+					showType:'slide'
+				});
+				type_datagridObj.datagrid("reload");  //重新加载表格中的数据
+				type_editRow = undefined;
+			} else {
+				$.messager.alert('错误','修改失败...','eroor');
+			}
+		},"text") 
+		
+	}
+	
 	
 	function del(id) {
 		if (type == "CPU") {
@@ -239,7 +388,8 @@
 	}
 	
 	function show_cpu_data(op,  priceName) {
-		$('#show_data').datagrid({    
+		priceName1 = priceName;
+		type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -255,9 +405,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:'cpuid',title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -271,7 +421,8 @@
 	}
 		
 		function show_motherboard_data(op, priceName) {
-		$('#show_data').datagrid({    
+			priceName1 = priceName;
+			type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -287,9 +438,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:'motherboardid',title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -303,7 +454,8 @@
 		}
 		
 		function show_memory_data(op, priceName) {
-		$('#show_data').datagrid({    
+			priceName1 = priceName;
+			type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -319,9 +471,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:'memoryid',title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -335,7 +487,8 @@
 		}
 		
 		function show_disk_data(op,priceName) {
-		$('#show_data').datagrid({    
+			priceName1 = priceName;
+			type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -351,9 +504,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:'diskid',title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -367,7 +520,8 @@
 		}
 		
 		function show_source_data(op,priceName) {
-		$('#show_data').datagrid({    
+			priceName1 = priceName;
+			type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -383,9 +537,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:'sourceid',title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -399,7 +553,8 @@
 		}
 		
 		function show_graphics_data(op,priceName) {
-		$('#show_data').datagrid({    
+			priceName1 = priceName;
+			type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -415,9 +570,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:'graphicsid',title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -431,7 +586,8 @@
 		}
 		
 		function show_box_data(op, priceName) {
-		$('#show_data').datagrid({    
+			priceName1 = priceName;
+			type_datagridObj = $('#show_data').datagrid({    
 		    url:'../../hardwareinfo', 
 		    queryParams: {op: op},
 		    fitColumns: true,
@@ -447,9 +603,9 @@
 		    columns:[[
 		        {checkbox: true},
 		        {field:"boxid",title:'编号',width:100,align:'center', sortable: true},    
-		        {field:'name',title:'名称',width:100,align:'center'},    
-		        {field:priceName,title:'价格',width:100,align:'center'},
-		        {field:'quantiy',title:'库存',width:100,align:'center'},
+		        {field:'name',title:'名称',width:100,align:'center', editor: {type:"text", options:{required:true}}},    
+		        {field:priceName,title:'价格',width:100,align:'center', editor: {type:"text", options:{required:true}}},
+		        {field:'quantiy',title:'库存',width:100,align:'center', editor: {type:"text", options:{required:true}}},
 		        {field:'usetimes',title:'使用次数',width:100,align:'center'},
 		        {field:'score',title:'跑分',width:100,align:'center'},
 		        {field:'_operate',title:'操作',width:100,align:'center', formatter: function(val, row, index) {
@@ -461,5 +617,30 @@
 		    toolbar: "#news_search"
 		})
 	}
+		
+		//扩展datagrid:动态添加删除editor
+	    $.extend($.fn.datagrid.methods, {    
+	        addEditor : function(jq, param) {   
+	            if (param instanceof Array) {   
+	                $.each(param, function(index, item) {  
+	                    var e = $(jq).datagrid('getColumnOption', item.field); 
+	                    e.editor = item.editor; }); 
+	                } else {    
+	                    var e = $(jq).datagrid('getColumnOption', param.field);    
+	                    e.editor = param.editor;    
+	                }   
+	            },  
+	        removeEditor : function(jq, param) {    
+	            if (param instanceof Array) {   
+	                $.each(param, function(index, item) {  
+	                    var e = $(jq).datagrid('getColumnOption', item);   
+	                    e.editor = {};  
+	                    }); 
+	            } else {    
+	                var e = $(jq).datagrid('getColumnOption', param);
+	                e.editor = {};  
+	            }   
+	        }
+	    });
 	
 </script>

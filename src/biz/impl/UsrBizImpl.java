@@ -1,6 +1,7 @@
 package biz.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import biz.IUsrBiz;
 import dao.IUsrDao;
@@ -63,6 +64,26 @@ public class UsrBizImpl implements IUsrBiz {
 		}
 		IUsrDao usrDao = new UsrDaoImpl();
 		return usrDao.findAddrsById(uid);
+	}
+
+	@Override
+	public Usr findUemailByUid(Integer uid) {
+		if (uid == null) {
+			return null;
+		}
+		IUsrDao usrDao = new UsrDaoImpl();
+		return usrDao.findUemailByUid(uid);
+	}
+
+	@Override
+	public int updateUsrInfo(Map<String, String> map, Integer uid) {
+		if (uid == null) {
+			return 0;
+		} else if (StringUtil.CheckNull(map.get("p_usrName"), map.get("p_email"), map.get("p_phone"))) {
+			return 0;
+		}
+		IUsrDao usrDao = new UsrDaoImpl();
+		return usrDao.updateUsrInfo(map, uid);
 	}
 
 	

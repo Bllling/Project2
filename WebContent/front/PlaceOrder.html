@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="../css/Diy_detailNew.css" rel="stylesheet">
+<style type="text/css">
+body {
+    font-family: Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,PingFang SC,Microsoft YaHei;
+    font-size: 12px;
+    line-height: 1.28571;
+    color: #333;
+    width: 100%;
+    height: auto;
+}
+.top {
+    width: auto;
+    height: 26px;
+    position: relative!important;
+    background: #f2f2f2;
+    z-index: 99999;
+    -webkit-transform: translate3d(0,0,0);
+    border-bottom: 1px solid #e5e5e5;
+}
+.top span {
+    line-height: 26px;
+    vertical-align: top;
+    display: inline-block;
+    color: #999;
+  
+}
+
+.top span a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #999;
+}
+.top a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #999;
+    line-height: 26px;
+}
+.mui-global-iconfont{
+    color: #FF0036;
+}
+.sn-back-home{
+ margin-left: 200px;
+}
+ .home{
+ margin-left: 550px;
+ }
+  .myplan{
+ margin-left: 20px;
+ }
+ .header-operation{
+  margin-left: 830px;
+  text-decoration: none;
+   cursor: pointer;
+   margin-top: 50px;
+   font-size: 15px;
+    color:black;
+ }
+ .header-title{
+ margin-left: 180px;
+  margin-top: 30px;
+  font-size: 15px;
+ 
+ }
+ hr{
+ width: 1007px;
+  margin-left: 180px;
+ }
+ .address{
+  width: 1007px;
+  margin-left: 180px;
+  height: 35px;
+  border: 1px solid red; 
+  background-color: rgb(255,240,234);
+  margin-top: 5px;
+
+ }
+ .marker{
+  width: 95px;
+  height: 24x;
+  float: left;
+  margin-top: 6px;
+ }
+ .address span{
+ line-height: 35px;
+ font-size: 15px;
+ font-weight: 700;
+ float: left;
+ }
+ .ahome{
+  margin-right:5px;
+  line-height: 35px;
+  float: right;
+ }
+ .content{
+  width: 550px;
+  height: 35px;
+  margin-left: 272px;
+  margin-top: 10px;
+
+ }
+ .content span{
+  line-height: 35px;
+ 
+  float: left;
+ }
+ #rad{
+ float: left;
+ margin-top: 14px;
+ }
+ iframe{
+    width: 100%;
+    height: 790px;
+    border: 1px none;
+    margin-top: 10px;
+    transform: scale(0.85);
+    margin-left: 12px; 
+ }
+ .boot{
+ float: right;
+ margin-right: 175px;
+ text-align: right;
+ }
+ .pboot{
+    font-weight: 700;
+    color: #333;
+    font-size: 15px;
+    
+ }
+ .yuan{
+     font-size: 26px;
+    margin-right: 4px;
+    color: #999;
+ }
+ #sum{
+     color: rgb(255, 80, 0);
+     font-size: 26px;
+ }
+.boot p span{
+ font-weight: normal;
+}
+ .btnboot{
+ 	display: inline-block;
+    width: 182px;
+    height: 39px;
+    position: relative;
+    vertical-align: middle;
+    line-height: 39px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: rgb(255, 80, 0);
+    border:1px solid  rgb(255, 80, 0);
+    border-radius:5px;
+    color: #fff;
+ }
+</style>
+</head>
+   
+<body>
+	 <div class="top">
+   	 	<span class="sn-back-home"><i class="mui-global-iconfont"></i>
+    	<a href="../index1.jsp">攒机首页</a></span>
+    	<span style=" margin-left: 10px;">Hi，</span>
+    	<span id="uname">xxx</span>
+   		<a href="homepage.html" class="home">我的主页</a>
+   		<a href="myplan.html" class="myplan">我的方案</a>
+    </div>
+    <div class="nav-search" style="margin-top: 10px;">
+		<div class="navs-box clearfix">
+			<span class="zol20th"></span>	
+		</div>
+	</div>
+	<h2 class="header-title">确认收货地址<a class="header-operation"  href="hoomepage.html">管理收货地址</a></h2>
+	<hr >
+	<div class="boss">
+	
+	
+	
+	
+	</div>
+
+    
+   
+	<iframe src="" id="frame"  scrolling="no"></iframe>
+	<div class="boot">
+	   <p class="pboot">付款:<span class="yuan">￥</span><span id="sum">12422</span>(免邮费)</p>
+	   <p class="pboot">寄送至:&emsp;<span id="bprovince">湖南省</span>&emsp;<span id="bcity">衡阳市</span>&emsp;
+		<span id="bcounty">蒸湘区</span>&emsp;<span id="braddress">联合街道 联合街道联合三队三和文具店</span></p>
+	   <p class="pboot">收货人:&emsp;<span id="buname">卓卓</span>&emsp;<span id="butel">15526428921</span></p>
+	   <input type="button" value="提交订单" onclick="submit()"  class="btnboot">
+	
+	</div>
+	  <input type="text" id="parent" style="opacity:0;">
+	
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+	var pre=1;
+	var sum=0;
+	$(function(){
+		
+		var line = location.hash.replace("#","");
+		var id=line.substring(0,1);
+		var uid=line.substring(2,3);
+		var str="";
+		var flag=1;
+		$("#frame").attr("src","Order1.html#"+id);
+		$.post("../address",{op:"findAllByUid",uid:uid},function(data){
+			
+			 $.each(data,function(index,item){
+			   if(item.isdefault==1){
+				   str+='<div class="address"><img src="../images/iconsend.jpg" class="marker"><input type="radio" name="radio" id="rad" value="1" style="display: none"><span id="province">'+item.province+'</span>&emsp;<span id="city">'+item.city+'</span>&emsp;<span id="county">'+item.county+'</span>&emsp;<span id="raddress">'+item.raddress+'</span><span>&emsp;(</span><span id="uname">'+item.addrname+'</span><span>&emsp;收)&emsp;</span><span id="utel">'+item.addrtel+'</span><span>&emsp;默认地址</span><a href="homepage.html" class="ahome">修改本地址</a></div>';
+				   $("#bprovince").html(item.province);
+				   $("#bcity").html(item.city);
+				   $("#bcounty").html(item.county);
+				   $("#braddress").html(item.raddress);
+				   
+				   $("#buname").html(item.addrname);
+				   $("#butel").html(item.addrtel);
+			   }else{
+				   ++flag;
+				   str+='<div class="content"><img src="../images/iconsend.jpg" class="marker" style="display:none"><input type="radio" name="radio" id="rad" value='+flag+' style="display: block"><span id="province">'+item.province+'</span>&emsp;<span id="city">'+item.city+'</span>&emsp;<span id="county">'+item.county+'</span>&emsp;<span id="raddress">'+item.raddress+'</span><span>&emsp;(</span><span id="uname">'+item.addrname+'</span><span>&emsp;收)&emsp;</span><span id="utel">'+item.addrtel+'</span><span></span><a href="homepage.html" class="ahome">修改本地址</a></div>';
+				
+			   }	
+			 })
+			 $(".boss").append($(str));
+			 
+			 $(":radio").click(function(){
+				  var index=parseInt($(this).val());
+			
+				  $("#bprovince").html($(".boss div:eq("+(index-1)+") #province").html());
+				  $("#bcity").html($(".boss div:eq("+(index-1)+") #city").html());
+				  $("#bcounty").html($(".boss div:eq("+(index-1)+") #county").html());
+				  $("#braddress").html($(".boss div:eq("+(index-1)+") #raddress").html());
+				  
+				  $("#buname").html($(".boss div:eq("+(index-1)+") #uname").html());
+				  $("#butel").html($(".boss div:eq("+(index-1)+") #utel").html());
+				  
+				  $(".boss div:eq("+(index-1)+")").attr("class","address");
+				  $(".boss div:eq("+(index-1)+") img").css("display","block");
+				  $(".boss div:eq("+(index-1)+") input").css("display","none");
+				 
+				  $(".boss div:eq("+(pre-1)+")").attr("class","content");
+				  $(".boss div:eq("+(pre-1)+") img").css("display","none");
+				  $(".boss div:eq("+(pre-1)+") input").css("display","block");
+				  pre=index;
+				  });
+			 
+			 
+		},"json")
+		
+	})
+	var timeoutId = window.setTimeout(function(){
+		sum= $("#parent").val();
+		$("#sum").html(sum);
+	}, 2000);
+    function submit(){
+    	
+    }
+	</script>
+</body>
+</html>

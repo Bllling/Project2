@@ -75,4 +75,19 @@ public interface IComputerDao {
       * @return
       */
      public Computer findDetailByID(Integer id);
+     /**
+      * 根据Uid查找订单总数
+      */
+     public int getTotalByUid(Integer uid);
+     
+     /**
+      * 根据Uid查找所有订单的浏览数
+      */
+     public int getBnumebrByUid(Integer uid);
+     /**
+      * 根据Uid查找所有订单的点赞数
+      */
+     public int getZnumebrByUid(Integer uid);
+     
+     public Computer findID(String cname,Integer id);
 }

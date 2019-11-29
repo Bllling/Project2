@@ -59,6 +59,7 @@ public class FileUploadUtil {
 			//处理请求中的文件
 			Files files = su.getFiles();
 			if (files == null || files.getCount() <= 0) {
+				System.out.println("没有文件");
 				return map;
 			}
 			
@@ -70,7 +71,7 @@ public class FileUploadUtil {
 			
 			// 取出当前项目在服务器中的绝对路径
 			String basePath = pagecontext.getServletContext().getRealPath("/");
-			System.out.println(basePath);
+			
 			
 			Collection<File> fls = files.getCollection();
 			for (File fl : fls) {

@@ -46,7 +46,50 @@ private static final long serialVersionUID = 1L;
 			updateBnumber(request,response);
 		}else if ("findDetailByID".equals(op)) {
 			findDetailByID(request, response);
+		}else if("findBnumber".equals(op)){
+			findBnumber(request, response);
 		}
+		else if("findZnumber".equals(op)){
+			findZnumber(request, response);
+		}else if("getTotalByUid".equals(op)){
+			getTotalByUid(request, response);
+		}else if("isExist".equals(op)){
+			isExist(request,response);
+		}else if("findIdByCname".equals(op)){
+			findIdByCname(request,response);
+		}
+		
+	}
+
+	private void isExist(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findID(null, id));
+	}
+	private void findIdByCname(HttpServletRequest request, HttpServletResponse response) {
+		String cname = request.getParameter("cname");
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findID(cname, null));
+	}
+
+	private void getTotalByUid(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getTotalByUid(uid));
+		
+	}
+
+	private void findZnumber(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getZnumebrByUid(uid));
+		
+	}
+
+	private void findBnumber(HttpServletRequest request, HttpServletResponse response) {
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.getBnumebrByUid(uid));
 		
 	}
 

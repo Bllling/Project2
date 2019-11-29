@@ -68,9 +68,7 @@
 				<li id="menu_nav_index"><a target="_self" href="../index1.jsp">模拟攒机</a></li>
 				<li id="menu_nav_myplan"><a href="myplan.jsp">我的方案</a></li>
 				<li id="menu_nav_wyplan"><a target="_self" href="netplan.jsp">网友方案</a></li>
-				<li id="menu_nav_DiyTop"><a target="_self" href="#">配置排行榜</a></li>
 				<li id="menu_nav_ProTop"><a  class="active" target="_self" >网友首选配件</a></li>
-				<li id="menu_nav_Graphics"><a target="_blank" href="#">智能推荐攒机</a></li>
 			</ul>
 		</div>
 	</div>
@@ -197,6 +195,10 @@
 
 <script type="text/javascript">
 
+$(function() {
+	findHardWares('findCpus');
+})
+
 function findSourceBox() {
 	$("#boxPraise").attr("style", "");
 	$("#boxUsetimes").attr("style", "margin-left: 200px;");
@@ -217,10 +219,10 @@ function findSourceBox() {
 			rank = rank + 1;
 			str += "<li>"
 				+"<div class='msg'>"
-					+"<i>"+rank+"</i> <span class='brand'><a href='#' class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.sourceprice+"</span> <span class='usernum'>"+item.praise+"</span>"
+					+"<i>"+rank+"</i> <span class='brand'><a  class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.sourceprice+"</span> <span class='usernum'>"+item.praise+"</span>"
 				+"</div>"
 				+"<div class='pics clearfix'>"
-					+"<div class='left'><a href='#'><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
+					+"<div class='left'><a ><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
 				+"</div>"
 			+"</li>";
 		})
@@ -241,10 +243,10 @@ function findSourceBox() {
 			rank = rank + 1;
 			str += "<li>"
 				+"<div class='msg'>"
-					+"<i>"+rank+"</i> <span class='brand'><a href='#' class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.sourceprice+"</span> <span class='usernum'>"+item.usetimes+"</span>"
+					+"<i>"+rank+"</i> <span class='brand'><a  class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.sourceprice+"</span> <span class='usernum'>"+item.usetimes+"</span>"
 				+"</div>"
 				+"<div class='pics clearfix'>"
-					+"<div class='left'><a href='#'><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
+					+"<div class='left'><a ><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
 				+"</div>"
 			+"</li>";
 		})
@@ -264,10 +266,10 @@ function findSourceBox() {
 			rank = rank + 1;
 			str += "<li>"
 				+"<div class='msg'>"
-					+"<i>"+rank+"</i> <span class='brand'><a href='#' class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.boxprice+"</span> <span class='usernum'>"+item.praise+"</span>"
+					+"<i>"+rank+"</i> <span class='brand'><a  class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.boxprice+"</span> <span class='usernum'>"+item.praise+"</span>"
 				+"</div>"
 				+"<div class='pics clearfix'>"
-					+"<div class='left'><a href='#'><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
+					+"<div class='left'><a ><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
 				+"</div>"
 			+"</li>";
 		})
@@ -288,10 +290,10 @@ function findSourceBox() {
 			rank = rank + 1;
 			str += "<li>"
 				+"<div class='msg'>"
-					+"<i>"+rank+"</i> <span class='brand'><a href='#' class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.boxprice+"</span> <span class='usernum'>"+item.usetimes+"</span>"
+					+"<i>"+rank+"</i> <span class='brand'><a  class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+item.boxprice+"</span> <span class='usernum'>"+item.usetimes+"</span>"
 				+"</div>"
 				+"<div class='pics clearfix'>"
-					+"<div class='left'><a href='#'><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
+					+"<div class='left'><a ><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
 				+"</div>"
 			+"</li>";
 		})
@@ -324,10 +326,10 @@ function findHardWares(op){
 			rank = rank + 1;
 			str += "<li>"
 				+"<div class='msg'>"
-					+"<i>"+rank+"</i> <span class='brand'><a href='#' class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+str1+"</span> <span class='usernum'>"+item.praise+"</span>"
+					+"<i>"+rank+"</i> <span class='brand'><a  class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+str1+"</span> <span class='usernum'>"+item.praise+"</span>"
 				+"</div>"
 				+"<div class='pics clearfix'>"
-					+"<div class='left'><a href='#'><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
+					+"<div class='left'><a ><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
 				+"</div>"
 			+"</li>";
 		})
@@ -354,10 +356,10 @@ function findHardWares(op){
 			rank = rank + 1;
 			str += "<li>"
 				+"<div class='msg'>"
-					+"<i>"+rank+"</i> <span class='brand'><a href='#' class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+str1+"</span> <span class='usernum'>"+item.usetimes+"</span>"
+					+"<i>"+rank+"</i> <span class='brand'><a  class='link' title='"+item.name+"' >"+name+"</a></span> <span class='price'>￥"+str1+"</span> <span class='usernum'>"+item.usetimes+"</span>"
 				+"</div>"
 				+"<div class='pics clearfix'>"
-					+"<div class='left'><a href='#'><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
+					+"<div class='left'><a ><img src='../"+pic+"' alt='"+item.name+"'/></a></div>"
 				+"</div>"
 			+"</li>";
 		})
