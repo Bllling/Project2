@@ -258,12 +258,13 @@
 			rows : rows
 		}, 
 		function(data) {
-			
+			console.log(data);
 		}, "json");
 	}
 
 	init();
-	proList();
+		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,showRows);
+
 	hName.val = $("#name-1").val();
 	console.log(hName.val);
 </script>
