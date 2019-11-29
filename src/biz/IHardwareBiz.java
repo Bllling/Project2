@@ -118,6 +118,7 @@ public interface IHardwareBiz {
 	 * @return
 	 */
 	public Map<String, Object> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c);
+	public List<Cpu> findCpuByPage(String name,Double minprice,Double maxprice,Double minfrequency,Double maxfrequency,Integer cores,int page,int rows);
 
 
 }

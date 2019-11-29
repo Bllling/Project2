@@ -236,14 +236,13 @@
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
-					
-	   	     		$.post("../../hardwareinfo", 
-	   	     		{op: findCpuByPage, name: hName.val, minPrice: price.minPrice, maxPrice: price.maxPrice, 
+	   	     		$.post("hardwareinfo", 
+	   	     		{op:"findCpuByPage", name: hName.val, minPrice: price.minPrice, maxPrice: price.maxPrice, 
 	   	     		minFrequency: frequency.minFrequency, maxFrequency: frequency.maxFrequency, 
-	   	     		cores: cores.val, page: page, showRows: showRows}, 
-	   	     		function(data) {
+	   	     		cores: cores.val, page: page, rows: showRows}, 
+	   	     		function(data){
 	   	     				
-	   	     		});
+	   	     		},"json");
 	   	     		
 	   	     		
 	  	     		

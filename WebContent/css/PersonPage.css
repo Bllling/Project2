@@ -115,6 +115,8 @@ a:hover {
 	padding: 0 11px;
 	line-height: 22px;
 	width: 80px;
+   	border:1px solid #118adb;
+   	border-radius:3px;
 }
 
 .right-address .main-person {

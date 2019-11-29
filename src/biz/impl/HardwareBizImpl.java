@@ -205,4 +205,11 @@ public class HardwareBizImpl implements IHardwareBiz {
 		return hardwareDao.updateHardware(id, idName, formName, op, value);
 	}
 
+	@Override
+	public List<Cpu> findCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
+			Double maxfrequency, Integer cores,int page,int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.findCpuByPage(name, minprice, maxprice, minfrequency, maxfrequency, cores,page,rows);
+	}
+
 }

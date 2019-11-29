@@ -280,7 +280,10 @@ $(function(){
 			$(".popOutBg").css('display', 'none');
 	    }
        function yes(){
-    	   
+    	   var line = location.hash.replace("#","");
+    		var id=line.substring(0,1);
+    		var uid=line.substring(2,3);
+    	   window.location.href="PlaceOrder.html#"+id+"&"+uid;
        }
 	function buy(){
 	$(".popOut").css('display', 'block');
