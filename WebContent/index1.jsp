@@ -649,8 +649,8 @@ to {
 				$("#leftSubSel_6" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				diskprice = price;
-				chosedisk = 1;
+				graphicsprice = price;
+				chosegraphics = 1;
 				updatePrice();
 			} else if (type == "box") {
 				boxid = id;
