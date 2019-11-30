@@ -148,6 +148,7 @@
 		<div class="nav">
 			<input type="text" placeholder="输入订单号或配置名字进行搜索" id="scan" class="text1">
 			<input type="button" value="订单搜索" class="btn1" onclick="find()">
+			<input type="hidden" id="flag">
 		</div>
 		<div>
 			<table>
@@ -156,7 +157,7 @@
 					<th style="width:10%">总价</th>
 					<th style="width:10% ">数量</th>
 					<th style="width:20%">交易状态</th>
-					<th style="width:20%">交易操作</th>
+					<th style="width:20%">交易操作 </th>
 				</tr>
 				<tbody id="orderTbody" >
 
@@ -180,11 +181,11 @@
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script>
    
-	
+	    var flag=0;
 	    var index=7;
 	    $(function(){
 	    	showOrder("noCondition");
-	    	change();
+	    	gochange();
 	    })
 	    var uid = 1;   //需要页面调取是哪个用户的订单
 	    function showOrder(type, condition) {
@@ -197,6 +198,7 @@
 	    		}
 	    		$("#orderTbody").html("");
 	    		$.each(data, function(index, item) {
+	    			$("#flag").val(index);
 	    			var cpupic = pic(item.pics);  //cpu图片
 	    			var mbpic = pic(item.pics1);    //主板图片
 	    			var mepic = pic(item.pics2);    //内存图片
@@ -230,6 +232,7 @@
 	    				btncss = "btnDisabled";
 	    				aName = "usable";
 	    			}
+	    			
 	    			str += '<tr class="tr2" ><td align="left"><input type="radio" name="radio"><span>'+item.rtime+'</span>&emsp;订单号:<span>'+item.rorderid+'</span></td>'
 	    				+ '<td colspan="3" align="left"> 攒机作者:<span>'+item.uname+'</span></td>'
 	    				+ '<td><a href="javascript:delete1('+item.rorderid+');" id="content'+item.rorderid+'" class="imgdel" name='+aName+'></a></td></tr>'
@@ -269,18 +272,32 @@
 	    	var pic = pics.split(";");
 	    	return pic[0];
 	    }
+	    function gochange(){
+	    	var timeoutId = window.setTimeout(function(){
+	    		flag= $("#flag").val();
+	            change(flag);
+	    	}, 1000);
+	    }
+	    function change(flag){   //更改图片
+	   
 	    
-	    function change(){   //更改图片
+	    	console.log(flag);
 	    	var time=setInterval(function(){
 	    		if(index%7==0){
 	    		index=0;
 	    	}
 	    		if(index==0){
-		    		$("#computerbody img").eq(index-1).attr("class","img");
+	    			for (var i=1;i<=flag*2+1;i=i+2)	{
+		    		$("#orderTbody tr:eq("+i+") #computerbody img").eq(index-1).attr("class","img");
+		    		}
 			    }else{
-			    	$("#computerbody img").eq(index-1).attr("class","img");
+			    	for (var i=1;i<=flag*2+1;i=i+2){
+			    		//console.log($("#orderTbody tr:eq(i)").html());
+			    	$("#orderTbody tr:eq("+i+") #computerbody img").attr("class","img");}
 			    }
-	    	$("#computerbody img").eq(index).attr("class","img1");
+	    		for (var i=1;i<=flag*2+1;i=i+2){
+	    			$("#orderTbody tr:eq("+i+") #computerbody img").eq(index).attr("class","img1");
+	    	}
 	    
 	    	++index;}, 1500);
 	    }
@@ -306,7 +323,7 @@
 	    	
 	    }
 	    function yes(rorderid){
-	    	
+	    	console.log(rorderid);
 	    	$(".popOut").css('display', 'none');
 			$(".popOutBg").css('display', 'none');
 			$.post("../order", {op: "updateOrder", state: "0", rorderid: rorderid}, function(data) {
@@ -315,6 +332,7 @@
     				$("#comfirm"+rorderid+"").attr("disabled",true);
     				$("#comfirm"+rorderid+"").attr("class","btnDisabled");
     				$("#content"+rorderid+"").removeAttr("href");
+    				window.location.reload();
     			} else if (data < 0) {
     				alert("删除失败...");
     			}
