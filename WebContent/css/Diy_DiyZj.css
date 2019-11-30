@@ -13,7 +13,6 @@ body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, th, td, p,
 	float: left;
 }
 
-
 ul, ol {
 	list-style: none;
 }
@@ -682,7 +681,7 @@ table, tr, td, th {
 }
 
 /* 当满足提交条件时 */
-.submit-active{
+.submit-active {
 	display: inline-block;
 	height: 40px;
 	width: 95px;
@@ -754,6 +753,24 @@ table, tr, td, th {
 .other-msg .item .type {
 	width: 80px\9;
 	*width: 78px;
+}
+
+.hasPic {
+	background-size: 100% 100% !important;
+	background-position: 0px 0px !important;
+}
+
+.hasName {
+	font-style: italic !important;
+	color: #0a50a1 !important;
+	font-weight: bold !important;
+}
+
+.hasPrice {
+	display: block !important;
+	color: #f33 !important;
+	font-size: 16px !important;
+	text-align: center !important;
 }
 
 #leftSubSel_28 .pic {
