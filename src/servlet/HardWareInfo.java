@@ -316,7 +316,13 @@ public class HardWareInfo extends BasicServlet {
         }
         Integer minvolume=Integer.parseInt(request.getParameter("minSize"));
         Integer maxvolume=Integer.parseInt(request.getParameter("maxSize"));
-        Integer isssd=Integer.parseInt(request.getParameter("type"));
+        Integer isssd;
+        if("null".equals(request.getParameter("type"))){
+        	isssd=null;
+        }else{
+        	isssd=Integer.parseInt(request.getParameter("type"));
+        }
+       
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
         this.send(response, hardwareBiz.findDiskByPage(name, minprice, maxprice, minvolume, maxvolume, isssd, page, rows));
 	}

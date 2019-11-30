@@ -239,7 +239,7 @@
 	  	     			if (thisID == ("type-0")) {
 	  	     				$("#" + type.chosed).removeClass("active");
 	  	     				type.chosed = "type-0";
-							type.val = "null"";
+							type.val = "null";
 	  	     			} else if (thisID == ("type-4")) {
 	  	     				$("#" + type.chosed).removeClass("active");
 	  	     				type.chosed = "type-4";
@@ -283,8 +283,9 @@
 	  	     		}  else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
-
+ 					
 	  	     		proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);
+	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
@@ -303,7 +304,7 @@
 	  	
 	  	
 		function proList(name, minPrice, maxPrice, minFrequency, maxFrequency, type, size) {
-			$.post("../hardwareinfo", 
+			$.post("hardwareinfo", 
 			{
 				op : "findMemoryByPage1",
 				name : name,
@@ -326,6 +327,7 @@
 		}
 	  	
 	  	init();
+	  	console.log(type.val);
 	  	proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);

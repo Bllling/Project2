@@ -226,7 +226,7 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 					
-	  	     		proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,type,page,rows);
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,type.val,page,rows);
 	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
@@ -243,7 +243,7 @@
 	  	
 	  	
 		function proList(name,minPrice,maxPrice,minSize,maxSize,type,page,rows) {
-			$.post("../hardwareinfo", 
+			$.post("hardwareinfo", 
 			{
 				op : "finddiskByPage1",
 				name : name,
@@ -265,7 +265,7 @@
 		}
 	  	
 	  	init();
-	  	proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,type,page,rows);
+	  	proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,type.val,page,rows);
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  	
