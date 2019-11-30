@@ -224,7 +224,7 @@ public class HardWareInfo extends BasicServlet {
         	name=null;
         }
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
-        this.send(response,hardwareBiz.findMotherboardByPage(name, minprice, maxprice, minmaxmemory, maxmaxmemory, page, rows));
+        this.send(response,hardwareBiz.getTotalMotherboardByPage(name, minprice, maxprice, minmaxmemory, maxmaxmemory, page, rows));
 		
 	}
 
