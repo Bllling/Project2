@@ -230,7 +230,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and memoryprice<=? ";
 			list.add(maxprice);
 		}if(minfrequency!=null){
-			sql+="and ?<=SUBSTRING_INDEX(frequency,'G',1) ";
+			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(minfrequency);
 		}if(maxfrequency!=null){
 			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
@@ -264,7 +264,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and diskprice<=? ";
 			list.add(maxprice);
 		}if(minvolume!=null){
-			sql+="and ?<=SUBSTRING_INDEX(volume,'G',1) ";
+			sql+="and ?<SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(minvolume);
 		}if(maxvolume!=null){
 			sql+="and ?>=SUBSTRING_INDEX(volume,'G',1) ";
@@ -499,13 +499,13 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}if(minmemory!=null){
-			sql+="and ?<SUBSTRING_INDEX(memory,'G',1) ";
+			sql+="and ?<=SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(minmemory);
 		}if(maxmemory!=null){
 			sql+="and ?>=SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(maxmemory);
 		}if(minwidth!=null){
-			sql+="and ?<SUBSTRING_INDEX(width,'b',1) ";
+			sql+="and ?<=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(minwidth);
 		}if(maxwidth!=null){
 			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
