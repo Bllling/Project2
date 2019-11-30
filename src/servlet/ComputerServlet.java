@@ -56,8 +56,27 @@ private static final long serialVersionUID = 1L;
 			isExist(request,response);
 		}else if("findIdByCname".equals(op)){
 			findIdByCname(request,response);
+		}else if("add".equals(op)){
+			add(request,response);
 		}
 		
+	}
+
+	private void add(HttpServletRequest request, HttpServletResponse response) {
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		Integer uid = Integer.parseInt(request.getParameter("uid"));
+		String cname = request.getParameter("cname");
+		String detail = request.getParameter("detail");
+		Integer cpuid = Integer.parseInt(request.getParameter("cpuid"));
+		Integer motherboardid = Integer.parseInt(request.getParameter("motherboardid"));
+		Integer memoryid = Integer.parseInt(request.getParameter("memoryid"));
+		Integer diskid = Integer.parseInt(request.getParameter("diskid"));
+		Integer sourceid = Integer.parseInt(request.getParameter("sourceid"));
+		Integer graphicsid = Integer.parseInt(request.getParameter("graphicsid"));
+		Integer boxid = Integer.parseInt(request.getParameter("boxid"));
+		Double sumprice = Double.parseDouble(request.getParameter("sumprice"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response,computerBiz.add(id, uid, cname, detail, cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, sumprice));
 	}
 
 	private void isExist(HttpServletRequest request, HttpServletResponse response) {

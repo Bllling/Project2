@@ -126,5 +126,7 @@ public interface IHardwareBiz {
 	public List<Graphics> findGraphicsByPage(String name,Double minprice,Double maxprice,Integer minmemory,Integer maxmemory,Integer minwidth,Integer maxwidth,int page,int rows);
 	public List<Source> findSourceByPage(String name,Double minprice,Double maxprice,Integer minpowers,Integer maxpowers,int page,int rows);
 	public List<Box> findBoxByPage(String name,Double minprice,Double maxprice,int page,int rows);
+	
+	public int getTotal(String id, String formName);
 
 }

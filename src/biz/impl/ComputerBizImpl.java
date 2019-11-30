@@ -14,11 +14,7 @@ import util.StringUtil;
 
 public class ComputerBizImpl implements IComputerBiz{
 
-	@Override
-	public int add(Map<String, String> map) {
-		
-		return 1;
-	}
+	
 
 	@Override
 	public List<Computer> findAll(String type) {
@@ -120,6 +116,13 @@ public class ComputerBizImpl implements IComputerBiz{
 	public Computer findID(String cname, Integer id) {
 		IComputerDao  computerDao = new ComputerDaoImpl();
 		return computerDao.findID(cname, id);
+	}
+
+	@Override
+	public int add(Integer id, Integer uid, String cname, String detail, Integer cpuid, Integer motherboardid,
+			Integer memoryid, Integer diskid, Integer sourceid, Integer graphicsid, Integer boxid, Double sumprice) {
+		IComputerDao  computerDao = new ComputerDaoImpl();
+		return computerDao.add(id, uid, cname, detail, cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, sumprice);
 	}
 	
 	
