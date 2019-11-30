@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<title>NO2</title>
+<title>首页</title>
 <link href="css/Diy_DiyZj.css" rel="stylesheet">
 <link href="css/Diy_ProList.css" rel="stylesheet">
 <link href="css/Diy_HardwareList.css" rel="stylesheet">

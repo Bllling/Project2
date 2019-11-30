@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
+<title>下单</title>
 <link href="../css/Diy_detailNew.css" rel="stylesheet">
 <style type="text/css">
 body {
@@ -355,9 +355,12 @@ body {
         
     }
     function yes(){
-			
+    	var line = location.hash.replace("#","");
+		var uid=line.substring(2,3);
 		$(".popOut").css('display', 'none');
 		$(".popOutBg").css('display', 'none');
+		
+		window.location.href="homepage.html#"+uid;
     }
 	</script>
 </body>
