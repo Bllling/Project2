@@ -423,6 +423,9 @@ to {
 		var sourceid;
 		var graphicsid;
 		var boxid;
+		
+		var totalCount = 0;
+		var totalPrice = 0;
 	
 		var page = 1;
 		var rows = 6;
@@ -511,24 +514,158 @@ to {
 			console.log(ss);
 		}
 		
+		//更新总价的方法
+		function updatePrice(price) {
+			totalPrice += price;
+			totalCount++;
+			
+			$(".total" + " h3").html("共计" + totalCount + "项");
+			$(".total" + " em").html("￥" + totalPrice);
+		}
+		
+		
 		//添加硬件到配置单的方法
-		function addToComputer(type, id, name, pics) {
+		function addToComputer(type, id, pics, name, price) {
 			if (type == "cpu") {
-				cpuid = id;
+				boxid = id;
+				
+				//设置图片
 				$("#leftSubSel_28" + " .pic").css("background-image",
-						"url('../No2pics/1575099343012_1575096998745_1575081891372_ceXUbURc8l4SA.jpg')");
+				"url("+pics+")");
+				$("#leftSubSel_28" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_28" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_28" + " .zj-parts-con").html(name);
+				$("#leftSubSel_28" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_28" + " .link-add").html("￥" + price);
+				$("#leftSubSel_28" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_28" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			} else if (type == "motherboard") {
+				motherboardid = id;
 				
+				//设置图片
+				$("#leftSubSel_5" + " .pic").css("background-image",
+				"url("+pics+")");
+				$("#leftSubSel_5" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_5" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_5" + " .zj-parts-con").html(name);
+				$("#leftSubSel_5" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_5" + " .link-add").html(price);
+				$("#leftSubSel_5" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_5" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			} else if (type == "memory") {
+				memoryid = id;
 				
+				//设置图片
+				$("#leftSubSel_3" + " .pic").css("background-image",
+				"url("+pics+")");
+				$("#leftSubSel_3" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_3" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_3" + " .zj-parts-con").html(name);
+				$("#leftSubSel_3" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_3" + " .link-add").html(price);
+				$("#leftSubSel_3" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_3" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			} else if (type == "disk") {
+				diskid = id;
 				
+				//设置图片
+				$("#leftSubSel_2" + " .pic").css("background-image",
+				"url("+pics+")");
+				$("#leftSubSel_2" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_2" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_2" + " .zj-parts-con").html(name);
+				$("#leftSubSel_2" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_2" + " .link-add").html(price);
+				$("#leftSubSel_2" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_2" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			} else if (type == "graphics") {
+				graphicsid = id;
 				
+				//设置图片
+				$("#leftSubSel_6" + " .pic").css("background-image",
+				"url("+pics+")");
+				$("#leftSubSel_6" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_6" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_6" + " .zj-parts-con").html(name);
+				$("#leftSubSel_6" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_6" + " .link-add").html(price);
+				$("#leftSubSel_6" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_6" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			} else if (type == "box") {
+				boxid = id;
 				
+				//设置图片
+				$("#leftSubSel_10" + " .pic").css("background-image",
+				"url("+pics+")");
+				$("#leftSubSel_10" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_10" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_10" + " .zj-parts-con").html(name);
+				$("#leftSubSel_10" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_10" + " .link-add").html(price);
+				$("#leftSubSel_10" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_10" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			} else if (type == "source") {
+				sourceid = id;
 				
+				//设置图片
+				$("#leftSubSel_35" + " .pic").css("background-image",
+				"url("+pics+")");
+				$("#leftSubSel_35" + " .pic").css("background-size", "100% 100%");
+				$("#leftSubSel_35" + " .pic").css("background-position", "0px 0px");
+				
+				//设置名称 
+				$("#leftSubSel_35" + " .zj-parts-con").html(name);
+				$("#leftSubSel_35" + " .zj-parts-con").addClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_35" + " .link-add").html(price);
+				$("#leftSubSel_35" + " .link-add").addClass("hasPrice");
+				$("#leftSubSel_35" + " .link-add").removeAttr("onclick");
+				
+				//更新总价
+				updatePrice(price);
 			}
 			
 		}
@@ -558,12 +695,7 @@ to {
 			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 		}
 		
-		$("#leftSubSel_28" + " .pic").css("background-image",
-		"url('../No2pics/1575099343012_1575096998745_1575081891372_ceXUbURc8l4SA.jpg')");
-		$("#leftSubSel_28" + " .pic").css("background-size", "100% 100%");
-		$("#leftSubSel_28" + " .pic").css("background-position", "0px 0px");
-		
-		
+
 	</script>
 
 </body>
