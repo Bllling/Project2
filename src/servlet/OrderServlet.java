@@ -30,7 +30,7 @@ public class OrderServlet extends BasicServlet {
 	//修改订单状态
 	private void updateOrder(HttpServletRequest request, HttpServletResponse response) {
 		int state = Integer.parseInt(request.getParameter("state"));
-		int rorderid = Integer.parseInt(request.getParameter("rorderid"));
+		double rorderid = Double.parseDouble(request.getParameter("rorderid"));
 		IOrderBiz orderBiz = new OrderBizImpl();
 		this.send(response, orderBiz.updateOrderState(rorderid, state));
 	}

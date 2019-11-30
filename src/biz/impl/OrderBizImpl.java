@@ -37,7 +37,7 @@ public class OrderBizImpl implements IOrderBiz {
 	 * 更新订单的状态
 	 */
 	@Override
-	public int updateOrderState(Integer rorderid, Integer state) {
+	public int updateOrderState(Double rorderid, Integer state) {
 		if (rorderid == null || state == null) {
 			return 0;
 		}

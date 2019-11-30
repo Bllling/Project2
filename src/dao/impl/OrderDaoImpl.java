@@ -35,7 +35,7 @@ public class OrderDaoImpl implements IOrderDao{
 	 * 更新订单的状态
 	 */
 	@Override
-	public int updateOrderState(Integer rorderid, Integer state) {
+	public int updateOrderState(Double rorderid, Integer state) {
 		DBHelper dbHelper = new DBHelper();
 		String sql = "update rorder set state = ? where rorderid = ?";
 		return dbHelper.update(sql, state, rorderid);
