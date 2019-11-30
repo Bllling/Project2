@@ -578,12 +578,14 @@ to {
 				$("#leftSubSel_5" + " .zj-parts-con").addClass("hasName");
 				
 				//设置价格
-				$("#leftSubSel_5" + " .link-add").html(price);
+				$("#leftSubSel_5" + " .link-add").html("￥" + price);
 				$("#leftSubSel_5" + " .link-add").addClass("hasPrice");
 				$("#leftSubSel_5" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				motherboardprice = price;
+				chosemotherboard = 1;
+				updatePrice();
 			} else if (type == "memory") {
 				memoryid = id;
 				
@@ -598,12 +600,14 @@ to {
 				$("#leftSubSel_3" + " .zj-parts-con").addClass("hasName");
 				
 				//设置价格
-				$("#leftSubSel_3" + " .link-add").html(price);
+				$("#leftSubSel_3" + " .link-add").html("￥" + price);
 				$("#leftSubSel_3" + " .link-add").addClass("hasPrice");
 				$("#leftSubSel_3" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				memoryprice = price;
+				chosememory = 1;
+				updatePrice();
 			} else if (type == "disk") {
 				diskid = id;
 				
@@ -618,12 +622,14 @@ to {
 				$("#leftSubSel_2" + " .zj-parts-con").addClass("hasName");
 				
 				//设置价格
-				$("#leftSubSel_2" + " .link-add").html(price);
+				$("#leftSubSel_2" + " .link-add").html("￥" + price);
 				$("#leftSubSel_2" + " .link-add").addClass("hasPrice");
 				$("#leftSubSel_2" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				diskprice = price;
+				chosedisk = 1;
+				updatePrice();
 			} else if (type == "graphics") {
 				graphicsid = id;
 				
@@ -638,12 +644,14 @@ to {
 				$("#leftSubSel_6" + " .zj-parts-con").addClass("hasName");
 				
 				//设置价格
-				$("#leftSubSel_6" + " .link-add").html(price);
+				$("#leftSubSel_6" + " .link-add").html("￥" + price);
 				$("#leftSubSel_6" + " .link-add").addClass("hasPrice");
 				$("#leftSubSel_6" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				diskprice = price;
+				chosedisk = 1;
+				updatePrice();
 			} else if (type == "box") {
 				boxid = id;
 				
@@ -658,12 +666,14 @@ to {
 				$("#leftSubSel_10" + " .zj-parts-con").addClass("hasName");
 				
 				//设置价格
-				$("#leftSubSel_10" + " .link-add").html(price);
+				$("#leftSubSel_10" + " .link-add").html("￥" + price);
 				$("#leftSubSel_10" + " .link-add").addClass("hasPrice");
 				$("#leftSubSel_10" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				boxprice = price;
+				chosebox = 1;
+				updatePrice();
 			} else if (type == "source") {
 				sourceid = id;
 				
@@ -678,12 +688,14 @@ to {
 				$("#leftSubSel_35" + " .zj-parts-con").addClass("hasName");
 				
 				//设置价格
-				$("#leftSubSel_35" + " .link-add").html(price);
+				$("#leftSubSel_35" + " .link-add").html("￥" + price);
 				$("#leftSubSel_35" + " .link-add").addClass("hasPrice");
 				$("#leftSubSel_35" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				sourceprice = price;
+				chosesource = 1;
+				updatePrice();
 			}
 			
 		}

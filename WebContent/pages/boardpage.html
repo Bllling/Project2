@@ -127,6 +127,9 @@
 	  	     		//获取该结点的父节点id
 	  	     		var parentID = $(this).parent().attr('id');
 	  	     		
+	  	     		//获取该节点的类型
+	  	     		var thisClass = $(this).attr('class');
+	  	     		
 	  	     		
 	   	     		//判断属性
 	  	     		if (parentID == "price") {
@@ -187,6 +190,12 @@
 	  	     			}
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     		} else if (thisClss == "small-page-next") { //下一页
+	  	     			tonext();
+	  	     			return;
+	  	     		} else if (thisClss == "small-page-prve") { //上一页
+	  	     			toprev();
+	  	     			return;
 	  	     		}
 
 	  	     		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
@@ -195,6 +204,51 @@
 	  	     	}
 	  	    }
 	  	}
+	  	
+	  	
+	  	function tonext(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())+1;
+	  		if(page>totalpage){
+	  			page--;
+	  			alert("已翻到最底页，不能再向下翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
+	  	}
+	  	function toprev(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())-1;
+	  		if(page<1){
+	  			page++;
+	  			alert("已翻到最顶页，不能再向上翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
+	  	}
+	  	function getTotal(name,minPrice,maxPrice,minMemory,maxMemory){
+	  		$.post("hardwareinfo",
+	  		{   op:"getTotalMotherBoard",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
+				minMemory : minMemory,
+				maxMemory : maxMemory,
+				}
+	  		,function(data){
+	  				console.log("主板：" + data);
+	  				$(".total b").html(data);
+	  				if (data == 0) {
+	  					$("#totalpage").html("1");
+	  					return;
+	  				}
+	  				$("#totalpage").html(Math.ceil(data/6));
+	  		},"text")
+	  	}
+	  	
+	  	
 	  	
 		function proList(name,minPrice,maxPrice,minMemory,maxMemory,page,rows) {
 			$.post("hardwareinfo", 
@@ -226,6 +280,8 @@
 			}, "json");
 		}
 	  	
+		
+		getTotal(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory);
 	  	
 	  	init();
    		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
