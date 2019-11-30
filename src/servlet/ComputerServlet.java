@@ -58,7 +58,19 @@ private static final long serialVersionUID = 1L;
 			findIdByCname(request,response);
 		}else if("add".equals(op)){
 			add(request,response);
+		}else if("findHardWardIdById".equals(op)){
+			findHardWardIdById(request,response);
 		}
+		
+		
+		
+		
+	}
+
+	private void findHardWardIdById(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		IComputerBiz computerBiz = new ComputerBizImpl();
+		this.send(response, computerBiz.findHardWardIdById(id));
 		
 	}
 

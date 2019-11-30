@@ -341,6 +341,7 @@ body {
         var sourceprice=$("#source").val();
         var graphicsprice=$("#graphics").val();
         var boxprice=$("#box").val();
+        console.log(isupdate(id));
         if(isupdate(id)){
         $.post("../order",{op:"addOrder",id:id,uid:uid,rorderid:rorderid,state:state,total:total},function(data){
            if(data>0){
@@ -363,7 +364,7 @@ body {
     }
     function isupdate(id){
     	$.post("../computer",{op:"findHardWardIdById",id:id},function(data){
-    		console.log(data);
+   
         	var cpuid=data.cpuid;
         	var motherboardid=data.motherboardid;
         	var memoryid=data.memoryid;
@@ -372,14 +373,16 @@ body {
         	var graphicsid=data.graphicsid;
         	var boxid=data.boxid;
         	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"cpu",idName:"cpuid",id:cpuid},function(data){
-        		console.log(data);
+        	
         		if(data>0){	
+        			return 1;
         		}else{
-              		return false;
+              		return 0;
         		}
         	})
         },"json")
-        return true;
+      
+        
     }
     function yes(){
     	if($("#result").html=="购买成功"){
