@@ -282,8 +282,8 @@ public class HardWareInfo extends BasicServlet {
         if("null".equals(name)){
         	name=null;
         }
-        Integer minpowers=Integer.parseInt(request.getParameter("minPrice"));
-        Integer maxpowers=Integer.parseInt(request.getParameter("maxPrice"));
+        Integer minpowers=Integer.parseInt(request.getParameter("minPowers"));
+        Integer maxpowers=Integer.parseInt(request.getParameter("maxPowers"));
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
         this.send(response, hardwareBiz.findSourceByPage(name, minprice, maxprice, minpowers, maxpowers, page, rows));
 	}
@@ -362,6 +362,7 @@ public class HardWareInfo extends BasicServlet {
 		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
 		Integer minmaxmemory=Integer.parseInt(request.getParameter("minMemory"));
 		Integer maxmaxmemory=Integer.parseInt(request.getParameter("maxMemory"));
+		
 		String name = request.getParameter("name");
         if("null".equals(name)){
         	name=null;
