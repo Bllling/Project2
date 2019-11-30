@@ -78,7 +78,7 @@ public class HardwareBizImpl implements IHardwareBiz {
 
 	@Override
 	public int addBox(Map<String, String> map) {
-		if (StringUtil.CheckNull(map.get("name"), map.getOrDefault("boxpics", ""), map.get("boxprice"), map.get("quantiy"))) {
+		if (StringUtil.CheckNull(map.get("name"), map.getOrDefault("boxpics", ""), map.get("boxprice"), map.get("quantiy"), map.get("score"))) {
 			return -1;
 		}
 		IHardwareDao hardwareDao = new HardwareDaoImpl();

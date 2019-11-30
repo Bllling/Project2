@@ -15,6 +15,7 @@
 	<a class="easyui-linkbutton" data-options="iconCls:'icon-book-edit'" onclick="alterName(2)">修改价格</a>
 	<a class="easyui-linkbutton" data-options="iconCls:'icon-book-edit'" onclick="alterName(3)">修改库存</a>
 	<a class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="saveAlter()">保存更新</a>
+	<a class="easyui-linkbutton" data-options="iconCls:'icon-undo'" onclick="undoAlter()">撤       销</a>
 </div>
 <input type="hidden" id="fatherid" value="" />
 <div id="win">
@@ -241,6 +242,7 @@
 		//结束编辑
 		type_datagridObj.datagrid("endEdit", 0);  //结束编辑第一行
 		
+		console.log(type_datagridObj.datagrid("getChanges"));
 		//获取编辑的行
 		var row = type_datagridObj.datagrid("getChanges")[0];
 		
@@ -283,6 +285,11 @@
 		
 	}
 	
+	function undoAlter() {
+		//回滚所有数据
+		type_datagridObj.datagrid("rejectChanges");
+		type_editRow = undefined;
+	}
 	
 	function del(id) {
 		if (type == "CPU") {

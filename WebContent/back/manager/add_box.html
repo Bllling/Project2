@@ -17,6 +17,11 @@
 			<input type="text" name="bquantiy" id="add_box_quantiy" class="myipt" />
 		</li>
 		<li>
+			<label for="add_box_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
+			<br />
+			<input type="text" name="cscore" id="add_box_score" class="myipt" />
+		</li>
+		<li>
 			<label for="add_box_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
 			<br />
 			<input type="file" name="boxpics" id="add_box_pics" multiple="multiple" class="pics" onchange="setImagePreviews(this, 'show_box_pic')" />
@@ -35,8 +40,8 @@
 		var name = $.trim($("#add_box_name").val());
 		var boxprice = $.trim($("#add_box_price").val());
 		var quantiy = $.trim($("#add_box_quantiy").val());
-		
-		if (name == "" || boxprice == "" || quantiy == "" ) {
+		var score = $.trim($("#add_box_score").val());
+		if (name == "" || boxprice == "" || quantiy == "" || score == "" ) {
 			alert("您输入的信息不能为空，请确认后重新输入...");
 			return;
 		}
@@ -45,7 +50,7 @@
 			url: "../../hardware?op=addBox",
 			secureuri: false,
 			fileElementId: ["add_box_pics"],
-			data: {name: name, boxprice: boxprice, quantiy: quantiy},
+			data: {name: name, boxprice: boxprice, quantiy: quantiy, score: score},
 			dataType: "text",
 			success: function(data, status) {
 				data = parseInt($.trim(data));

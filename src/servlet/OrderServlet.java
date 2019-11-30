@@ -22,7 +22,17 @@ public class OrderServlet extends BasicServlet {
 			findOrderInfo(request, response);
 		}else if("addOrder".equals(op)){
 			addOrder(request, response);
+		}else if ("updateOrder".equals(op)) {
+			updateOrder(request, response);
 		}
+	}
+
+	//修改订单状态
+	private void updateOrder(HttpServletRequest request, HttpServletResponse response) {
+		int state = Integer.parseInt(request.getParameter("state"));
+		int rorderid = Integer.parseInt(request.getParameter("rorderid"));
+		IOrderBiz orderBiz = new OrderBizImpl();
+		this.send(response, orderBiz.updateOrderState(rorderid, state));
 	}
 
 	private void addOrder(HttpServletRequest request, HttpServletResponse response) {
@@ -37,13 +47,21 @@ public class OrderServlet extends BasicServlet {
 	}
 
 	/**
-	 * 查询订单详细信息
+	 * 查询订单信息
 	 * @param request
 	 * @param response
 	 */
 	private void findOrderInfo(HttpServletRequest request, HttpServletResponse response) {
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		String type = request.getParameter("type");
+		String condition = request.getParameter("condition");
 		IOrderBiz orderBiz = new OrderBizImpl();
-		this.send(response, orderBiz.findOrderInfo());
+		if ("noCondition".equals(type)) {
+			this.send(response, orderBiz.findOrderInfo(uid, null, type));
+		} else {
+			this.send(response, orderBiz.findOrderInfo(uid, condition, type));
+		}
+		
 	}
 
 }
