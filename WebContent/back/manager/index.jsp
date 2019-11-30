@@ -50,6 +50,7 @@
                     <li iconCls="icon-boxt"><a href="javascript:void(0)" data-icon="icon-boxt" data-link="add_box.html" iframe="0">添加机箱</a></li>
                     <li iconCls="icon-view"><a href="javascript:void(0)" data-icon="icon-view" data-link="view_hardware.html" iframe="0">浏览硬件</a></li>
                     <li iconCls="icon-view"><a href="javascript:void(0)" data-icon="icon-view" data-link="view_computer.html" iframe="0">浏览配置单</a></li>
+                	<li iconCls="icon-view"><a href="javascript:void(0)" data-icon="icon-view" data-link="view_order.html" iframe="0">管理订单</a></li>
                 </ul>
             </div>
             

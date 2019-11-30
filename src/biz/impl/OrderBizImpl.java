@@ -37,12 +37,22 @@ public class OrderBizImpl implements IOrderBiz {
 	 * 更新订单的状态
 	 */
 	@Override
-	public int updateOrderState(Integer rorderid, Integer state) {
+	public int updateOrderState(Double rorderid, Integer state) {
 		if (rorderid == null || state == null) {
 			return 0;
 		}
 		IOrderDao orderDao = new OrderDaoImpl();
 		return orderDao.updateOrderState(rorderid, state);
+	}
+
+	//管理员查询订单信息
+	@Override
+	public List<Rorder> findOrderInfoByAdmin(String condition, String type) {
+		if (StringUtil.CheckNull(type)) {
+			return null;
+		}
+		IOrderDao orderDao = new OrderDaoImpl();
+		return orderDao.findOrderInfo(null, condition, type);
 	}
 
 }
