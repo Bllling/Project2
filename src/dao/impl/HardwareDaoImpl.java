@@ -396,7 +396,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			list.add(name);
 		}
 		
-		
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -422,6 +422,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -453,6 +454,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -481,6 +483,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -512,6 +515,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -537,7 +541,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
 			list.add(maxpowers);
 		}
-		
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -556,7 +560,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
