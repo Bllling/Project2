@@ -31,12 +31,7 @@
     <!-- begin of sidebar -->
 	<div class="wu-sidebar" data-options="region:'west',split:true,border:true,title:'导航菜单'"> 
     	<div class="easyui-accordion" data-options="border:false,fit:true"> 
-        	<div title="快捷菜单" data-options="iconCls:'icon-application-cascade'" style="padding:5px;">  	
-    			<ul class="easyui-tree wu-side-tree">
-                    <li iconCls="icon-users"><a href="javascript:void(0)" data-icon="icon-users" data-link="admin.html" iframe="0">管理员管理</a></li>
-                    <li iconCls="icon-users"><a href="javascript:void(0)" data-icon="icon-users" data-link="user.html" iframe="0">用户管理</a></li>
-                </ul>
-            </div>
+        	
             
             <div title="管理菜单" data-options="iconCls:'icon-application-cascade'" style="padding:5px;">  	
     			<ul class="easyui-tree wu-side-tree">

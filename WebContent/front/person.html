@@ -149,19 +149,24 @@
 	window.currentEmail;  //当前用户的邮箱
 	window.currentPhone;  //当前用户的电话号码
 	window.addrIndex;     //需要需改地址信息的编号
-	window.uid = location.hash.replace("#","");
-	
+	window.uid;
+	window.pics;  //当前用户的图片
 	$(function() {
+		window.uid = location.hash.replace("#","");
+		console.log("person.uid=" + window.uid);
 		showAddrInfo();
 		showUserInfo();
 	});
 	
+	
+	
 	function showUserInfo() {
-		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		var uid = window.uid;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		$.post("../usr", {op:"findAllByID", uid:uid}, function(data) {
 			window.currentName = data.uname;
 			window.currentEmail = data.uemail;
 			window.currentPhone = data.utel;
+			window.pics = data.upics;
 			$("#nav_img").attr("src", "../" + data.upics);
 			console.log(data.upics);
 			$("#usrName").val(data.uname);
@@ -224,7 +229,7 @@
 		$("#area-textare").val("");
 		$("#p_num").val("");
 		$("#adPhone").val("");
-		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		var uid = window.uid;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		$.post("../usr", {op:"findAddrsById", uid:uid}, function(data) {
 			var str = "";
 			var index = 0;
@@ -355,7 +360,7 @@
 	}
 		
 	function sumbitAdr() {
-		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		var uid = window.uid;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		var lengthEr = $(".lengthEr").css("display");
 		var adPhoneEr = $(".adPhoneEr").css("display");
 		var numEr = $(".numEr").css("display");
@@ -409,7 +414,8 @@
 	}
 
 	function sumbit() {
-		var uid = 2;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		var uid = window.uid;   //uid需要从别的页面获取  来确定登录的为哪个用户
+		
 		//个人资料的提交
 		var nullNameEr = $(".nullNameEr").css("display");
 		var nameEr = $(".nameEr").css("display");
@@ -424,7 +430,10 @@
 		var p_usrName = $("#p_usrName").val();  //昵称
 		var p_email = $("#p_email").val();  //邮箱
 		var p_phone = $("#p_phone").val();  //电话号码
-		if (p_usrName == window.currentName && p_email == window.currentEmail && p_phone == window.currentPhone) {
+		var p_img = $("#imgFile").val();
+		
+		
+		if (p_usrName == window.currentName && p_email == window.currentEmail && p_phone == window.currentPhone && p_img == "") {
 			return;
 		}
 		$.ajaxFileUpload({
