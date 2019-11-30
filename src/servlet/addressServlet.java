@@ -23,7 +23,17 @@ public class addressServlet extends BasicServlet{
 			updateAddress(request, response);
 		} else if("findAllByUid".equals(op)){
 			findAllByUid(request, response);
+		} else if ("updateAddrState".equals(op)) {
+			updateAddrState(request, response);
 		}
+	}
+	private void updateAddrState(HttpServletRequest request, HttpServletResponse response) {
+		int state = Integer.parseInt(request.getParameter("state"));
+		int id = Integer.parseInt(request.getParameter("id"));
+		String idName = request.getParameter("idName");
+		IAddressBiz addressBiz = new AddressBizImpl();
+		this.send(response, addressBiz.updateAddrState(state, id, idName));
+		
 	}
 	/**
 	 * 通过Uid 查找所有地址
@@ -42,6 +52,7 @@ public class addressServlet extends BasicServlet{
 	 * @param response
 	 */
 	private void updateAddress(HttpServletRequest request, HttpServletResponse response) {
+		
 		String province = request.getParameter("province");
 		String city = request.getParameter("city");
 		String county = request.getParameter("county");

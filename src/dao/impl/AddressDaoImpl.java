@@ -39,4 +39,12 @@ public class AddressDaoImpl implements IAddressDao{
 		return dbHelper.finds(sql, Address.class, uid);
 	}
 
+	//通过id把地址状态修改为state
+	@Override
+	public int updateAddrState(Integer state, Integer id, String idName) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "update address set isdefault = ? where "+idName+" = ? ";
+		return dbHelper.update(sql, state, id);
+	}
+
 }

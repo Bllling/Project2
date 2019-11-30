@@ -261,7 +261,7 @@ $(function() {
     	$.post("../../order",{op:"getTotal", type:type, condition:condition, uid:6}, function(data) {
     		if (data > 0) {
     			$(".total b").html(data);
-    			$("#totalpage").html(Math.ceil(data/3));
+    			$("#totalpage").html(Math.ceil(data/4));
     		} else {
     			return;
     		}
