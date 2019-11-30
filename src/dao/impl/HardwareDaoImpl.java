@@ -212,6 +212,8 @@ public class HardwareDaoImpl implements IHardwareDao {
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
+		System.out.println(minmaxmemory+"ss"+maxmaxmemory);
+		System.out.println(sql);
 		return dbHelper.finds(sql, MotherBoard.class, list);
 	}
 
@@ -228,7 +230,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and memoryprice<=? ";
 			list.add(maxprice);
 		}if(minfrequency!=null){
-			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
+			sql+="and ?<=SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(minfrequency);
 		}if(maxfrequency!=null){
 			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
@@ -262,7 +264,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and diskprice<=? ";
 			list.add(maxprice);
 		}if(minvolume!=null){
-			sql+="and ?<SUBSTRING_INDEX(volume,'G',1) ";
+			sql+="and ?<=SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(minvolume);
 		}if(maxvolume!=null){
 			sql+="and ?>=SUBSTRING_INDEX(volume,'G',1) ";
@@ -277,6 +279,8 @@ public class HardwareDaoImpl implements IHardwareDao {
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
+		System.out.println("name:"+name+"   mp"+minprice+"  maxp"+maxprice+"    minvo"+minvolume+ "   maxvo"+maxvolume+"    issd"+isssd+"  "+page+"rows"+rows);
+		System.out.println(sql);
 		return dbHelper.finds(sql, Disk.class, list);
 	}
 
@@ -296,13 +300,13 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}if(minmemory!=null){
-			sql+="and ?<SUBSTRING_INDEX(memory,'G',1) ";
+			sql+="and ?<=SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(minmemory);
 		}if(maxmemory!=null){
 			sql+="and ?>=SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(maxmemory);
 		}if(minwidth!=null){
-			sql+="and ?<SUBSTRING_INDEX(width,'b',1) ";
+			sql+="and ?<=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(minwidth);
 		}if(maxwidth!=null){
 			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
@@ -344,22 +348,24 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and sourceprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
+		}if(maxprice!=null){
 			sql+="and sourceprice<=? ";
 			list.add(maxprice);
-		}else if(name!=null&&!"请输入名称".equals(name)){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
-		}else if(minpowers!=null){
+		}if(minpowers!=null){
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)>? ";
 			list.add(minpowers);
-		}else if(maxpowers!=null){
+		}if(maxpowers!=null){
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
 			list.add(maxpowers);
 		}
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
+		System.out.println(minpowers+"sss"+maxpowers);
+		System.out.println(sql);
 		return dbHelper.finds(sql, Source.class, list);
 	}
 
@@ -517,16 +523,16 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and sourceprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
+		}if(maxprice!=null){
 			sql+="and sourceprice<=? ";
 			list.add(maxprice);
-		}else if(name!=null&&!"请输入名称".equals(name)){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
-		}else if(minpowers!=null){
+		}if(minpowers!=null){
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)>? ";
 			list.add(minpowers);
-		}else if(maxpowers!=null){
+		}if(maxpowers!=null){
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
 			list.add(maxpowers);
 		}
