@@ -8,7 +8,7 @@
 			<a href="javascript:void(0);" class="all active" target="_self"
 				id="name-0">不限</a>
 			<div class="search-box">
-				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val, page, rows);getTotal(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);"></i>
 			</div>
 		</div>
 	</div>
@@ -83,7 +83,7 @@
 		 <span class="total">共 <b style="color: #999;"></b>款</span>
 		 
 		</div>
-
+ 			<div class="plist"> </div>
 	   <!--hide end--> 
 	  </div> 
 
@@ -125,7 +125,7 @@
     	  var minPrice = $("#minPrice").val();
     	  var maxPrice = $("#maxPrice").val();
     	  
-    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+    	  if (minPrice != "" && maxPrice != "" && parseInt(maxPrice) >= parseInt(minPrice)) {
         	  $("#" + price.chosed).removeClass("active");
         	  price.minPrice = minPrice;
         	  price.maxPrice = maxPrice;
@@ -284,6 +284,7 @@
 		  	     		}
 	  	     		}  else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     			hName.val = "null";
 	  	     		} else if (thisClss == "small-page-next") { //下一页
 	  	     			tonext();
 	  	     			return;
@@ -292,8 +293,8 @@
 	  	     			return;
 	  	     		}
  					
-	  	     		proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);
-	  	     		
+	  	     		proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val, page, rows);
+	  	     		getTotal(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
@@ -310,8 +311,51 @@
 	  	}
 	  	
 	  	
+		function tonext(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())+1;
+	  		if(page>totalpage){
+	  			page--;
+	  			alert("已翻到最底页，不能再向下翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val, page, rows);
+	  	}
+	  	function toprev(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())-1;
+	  		if(page<1){
+	  			page++;
+	  			alert("已翻到最顶页，不能再向上翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val, page, rows);
+	  	}
+	  	function getTotal(name,minPrice,maxPrice,minFrequency,maxFrequency,type,size){
+	  		$.post("hardwareinfo",
+	  		{   op:"getTotalMemory",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
+				minFrequency : minFrequency,
+				maxFrequency : maxFrequency,
+				type : type,
+				size : size
+				}
+	  		,function(data){
+	  				$(".total b").html(data);
+	  				if (data == 0) {
+	  					$("#totalpage").html("1");
+	  					return;
+	  				}
+	  				$("#totalpage").html(Math.ceil(data/6));
+	  		},"text")
+	  	}
 	  	
-		function proList(name, minPrice, maxPrice, minFrequency, maxFrequency, type, size) {
+	  	
+		function proList(name, minPrice, maxPrice, minFrequency, maxFrequency, type, size, page, rows) {
 			$.post("hardwareinfo", 
 			{
 				op : "findMemoryByPage1",
@@ -326,17 +370,26 @@
 				rows : rows
 			}, 
 			function(data) {
-				var str="";
+				$(".plist").empty();
+				
 				console.log(data);
+				
 				$.each(data,function(index,item){
-				str+='<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.memoryprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">内存频率：<em>'+item.frequency+'</em></span><span title="2.9GHz ">内存容量：<em>'+item.volume+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">内存类型：<em>'+memoryType(item.memorytype)+'</em></span> </div>  </div> </div>'; })
-				$(".plist").append($(str));
+					var str="";
+					str = '<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125" id='+item.memoryid+'> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.memoryprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">内存频率：<em>'+item.frequency+'</em></span><span title="2.9GHz ">内存容量：<em>'+item.volume+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">内存类型：<em>'+memoryType(item.memorytype)+'</em></span> </div>  </div> </div>';		
+					$(".plist").append($(str));
+					
+					//给每个内存添加监听	
+					$("#" + item.memoryid + " .add").click(function(){
+						addToComputer("memory", item.id, item.pics, item.name, item.memoryprice);
+					})
+				})
 			}, "json");
 		}
-	  	
+		
+		getTotal(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);
 	  	init();
-	  	console.log(type.val);
-	  	proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val);
+	  	proList(hName.val, price.minPrice, price.maxPrice, frequency.minFrequency, frequency.maxFrequency, type.val, size.val, page, rows);
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  	

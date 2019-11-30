@@ -1,79 +1,82 @@
 
-	  <div class="conditions"> 
-	   <!--list-title end--> 
+<div class="conditions">
+	<!--list-title end-->
 	<div id="J_ManuFilter" class="filter-brand filter-brand-multi">
-	<input id="HardWareType" value="graphics" style='display:none;'/>
-		<strong class="filter-type">显卡名称：</strong>
+		<input id="HardWareType" value="graphics" style='display: none;' /> <strong
+			class="filter-type">显卡名称：</strong>
 		<div id="name" class="brand-hot brand-list" style="display: block;">
 			<a href="javascript:void(0);" class="all active" target="_self"
 				id="name-0">不限</a>
 			<div class="search-box">
-				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+				<input type="text" id="name-1" onclick="unActiveName();"
+					value="请输入名称" /> <i onclick="setName();proList(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth, page, rows);getTotal(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth);"></i>
 			</div>
 		</div>
 	</div>
-	   
-	   <div id="priceItem" class="filter-item filter-price"> 	   
-	    <strong class="filter-type">价格区间：</strong> 
-	    <div id="price" class="param-value-list"> 
-	     <a class="all active" id="price-0">不限</span> 
-	     <a href="javascript:void(0);" target="_self" id="price-500">500元以下</a> 
-	     <a href="javascript:void(0);" target="_self" id="price-1000">500-1000元</a> 
-	     <a href="javascript:void(0);" target="_self" id="price-2000">1000-2000元</a> 
-	     <a href="javascript:void(0);" target="_self" id="price-null">2000以上</a> 
-	    </div> 
-	    <div class="price-self"> 
-	     <input id="minPrice" type="text" /> 
-	     <em>-</em> 
-	     <input id="maxPrice" type="text" /> 
-	     <span id="subPri" class="price-button" onclick="unActivePrice();">确定</span> 
-	    </div> 
-	   </div>
-	   
-	    
-	   <div id="pamItem1" class="filter-item"> 
-	    <strong class="filter-type">显存大小：</strong> 
-	    <div id="memory" class="param-value-list"> 
-	     <a class="all active" id="memory-0">不限</span> 
-	     <a href="javascript:void(0);" target="_self" id="memory-1">1G以下</a> 
-	     <a href="javascript:void(0);" target="_self" id="memory-2">2G</a> 
-	     <a href="javascript:void(0);" target="_self" id="memory-4">4G</a> 
-	     <a href="javascript:void(0);" target="_self" id="memory-6">6G</a> 
-	     <a href="javascript:void(0);" target="_self" id="memory-8">8G</a> 
-	     <a href="javascript:void(0);" target="_self" id="memory-null">8G以上</a> 
 
-	    </div> 	    
-	   </div> 
-	   
-	   
-
-	   
-	    <div id="pamItem3" class="filter-item"> 
-	     <strong class="filter-type">显存位宽：</strong> 
-	     <div id="width" class="param-value-list"> 
-	      <a class="all active" id="width-0">不限</span> 
-	      <a href="javascript:void(0);" target="_self" id="width-64">64bit</a> 
-	      <a href="javascript:void(0);" target="_self" id="width-128">128bit</a> 
-	      <a href="javascript:void(0);" target="_self" id="width-192">192bit</a> 
-	      <a href="javascript:void(0);" target="_self" id="width-256">256bit</a> 
-	      <a href="javascript:void(0);" target="_self" id="width-null">256bit以上</a> 
-
-	     </div> 
-	    </div> 
-	    <div class="sort-box clearfix" >
-		 <div class="small-page">
-			 			 <a class="small-page-prev " href="javascript:toprev()" target="_self" style="background-position: 1px -44px;">&nbsp;</a>
-			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
-			<a href="javascript:tonext()" class="small-page-next " target="_self" style="background-position: -78px -44px;">&nbsp;</a>
-		 </div>      
-		 <span class="total">共 <b style="color: #999;"></b>款</span>
-		 
+	<div id="priceItem" class="filter-item filter-price">
+		<strong class="filter-type">价格区间：</strong>
+		<div id="price" class="param-value-list">
+			<a class="all active" id="price-0">不限</span> <a
+				href="javascript:void(0);" target="_self" id="price-500">500元以下</a>
+				<a href="javascript:void(0);" target="_self" id="price-1000">500-1000元</a>
+				<a href="javascript:void(0);" target="_self" id="price-2000">1000-2000元</a>
+				<a href="javascript:void(0);" target="_self" id="price-null">2000以上</a>
 		</div>
-	   <!--hide end--> 
-	  </div> 
-	  
-	  
-	  <script type="text/javascript">
+		<div class="price-self">
+			<input id="minPrice" type="text" /> <em>-</em> <input id="maxPrice"
+				type="text" /> <span id="subPri" class="price-button"
+				onclick="unActivePrice();">确定</span>
+		</div>
+	</div>
+
+
+	<div id="pamItem1" class="filter-item">
+		<strong class="filter-type">显存大小：</strong>
+		<div id="memory" class="param-value-list">
+			<a class="all active" id="memory-0">不限</span> <a
+				href="javascript:void(0);" target="_self" id="memory-1">1G以下</a> <a
+				href="javascript:void(0);" target="_self" id="memory-2">2G</a> <a
+				href="javascript:void(0);" target="_self" id="memory-4">4G</a> <a
+				href="javascript:void(0);" target="_self" id="memory-6">6G</a> <a
+				href="javascript:void(0);" target="_self" id="memory-8">8G</a> <a
+				href="javascript:void(0);" target="_self" id="memory-null">8G以上</a>
+		</div>
+	</div>
+
+
+
+
+	<div id="pamItem3" class="filter-item">
+		<strong class="filter-type">显存位宽：</strong>
+		<div id="width" class="param-value-list">
+			<a class="all active" id="width-0">不限</span> <a
+				href="javascript:void(0);" target="_self" id="width-64">64bit</a> <a
+				href="javascript:void(0);" target="_self" id="width-128">128bit</a>
+				<a href="javascript:void(0);" target="_self" id="width-192">192bit</a>
+				<a href="javascript:void(0);" target="_self" id="width-256">256bit</a>
+				<a href="javascript:void(0);" target="_self" id="width-null">256bit以上</a>
+		</div>
+	</div>
+	<div class="sort-box clearfix">
+		<div class="small-page">
+			<a class="small-page-prev " href="javascript:toprev()" target="_self"
+				style="background-position: 1px -44px;">&nbsp;</a> <span
+				class="small-page-active"><b id="nowpage">1</b>/<b
+				id="totalpage"></b></span> <a href="javascript:tonext()"
+				class="small-page-next " target="_self"
+				style="background-position: -78px -44px;">&nbsp;</a>
+		</div>
+		<span class="total">共 <b style="color: #999;"></b>款
+		</span>
+
+	</div>
+	<div class="plist"></div>
+	<!--hide end-->
+</div>
+
+
+<script type="text/javascript">
 	
       var hName = {
               chosed: "name-0",
@@ -103,7 +106,7 @@
     	  var minPrice = $("#minPrice").val();
     	  var maxPrice = $("#maxPrice").val();
     	  
-    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+    	  if (minPrice != "" && maxPrice != "" && parseInt(maxPrice) >= parseInt(minPrice)) {
         	  $("#" + price.chosed).removeClass("active");
         	  price.minPrice = minPrice;
         	  price.maxPrice = maxPrice;
@@ -250,6 +253,7 @@
 	  	     			}
 	  	     		}  else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     			hName.val = "null";
 	  	     		} else if (thisClss == "small-page-next") { //下一页
 	  	     			tonext();
 	  	     			return;
@@ -259,11 +263,57 @@
 	  	     		}
 					
 	  	     		proList(hName.val, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth, page, rows);
-	  	     		
+	  	     		getTotal(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth);
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
+	  	
+	  	
+ 	  	function tonext(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())+1;
+	  		if(page>totalpage){
+	  			page--;
+	  			alert("已翻到最底页，不能再向下翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth, page, rows);
+	  	}
+	  	function toprev(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())-1;
+	  		if(page<1){
+	  			page++;
+	  			alert("已翻到最顶页，不能再向上翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth, page, rows);
+	  	}
+	  	
+	  	function getTotal(name,minPrice,maxPrice,minMemory,maxMemory,minWidth,maxWidth){
+	  		$.post("hardwareinfo",
+	  		{   op:"getTotalGraphics",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
+				minMemory : minMemory,
+				maxMemory : maxMemory,
+				minWidth : minWidth,
+				maxWidth : maxWidth
+				}
+	  		,function(data){
+	  				$(".total b").html(data);
+	  				if (data == 0) {
+	  					$("#totalpage").html("1");
+	  					return;
+	  				}
+	  				$("#totalpage").html(Math.ceil(data/6));
+	  		},"text")
+	  	}
+	  	 
 	  	
 		function proList(name, minPrice, maxPrice, minMemory, maxMemory, minWidth, maxWidth, page, rows) {
 			$.post("hardwareinfo", 
@@ -280,15 +330,24 @@
 				rows : rows
 			}, 
 			function(data) {
-				var str="";
+				$(".plist").empty();
+				
 				console.log(data);
+				
 				$.each(data,function(index,item){
-				str+='<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.graphicsprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">显存大小：<em>'+item.memory+'</em></span><span title="2.9GHz ">显存带宽：<em>'+item.width+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span> </div>  </div> </div>'; })
-				$(".plist").append($(str));
+					var str="";
+					str = '<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125" id='+item.graphicsid+'> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.graphicsprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">显存大小：<em>'+item.memory+'</em></span><span title="2.9GHz ">显存带宽：<em>'+item.width+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span> </div>  </div> </div>';		
+					$(".plist").append($(str));
+					
+					//给每个显卡添加监听	
+					$("#" + item.graphicsid + " .add").click(function(){
+						addToComputer("graphics", item.id, item.pics, item.name, item.graphicsprice);
+					})
+				})
 			}, "json");
 		}
 	  	
-	  	
+		getTotal(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth);
 	  	init();
 	  	proList(hName, price.minPrice, price.maxPrice, memory.minMemory, memory.maxMemory, width.minWidth, width.maxWidth, page, rows);
 	  	hName.val = $("#name-1").val();

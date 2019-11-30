@@ -7,7 +7,7 @@
 			<a href="javascript:void(0);" class="all active" target="_self"
 				id="name-0">不限</a>
 			<div class="search-box">
-				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);getTotal(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory);"></i>
 			</div>
 		</div>
 	</div>
@@ -86,7 +86,7 @@
     	  var minPrice = $("#minPrice").val();
     	  var maxPrice = $("#maxPrice").val();
     	  
-    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+    	  if (minPrice != "" && maxPrice != "" && parseInt(maxPrice) >= parseInt(minPrice)) {
         	  $("#" + price.chosed).removeClass("active");
         	  price.minPrice = minPrice;
         	  price.maxPrice = maxPrice;
@@ -190,6 +190,7 @@
 	  	     			}
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     			hName.val = "null";
 	  	     		} else if (thisClss == "small-page-next") { //下一页
 	  	     			tonext();
 	  	     			return;
@@ -199,7 +200,7 @@
 	  	     		}
 	  	     		
 	  	     		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
-	   	     		
+	  	     		getTotal(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory);
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
@@ -235,7 +236,7 @@
 				minPrice : minPrice,
 				maxPrice : maxPrice,
 				minMemory : minMemory,
-				maxMemory : maxMemory,
+				maxMemory : maxMemory
 				}
 	  		,function(data){
 	  				console.log("主板：" + data);

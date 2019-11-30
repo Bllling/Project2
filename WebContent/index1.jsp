@@ -331,37 +331,37 @@ to {
 					<h3>
 						CPU<i>*</i>
 					</h3> <span class="pic"></span>
-					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="cpuPage()">添加</span>
+					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="cpuPage();page = 1;">添加</span>
 					<span class="delete"></span>
 				</li>
 				<li id="leftSubSel_5" rel="5">
 					<h3>
 						主板<i>*</i>
 					</h3> <span class="pic"></span>
-					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="boardPage()">添加</span>
+					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="boardPage();page = 1;">添加</span>
 					<span class="delete"></span>
 				</li>
 				<li id="leftSubSel_3" rel="3">
 					<h3>
 						内存<i>*</i>
 					</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="memoryPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="memoryPage();page = 1;">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_2" rel="2">
 					<h3>硬盘</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="diskPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="diskPage();page = 1;">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_6" rel="6">
 					<h3>显卡</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="graphicsPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="graphicsPage();page = 1;">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_10" rel="10">
 					<h3>机箱</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="boxPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="boxPage();page = 1;">添加</span> <span class="delete"></span>
 				</li>
 				<li id="leftSubSel_35" rel="35">
 					<h3>电源</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="sourcePage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="sourcePage();page = 1;">添加</span> <span class="delete"></span>
 				</li>
 
 				<li class="total">

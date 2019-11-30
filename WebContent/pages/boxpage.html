@@ -8,7 +8,7 @@
 			<a href="javascript:void(0);" class="all active" target="_self"
 				id="name-0">不限</a>
 			<div class="search-box">
-				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();proList(hName.val, price.minPrice,price.maxPrice,page,rows);getTotal(hName.val, price.minPrice,price.maxPrice);"></i>
 			</div>
 		</div>
 	</div>
@@ -36,6 +36,7 @@
 		 <span class="total">共 <b style="color: #999;"></b>款</span>
 		 
 		</div>
+		 <div class="plist"> </div>
 	<!--hide end-->
 </div>
 
@@ -58,7 +59,7 @@
     	  var minPrice = $("#minPrice").val();
     	  var maxPrice = $("#maxPrice").val();
     	  
-    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+    	  if (minPrice != "" && maxPrice != "" && parseInt(maxPrice) >= parseInt(minPrice)) {
         	  $("#" + price.chosed).removeClass("active");
         	  price.minPrice = minPrice;
         	  price.maxPrice = maxPrice;
@@ -134,6 +135,7 @@
 	  	     			} 
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     			hName.val = "null";
 	  	     		} else if (thisClss == "small-page-next") { //下一页
 	  	     			tonext();
 	  	     			return;
@@ -143,11 +145,52 @@
 	  	     		}
 					
 	  	     		proList(hName.val, price.minPrice,price.maxPrice,page,rows);
-	  	     		
+	  	     		getTotal(hName.val, price.minPrice,price.maxPrice);
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
+	  	
+	  	
+		function tonext(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())+1;
+	  		if(page>totalpage){
+	  			page--;
+	  			alert("已翻到最底页，不能再向下翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName.val, price.minPrice,price.maxPrice,page,rows);
+	  	}
+	  	function toprev(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())-1;
+	  		if(page<1){
+	  			page++;
+	  			alert("已翻到最顶页，不能再向上翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		proList(hName.val, price.minPrice,price.maxPrice,page,rows);
+	  	}
+	  	function getTotal(name,minPrice,maxPrice){
+	  		$.post("hardwareinfo",
+	  		{   op:"getTotalBox",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice
+				}
+	  		,function(data){
+	  				$(".total b").html(data);
+	  				if (data == 0) {
+	  					$("#totalpage").html("1");
+	  					return;
+	  				}
+	  				$("#totalpage").html(Math.ceil(data/6));
+	  		},"text")
+	  	}
+	  	
 	  	
 		function proList(name,minPrice,maxPrice,page,rows) {
 			$.post("hardwareinfo", 
@@ -169,7 +212,7 @@
 					str = '<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125" id='+item.boxid+'> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.boxprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="4.1GHz ">跑分：<em>'+item.score+' </em> </div>  </div> </div>';		
 					$(".plist").append($(str));
 					
-					//给每个主板添加监听	
+					//给每个机箱添加监听	
 					$("#" + item.boxid + " .add").click(function(){
 						addToComputer("box", item.boxid, item.pics, item.name, item.boxprice);
 					})
@@ -177,7 +220,7 @@
 			}, "json");
 		}
 	  	
-	  	
+		getTotal(hName.val, price.minPrice,price.maxPrice);
 	  	init();
 	  	proList(hName.val, price.minPrice,price.maxPrice,page,rows);
 	  	hName.val = $("#name-1").val();

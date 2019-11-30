@@ -8,8 +8,7 @@
 			<a href="javascript:void(0);" class="all active" target="_self"
 				id="name-0">不限</a>
 			<div class="search-box">
-				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();	  	     		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
-"></i>
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);getTotal(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val);"></i>
 			</div>
 		</div>
 	</div>
@@ -344,7 +343,6 @@
 						addToComputer("cpu", item.id, item.pics, item.name, item.cpuprice);
 					})
 				})
-
 			}, "json");
 		}
 
