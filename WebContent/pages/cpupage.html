@@ -64,10 +64,10 @@
 	<div class="sort-box clearfix" >
 		 <div class="small-page">
 			 			 <a class="small-page-prev " href="javascript:toprev()" target="_self" style="background-position: 1px -44px;">&nbsp;</a>
-			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
+			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage">20</b></span>
 			<a href="javascript:tonext()" class="small-page-next " target="_self" style="background-position: -78px -44px;">&nbsp;</a>
 		 </div>      
-		 <span class="total">共 <b style="color: #999;"></b>款</span>
+		 <span class="total">共 <b style="color: #999;">626</b>款</span>
 		 
 		</div>
         <div class="plist"> </div>
@@ -261,7 +261,38 @@
 	  	    }
 	  	}
 	  	
-
+	  	function tonext(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())+1;
+	  		if(page>totalpage){
+	  			page--;
+	  			alert("已翻到最底页，不能再向下翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		 find();
+	  	}
+	  	function toprev(){
+	  		var totalpage=$("#totalpage").html();
+	  		var page=parseInt($("#nowpage").html())-1;
+	  		if(page<1){
+	  			page++;
+	  			alert("已翻到最顶页，不能再向上翻页");
+	  			return;
+	  		}
+	  		$("#nowpage").html(page);
+	  		find();
+	  	}
+	  	function getTotal(){
+	  		 var sumpriceMin=sumpriceMin;
+	  		 var sumpriceMax=sumpriceMax;
+	  		 var rtime = rtime; 
+	  		
+	  		$.post("hardwareinfo",{op:"getTotalPart",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime},function(data){
+	  				$(".total b").html(data);
+	  				$("#totalpage").html(Math.ceil(data/6));
+	  		},"text")
+	  	}
 
 	  	function proList(name,minPrice,maxPrice,minFrequency,maxFrequency,cores,page,rows) {
 	  		console.log(name);

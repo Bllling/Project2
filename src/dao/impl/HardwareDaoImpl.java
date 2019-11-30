@@ -363,6 +363,195 @@ public class HardwareDaoImpl implements IHardwareDao {
 		return dbHelper.finds(sql, Source.class, list);
 	}
 
+	@Override
+	public int getTotalCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
+			Double maxfrequency, Integer cores, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from cpu where 1=1 ";
+		if(minprice!=null){
+			sql+="and cpuprice>? ";
+			list.add(minprice);
+		} if(maxprice!=null){
+			sql+="and cpuprice<=? ";
+			list.add(maxprice);
+		} if(minfrequency!=null){
+			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(minfrequency);
+		}if(maxfrequency!=null){
+			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(maxfrequency);
+		} if(cores!=null){
+			sql+="and cores = ? ";
+			list.add(cores);
+		} if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		
+		
+		return dbHelper.getTotal(sql, list);
+	}
+
+	@Override
+	public int getTotalMotherboardByPage(String name, Double minprice, Double maxprice, Integer minmaxmemory,
+			Integer maxmaxmemory, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from motherboard where 1=1  ";
+		if(minprice!=null){
+			sql+="and motherboardprice>? ";
+			list.add(minprice);
+		}if(maxprice!=null){
+			sql+="and motherboardprice<=? ";
+			list.add(maxprice);
+		}if(minmaxmemory!=null){
+			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
+			list.add(minmaxmemory);
+		}if(maxmaxmemory!=null){
+			sql+="and ?>=SUBSTRING_INDEX(maxmemory,'G',1) ";
+			list.add(maxmaxmemory);
+		}if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		return dbHelper.getTotal(sql, list);
+	}
+
+	@Override
+	public int getTotalMemoryByPage(String name, Double minprice, Double maxprice, Integer minfrequency,
+			Integer maxfrequency, Integer memorytype, Integer volume, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from memory where 1=1  ";
+		if(minprice!=null){
+			sql+="and memoryprice>? ";
+			list.add(minprice);
+		}if(maxprice!=null){
+			sql+="and memoryprice<=? ";
+			list.add(maxprice);
+		}if(minfrequency!=null){
+			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(minfrequency);
+		}if(maxfrequency!=null){
+			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
+			list.add(maxfrequency);
+		}if(memorytype!=null){
+			sql+="and ?=SUBSTRING(memorytype, 4) ";
+			list.add(memorytype);
+		}if(volume!=null){
+			sql+="and ?=SUBSTRING_INDEX(volume,'G',1) ";
+			list.add(volume);
+		}if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		return dbHelper.getTotal(sql, list);
+	}
+
+	@Override
+	public int getTotalDiskByPage(String name, Double minprice, Double maxprice, Integer minvolume, Integer maxvolume,
+			Integer isssd, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from disk where 1=1  ";
+		if(minprice!=null){
+			sql+="and diskprice>? ";
+			list.add(minprice);
+		}if(maxprice!=null){
+			sql+="and diskprice<=? ";
+			list.add(maxprice);
+		}if(minvolume!=null){
+			sql+="and ?<SUBSTRING_INDEX(volume,'G',1) ";
+			list.add(minvolume);
+		}if(maxvolume!=null){
+			sql+="and ?>=SUBSTRING_INDEX(volume,'G',1) ";
+			list.add(maxvolume);
+		}if(isssd!=null){
+			sql+="and isssd=? ";
+			list.add(isssd);
+		}if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		return dbHelper.getTotal(sql, list);
+	}
+
+	@Override
+	public int getTotalGraphicsByPage(String name, Double minprice, Double maxprice, Integer minmemory,
+			Integer maxmemory, Integer minwidth, Integer maxwidth, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from graphics where 1=1  ";
+		if(minprice!=null){
+			sql+="and graphicsprice>? ";
+			list.add(minprice);
+		}if(maxprice!=null){
+			sql+="and graphicsprice<=? ";
+			list.add(maxprice);
+		}if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}if(minmemory!=null){
+			sql+="and ?<SUBSTRING_INDEX(memory,'G',1) ";
+			list.add(minmemory);
+		}if(maxmemory!=null){
+			sql+="and ?>=SUBSTRING_INDEX(memory,'G',1) ";
+			list.add(maxmemory);
+		}if(minwidth!=null){
+			sql+="and ?<SUBSTRING_INDEX(width,'b',1) ";
+			list.add(minwidth);
+		}if(maxwidth!=null){
+			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
+			list.add(maxwidth);
+		}
+		return dbHelper.getTotal(sql, list);
+	}
+
+	@Override
+	public int getTotalSourceByPage(String name, Double minprice, Double maxprice, Integer minpowers, Integer maxpowers,
+			int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from source where 1=1  ";
+		if(minprice!=null){
+			sql+="and sourceprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and sourceprice<=? ";
+			list.add(maxprice);
+		}else if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}else if(minpowers!=null){
+			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)>? ";
+			list.add(minpowers);
+		}else if(maxpowers!=null){
+			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
+			list.add(maxpowers);
+		}
+		
+		return dbHelper.getTotal(sql, list);
+	}
+
+	@Override
+	public int getTotalBoxByPage(String name, Double minprice, Double maxprice, int page, int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select count(*) from box where 1=1  ";
+		if(minprice!=null){
+			sql+="and boxprice>? ";
+			list.add(minprice);
+		}if(maxprice!=null){
+			sql+="and boxprice<=? ";
+			list.add(maxprice);
+		}if(name!=null&&!"请输入名称".equals(name)){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		return dbHelper.getTotal(sql, list);
+	}
+
 
 
 

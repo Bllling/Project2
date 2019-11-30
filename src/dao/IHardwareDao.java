@@ -128,6 +128,14 @@ public interface IHardwareDao {
 	public List<Source> findSourceByPage(String name,Double minprice,Double maxprice,Integer minpowers,Integer maxpowers,int page,int rows);
 	public List<Box> findBoxByPage(String name,Double minprice,Double maxprice,int page,int rows);
 	
+	public int getTotalCpuByPage(String name,Double minprice,Double maxprice,Double minfrequency,Double maxfrequency,Integer cores,int page,int rows);
+	public int getTotalMotherboardByPage(String name,Double minprice,Double maxprice,Integer minmaxmemory,Integer maxmaxmemory,int page,int rows);
+	public int getTotalMemoryByPage(String name,Double minprice,Double maxprice,Integer minfrequency,Integer maxfrequency,Integer memorytype,Integer volume,int page,int rows);
+	public int getTotalDiskByPage(String name,Double minprice,Double maxprice,Integer minvolume,Integer maxvolume,Integer isssd,int page,int rows);
+	public int getTotalGraphicsByPage(String name,Double minprice,Double maxprice,Integer minmemory,Integer maxmemory,Integer minwidth,Integer maxwidth,int page,int rows);
+	public int getTotalSourceByPage(String name,Double minprice,Double maxprice,Integer minpowers,Integer maxpowers,int page,int rows);
+	public int getTotalBoxByPage(String name,Double minprice,Double maxprice,int page,int rows);
+	
 	
 	
 }

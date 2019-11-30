@@ -100,15 +100,163 @@ public class HardWareInfo extends BasicServlet {
 			findBoxByPage1(request, response);
 		} else if("getTotal".equals(op)){
 			getTotal(request, response);
+		} else if("getTotalCpu".equals(op)){
+			getTotalCpu(request, response);
+		} else if("getTotalMotherBoard".equals(op)){
+			getTotalMotherBoard(request, response);
+		} else if("getTotalMemory".equals(op)){
+			getTotalMemory(request, response);
+		} else if("getTotaldisk".equals(op)){
+			getTotaldisk(request, response);
+		} else if("getTotalGraphics".equals(op)){
+			getTotalGraphics(request, response);
+		} else if("getTotalSource".equals(op)){
+			getTotalSource(request, response);
+		} else if("getTotalBox".equals(op)){
+			getTotalBox(request, response);
 		}
 	
 	}
 	
+	private void getTotalBox(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+		String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        this.send(response, hardwareBiz.getTotalBoxByPage(name, minprice, maxprice, page, rows));
+		
+	}
+
+	private void getTotalSource(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+		String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        Integer minpowers=Integer.parseInt(request.getParameter("minPrice"));
+        Integer maxpowers=Integer.parseInt(request.getParameter("maxPrice"));
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        this.send(response,hardwareBiz.getTotalSourceByPage(name, minprice, maxprice, minpowers, maxpowers, page, rows));
+		
+	}
+
+	private void getTotalGraphics(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+		String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        Integer minmemory=Integer.parseInt(request.getParameter("minMemory"));
+        Integer maxmemory=Integer.parseInt(request.getParameter("maxMemory"));
+        Integer minwidth=Integer.parseInt(request.getParameter("minWidth"));
+        Integer maxwidth=Integer.parseInt(request.getParameter("maxWidth"));
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        this.send(response,hardwareBiz.findGraphicsByPage(name, minprice, maxprice, minmemory, maxmemory, minwidth, maxwidth, page, rows));
+		
+	}
+
+	private void getTotaldisk(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+		String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        Integer minvolume=Integer.parseInt(request.getParameter("minSize"));
+        Integer maxvolume=Integer.parseInt(request.getParameter("maxSize"));
+        Integer isssd=Integer.parseInt(request.getParameter("type"));
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        this.send(response, hardwareBiz.findDiskByPage(name, minprice, maxprice, minvolume, maxvolume, isssd, page, rows));
+		
+	}
+
+	private void getTotalMemory(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+		String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        Integer minfrequency=Integer.parseInt(request.getParameter("minFrequency"));
+        Integer maxfrequency=Integer.parseInt(request.getParameter("maxFrequency"));
+        Integer memorytype;
+        Integer volume;
+        if("null".equals(request.getParameter("type"))){
+        	memorytype=null;
+        }else{
+        	memorytype=Integer.parseInt(request.getParameter("type"));
+        }
+        if("null".equals(request.getParameter("size"))){
+        	volume=null;
+        }else{
+        	volume=Integer.parseInt(request.getParameter("size"));
+        }
+      
+		this.send(response,hardwareBiz.getTotalMemoryByPage(name, minprice, maxprice, minfrequency, maxfrequency, memorytype, volume, page, rows));
+		
+	}
+
+	private void getTotalMotherBoard(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+		Integer minmaxmemory=Integer.parseInt(request.getParameter("minMemory"));
+		Integer maxmaxmemory=Integer.parseInt(request.getParameter("maxMemory"));
+		String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        this.send(response,hardwareBiz.findMotherboardByPage(name, minprice, maxprice, minmaxmemory, maxmaxmemory, page, rows));
+		
+	}
+
+	private void getTotalCpu(HttpServletRequest request, HttpServletResponse response) {
+		int rows =Integer.parseInt(request.getParameter("rows"));
+		int page= Integer.parseInt(request.getParameter("page"));
+		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
+		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
+	    Double minFrequency=Double.parseDouble(request.getParameter("minFrequency"));
+	    Double maxFrequency=Double.parseDouble(request.getParameter("maxFrequency"));
+	    Integer cores;
+        if("null".equals(request.getParameter("cores"))){
+        	cores =null;
+        }else{
+        	System.out.println(request.getParameter("cores")=="null");
+        	cores =Integer.parseInt(request.getParameter("cores"));
+        }
+       
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+        String name = request.getParameter("name");
+        if("null".equals(name)){
+        	name=null;
+        }
+        
+        this.send(response, hardwareBiz.getTotalCpuByPage(name, minprice, maxprice, minFrequency, maxFrequency, cores, page, rows));
+		
+	}
+
 	private void getTotal(HttpServletRequest request, HttpServletResponse response) {
 		IHardwareBiz hardwareBiz = new HardwareBizImpl();
-		String id= request.getParameter("id");   //要查询配件的ID
 		String formName = request.getParameter("formName"); //要查询表名
-		this.send(response, hardwareBiz.getTotal(id, formName));
+		this.send(response, hardwareBiz.getTotal("*", formName));
 		
 	}
 
