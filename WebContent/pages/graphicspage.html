@@ -69,26 +69,26 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var memory = {
               chosed: "memory-0",
-              minMemory: null,
-              maxMemory: null
+              minMemory: 0,
+              maxMemory: 999999999
       }
       
       var width = {
     		  chosed: "width-0",
-    		  minWidth: null,
-    		  maxWidth: null
+    		  minWidth: 0,
+    		  maxWidth: 999999999
       }
 	  	
       function unActivePrice() {
@@ -144,7 +144,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-500")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-500";
@@ -164,7 +164,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-null";
 	  	     				price.minPrice = 2000;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("memory")) {
 	  	     			//给对象赋值
@@ -172,7 +172,7 @@
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-0";
 	  	     				memory.minMemory = 0;
-	  	     				memory.maxMemory = null;
+	  	     				memory.maxMemory = 999999999;
 	  	     			} else if (thisID == ("memory-1")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-1";
@@ -202,7 +202,7 @@
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-null";
 	  	     				memory.minMemory = 8;
-	  	     				memory.maxMemory = null;
+	  	     				memory.maxMemory = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("width")) {
 	  	     			//给对象赋值
@@ -210,7 +210,7 @@
 	  	     				$("#" + width.chosed).removeClass("active");
 	  	     				width.chosed = "width-0";
 	  	     				width.minWidth = 0;
-	  	     				width.maxWidth = null;
+	  	     				width.maxWidth = 999999999;
 	  	     			} else if (thisID == ("width-64")) {
 		     				$("#" + width.chosed).removeClass("active");
 	  	     				width.chosed = "width-64";
@@ -235,7 +235,7 @@
 		     				$("#" + width.chosed).removeClass("active");
 	  	     				width.chosed = "width-null";
 	  	     				width.minWidth = 256;
-	  	     				width.maxWidth = null;
+	  	     				width.maxWidth = 999999999;
 	  	     			}
 	  	     		}  else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
@@ -251,7 +251,7 @@
 		function proList() {
 			$.post("../hardwareinfo", 
 			{
-				op : "findGraphicsByPage",
+				op : "findGraphicsByPage1",
 				name : hName.val,
 				minPrice : price.minPrice,
 				maxPrice : price.maxPrice,
@@ -264,7 +264,7 @@
 			}, 
 			function(data) {
 
-			});
+			}, "json");
 		}
 	  	
 	  	

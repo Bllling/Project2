@@ -41,100 +41,6 @@
 
 	    </div> 	    
 	   </div> 
-	   
-	   <!-- 硬件列表 -->
-	    <div class="sort-box clearfix"> 
-    <div class="small-page"> 
-     <span class="small-page-prev">&nbsp;</span> 
-     <span class="small-page-active"><b>1</b>/15</span> 
-     <a href="javascript:;" target="_self" class="small-page-next">&nbsp;</a> 
-    </div> 
-    <span class="total totalNum">共 <b>130</b> 款</span> 
-   </div> 
-   <div class="loading" style="display: none;">
-    内容加载中，请稍候…
-   </div> 
-   <div class="list-box" style="display: block;"> 
-    <style>
-	.pitem .pic a{position: relative;display: block;left: 0;top:5px;}
-	.pitem .pic a .active-pic-corner__icon{position: absolute;right:0;bottom:0;width:30px;height:30px;background: url(https://icon.zol-img.com.cn/mainpage/icon-b.png) no-repeat;}
-	.pitem .pic a img{position: static !important;display: block;}
-    .pitem {position:relative;}
-</style> 
-    <div class="plist"> 
-     <div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> 
-      <div class="pic"> 
-       <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="sub28_m_gnoPrice__k_1_1_1_data/ceXUbURc8l4SA.jpg" alt="Intel 酷睿i5 9400F" /> </a> 
-      </div> 
-      <div class="price-box"> 
-       <span class="price">￥1199</span> 
-       <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> 
-      </div> 
-      <div class="pro-intro"> 
-       <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">Intel 酷睿i5 9400F</a> 本月<i>104780</i>人已选用 </h3> 
-       <div class="paramet"> 
-        <span title="LGA 1151 ">CPU主频：<em>3.5Ghz </em></span>
-        <span title="2.9GHz ">CPU主频：<em>2.9GHz </em></span>
-        <span title="4.1GHz ">动态加速频率：<em>4.1GHz </em></span>
-        <span title="9MB ">三级缓存：<em>9MB </em></span>
-        <span title="六核心  六线程">核心数量：<em>六核心 六线程</em></span> 
-        <span> <a href="http://detail.zol.com.cn/1250/1249003/param.shtml" class="morep">更多参数<font>&gt;&gt;</font></a>&nbsp;&nbsp; <a href="http://detail.zol.com.cn/1250/1249003/review.shtml">22人点赞</a>&nbsp;&nbsp;&nbsp; </span> 
-       </div> 
-      </div> 
-     </div> 
-     <!--list-box end--> 
-    </div> 
-    <script src="sub28_m_gnoPrice__k_1_1_1_data/Diy_DiyZjList.js"></script> 
-    <script>
-
-        var _zpv_cfg = {
-            terminal:'pc',
-            site: 'ZOL',
-            buz: 'media',
-            channel: location.hostname.substr(0,location.hostname.indexOf('.')),
-            pagetype: 'proFilter',
-            custom:{}
-        };
-
-    </script> 
-    <script type="text/javascript" src="web_foot.js"></script>
-    <script async="" src="z.txt"></script>
-    <script type="text/javascript" id="pv_d" src="p.html"></script>
-    <img style="display:none" id="dot_pvm" src="sub28_m_gnoPrice__k_1_1_1_data/pvhit0001_004.gif" width="1" height="1" border="0" />
-    <img style="display:none" src="sub28_m_gnoPrice__k_1_1_1_data/pvhit0001_003.gif" width="1" height="1" border="0" />
-    <script src="cg_gmine.js" type="text/javascript"></script>
-    <img id="gmine" style="display:none;" width="1px" height="0px" />
-    <div style="width:1px;height:0px;overflow:hidden;"> 
-     <script src="h.txt" type="text/javascript"></script>
-    </div>
-    <script type="text/javascript" id="adstat_js" src="ol.js"></script>
-    <script type="text/javascript" src="sub28_m_gnoPrice__k_1_1_1_data/bms_tag.html"></script> 
-    <script>
-        /* 统计 */
-        function zol_niux_tongji(event,url) {
-            var ip_ck = '';
-            if(typeof(readck) != "undefined"){
-                ip_ck = readck("ip_ck");
-            }else if(typeof(get_cookie) != "undefined"){
-                ip_ck = get_cookie("ip_ck");
-            }
-            var pv_stat_src = "http://pvtest.zol.com.cn/images/pvevents.gif?t=" + new Date().getTime() + "&event=" + event + "&ip_ck=" + ip_ck + "&url=" + url;
-            var imgObj = new Image();
-            imgObj.src = pv_stat_src;
-        }
-
-        $('.shop-click').click(function() {
-
-            zol_niux_tongji('zjshopJump_bottom_'+$(this).attr('date-type'),'http://zj.zol.com.cn/');
-        });
-
-        $('.ad181030').click(function(){
-            zol_niux_tongji('youpai_click_tongji','http://zj.zol.com.cn/');
-        });
-    </script> 
-   </div>
-	   
-	   <!-- 硬件列表 -->
 	   <!--hide end--> 
 	  </div> 
 
@@ -144,20 +50,20 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var memory = {
               chosed: "memory-0",
-              minMemory: null,
-              maxMemory: null
+              minMemory: 0,
+              maxMemory: 999999999
       }
 	  	
       function unActivePrice() {
@@ -213,7 +119,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-200")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-200";
@@ -228,7 +134,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-1";
 	  	     				price.minPrice = 500;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("memory")) {
 	  	     			//给对象赋值
@@ -236,7 +142,7 @@
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-0";
 	  	     				memory.minFrequency = 0;
-	  	     				memory.maxFrequency = null;
+	  	     				memory.maxFrequency = 999999999;
 	  	     			} else if (thisID == ("memory-4")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-4";
@@ -267,33 +173,35 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 
-	  	     		proList();
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
 	   	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
-		function proList() {
-			$.post("../hardwareinfo", 
+		function proList(name,minPrice,maxPrice,minMemory,maxMemory,page,rows) {
+			$.post("hardwareinfo", 
 			{
 				op : "findMotherBoardByPage",
-				name : hName.val,
-				minPrice : price.minPrice,
-				maxPrice : price.maxPrice,
-				minMemory : memory.minMemory,
-				maxMemory : memory.maxMemory,
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
+				minMemory : minMemory,
+				maxMemory : maxMemory,
 				page : page,
-				showRows : showRows
+				rows : rows
 			}, 
 			function(data) {
-
-			});
+                console.log(data);
+                console.log("111");
+			}, "json");
 		}
 	  	
 	  	
 	  	init();
-	  	proList();
+   		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
+
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  

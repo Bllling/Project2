@@ -402,7 +402,7 @@ to {
 
 			</div>
 			<div class="btn-box">
-				<a href="javascript:void(0);" target="_self" class="publish">发表配置单</a>
+				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid);">发表配置单</a>
 				<a href="javascript:void(0);" target="_self" class="empty">清空</a>
 			</div>
 		</div>
@@ -416,8 +416,16 @@ to {
 
 
 	<script type="text/javascript">
+		var cpuid;
+		var motherboardid;
+		var memoryid;
+		var diskid;
+		var sourceid;
+		var graphicsid;
+		var boxid;
+	
 		var page = 1;
-		var showRows = 6;
+		var rows = 6;
 	
 		var hardware;
 	
@@ -425,7 +433,7 @@ to {
 		var vcodePath;
 
 
-		window.onload = function() {
+ 		window.onload = function() {
 
 			var str = $("#my").html();
 
@@ -438,10 +446,10 @@ to {
 			}
 			createCode();
 			cpuPage();
-			};
+			}; 
 
 
-		function createCode() {
+ 		function createCode() {
 			
 			$.post("vcode", function(data) {
 				vcode = data.code;
@@ -455,7 +463,7 @@ to {
 						"url('../vcode/" + fileName + ".jpg')");
 
 			}, "json");
-		}
+		} 
 
 		function login1() {
 
@@ -514,6 +522,17 @@ to {
 				$("#" + id).html(count + "/" + maxStr);
 			}
 
+		}
+		
+		//提交配置单
+		function addComputer(cpu, motherboard, memory, disk, source, graphics, box) {
+			if (cpu == null || motherboard == null || memory ==null) {
+				alert("CPU,主板和内存为必选硬件，请检查您的配置单！");
+				return;
+			}
+			var inputCode = $(".code").val();
+			
+			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 		}
 		
 	</script>

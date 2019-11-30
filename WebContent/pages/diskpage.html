@@ -66,25 +66,25 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var size = {
               chosed: "size-0",
-              minSize: null,
-              maxSize: null
+              minSize: 0,
+              maxSize: 999999999
       }
       
       var type = {
               chosed: "type-null",
-              val: null
+              val: "null"
       }      
 	  	
       function unActivePrice() {
@@ -140,7 +140,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-100")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-100";
@@ -160,14 +160,14 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-1";
 	  	     				price.minPrice = 400;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("size")) {
 	  	     			//给对象赋值
 	  	     			if (thisID == ("size-0")) {
 	  	     				$("#" + size.chosed).removeClass("active");
 	  	     				size.chosed = "size-0";
-	  	     				size.val = null;
+	  	     				size.val = 999999999;
 	  	     			} else if (thisID == ("size-128")) {
 	  	     				$("#" + size.chosed).removeClass("active");
 	  	     				size.chosed = "size-128";
@@ -197,14 +197,14 @@
 	  	     				$("#" + size.chosed).removeClass("active");
 	  	     				size.chosed = "size-1";
 	  	     				size.minSize = 2048;
-	  	     				size.maxSize = null;
+	  	     				size.maxSize = 999999999;
 	  	     			}
 	  	     		}  else if (parentID == ("type")) {
 	  	     			//给对象赋值
 	  	     			if (thisID == ("type-null")) {
 	  	     				$("#" + type.chosed).removeClass("active");
 	  	     				type.chosed = "type-null";
-	  	     				type.val = null;
+	  	     				type.val = "null";
 	  	     			} else if (thisID == ("type-1")) {
 	  	     				$("#" + type.chosed).removeClass("active");
 	  	     				type.chosed = "type-1";
@@ -218,7 +218,7 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 					
-	  	     		proList();
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,page,showRows);
 	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
@@ -226,12 +226,12 @@
 	  	}
 	  	
 	  	
-		function proList() {
+		function proList(name,minPrice,maxPrice,minSize,maxSize,type,page) {
 			$.post("../hardwareinfo", 
 			{
-				op : "finddiskByPage",
-				name : hName.val,
-				minPrice : price.minPrice,
+				op : "finddiskByPage1",
+				name : name,
+				minPrice : minPrice,
 				maxPrice : price.maxPrice,
 				minSize : size.minSize,
 				maxSize : size.maxSize,
@@ -241,7 +241,7 @@
 			}, 
 			function(data) {
 
-			});
+			}, "json");
 		}
 	  	
 	  	init();

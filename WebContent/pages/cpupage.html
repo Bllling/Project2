@@ -28,7 +28,7 @@
 			<span id="subPri" class="price-button" onclick="unActivePrice();">确定</span>
 		</div>
 	</div>
-
+   
 
 	<div id="pamItem1" class="filter-item">
 		<strong class="filter-type">CPU主频：</strong>
@@ -59,8 +59,15 @@
 				id="cores-2">双核心</a>
 		</div>
 	</div>
-
+        <div class="plist"> </div>
 	<!--hide end-->
+	<!-- 显卡列表 -->
+	<div class="plist"> 
+
+	</div>
+
+	<!-- 显卡列表 -->
+	
 </div>
 
 <script type="text/javascript">
@@ -68,25 +75,25 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
       var frequency = {
               chosed: "frequency-0",
-              minFrequency: null,
-              maxFrequency: null
+              minFrequency: 0,
+              maxFrequency: 999999999
       }
 	  	
       var cores = {
       		chosed: "cores-0",
-      		val: null
+      		val: "null"
       }
       
       function unActivePrice() {
@@ -142,7 +149,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-500")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-500";
@@ -157,7 +164,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-1";
 	  	     				price.minPrice = 1500;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			}
 	  	     		} else if (parentID == ("frequency")) {
 	  	     			//给对象赋值
@@ -165,7 +172,7 @@
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-0";
 	  	     				frequency.minFrequency = 0;
-	  	     				frequency.maxFrequency = null;
+	  	     				frequency.maxFrequency = 999999999;
 	  	     			} else if (thisID == ("frequency-2")) {
 	  	     				$("#" + frequency.chosed).removeClass("active");
 	  	     				frequency.chosed = "frequency-2";
@@ -197,7 +204,7 @@
 	  	     			if (thisID == ("cores-0")) {
 	  	     				$("#" + cores.chosed).removeClass("active");
 	  	     				cores.chosed = "cores-0";
-	  	     				cores.val = null;
+	  	     				cores.val = "null";
 	  	     			} else if (thisID == ("cores-16")) {
 	  	     				$("#" + cores.chosed).removeClass("active");
 	  	     				cores.chosed = "cores-16";
@@ -206,6 +213,7 @@
 	  	     				$("#" + cores.chosed).removeClass("active");
 	  	     				cores.chosed = "cores-12";
 	  	     				cores.val = 12;
+	  	     				console.log("cores.val=" + cores.val);
 	  	     			}  else if (thisID == ("cores-10")) {
 	  	     				$("#" + cores.chosed).removeClass("active");
 	  	     				cores.chosed = "cores-10";
@@ -235,8 +243,8 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 	   	     		
-					console.log("sda"+price.minPrice);
-	  	     		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,showRows);
+	
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
 	   	     		
 	  	     		$(this).addClass("active");
 	  	     	}
@@ -244,26 +252,34 @@
 	  	}
 	  	
 
-	function proList(name,minPrice,maxPrice,minFrequency,maxFrequency,cores,page,rows) {
-		$.post("hardwareinfo", 
-		{
-			op : "findCpuByPage1",
-			name : name,
-			minPrice :minPrice,
-			maxPrice : maxPrice,
-			minFrequency : minFrequency,
-			maxFrequency : maxFrequency,
-			cores : cores,
-			page : page,
-			rows : rows
-		}, 
-		function(data) {
 
-		},"json");
-	}
+	  	function proList(name,minPrice,maxPrice,minFrequency,maxFrequency,cores,page,rows) {
+			$.post("hardwareinfo", 
+			{
+				op : "findCpuByPage1",
+				name : name,
+				minPrice :minPrice,
+				maxPrice : maxPrice,
+				minFrequency : minFrequency,
+				maxFrequency : maxFrequency,
+				cores : cores,
+				page : page,
+				rows : rows
+			}, 
+			function(data) {
+				var str="";
+				console.log(data);
+				$.each(data,function(index,item){
+				str+='<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.cpuprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">默认主频：<em>'+item.frequency+'</em></span><span title="2.9GHz ">最大主频：<em>'+item.maxfrequency+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">核心数量：<em>'+item.cores+' '+item.threads+'</em></span> </div>  </div> </div>'; })
+				$(".plist").append($(str));
+			}, "json");
+		}
+
+
 
 	init();
-	proList();
+	proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
+
 	hName.val = $("#name-1").val();
 	console.log(hName.val);
 </script>

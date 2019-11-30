@@ -119,6 +119,12 @@ public interface IHardwareBiz {
 	 */
 	public Map<String, Object> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c);
 	public List<Cpu> findCpuByPage(String name,Double minprice,Double maxprice,Double minfrequency,Double maxfrequency,Integer cores,int page,int rows);
-
+	public List<MotherBoard> findMotherboardByPage(String name, Double minprice, Double maxprice, Integer minmaxmemory,
+			Integer maxmaxmemory, int page, int rows);
+	public List<Memory> findMemoryByPage(String name,Double minprice,Double maxprice,Integer minfrequency,Integer maxfrequency,Integer memorytype,Integer volume,int page,int rows);
+	public List<Disk> findDiskByPage(String name,Double minprice,Double maxprice,Integer minvolume,Integer maxvolume,Integer isssd,int page,int rows);
+	public List<Graphics> findGraphicsByPage(String name,Double minprice,Double maxprice,Integer minmemory,Integer maxmemory,Integer minwidth,Integer maxwidth,int page,int rows);
+	public List<Source> findSourceByPage(String name,Double minprice,Double maxprice,Integer minpowers,Integer maxpowers,int page,int rows);
+	public List<Box> findBoxByPage(String name,Double minprice,Double maxprice,int page,int rows);
 
 }

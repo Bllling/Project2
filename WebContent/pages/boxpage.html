@@ -36,13 +36,13 @@
 	
       var hName = {
               chosed: "name-0",
-              val: null
+              val: "null"
       }
       
       var price = {
               chosed: "price-0",
-              minPrice: null,
-              maxPrice: null
+              minPrice: 0,
+              maxPrice: 999999999
       }
      
 	  	
@@ -99,7 +99,7 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-0";
 	  	     				price.minPrice = 0;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} else if (thisID == ("price-200")) {
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-200";
@@ -119,32 +119,32 @@
 	  	     				$("#" + price.chosed).removeClass("active");
 	  	     				price.chosed = "price-1";
 	  	     				price.minPrice = 500;
-	  	     				price.maxPrice = null;
+	  	     				price.maxPrice = 999999999;
 	  	     			} 
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 					
-	  	     		proList();
+	  	     		proList(hName.val, price.minPrice,price.maxPrice,page,showRows);
 	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
-		function proList() {
-			$.post("../hardwareinfo", 
+		function proList(name,minPrice,maxPrice,page,showRows) {
+			$.post("hardwareinfo", 
 			{
-				op : "findBoxByPage",
-				name : hName.val,
-				minPrice : price.minPrice,
-				maxPrice : price.maxPrice,
+				op : "findBoxByPage1",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
 				page : page,
-				showRows : showRows
+				rows : showRows
 			}, 
 			function(data) {
 
-			});
+			}, "json");
 		}
 	  	
 	  	
