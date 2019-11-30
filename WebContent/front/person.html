@@ -105,10 +105,10 @@
 			<colgroup>
 				<col style="width: 90px;" />
 				<col "/>
-				<col style="width: 200px;" />
+				<col style="width: 190px;" />
 				<col style="width: 100px;" />
 				<col style="width: 140px;" />
-				<col style="width: 100px;" />
+				<col style="width: 80px;" />
 				<col style="width: 100px;" />
 			</colgroup>
 			<thead class="next_table_header">
@@ -132,7 +132,7 @@
 						<div class="next_table_cell_wrapper">操作</div>
 					</th>
 					<th rowspan="1" type="header" role="gridcell">
-						<div class="next_table_cell_wrapper">12</div>
+						<div class="next_table_cell_wrapper"></div>
 					</th>
 				</tr>
 			</thead>
@@ -193,9 +193,10 @@
 		$("#imgFile").click();
 	}
 	
-	function showAddr(index) {
+	function showAddr(index, arid) {
 		$("#adBtn").val("修改");
-		window.addrIndex = index;
+		
+		window.addrIndex = arid;
 		//点击修改展示地址信息
 		var name = $("#tb_addrname" + index).text();
 		$("#consigneeName").val(name);
@@ -205,7 +206,10 @@
 		var province = areas[0];  //省份
 		var city = areas[1];  //市
 		var county = areas[2];  //区/县
-		$('#demo3').citys({valueType:'name',province:province,city:city,area:county});
+		$("#place").text("");
+		$('#demo3').citys({valueType:'name',province:province,city:city, 
+			});
+		
 		var address = $("#tb_address" + index).text();
 		$("#area-textare").val(address);
 		var postcode = $("#tb_postcode" + index).text();
@@ -226,8 +230,10 @@
 		$.post("../usr", {op:"findAddrsById", uid:uid}, function(data) {
 			var str = "";
 			var index = 0;
+			var isDefault;
 			$.each(data, function(index, item) {
 				index = index + 1;
+				isDefault = item.isdefault;
 				var addr = item.province + " " + item.city + " " + item.county;
 				var pCode = item.postcode;
 				if (pCode == null) {
@@ -239,12 +245,24 @@
 					+'<td><div id="tb_address'+index+'" class="next_table_cell_wrapper">'+item.raddress+'</div></td>'
 					+'<td><div id="tb_postcode'+index+'" class="next_table_cell_wrapper">'+pCode+'</div></td>'
 					+'<td><div  class="next_table_cell_wrapper"><span id="tb_tel'+index+'">'+item.addrtel+'<br /></span></div></td>'
-					+'<td><div class="next_table_cell_wrapper"><div class="tAction"><a href="#" style="color: #333333;" onclick="showAddr('+index+')">修改</a></div></div></td>'
-					+'<td><div class="next_table_cell_wrapper"><div ><span class="t_default">默认地址</span></div></div></td>'
-					+'</tr>';
+					+'<td><div class="next_table_cell_wrapper"><div class="tAction"><a href="#" style="color: #333333;" onclick="showAddr('+index+','+item.arid+')">修改</a></div></div></td>'
+					+'<td><div class="next_table_cell_wrapper"><div >';
+					if (isDefault == 1) {
+						str += '<span class="t_default">默认地址</span>';
+					} else {
+						str += '<a onclick="setAddrState('+item.arid+')">设为默认</a>';
+					}
+					str += '</div></div></td></tr>';
+					
 			});
 			$("#ad_body").append($(str));
 		},"json");
+	}
+	
+	function setAddrState(arid) {
+		updateAddrState(0,window.uid,"uid");
+		updateAddrState(1,arid,"arid");
+		showAddrInfo();
 	}
 	
 	function checkArea() {
@@ -378,6 +396,7 @@
 		var isDefault = $("#isDefault").is(':checked');
 		if (isDefault) {
 			isDefault = 1;
+			updateAddrState(0,uid,"uid");
 		} else {
 			isDefault = 0;
 		}
@@ -398,8 +417,9 @@
 		} else if (type == "修改") {
 			var arid = window.addrIndex;
 			//修改地址信息
-			$.post("../address", {op: "updateAddress",province: province, city: city, county: county,raddress:raddress,isDefault:isDefault, arid: arid,consigneeName:consigneeName, adPhone:adPhone, p_num:p_num  }, function(data) {
+			$.post("../address", {op: "updateAddress",province: province, city: city, county: county,raddress:area_textare,isDefault:isDefault, arid: arid,consigneeName:consigneeName, adPhone:adPhone, p_num:p_num  }, function(data) {
 				if (data > 0) {
+					
 					showAddrInfo();
 				} else {
 					alert("修改失败...");
@@ -409,6 +429,14 @@
 		
 	}
 
+	function updateAddrState(state,id, idName) {
+		$.post("../address", {op:"updateAddrState", state:state, id:id, idName:idName}, function(data) {
+			if (data < 0) {
+				alert("修改地址状态失败,请联系管理员...");
+			}
+		}, "test");
+	}
+	
 	function sumbit() {
 		var uid = window.uid;   //uid需要从别的页面获取  来确定登录的为哪个用户
 		

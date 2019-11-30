@@ -2,6 +2,8 @@ package biz.impl;
 
 import java.util.List;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import biz.IAddressBiz;
 import dao.IAddressDao;
 import dao.impl.AddressDaoImpl;
@@ -43,6 +45,18 @@ public class AddressBizImpl implements IAddressBiz {
 		}
 		IAddressDao addressDao = new AddressDaoImpl();
 		return addressDao.findAllByUid(uid);
+	}
+
+	@Override
+	public int updateAddrState(Integer state, Integer id, String idName) {
+		if (state == null || id == null) {
+			return 0;
+		}
+		if (StringUtil.CheckNull(idName)) {
+			return 0;
+		}
+		IAddressDao addressDao = new AddressDaoImpl();
+		return addressDao.updateAddrState(state, id, idName);
 	}
 
 }

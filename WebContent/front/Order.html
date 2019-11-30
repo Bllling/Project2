@@ -206,7 +206,7 @@
 	    	$.post("../order", {op:"findOrderInfo", uid: uid, type:type, condition:condition, page:page}, function(data) {
 	    		var str ="";
 	    		if (jQuery.isEmptyObject(data)) {
-	    			alert("查找失败...");
+	    			alert("没有数据...");
 	    			return;
 	    		}
 	    		$("#orderTbody").html("");
@@ -268,7 +268,7 @@
 	    	$.post("../order",{op:"getTotal", type:type, condition:condition, uid:uid}, function(data) {
 	    		if (data > 0) {
 	    			$(".total b").html(data);
-	    			$("#totalpage").html(Math.ceil(data/3));
+	    			$("#totalpage").html(Math.ceil(data/4));
 	    		} else {
 	    			return;
 	    		}
