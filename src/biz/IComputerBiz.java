@@ -7,7 +7,7 @@ import entity.Collection;
 import entity.Computer;
 
 public interface IComputerBiz {
-	 public int add(Map<String, String> map);
+	public int add(Integer id,Integer uid,String cname,String detail,Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid,Double sumprice );
 	 public List<Computer> findAll(String type);
 	 public Computer findById(Integer id);
 	 public  Computer findHardWardIdById(Integer id);

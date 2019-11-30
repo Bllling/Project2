@@ -13,7 +13,7 @@ public interface IComputerDao {
 	 * @param map
 	 * @return
 	 */
-     public int add(Map<String, String> map);
+	public int add(Integer id,Integer uid,String cname,String detail,Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid,Double sumprice );
      
      
      /**
@@ -90,4 +90,6 @@ public interface IComputerDao {
      public int getZnumebrByUid(Integer uid);
      
      public Computer findID(String cname,Integer id);
+     
+     
 }
