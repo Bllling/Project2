@@ -153,6 +153,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 		return dbHelper.update(sql, value, id);
 	}
 
+
 	@Override
 	public List<Cpu> findCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
 			Double maxfrequency, Integer cores ,int page,int rows) {
@@ -555,10 +556,15 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		
 		return dbHelper.getTotal(sql, list);
 	}
 
-
-
+	@Override
+	public int updateQuantiy(Integer id,  String formName,String idName) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "update "+formName+" set quantiy=quantiy-1 where "+idName+" = ? ";
+		return dbHelper.update(sql, id);
+	}
 
 }

@@ -136,6 +136,6 @@ public interface IHardwareDao {
 	public int getTotalSourceByPage(String name,Double minprice,Double maxprice,Integer minpowers,Integer maxpowers,int page,int rows);
 	public int getTotalBoxByPage(String name,Double minprice,Double maxprice,int page,int rows);
 	
-	
+	public int updateQuantiy(Integer id,  String formName,String idName);
 	
 }

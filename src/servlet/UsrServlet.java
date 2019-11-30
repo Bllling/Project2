@@ -28,7 +28,6 @@ public class UsrServlet extends BasicServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		String op = req.getParameter("op");
-		System.out.println(op);
 		if ("sendemail".equals(op)) {
 			try {
 				sendemail(req,resp);
@@ -143,7 +142,7 @@ public class UsrServlet extends BasicServlet{
 
 	private void login(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO 用户登录
-		System.out.println("11111111");
+		
 		String uname = req.getParameter("uname");
 		String upwd = req.getParameter("upwd");
 		IUsrBiz usrBiz = new UsrBizImpl();

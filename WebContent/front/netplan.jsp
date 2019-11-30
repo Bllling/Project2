@@ -129,10 +129,10 @@
                 <div class="per-infor" style="display: none;">
                     <p class="title">个人信息<a href="homepage.html#${currentAdmin.uid}" class="more" style="color:rgb(56,145,237);font-size:5px;">个人主页<font>&gt;&gt;</font></a></p>
                     <div class="edit-box clearfix">
-                        <div class="head-portrait"><img src=" ../images/null.jpg" width="75" height="75" alt="头像"></div>
+                        <div class="head-portrait"><img src="../${currentAdmin.upics}"  id="head1" width="75" height="75" alt="头像"></div>
                        <div class="right">
                           <p><a href="javascript:void(0)" class="name">${currentAdmin.uname}</a></p>
-                          
+                            
                        </div>
                     </div>
                     <table >
@@ -190,7 +190,9 @@
 <script type="text/javascript">
 var page=0,pics=null,pLen=0,mWidth=625;
 $(function(){
-
+    if($("#head1").attr("src")=='../'){
+    	$("#head1").attr("src","../images/null.jpg");
+    }
 	hot();
     var str=$(".name").html();
 	if(str!=null&&str.length > 0&&""!=str){
