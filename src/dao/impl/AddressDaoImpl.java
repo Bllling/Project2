@@ -35,6 +35,7 @@ public class AddressDaoImpl implements IAddressDao{
 	public List<Address> findAllByUid(Integer uid) {
 		DBHelper dbHelper = new DBHelper();
 		String sql="select arid,province,city,county,raddress,isdefault,addrname,addrtel from address a , usr u  where a.uid=u.uid and a.uid = ? order by  isdefault desc ";
+		System.out.println(sql);
 		return dbHelper.finds(sql, Address.class, uid);
 	}
 

@@ -511,6 +511,29 @@ to {
 			console.log(ss);
 		}
 		
+		//添加硬件到配置单的方法
+		function addToComputer(type, id, name, pics) {
+			if (type == "cpu") {
+				cpuid = id;
+				$("#leftSubSel_28" + " .pic").css("background-image",
+						"url('../No2pics/1575099343012_1575096998745_1575081891372_ceXUbURc8l4SA.jpg')");
+			} else if (type == "motherboard") {
+				
+			} else if (type == "memory") {
+				
+			} else if (type == "disk") {
+				
+			} else if (type == "graphics") {
+				
+			} else if (type == "box") {
+				
+			} else if (type == "source") {
+				
+			}
+			
+		}
+		
+		
 		//字数监听
 		function countStr(obj, maxStr, id) {
 			var count = $(obj).val().length;
@@ -534,6 +557,12 @@ to {
 			
 			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 		}
+		
+		$("#leftSubSel_28" + " .pic").css("background-image",
+		"url('../No2pics/1575099343012_1575096998745_1575081891372_ceXUbURc8l4SA.jpg')");
+		$("#leftSubSel_28" + " .pic").css("background-size", "100% 100%");
+		$("#leftSubSel_28" + " .pic").css("background-position", "0px 0px");
+		
 		
 	</script>
 

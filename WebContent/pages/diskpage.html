@@ -57,7 +57,15 @@
 
 	     </div> 
 	    </div> 
-	   
+	   <div class="sort-box clearfix" >
+		 <div class="small-page">
+			 			 <a class="small-page-prev " href="javascript:toprev()" target="_self" style="background-position: 1px -44px;">&nbsp;</a>
+			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
+			<a href="javascript:tonext()" class="small-page-next " target="_self" style="background-position: -78px -44px;">&nbsp;</a>
+		 </div>      
+		 <span class="total">共 <b style="color: #999;"></b>款</span>
+		 
+		</div>
 
 	   <!--hide end--> 
 	  </div> 
@@ -218,34 +226,46 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 					
-	  	     		proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,page,showRows);
+	  	     		proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,type,page,rows);
 	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
+	  	function diskType(var num) {
+	  		if (num == 1) {
+	  			return "固态硬盘";
+	  		} else {
+	  			return "机械硬盘";
+	  		}
+	  	}
 	  	
-		function proList(name,minPrice,maxPrice,minSize,maxSize,type,page) {
+	  	
+		function proList(name,minPrice,maxPrice,minSize,maxSize,type,page,rows) {
 			$.post("../hardwareinfo", 
 			{
 				op : "finddiskByPage1",
 				name : name,
 				minPrice : minPrice,
-				maxPrice : price.maxPrice,
-				minSize : size.minSize,
-				maxSize : size.maxSize,
-				type : type.val,
+				maxPrice : maxPrice,
+				minSize : minSize,
+				maxSize : maxSize,
+				type : type,
 				page : page,
-				showRows : showRows
+				rows : rows
 			}, 
 			function(data) {
-
+				var str="";
+				console.log(data);
+				$.each(data,function(index,item){
+				str+='<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.diskjprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">硬盘容量：<em>'+item.volume+'</em></span><span title="2.9GHz ">硬盘类型：<em>'+diskType(item.isssd)+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">转数：<em>'+item.cores+'</em></span> </div>  </div> </div>'; })
+				$(".plist").append($(str));
 			}, "json");
 		}
 	  	
 	  	init();
-	  	proList();
+	  	proList(hName.val,price.minPrice,price.maxPrice,size.minSize,size.maxSize,type,page,rows);
 	  	hName.val = $("#name-1").val();
 	  	console.log(hName.val);
 	  	
