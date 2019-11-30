@@ -283,12 +283,17 @@
 	  		$("#nowpage").html(page);
 	  		find();
 	  	}
-	  	function getTotal(){
-	  		 var sumpriceMin=sumpriceMin;
-	  		 var sumpriceMax=sumpriceMax;
-	  		 var rtime = rtime; 
-	  		
-	  		$.post("hardwareinfo",{op:"getTotalPart",sumpriceMin:sumpriceMin,sumpriceMax:sumpriceMax,rtime:rtime},function(data){
+	  	function getTotal(name,minPrice,maxPrice,minFrequency,maxFrequency,cores){
+	  		$.post("hardwareinfo",
+	  		{   op:"getTotalCpu",
+	  			name : name,
+				minPrice :minPrice,
+				maxPrice : maxPrice,
+				minFrequency : minFrequency,
+				maxFrequency : maxFrequency,
+				cores : cores
+				}
+	  		,function(data){
 	  				$(".total b").html(data);
 	  				$("#totalpage").html(Math.ceil(data/6));
 	  		},"text")
