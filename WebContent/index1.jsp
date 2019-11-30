@@ -695,18 +695,7 @@ to {
 			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 		}
 		
-		$("#leftSubSel_28" + " .pic").css("background-image",
-		"url(../No2pics/1575099343012_1575096998745_1575081891372_ceXUbURc8l4SA.jpg)");
-		$("#leftSubSel_28" + " .pic").addClass("hasPic");
-		
-		
-		$("#leftSubSel_28" + " .zj-parts-con").html("酷睿 I7 8700K");
-		$("#leftSubSel_28" + " .zj-parts-con").addClass("hasName");
-		
-		$("#leftSubSel_28" + " .link-add").html("￥1299");
-		$("#leftSubSel_28" + " .link-add").addClass("hasPrice");
-		$("#leftSubSel_28" + " .link-add").removeAttr("onclick");
-		
+
 	</script>
 
 </body>
