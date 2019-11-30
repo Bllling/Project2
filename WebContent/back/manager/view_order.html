@@ -66,7 +66,7 @@ body {
 	float: left;
 }
 
-.nav {
+.mynav {
 	margin-top: 25px;
 }
 
@@ -126,8 +126,9 @@ body {
 	text-decoration: none;
 }
 </style>
+<link href="../../css/Diy_WyListPlan.css" rel="stylesheet">
 <div class="whole">
-				<div class="nav">
+				<div class="mynav">
 					<input type="text" placeholder="输入订单号或配置名字进行搜索" id="scan" class="text1">
 					<input type="button" value="订单搜索" class="btn1" onclick="find()">
 					<input type="hidden" id="flag">
@@ -145,20 +146,28 @@ body {
 							
 						</tbody>
 					</table>
-	</div>
+				</div>
+				<div class="small-page" style="font_size: 20px;">
+				<a class="small-page-prev " href="javascript:toprev()" target="_self">&nbsp;</a>
+				<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
+				<a href="javascript:tonext()" class="small-page-next " target="_self">&nbsp;</a>
+		 		</div>      
+		 		<span class="total" style="float:right; padding: 10px 0px; font-size: 15px;">共 <b style="color: #999;"></b>款</span>
 </div>
 
 <script>
 var flag=0;
 var index=7;
 $(function() {
-	showOrder("admin");
+	showOrder("admin",null, 1);
 	gochange();
+	gettotal("noConditionByAdmin", null);
 })
 
-	function showOrder(type, condition) {
+
+	function showOrder(type, condition, page) {
 		//显示订单信息
-    	$.post("../../order", {op:"findOrderInfoByAdmin", type:type, condition:condition}, function(data) {
+    	$.post("../../order", {op:"findOrderInfoByAdmin", type:type, condition:condition, page:page}, function(data) {
     		var str ="";
     		if (jQuery.isEmptyObject(data)) {
     			alert("查找失败...");
@@ -166,6 +175,7 @@ $(function() {
     		}
     		$("#orderTbody").html("");
     		$.each(data, function(index, item) {
+    			$("#flag").val(index);
     			var cpupic = pic(item.pics);  //cpu图片
     			var mbpic = pic(item.pics1);    //主板图片
     			var mepic = pic(item.pics2);    //内存图片
@@ -213,18 +223,20 @@ $(function() {
 
     		$(".btnDisabled").attr("disabled",true);
     		$("a[name='disabled']").removeAttr("href");
-
+    		
     	},"json");
 	}
-	
+
 	function find() {
 		//按订单号或配置名字查找订单
     	var condition = $("#scan").val();
     	if (condition == "") {
-    		showOrder("admin");
+    		showOrder("admin",null, 1);
+    		gettotal("noConditionByAdmin", null);
     		return;
     	}
-    	showOrder("adminHasCondition", condition);
+    	gettotal("hasConditionByAdmin", condition);
+    	showOrder("adminHasCondition", condition, 1);
 	}
 	
 	function delete1(rorderid) {  //删除订单的方法
@@ -244,6 +256,40 @@ $(function() {
 			return;
 		}
 	}
+	
+	function gettotal(type, condition) {
+    	$.post("../../order",{op:"getTotal", type:type, condition:condition, uid:6}, function(data) {
+    		if (data > 0) {
+    			$(".total b").html(data);
+    			$("#totalpage").html(Math.ceil(data/3));
+    		} else {
+    			return;
+    		}
+    	}, "text");
+    }
+	
+	function tonext(){
+    	var totalpage=$("#totalpage").html();
+    	var page=parseInt($("#nowpage").html())+1;
+    	if(page>totalpage){
+    		page--;
+    		alert("已翻到最底页，不能再向下翻页");
+    		return;
+    	}
+    	$("#nowpage").html(page);
+    	showOrder("admin", null, page);
+    }
+    function toprev(){
+    	var totalpage=$("#totalpage").html();
+    	var page=parseInt($("#nowpage").html())-1;
+    	if(page<1){
+    		page++;
+    		alert("已翻到最顶页，不能再向上翻页");
+    		return;
+    	}
+    	$("#nowpage").html(page);
+    	showOrder("admin", null, page);
+    }
 	
 	function comfirm(rorderid) {   //发货的方法
 		var comfirmop = confirm("是否确认发货！");

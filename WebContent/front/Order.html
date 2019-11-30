@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link href="../css/Diy_WyListPlan.css" rel="stylesheet">
 <title>无标题文档</title>
 	<style>
 		body{
@@ -60,7 +61,7 @@
 		.computerp{
 			float: left;
 		}
-		.nav{
+		.mynav{
 			margin-top: 25px;
 		}
 		.btnVisible{
@@ -145,7 +146,7 @@
 </head>	
 <body>
 	<div class="whole">
-		<div class="nav">
+		<div class="mynav">
 			<input type="text" placeholder="输入订单号或配置名字进行搜索" id="scan" class="text1">
 			<input type="button" value="订单搜索" class="btn1" onclick="find()">
 			<input type="hidden" id="flag">
@@ -168,6 +169,12 @@
 			</table>
 			
 		</div>
+		<div class="small-page" style="font_size: 20px;">
+			<a class="small-page-prev " href="javascript:toprev()" target="_self">&nbsp;</a>
+			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
+			<a href="javascript:tonext()" class="small-page-next " target="_self">&nbsp;</a>
+		 </div>      
+		 <span class="total" style="float:right; padding: 10px 0px; font-size: 15px;">共 <b style="color: #999;"></b>款</span>
 		<div class="popOutBg" id="pop1" style="display: none;"></div>
 	<div class="popOut" id="pop2" style="display: none;">
 		<p style="margin-top: 20px;">你确定要删除此订单吗？</p>
@@ -183,14 +190,20 @@
    
 	    var flag=0;
 	    var index=7;
+	    var uid; //需要页面调取是哪个用户的订单
 	    $(function(){
-	    	showOrder("noCondition");
+	    	uid = location.hash.replace("#","");
+	    	console.log("orderUid："+uid);
+	    	showOrder("noCondition", null, 1);
 	    	gochange();
+	    	gettotal("noCondition", null);
 	    })
-	    var uid = 1;   //需要页面调取是哪个用户的订单
-	    function showOrder(type, condition) {
+	    
+	   
+	       
+	    function showOrder(type, condition, page) {
 	    	//显示订单信息
-	    	$.post("../order", {op:"findOrderInfo", uid: uid, type:type, condition:condition}, function(data) {
+	    	$.post("../order", {op:"findOrderInfo", uid: uid, type:type, condition:condition, page:page}, function(data) {
 	    		var str ="";
 	    		if (jQuery.isEmptyObject(data)) {
 	    			alert("查找失败...");
@@ -251,6 +264,40 @@
 	    	},"json");
 	    }
 	    
+	    function gettotal(type, condition) {
+	    	$.post("../order",{op:"getTotal", type:type, condition:condition, uid:uid}, function(data) {
+	    		if (data > 0) {
+	    			$(".total b").html(data);
+	    			$("#totalpage").html(Math.ceil(data/3));
+	    		} else {
+	    			return;
+	    		}
+	    	}, "text");
+	    }
+	    
+	    function tonext(){
+	    	var totalpage=$("#totalpage").html();
+	    	var page=parseInt($("#nowpage").html())+1;
+	    	if(page>totalpage){
+	    		page--;
+	    		alert("已翻到最底页，不能再向下翻页");
+	    		return;
+	    	}
+	    	$("#nowpage").html(page);
+	    	showOrder("noCondition", null, page);
+	    }
+	    function toprev(){
+	    	var totalpage=$("#totalpage").html();
+	    	var page=parseInt($("#nowpage").html())-1;
+	    	if(page<1){
+	    		page++;
+	    		alert("已翻到最顶页，不能再向上翻页");
+	    		return;
+	    	}
+	    	$("#nowpage").html(page);
+	    	showOrder("noCondition", null, page);
+	    }
+	    
 	    function comfirm(rorderid) {  //确认收货的方法
 	    	var comfirmop = confirm("是否确认已经收货！");
 	    	if (comfirmop) {
@@ -302,12 +349,13 @@
 	    function find() {
 	    	//按订单号或配置名字查找订单
 	    	var condition = $("#scan").val();
-	    	console.log(condition.length);
 	    	if (condition == "" || condition.length <= 0 || condition == null ) {
-	    		showOrder("noCondition");
+	    		showOrder("noCondition", null, 1);
+	    		gettotal("noCondition", null);
 	    		return;
 	    	}
-	    	showOrder("hasCondition", condition);
+	    	gettotal("hasCondition", condition);
+	    	showOrder("hasCondition", condition, 1);
 	    	
 	    }
 	    

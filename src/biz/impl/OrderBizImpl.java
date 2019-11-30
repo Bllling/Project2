@@ -12,13 +12,13 @@ public class OrderBizImpl implements IOrderBiz {
 
 	//查询订单详细信息
 	@Override
-	public List<Rorder> findOrderInfo(Integer uid, String condition, String type) {
+	public List<Rorder> findOrderInfo(Integer uid, String condition, String type, Integer page) {
 		if (uid == null) {
 			return null;
 		}
 		
 		IOrderDao orderDao = new OrderDaoImpl();
-		return orderDao.findOrderInfo(uid, condition, type);
+		return orderDao.findOrderInfo(uid, condition, type, page);
 	}
 
 	@Override
@@ -47,12 +47,22 @@ public class OrderBizImpl implements IOrderBiz {
 
 	//管理员查询订单信息
 	@Override
-	public List<Rorder> findOrderInfoByAdmin(String condition, String type) {
+	public List<Rorder> findOrderInfoByAdmin(String condition, String type, Integer page) {
 		if (StringUtil.CheckNull(type)) {
 			return null;
 		}
 		IOrderDao orderDao = new OrderDaoImpl();
-		return orderDao.findOrderInfo(null, condition, type);
+		return orderDao.findOrderInfo(null, condition, type, page);
+	}
+
+	//查询总订单数
+	@Override
+	public int getTotal(Integer uid, String type, String condition) {
+		if (uid == null) {
+			return 0;
+		}
+		IOrderDao orderDao = new OrderDaoImpl();
+		return orderDao.getTotal(uid, type, condition);
 	}
 
 }

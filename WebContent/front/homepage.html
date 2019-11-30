@@ -35,16 +35,32 @@
 		<div class="nav" style="width: 100%;height: auto">
 			<div class="nav-box" style="width: 100%;">
 				<ul class="navul" style="min-width: 800px; margin-left: 350px;">
-					<li id="menu_nav_index" style=""><a >首页</a></li>
+					<li id="menu_nav_index" style="" ><a href="../index1.jsp">首页</a></li>
 					<li id="menu_nav_myplan"><a target="_self"
-						href="#" class="active">个人主页</a></li>
+						href="#" onclick="showperson()">个人主页</a></li>
 					<li id="menu_nav_index"><a target="_self"
-						href="#" >已买到的宝贝</a></li>
+						href="#" onclick="showorder()" >已买到的宝贝</a></li>
 					
 				</ul>
 			</div>
 		</div>
-		
-		<iframe id="commentsiframe" align="middle" src="person.html" frameborder="0" width="1000px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: 450px; height: 1180px;" ></iframe>
+		<input id="homePageUid" type="hidden"/>
+		<iframe id="commentsiframe" align="middle"  onload="showhtml()" frameborder="0" width="1000px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: 450px; height: 1180px;" ></iframe>
 	</body>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		var uid1;
+		
+		$(function() {
+			uid1 = location.hash.replace("#","");
+			$("#commentsiframe").attr("src","person.html#"+uid1);
+		})
+		function showorder() {
+			$("#commentsiframe").attr("src","Order.html#"+uid1);
+		}
+		function showperson() {
+			
+			$("#commentsiframe").attr("src","person.html#"+uid1);
+		}
+	</script>
 </html>

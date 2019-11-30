@@ -104,7 +104,7 @@
 		</div>
 		<div class="sort-box clearfix" >
 		 <div class="small-page">
-			 			 <a class="small-page-prev " href="javascript:toprev()" target="_self">&nbsp;</a>
+			<a class="small-page-prev " href="javascript:toprev()" target="_self">&nbsp;</a>
 			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
 			<a href="javascript:tonext()" class="small-page-next " target="_self">&nbsp;</a>
 		 </div>      

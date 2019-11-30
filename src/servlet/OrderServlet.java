@@ -26,15 +26,26 @@ public class OrderServlet extends BasicServlet {
 			updateOrder(request, response);
 		}else if ("findOrderInfoByAdmin".equals(op)) {
 			findOrderInfoByAdmin(request, response);
+		}else if ("getTotal".equals(op)) {
+			getTotal(request, response);
 		}
+	}
+
+	private void getTotal(HttpServletRequest request, HttpServletResponse response) {
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		String type = request.getParameter("type");
+		String condition = request.getParameter("condition");
+		IOrderBiz orderBiz = new OrderBizImpl();
+		this.send(response, orderBiz.getTotal(uid, type, condition));
 	}
 
 	//管理员查询订单信息
 	private void findOrderInfoByAdmin(HttpServletRequest request, HttpServletResponse response) {
 		String type = request.getParameter("type");
 		String condition = request.getParameter("condition");
+		int page = Integer.parseInt(request.getParameter("page"));
 		IOrderBiz orderBiz = new OrderBizImpl();
-		this.send(response, orderBiz.findOrderInfoByAdmin(condition, type));
+		this.send(response, orderBiz.findOrderInfoByAdmin(condition, type, page));
 	}
 
 	//修改订单状态
@@ -65,11 +76,12 @@ public class OrderServlet extends BasicServlet {
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		String type = request.getParameter("type");
 		String condition = request.getParameter("condition");
+		int page = Integer.parseInt(request.getParameter("page"));
 		IOrderBiz orderBiz = new OrderBizImpl();
 		if ("noCondition".equals(type)) {
-			this.send(response, orderBiz.findOrderInfo(uid, null, type));
+			this.send(response, orderBiz.findOrderInfo(uid, null, type, page));
 		} else {
-			this.send(response, orderBiz.findOrderInfo(uid, condition, type));
+			this.send(response, orderBiz.findOrderInfo(uid, condition, type, page));
 		}
 		
 	}
