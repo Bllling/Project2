@@ -202,7 +202,7 @@
 		</div>
 		<div class="popOutBg" id="pop1" style="display: none;"></div>
 		<div class="popOut" id="pop2" style="display: none;">
-			<p style="margin-top: 20px;font-size: 15px; font-family: initial;">你确定要购买吗？</p>
+			<p style="margin-top: 20px;font-size: 15px; font-family: initial;" id="ppp">你确定要购买吗？</p>
 			<input type="button" value="确定" onclick="yes()" class="btn2"
 				style="margin-top: 20px; margin-right: 30px;    width: 50px;"> <input
 				type="button" value="关闭" onclick="no()" class="btn2" 	style="margin-top: 20px;    width: 50px;">
@@ -280,12 +280,22 @@ $(function(){
 			$(".popOutBg").css('display', 'none');
 	    }
        function yes(){
+    	   if($("#ppp").html()=="库存不足"	){
+    		   $(".popOut").css('display', 'none');
+   			$(".popOutBg").css('display', 'none');
+    	   }else{
     	   var line = location.hash.replace("#","");
     		var id=line.substring(0,1);
     		var uid=line.substring(2,3);
-    	   window.location.href="PlaceOrder.html#"+id+"&"+uid;
+    	   window.location.href="PlaceOrder.html#"+id+"&"+uid;}
        }
 	function buy(){
+
+	for (var i=1;i<8;i++){
+		if($("#no"+i+" td:eq(2)").html()<=0){
+		$("#ppp").html("库存不足")	
+		}
+	}
 	$(".popOut").css('display', 'block');
 	$(".popOutBg").css('display', 'block');
     }
