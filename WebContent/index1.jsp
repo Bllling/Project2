@@ -551,7 +551,7 @@ to {
 				
 				//设置图片
 				$("#leftSubSel_5" + " .pic").css("background-image",
-				"url(pics)");
+				"url("+pics+")");
 				$("#leftSubSel_5" + " .pic").css("background-size", "100% 100%");
 				$("#leftSubSel_5" + " .pic").css("background-position", "0px 0px");
 				
@@ -571,7 +571,7 @@ to {
 				
 				//设置图片
 				$("#leftSubSel_3" + " .pic").css("background-image",
-				"url(pics)");
+				"url("+pics+")");
 				$("#leftSubSel_3" + " .pic").css("background-size", "100% 100%");
 				$("#leftSubSel_3" + " .pic").css("background-position", "0px 0px");
 				
@@ -591,7 +591,7 @@ to {
 				
 				//设置图片
 				$("#leftSubSel_2" + " .pic").css("background-image",
-				"url(pics)");
+				"url("+pics+")");
 				$("#leftSubSel_2" + " .pic").css("background-size", "100% 100%");
 				$("#leftSubSel_2" + " .pic").css("background-position", "0px 0px");
 				
@@ -611,7 +611,7 @@ to {
 				
 				//设置图片
 				$("#leftSubSel_6" + " .pic").css("background-image",
-				"url(pics)");
+				"url("+pics+")");
 				$("#leftSubSel_6" + " .pic").css("background-size", "100% 100%");
 				$("#leftSubSel_6" + " .pic").css("background-position", "0px 0px");
 				
@@ -631,7 +631,7 @@ to {
 				
 				//设置图片
 				$("#leftSubSel_10" + " .pic").css("background-image",
-				"url(pics)");
+				"url("+pics+")");
 				$("#leftSubSel_10" + " .pic").css("background-size", "100% 100%");
 				$("#leftSubSel_10" + " .pic").css("background-position", "0px 0px");
 				
@@ -651,7 +651,7 @@ to {
 				
 				//设置图片
 				$("#leftSubSel_35" + " .pic").css("background-image",
-				"url(pics)");
+				"url("+pics+")");
 				$("#leftSubSel_35" + " .pic").css("background-size", "100% 100%");
 				$("#leftSubSel_35" + " .pic").css("background-position", "0px 0px");
 				

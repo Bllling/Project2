@@ -229,8 +229,8 @@ public class HardWareInfo extends BasicServlet {
 	}
 
 	private void getTotalCpu(HttpServletRequest request, HttpServletResponse response) {
-		int rows =Integer.parseInt(request.getParameter("rows"));
-		int page= Integer.parseInt(request.getParameter("page"));
+		int rows =0;
+		int page= 0;
 		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
 		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
 	    Double minFrequency=Double.parseDouble(request.getParameter("minFrequency"));

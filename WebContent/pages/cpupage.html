@@ -264,11 +264,14 @@
 	   	     		
 					
 	  	     		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
-	   	     		
+	  	     		getTotal(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val);
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
+	  	
+	  	
+	  	
 	  	
 	  	function tonext(){
 	  		var totalpage=$("#totalpage").html();
@@ -279,7 +282,7 @@
 	  			return;
 	  		}
 	  		$("#nowpage").html(page);
-	  		 find();
+	  		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
 	  	}
 	  	function toprev(){
 	  		var totalpage=$("#totalpage").html();
@@ -290,7 +293,7 @@
 	  			return;
 	  		}
 	  		$("#nowpage").html(page);
-	  		find();
+	  		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
 	  	}
 	  	function getTotal(name,minPrice,maxPrice,minFrequency,maxFrequency,cores){
 	  		$.post("hardwareinfo",
@@ -304,6 +307,10 @@
 				}
 	  		,function(data){
 	  				$(".total b").html(data);
+	  				if (data == 0) {
+	  					$("#totalpage").html("1");
+	  					return;
+	  				}
 	  				$("#totalpage").html(Math.ceil(data/6));
 	  		},"text")
 	  	}
@@ -337,20 +344,12 @@
 						addToComputer("cpu", item.id, item.pics, item.name, item.cpuprice);
 					})
 				})
-				
-				
-				
-							
-/* 				$(".add").parent().parent().each(function(){
-					$(this).click(function(){
-						alert($(this).attr('id'));
-					})
-				}) */
-				
+
 			}, "json");
 		}
 
 
+  	getTotal(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val);
 
 	init();
 	proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
