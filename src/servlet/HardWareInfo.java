@@ -114,10 +114,24 @@ public class HardWareInfo extends BasicServlet {
 			getTotalSource(request, response);
 		} else if("getTotalBox".equals(op)){
 			getTotalBox(request, response);
-		}
+		} else if("updateQuantiy".equals(op)){
+			updateQuantiy(request, response);
+		} 
+		
+		
 	
 	}
 	
+	private void updateQuantiy(HttpServletRequest request, HttpServletResponse response) {
+		String formName=request.getParameter("formName");
+		String idName=request.getParameter("idName");
+		Integer id =Integer.parseInt(request.getParameter("id"));
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+
+		this.send(response, hardwareBiz.updateQuantiy(id, formName, idName));
+		
+	}
+
 	private void getTotalBox(HttpServletRequest request, HttpServletResponse response) {
 		int rows =Integer.parseInt(request.getParameter("rows"));
 		int page= Integer.parseInt(request.getParameter("page"));
@@ -213,8 +227,8 @@ public class HardWareInfo extends BasicServlet {
 	}
 
 	private void getTotalMotherBoard(HttpServletRequest request, HttpServletResponse response) {
-		int rows =Integer.parseInt(request.getParameter("rows"));
-		int page= Integer.parseInt(request.getParameter("page"));
+		int rows =0;
+		int page= 0;
 		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
 		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
 		Integer minmaxmemory=Integer.parseInt(request.getParameter("minMemory"));
@@ -224,7 +238,7 @@ public class HardWareInfo extends BasicServlet {
         	name=null;
         }
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
-        this.send(response,hardwareBiz.findMotherboardByPage(name, minprice, maxprice, minmaxmemory, maxmaxmemory, page, rows));
+        this.send(response,hardwareBiz.getTotalMotherboardByPage(name, minprice, maxprice, minmaxmemory, maxmaxmemory, page, rows));
 		
 	}
 

@@ -342,6 +342,8 @@ body {
         var sourceprice=$("#source").val();
         var graphicsprice=$("#graphics").val();
         var boxprice=$("#box").val();
+        console.log(isupdate(id));
+        if(isupdate(id)){
         $.post("../order",{op:"addOrder",id:id,uid:uid,rorderid:rorderid,state:state,total:total},function(data){
            if(data>0){
         		$(".popOut").css('display', 'block');
@@ -353,15 +355,47 @@ body {
        		$("#result").html("购买失败");
            }
         })
+        }else{
+        	$(".popOut").css('display', 'block');
+    		$(".popOutBg").css('display', 'block');
+    		$("#result").html("购买失败，库存不足");
+        }
+       
+        
+    }
+    function isupdate(id){
+    	$.post("../computer",{op:"findHardWardIdById",id:id},function(data){
+   
+        	var cpuid=data.cpuid;
+        	var motherboardid=data.motherboardid;
+        	var memoryid=data.memoryid;
+        	var diskid=data.diskid;
+        	var sourceid=data.sourceid;
+        	var graphicsid=data.graphicsid;
+        	var boxid=data.boxid;
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"cpu",idName:"cpuid",id:cpuid},function(data){
+        	
+        		if(data>0){	
+        			return 1;
+        		}else{
+              		return 0;
+        		}
+        	})
+        },"json")
+      
         
     }
     function yes(){
-    	var line = location.hash.replace("#","");
-		var uid=line.substring(2,3);
-		$(".popOut").css('display', 'none');
-		$(".popOutBg").css('display', 'none');
-		
-		window.location.href="homepage.html#"+uid;
+    	if($("#result").html=="购买成功"){
+    		var line = location.hash.replace("#","");
+			var uid=line.substring(2,3);
+			$(".popOut").css('display', 'none');
+			$(".popOutBg").css('display', 'none');
+			window.location.href="homepage.html#"+uid;
+		}else{
+			$(".popOut").css('display', 'none');
+			$(".popOutBg").css('display', 'none');
+		}
     }
 	</script>
 </body>

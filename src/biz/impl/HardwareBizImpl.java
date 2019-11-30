@@ -308,4 +308,10 @@ public class HardwareBizImpl implements IHardwareBiz {
 		return hardwareDao.getTotalBoxByPage(name, minprice, maxprice, page, rows);
 	}
 
+	@Override
+	public int updateQuantiy(Integer id, String formName, String idName) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.updateQuantiy(id, formName, idName);
+	}
+
 }

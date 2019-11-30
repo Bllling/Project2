@@ -136,5 +136,5 @@ public interface IHardwareBiz {
 	public int getTotalGraphicsByPage(String name,Double minprice,Double maxprice,Integer minmemory,Integer maxmemory,Integer minwidth,Integer maxwidth,int page,int rows);
 	public int getTotalSourceByPage(String name,Double minprice,Double maxprice,Integer minpowers,Integer maxpowers,int page,int rows);
 	public int getTotalBoxByPage(String name,Double minprice,Double maxprice,int page,int rows);
-
+	public int updateQuantiy(Integer id,  String formName,String idName);
 }

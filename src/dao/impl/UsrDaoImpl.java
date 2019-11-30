@@ -26,7 +26,7 @@ public class UsrDaoImpl implements IUsrDao {
 	@Override
 	public Usr login(String uname, String upwd) {
 		DBHelper db = new DBHelper();
-		String sql = "select uid,uname,upwd,uemail from usr where (utel=? or uemail=?) and upwd=password(?)";
+		String sql = "select uid,uname,upwd,uemail,upics from usr where (utel=? or uemail=?) and upwd=password(?)";
 		return db.find(sql, Usr.class,uname,uname,upwd);
 		
 	}

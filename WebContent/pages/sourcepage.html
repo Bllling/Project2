@@ -121,7 +121,8 @@
 	  	     		//获取该结点的父节点id
 	  	     		var parentID = $(this).parent().attr('id');
 	  	     		
-	  	     		
+	  	     		//获取该节点的类型
+	  	     		var thisClass = $(this).attr('class');
 	   	     		//判断属性
 	  	     		if (parentID == "price") {
 	  	     			//给对象赋值
@@ -191,7 +192,15 @@
 	  	     			}
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     		} else if (thisClss == "small-page-next") { //下一页
+	  	     			tonext();
+	  	     			return;
+	  	     		} else if (thisClss == "small-page-prve") { //上一页
+	  	     			toprev();
+	  	     			return;
 	  	     		}
+	   	     		
+	   	     		
 					console.log(powers.minPowers+"sss"+powers.maxPowers);
 	  	     		proList(hName.val, price.minPrice, price.maxPrice, powers.minPowers, powers.maxPowers, page, rows);
 	  	     	
