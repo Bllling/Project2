@@ -229,8 +229,8 @@ public class HardWareInfo extends BasicServlet {
 	}
 
 	private void getTotalCpu(HttpServletRequest request, HttpServletResponse response) {
-		int rows =Integer.parseInt(request.getParameter("rows"));
-		int page= Integer.parseInt(request.getParameter("page"));
+		int rows =0;
+		int page= 0;
 		Double minprice = Double.parseDouble(request.getParameter("minPrice"));
 		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
 	    Double minFrequency=Double.parseDouble(request.getParameter("minFrequency"));
@@ -282,8 +282,8 @@ public class HardWareInfo extends BasicServlet {
         if("null".equals(name)){
         	name=null;
         }
-        Integer minpowers=Integer.parseInt(request.getParameter("minPrice"));
-        Integer maxpowers=Integer.parseInt(request.getParameter("maxPrice"));
+        Integer minpowers=Integer.parseInt(request.getParameter("minPowers"));
+        Integer maxpowers=Integer.parseInt(request.getParameter("maxPowers"));
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
         this.send(response, hardwareBiz.findSourceByPage(name, minprice, maxprice, minpowers, maxpowers, page, rows));
 	}
@@ -316,7 +316,13 @@ public class HardWareInfo extends BasicServlet {
         }
         Integer minvolume=Integer.parseInt(request.getParameter("minSize"));
         Integer maxvolume=Integer.parseInt(request.getParameter("maxSize"));
-        Integer isssd=Integer.parseInt(request.getParameter("type"));
+        Integer isssd;
+        if("null".equals(request.getParameter("type"))){
+        	isssd=null;
+        }else{
+        	isssd=Integer.parseInt(request.getParameter("type"));
+        }
+       
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
         this.send(response, hardwareBiz.findDiskByPage(name, minprice, maxprice, minvolume, maxvolume, isssd, page, rows));
 	}
@@ -356,6 +362,7 @@ public class HardWareInfo extends BasicServlet {
 		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
 		Integer minmaxmemory=Integer.parseInt(request.getParameter("minMemory"));
 		Integer maxmaxmemory=Integer.parseInt(request.getParameter("maxMemory"));
+		
 		String name = request.getParameter("name");
         if("null".equals(name)){
         	name=null;

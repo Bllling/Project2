@@ -157,38 +157,38 @@
 	  	     			if (thisID == ("memory-0")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-0";
-	  	     				memory.minFrequency = 0;
-	  	     				memory.maxFrequency = 999999999;
+	  	     				memory.minMemory = 0;
+	  	     				memory.maxMemory = 999999999;
 	  	     			} else if (thisID == ("memory-4")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-4";
-	  	     				memory.minFrequency = 0;
-	  	     				memory.maxFrequency = 4;
+	  	     				memory.minMemory = 0;
+	  	     				memory.maxMemory = 4;
 	  	     			} else if (thisID == ("memory-8")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-8";
-	  	     				memory.minFrequency = 4;
-	  	     				memory.maxFrequency = 8;
+	  	     				memory.minMemory = 4;
+	  	     				memory.maxMemory = 8;
 	  	     			}  else if (thisID == ("memory-16")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-16";
-	  	     				memory.minFrequency = 8;
-	  	     				memory.maxFrequency = 16;
+	  	     				memory.minMemory = 8;
+	  	     				memory.maxMemory = 16;
 	  	     			}  else if (thisID == ("memory-32")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-32";
-	  	     				memory.minFrequency = 16;
-	  	     				memory.maxFrequency = 32;
+	  	     				memory.minMemory = 16;
+	  	     				memory.maxMemory = 32;
 	  	     			}  else if (thisID == ("memory-64")) {
 	  	     				$("#" + memory.chosed).removeClass("active");
 	  	     				memory.chosed = "memory-64";
-	  	     				memory.minFrequency = 32;
-	  	     				memory.maxFrequency = 64;
+	  	     				memory.minMemory = 32;
+	  	     				memory.maxMemory = 64;
 	  	     			}
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
-
+	  	     		
 	  	     		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
 	   	     		
 	  	     		$(this).addClass("active");
@@ -208,17 +208,27 @@
 				page : page,
 				rows : rows
 			}, 
-			function(data) {
-				var str="";
+			function(data) {			
+				$(".plist").empty();
+				
 				console.log(data);
+				
 				$.each(data,function(index,item){
-				str+='<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125"> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.motherboardprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">最大内存：<em>'+item.maxmemory+'</em></span> </div>  </div> </div>'; })
-				$(".plist").html($(str));
+					var str="";
+					str = '<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125" id='+item.motherboardid+'> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.motherboardprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">最大内存：<em>'+item.maxmemory+'</em></span> </div>  </div> </div>';		
+					$(".plist").append($(str));
+					
+					//给每个主板添加监听	
+					$("#" + item.motherboardid + " .add").click(function(){
+						addToComputer("motherboard", item.motherboardid, item.pics, item.name, item.motherboardprice);
+					})
+				})
 			}, "json");
 		}
 	  	
 	  	
 	  	init();
+	  	
    		proList(hName.val,price.minPrice,price.maxPrice,memory.minMemory,memory.maxMemory,page,rows);
 
 	  	hName.val = $("#name-1").val();
