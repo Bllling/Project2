@@ -52,16 +52,16 @@ public class OrderDaoImpl implements IOrderDao{
 	public int getTotal(Integer uid, String type, String condition) {
 		DBHelper dbHelper = new DBHelper();
 		if ("noCondition".equals(type)) {
-			String sql = "select count(rorderid) from rorder where uid = ?";
+			String sql = "select count(rorderid) from rorder where uid = ? and state != 0";
 			return dbHelper.getTotal(sql, uid);
 		} else if("hasCondition".equals(type)) {
-			String sql = "select count(r.rorderid) from rorder r, computer c where r.uid = ? and r.id = c.id and (r.rorderid = ? or c.cname = ?)";
+			String sql = "select count(r.rorderid) from rorder r, computer c where r.uid = ? and r.id = c.id and (r.rorderid = ? or c.cname = ?) and state != 0";
 			return dbHelper.getTotal(sql, uid, condition, condition);
 		} else if ("noConditionByAdmin".equals(type)) {
-			String sql = "select count(rorderid) from rorder";
+			String sql = "select count(rorderid) from rorder ";
 			return dbHelper.getTotal(sql);
 		} else {
-			String sql = "select count(r.rorderid) from rorder r, computer c where r.id = c.id and (r.rorderid = ? or c.cname = ?)";
+			String sql = "select count(r.rorderid) from rorder r, computer c where r.id = c.id and (r.rorderid = ? or c.cname = ?) ";
 			return dbHelper.getTotal(sql, condition, condition);
 		}
 		

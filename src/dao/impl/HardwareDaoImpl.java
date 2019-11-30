@@ -153,6 +153,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 		return dbHelper.update(sql, value, id);
 	}
 
+
 	@Override
 	public List<Cpu> findCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
 			Double maxfrequency, Integer cores ,int page,int rows) {
@@ -179,7 +180,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
@@ -209,11 +210,11 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
-		System.out.println(minmaxmemory+"ss"+maxmaxmemory);
-		System.out.println(sql);
+	
 		return dbHelper.finds(sql, MotherBoard.class, list);
 	}
 
@@ -245,6 +246,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
@@ -276,11 +278,11 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
-		System.out.println("name:"+name+"   mp"+minprice+"  maxp"+maxprice+"    minvo"+minvolume+ "   maxvo"+maxvolume+"    issd"+isssd+"  "+page+"rows"+rows);
-		System.out.println(sql);
+		
 		return dbHelper.finds(sql, Disk.class, list);
 	}
 
@@ -312,6 +314,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
@@ -333,6 +336,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
@@ -361,11 +365,11 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
 			list.add(maxpowers);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
-		System.out.println(minpowers+"sss"+maxpowers);
-		System.out.println(sql);
+		
 		return dbHelper.finds(sql, Source.class, list);
 	}
 
@@ -395,7 +399,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			list.add(name);
 		}
 		
-		
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -421,6 +425,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -452,6 +457,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -480,6 +486,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -511,6 +518,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -536,7 +544,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and SUBSTRING_INDEX(maxpowers,'W',1)<=? ";
 			list.add(maxpowers);
 		}
-		
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
@@ -555,10 +563,15 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
+		sql+="and state =1 and quantiy >0 ";
 		return dbHelper.getTotal(sql, list);
 	}
 
-
-
+	@Override
+	public int updateQuantiy(Integer id,  String formName,String idName) {
+		DBHelper dbHelper = new DBHelper();
+		String sql = "update "+formName+" set quantiy=quantiy-1 where "+idName+" = ? ";
+		return dbHelper.update(sql, id);
+	}
 
 }

@@ -114,10 +114,24 @@ public class HardWareInfo extends BasicServlet {
 			getTotalSource(request, response);
 		} else if("getTotalBox".equals(op)){
 			getTotalBox(request, response);
-		}
+		} else if("updateQuantiy".equals(op)){
+			updateQuantiy(request, response);
+		} 
+		
+		
 	
 	}
 	
+	private void updateQuantiy(HttpServletRequest request, HttpServletResponse response) {
+		String formName=request.getParameter("formName");
+		String idName=request.getParameter("idName");
+		Integer id =Integer.parseInt(request.getParameter("id"));
+        IHardwareBiz hardwareBiz = new HardwareBizImpl();
+
+		this.send(response, hardwareBiz.updateQuantiy(id, formName, idName));
+		
+	}
+
 	private void getTotalBox(HttpServletRequest request, HttpServletResponse response) {
 		int rows =0;
 		int page= 0;
