@@ -20,7 +20,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public int addCPU(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into cpu values(0,?,?,?,?,'0','0',?,?,?,?,?,?)";
+		String sql = "insert into cpu values(0,?,?,?,?,'0','0',?,?,?,?,?,?,1)";
 		return dbHelper.update(sql, map.get("cname"), map.getOrDefault("cpics", ""), map.get("price"), 
 		map.get("quantiy"), map.get("score"), map.get("powers"), map.get("cores"), map.get("threads"), map.get("frequency"),map.get("maxfrequency"));
 	}
@@ -35,36 +35,36 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public int addMemory(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into memory values(0,?,?,?,?,'0','0',?,?,?,?,?)";
+		String sql = "insert into memory values(0,?,?,?,?,'0','0',?,?,?,?,?,1)";
 		return dbHelper.update(sql, map.get("name"), map.getOrDefault("mpics", ""), map.get("memoryprice"), map.get("quantiy"), map.get("score"), map.get("powers"), map.get("volume"), map.get("memorytype"), map.get("frequency") );
 	}
 
 	@Override
 	public int addDisk(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into disk values(0,?,?,?,?,'0','0',?,?,?,?,?)";
+		String sql = "insert into disk values(0,?,?,?,?,'0','0',?,?,?,?,?,1)";
 		return dbHelper.update(sql, map.get("name"), map.getOrDefault("dpics", ""), map.get("diskprice"), map.get("quantiy"), map.get("score"), map.get("powers"), map.get("volume"), map.get("isssd"), map.get("rpm"));
 	}
 
 	@Override
 	public int addSource(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into source values(0,?,?,?,?,'0','0',?,?)";
+		String sql = "insert into source values(0,?,?,?,?,'0','0',?,?,1)";
 		return dbHelper.update(sql, map.get("name"), map.getOrDefault("spics", ""), map.get("sourceprice"), map.get("quantiy"), map.get("score"), map.get("maxpowers"));
 	}
 
 	@Override
 	public int addGraphics(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into graphics values(0,?,?,?,?,'0','0',?,?,?,?)";
+		String sql = "insert into graphics values(0,?,?,?,?,'0','0',?,?,?,?,1)";
 		return dbHelper.update(sql, map.get("name"), map.getOrDefault("gpics", ""), map.get("graphicsprice"), map.get("quantiy"), map.get("score"), map.get("powers"), map.get("memory"), map.get("width"));
 	}
 
 	@Override
 	public int addBox(Map<String, String> map) {
 		DBHelper dbHelper = new DBHelper();
-		String sql = "insert into box values(0,?,?,?,?,'0','0')";
-		return dbHelper.update(sql, map.get("name"), map.getOrDefault("boxpics", ""), map.get("boxprice"), map.get("quantiy"));
+		String sql = "insert into box values(0,?,?,?,?,'0','0',1,?)";
+		return dbHelper.update(sql, map.get("name"), map.getOrDefault("boxpics", ""), map.get("boxprice"), map.get("quantiy"), map.get("score"));
 	}
 
 	@Override
@@ -119,11 +119,9 @@ public class HardwareDaoImpl implements IHardwareDao {
 	public <T> List<T> findByPage(int page, int rows, String id, String formName, String priceName, Class<?> c) {
 		DBHelper dbHelper = new DBHelper();
 		String sql = null;
-		if ("box".equalsIgnoreCase(formName)) {
-			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes from "+ formName +" where state = '1' limit ?, ?";
-		} else {
-			sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes, score from "+ formName +" where state = '1' limit ?, ?";
-		}
+		
+		sql = "select "+ id +", name, "+ priceName +", quantiy, usetimes, score from "+ formName +" where state = '1' limit ?, ?";
+		
 		return dbHelper.finds(sql, c, (page - 1) * rows, rows);
 	}
 

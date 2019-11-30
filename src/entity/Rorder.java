@@ -10,10 +10,7 @@ public class Rorder implements Serializable {
 	private int uid;
 	private String rtime;
 
-	private String province;
-	private String city;
-	private String county;
-	private String raddress;
+	
 	
 	private int state;
 	private  double total;

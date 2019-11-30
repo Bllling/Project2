@@ -5,16 +5,20 @@ import java.util.List;
 import biz.IOrderBiz;
 import dao.IOrderDao;
 import dao.impl.OrderDaoImpl;
-import entity.RorderDetail;
+import entity.Rorder;
 import util.StringUtil;
 
 public class OrderBizImpl implements IOrderBiz {
 
 	//查询订单详细信息
 	@Override
-	public List<RorderDetail> findOrderInfo() {
+	public List<Rorder> findOrderInfo(Integer uid, String condition, String type) {
+		if (uid == null) {
+			return null;
+		}
+		
 		IOrderDao orderDao = new OrderDaoImpl();
-		return orderDao.findOrderInfo();
+		return orderDao.findOrderInfo(uid, condition, type);
 	}
 
 	@Override
@@ -27,6 +31,18 @@ public class OrderBizImpl implements IOrderBiz {
 		}
 		IOrderDao orderDao = new OrderDaoImpl();
 		return orderDao.addOrder(rorderid, id, uid, state, total);
+	}
+
+	/**
+	 * 更新订单的状态
+	 */
+	@Override
+	public int updateOrderState(Integer rorderid, Integer state) {
+		if (rorderid == null || state == null) {
+			return 0;
+		}
+		IOrderDao orderDao = new OrderDaoImpl();
+		return orderDao.updateOrderState(rorderid, state);
 	}
 
 }
