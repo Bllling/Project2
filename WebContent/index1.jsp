@@ -426,6 +426,22 @@ to {
 		
 		var totalCount = 0;
 		var totalPrice = 0;
+		
+		var cpuprice = 0;
+		var motherboardprice = 0;
+		var memoryprice = 0;
+		var diskprice = 0;
+		var sourceprice = 0;
+		var graphicsprice = 0;
+		var boxprice = 0;
+		
+		var chosecpu = 0;
+		var chosemotherboard = 0;
+		var chosememory = 0;
+		var chosedisk = 0;
+		var chosesource = 0;
+		var chosegraphics = 0;
+		var chosebox = 0;
 	
 		var page = 1;
 		var rows = 6;
@@ -515,9 +531,9 @@ to {
 		}
 		
 		//更新总价的方法
-		function updatePrice(price) {
-			totalPrice += price;
-			totalCount++;
+		function updatePrice() {
+			totalPrice = cpuprice + motherboardprice + memoryprice + diskprice + sourceprice + graphicsprice + boxprice;
+			totalCount = chosecpu + chosemotherboard + chosememory + chosedisk + chosesource + chosegraphics + chosebox;
 			
 			$(".total" + " h3").html("共计" + totalCount + "项");
 			$(".total" + " em").html("￥" + totalPrice);
@@ -545,7 +561,9 @@ to {
 				$("#leftSubSel_28" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				updatePrice(price);
+				cpuprice = price;
+				chosecpu = 1;
+				updatePrice();
 			} else if (type == "motherboard") {
 				motherboardid = id;
 				
