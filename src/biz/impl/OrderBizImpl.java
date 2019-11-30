@@ -45,4 +45,14 @@ public class OrderBizImpl implements IOrderBiz {
 		return orderDao.updateOrderState(rorderid, state);
 	}
 
+	//管理员查询订单信息
+	@Override
+	public List<Rorder> findOrderInfoByAdmin(String condition, String type) {
+		if (StringUtil.CheckNull(type)) {
+			return null;
+		}
+		IOrderDao orderDao = new OrderDaoImpl();
+		return orderDao.findOrderInfo(null, condition, type);
+	}
+
 }

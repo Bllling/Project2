@@ -24,7 +24,17 @@ public class OrderServlet extends BasicServlet {
 			addOrder(request, response);
 		}else if ("updateOrder".equals(op)) {
 			updateOrder(request, response);
+		}else if ("findOrderInfoByAdmin".equals(op)) {
+			findOrderInfoByAdmin(request, response);
 		}
+	}
+
+	//管理员查询订单信息
+	private void findOrderInfoByAdmin(HttpServletRequest request, HttpServletResponse response) {
+		String type = request.getParameter("type");
+		String condition = request.getParameter("condition");
+		IOrderBiz orderBiz = new OrderBizImpl();
+		this.send(response, orderBiz.findOrderInfoByAdmin(condition, type));
 	}
 
 	//修改订单状态

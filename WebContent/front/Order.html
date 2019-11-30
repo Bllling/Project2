@@ -188,8 +188,6 @@
 	    })
 	    var uid = 1;   //需要页面调取是哪个用户的订单
 	    function showOrder(type, condition) {
-	    	
-	    	
 	    	//显示订单信息
 	    	$.post("../order", {op:"findOrderInfo", uid: uid, type:type, condition:condition}, function(data) {
 	    		var str ="";
@@ -290,7 +288,9 @@
 	    function find() {
 	    	//按订单号或配置名字查找订单
 	    	var condition = $("#scan").val();
-	    	if (condition == "") {
+	    	console.log(condition.length);
+	    	if (condition == "" || condition.length <= 0 || condition == null ) {
+	    		showOrder("noCondition");
 	    		return;
 	    	}
 	    	showOrder("hasCondition", condition);

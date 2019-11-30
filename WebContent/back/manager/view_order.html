@@ -1,0 +1,284 @@
+<style>
+body {
+	font: 12px/1.5 tahoma, arial, Hiragino Sans GB, \\5B8B\4F53, sans-serif;
+	width: 100%;
+	height: auto;
+}
+
+.whole {
+	width: 100%;
+	height: auto;
+}
+
+#orderTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 25px;
+	text-align: center;
+}
+
+.text1 {
+	border: 1px solid #bfbfbf;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 26px;
+	width: 236px;
+	padding: 4px 8px;
+	border-radius: 5px;
+}
+
+.btn1 {
+	border: 1px solid #bfbfbf;
+	width: 82px;
+	height: 25px;
+	background: rgb(245, 245, 245);
+	box-sizing: border-box;
+	margin-left: -5px;
+	border-radius: 5px;
+}
+
+.tr1 {
+	background: rgb(245, 245, 245);
+	color: rgb(60, 60, 60);
+	height: 35px;
+}
+
+.tr2 {
+	background: rgb(234, 248, 255);
+	height: 35px;
+}
+
+#orderTable:hover {
+	border: 1px solid skyblue;
+}
+
+.img1 {
+	float: left;
+	display: block;
+}
+
+.img {
+	float: left;
+	display: none;
+}
+
+.computerp {
+	float: left;
+}
+
+.nav {
+	margin-top: 25px;
+}
+
+.btnVisible {
+	background-color: #118adb;
+	border: 1px solid #118adb;
+	color: white;
+	border-radius: 5px;
+}
+
+.btnDisabled {
+	background-color: #CECECE;
+	border: 1px solid #CECECE;
+	color: white;
+	border-radius: 5px;
+}
+
+.comp {
+	word-wrap: break-word;
+	width: 350px;
+}
+
+.imgdel {
+	height: 17px;
+	width: 1px;
+	padding-left: 17px;
+	overflow: hidden;
+	vertical-align: middle;
+	font-size: 0px;
+	display: inline-block;
+	visibility: visible;
+	background: url(../../images/delect.png) no-repeat -239px -176px;
+}
+
+.outdiv {
+	z-index: 999;
+	position: fixed;
+	display: block;
+	background: rgba(0, 0, 0, .6);
+	border: 1px solid rgb(240, 240, 240);
+	border-radius: 5px;
+	width: 400px;
+	height: 150px;
+	line-height: 75px;
+	margin-left: 480px;
+	margin-top: -200px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.imgdel:HOVER {
+	cursor: pointer;
+}
+
+#detail {
+	color: rgb(0, 0, 0);
+	text-decoration: none;
+}
+</style>
+<div class="whole">
+				<div class="nav">
+					<input type="text" placeholder="输入订单号或配置名字进行搜索" id="scan" class="text1">
+					<input type="button" value="订单搜索" class="btn1" onclick="find()">
+				</div>
+				<div>
+					<table id="orderTable">
+						<tr class="tr1">
+							<th style="width:40% ">攒机配置</th>
+							<th style="width:10%">总价</th>
+							<th style="width:10% ">数量</th>
+							<th style="width:20%">交易状态</th>
+							<th style="width:20%">交易操作</th>
+						</tr>
+						<tbody id="orderTbody" >
+							
+						</tbody>
+					</table>
+	</div>
+</div>
+
+<script>
+var index=7;
+$(function() {
+	showOrder("admin");
+	change()
+})
+
+	function showOrder(type, condition) {
+		//显示订单信息
+    	$.post("../../order", {op:"findOrderInfoByAdmin", type:type, condition:condition}, function(data) {
+    		var str ="";
+    		if (jQuery.isEmptyObject(data)) {
+    			alert("查找失败...");
+    			return;
+    		}
+    		$("#orderTbody").html("");
+    		$.each(data, function(index, item) {
+    			var cpupic = pic(item.pics);  //cpu图片
+    			var mbpic = pic(item.pics1);    //主板图片
+    			var mepic = pic(item.pics2);    //内存图片
+    			var dpic = pic(item.pics3);      //硬盘图片
+    			var spic = pic(item.pics4);      //电源图片
+    			var grapic = pic(item.pics5);  //显卡图片
+    			var bpic = pic(item.pics6);      //机箱图片
+    			var detail = item.detail;
+    			
+    			if (typeof(detail) == "undefined") {
+    				detail = "无";
+    			}
+    			
+    			var state = item.state;
+    			var btncss;    //发货按钮的样式
+    			var aName;     //a标签的name   usable  disabled
+    			if (state == 0) {
+    				state = "已删除";
+    				btncss = "btnDisabled";
+    				aName = "disabled";
+    			} else if (state == 1) {
+    				state = "待发货";
+    				btncss = "btnVisible";
+    				aName = "usable";
+    			} else if (state == 2) {
+    				state = "已发货";
+    				btncss = "btnDisabled";
+    				aName = "usable";
+    			} else if (state == 3) {
+    				state = "已收货";
+    				btncss = "btnDisabled";
+    				aName = "usable";
+    			}
+    			str += '<tr class="tr2" ><td align="left"><input type="radio" name="radio"><span>'+item.rtime+'</span>&emsp;订单号:<span>'+item.rorderid+'</span></td>'
+    				+ '<td colspan="3" align="left"> 攒机作者:<span>'+item.uname+'</span></td>'
+    				+ '<td><a href="javascript:delete1('+item.rorderid+');" id="content'+item.rorderid+'" class="imgdel" name='+aName+'></a></td></tr>'
+    				+ '<tr><td id="computerbody">'
+    				+ '<img src="../../'+cpupic+'" class="img1" ><img src="../../'+mbpic+'" class="img"><img src="../../'+mepic+'" class="img"><img src="../../'+dpic+'" class="img"><img src="../../'+spic+'" class="img"><img src="../../'+grapic+'" class="img"><img src="../../'+bpic+'" class="img">'
+    				+ '<div class="computerp"><p  class="comp" align="left">'+item.cname+'</p><p class="comp"  align="left">'+detail+'</p></div></td>'
+    				+ '<td>￥'+item.total+'</td><td>1</td><td id="orderState"><p id="orderState'+item.rorderid+'">'+state+'</p><a href="" id="detail">订单详情</a></td><td><input type="button" id="comfirm'+item.rorderid+'" value="发      货" class='+btncss+' onclick="comfirm('+item.rorderid+')"></td>'
+    				+'</tr>';
+	    		
+    		})
+    		$("#orderTbody").append($(str));
+
+    		$(".btnDisabled").attr("disabled",true);
+    		$("a[name='disabled']").removeAttr("href");
+
+    	},"json");
+	}
+	
+	function find() {
+		//按订单号或配置名字查找订单
+    	var condition = $("#scan").val();
+    	if (condition == "") {
+    		showOrder("admin");
+    		return;
+    	}
+    	showOrder("adminHasCondition", condition);
+	}
+	
+	function delete1(rorderid) {  //删除订单的方法
+		var comfirmop = confirm("是否删除此订单！");
+		if (comfirmop) {
+			$.post("../../order", {op: "updateOrder", state: "0", rorderid: rorderid}, function(data) {
+    			if (data > 0) {
+    				$("#orderState"+rorderid+"").text("已删除");
+    				$("#comfirm"+rorderid+"").attr("disabled",true);
+    				$("#comfirm"+rorderid+"").attr("class","btnDisabled");
+    				$("#content"+rorderid+"").removeAttr("href");
+    			} else if (data < 0) {
+    				alert("删除失败...");
+    			}
+    		},"text");
+		} else {
+			return;
+		}
+	}
+	
+	function comfirm(rorderid) {   //发货的方法
+		var comfirmop = confirm("是否确认发货！");
+    	if (comfirmop) {
+    		$.post("../../order", {op: "updateOrder", state: "2", rorderid: rorderid}, function(data) {
+    			if (data > 0) {
+    				$("#orderState"+rorderid+"").text("已发货");
+    				$("#comfirm"+rorderid+"").attr("disabled",true);
+    				$("#comfirm"+rorderid+"").attr("class","btnDisabled");
+    			} else if (data < 0) {
+    				alert("发货失败...");
+    			}
+    		},"text");
+    	} else {
+    		return;
+    	}
+	}
+	
+function pic(pics) {
+	var pic = pics.split(";");
+	return pic[0];
+}
+
+function change(){   //更改图片
+	var time=setInterval(function(){
+		if(index%7==0){
+		index=0;
+	}
+		if(index==0){
+    		$("#computerbody img").eq(index-1).attr("class","img");
+	    }else{
+	    	$("#computerbody img").eq(index-1).attr("class","img");
+	    }
+	$("#computerbody img").eq(index).attr("class","img1");
+
+	++index;}, 1500);
+}
+</script>
+
+
