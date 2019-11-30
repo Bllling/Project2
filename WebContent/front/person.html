@@ -63,9 +63,9 @@
 			<p>
 				<label style="float: left;"> <em>*</em> 地址信息
 				</label> <span id="demo3" class="citys"> <select id="sl_province" name="province"></select>
-					<select id="sl_city" name="city"></select> <select id="sl_area" name="area"></select> <select
-					id="sl_town" name="town"></select>
-				</span> <span class="hint" style="margin-left: 10px;">请选择省/市/区/街道</span>
+					<select id="sl_city" name="city"></select> <select id="sl_area" name="area"></select>
+					 <!--<select id="sl_town" name="town"></select>-->
+				</span> <span id="place" class="hint" style="margin-left: 10px;">请选择地区</span>
 			</p>
 			<p>
 				<label style="float: left;"> <em>*</em> 详细地址
@@ -109,6 +109,7 @@
 				<col style="width: 100px;" />
 				<col style="width: 140px;" />
 				<col style="width: 100px;" />
+				<col style="width: 100px;" />
 			</colgroup>
 			<thead class="next_table_header">
 				<tr>
@@ -129,6 +130,9 @@
 					</th>
 					<th rowspan="1" type="header" role="gridcell">
 						<div class="next_table_cell_wrapper">操作</div>
+					</th>
+					<th rowspan="1" type="header" role="gridcell">
+						<div class="next_table_cell_wrapper">12</div>
 					</th>
 				</tr>
 			</thead>
@@ -201,18 +205,7 @@
 		var province = areas[0];  //省份
 		var city = areas[1];  //市
 		var county = areas[2];  //区/县
-		$('#demo3').citys({
-			province : province,
-			city : city,
-			area : county,
-			onChange : function(info) {
-				townFormat(info);
-				var text = info['direct'] ? '(直辖市)' : '';
-			}
-		}, function(api) {
-			var info = api.getInfo();
-			townFormat(info);
-		});
+		$('#demo3').citys({valueType:'name',province:province,city:city,area:county});
 		var address = $("#tb_address" + index).text();
 		$("#area-textare").val(address);
 		var postcode = $("#tb_postcode" + index).text();
@@ -247,6 +240,7 @@
 					+'<td><div id="tb_postcode'+index+'" class="next_table_cell_wrapper">'+pCode+'</div></td>'
 					+'<td><div  class="next_table_cell_wrapper"><span id="tb_tel'+index+'">'+item.addrtel+'<br /></span></div></td>'
 					+'<td><div class="next_table_cell_wrapper"><div class="tAction"><a href="#" style="color: #333333;" onclick="showAddr('+index+')">修改</a></div></div></td>'
+					+'<td><div class="next_table_cell_wrapper"><div ><span class="t_default">默认地址</span></div></div></td>'
 					+'</tr>';
 			});
 			$("#ad_body").append($(str));
@@ -377,8 +371,10 @@
 		var province = $("#sl_province").find("option:selected").text();
 		var city = $("#sl_city").find("option:selected").text();
 		var county = $("#sl_area").find("option:selected").text();  //区/县
-		var town = $("#sl_town").find("option:selected").text();
-		var raddress = town + "" + area_textare;   //详细信息
+		if (city == "" || city == null || city.lenth <= 0) {
+			city = "直辖市";
+		}
+		
 		var isDefault = $("#isDefault").is(':checked');
 		if (isDefault) {
 			isDefault = 1;
@@ -392,7 +388,7 @@
 		var type = $("#adBtn").val();
 		if (type == "保存") {
 			//新增地址信息
-			$.post("../address", {op: "addAddress",province: province, city: city, county: county,raddress:raddress,isDefault:isDefault, uid: uid,consigneeName:consigneeName, adPhone:adPhone, p_num:p_num  }, function(data) {
+			$.post("../address", {op: "addAddress",province: province, city: city, county: county,raddress:area_textare,isDefault:isDefault, uid: uid,consigneeName:consigneeName, adPhone:adPhone, p_num:p_num  }, function(data) {
 				if (data > 0) {
 					showAddrInfo();
 				} else {
@@ -448,6 +444,7 @@
 					alert("您输入的信息不完整，请确认后重新输入...");
 				} else if (data > 0) {
 					alert("修改成功...");
+					showUserInfo();
 				} else {
 					alert("修改失败...");
 				}
@@ -470,34 +467,13 @@
 		$("#address").attr("style", "display: block");
 	}
 
-	var $town = $('#demo3 select[name="town"]');
-	var townFormat = function(info) {
-		$town.hide().empty();
-		if (info['code'] % 1e4 && info['code'] < 7e5) { //是否为“区”且不是港澳台地区
-			$.ajax({
-				url : 'http://passer-by.com/data_location/town/' + info['code']
-						+ '.json',
-				dataType : 'json',
-				success : function(town) {
-					$town.show();
-					for (i in town) {
-						$town.append('<option value="'+i+'">' + town[i]
-								+ '</option>');
-					}
-				}
-			});
-		}
-	};
 	$('#demo3').citys({
-		province : '湖南',
-		city : '衡阳',
-		area : '珠晖',
-		onChange : function(info) {
-			townFormat(info);
-			var text = info['direct'] ? '(直辖市)' : '';
-		}
-	}, function(api) {
-		var info = api.getInfo();
-		townFormat(info);
-	});
+        required:false,
+        nodata:'disabled',
+        onChange:function(data){
+            var text = data['direct']?'(直辖市)':'';
+            $('#place').text('当前选中地区：'+data['province']+text+' '+data['city']+' '+data['area']);
+        }
+    });
+	
 </script>
