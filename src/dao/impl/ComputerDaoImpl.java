@@ -17,8 +17,10 @@ import util.StringUtil;
 public class ComputerDaoImpl implements IComputerDao {
 
 	@Override
-	public int add(Map<String, String> map) {
-		return 1;
+	public int add(Integer id,Integer uid,String cname,String detail,Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid,Double sumprice ) {
+		   DBHelper db = new DBHelper();
+           String sql="insert into computer values(?,?,now(),0,0,?,?,?,?,?,?,?,?,?,?)";
+           return db.update(sql, id,uid,cpuid,motherboardid,memoryid,diskid,sourceid,graphicsid,boxid,detail,cname,sumprice);
 	}
 
 	@Override

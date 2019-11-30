@@ -98,10 +98,20 @@ public class HardWareInfo extends BasicServlet {
 			findSourceByPage1(request, response);
 		} else if("findBoxByPage1".equals(op)){
 			findBoxByPage1(request, response);
-		} 
+		} else if("getTotal".equals(op)){
+			getTotal(request, response);
+		}
 	
 	}
 	
+	private void getTotal(HttpServletRequest request, HttpServletResponse response) {
+		IHardwareBiz hardwareBiz = new HardwareBizImpl();
+		String id= request.getParameter("id");   //要查询配件的ID
+		String formName = request.getParameter("formName"); //要查询表名
+		this.send(response, hardwareBiz.getTotal(id, formName));
+		
+	}
+
 	private void findBoxByPage1(HttpServletRequest request, HttpServletResponse response) {
 		int rows =Integer.parseInt(request.getParameter("rows"));
 		int page= Integer.parseInt(request.getParameter("page"));

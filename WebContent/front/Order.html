@@ -159,7 +159,9 @@
 					<th style="width:20%">交易操作</th>
 				</tr>
 				<tbody id="orderTbody" >
+
 					
+
 				</tbody>
 				
 			</table>
@@ -241,8 +243,10 @@
 		    		
 	    		})
 	    		$("#orderTbody").append($(str));
+
 	    		$(".btnDisabled").attr("disabled",true);
 	    		$("a[name='disabled']").removeAttr("href");
+
 	    	},"json");
 	    }
 	    
