@@ -96,12 +96,20 @@ public class HardWareInfo extends BasicServlet {
 		Double maxprice = Double.parseDouble(request.getParameter("maxPrice"));
 	    Double minFrequency=Double.parseDouble(request.getParameter("minFrequency"));
 	    Double maxFrequency=Double.parseDouble(request.getParameter("maxFrequency"));
-        Integer cores =Integer.parseInt(request.getParameter("cores"));
+	    Integer cores;
+        if("null".equals(request.getParameter("cores"))){
+        	cores =null;
+        }else{
+        	System.out.println(request.getParameter("cores")=="null");
+        	cores =Integer.parseInt(request.getParameter("cores"));
+        }
+       
         IHardwareBiz hardwareBiz = new HardwareBizImpl();
         String name = request.getParameter("name");
-        if(name=="null"){
+        if("null".equals(name)){
         	name=null;
         }
+        System.out.println(rows+" "+page+" "+minprice+" "+maxprice+" "+minFrequency+" "+maxFrequency+" "+cores);
         this.send(response, hardwareBiz.findCpuByPage(name, minprice, maxprice, minFrequency, maxFrequency, cores, page, rows));
 	}
 

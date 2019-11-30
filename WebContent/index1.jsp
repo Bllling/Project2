@@ -425,7 +425,7 @@ to {
 		var boxid;
 	
 		var page = 1;
-		var showRows = 6;
+		var rows = 6;
 	
 		var hardware;
 	
@@ -433,7 +433,7 @@ to {
 		var vcodePath;
 
 
-		window.onload = function() {
+ 		window.onload = function() {
 
 			var str = $("#my").html();
 
@@ -446,10 +446,10 @@ to {
 			}
 			createCode();
 			cpuPage();
-			};
+			}; 
 
 
-		function createCode() {
+ 		function createCode() {
 			
 			$.post("vcode", function(data) {
 				vcode = data.code;
@@ -463,7 +463,7 @@ to {
 						"url('../vcode/" + fileName + ".jpg')");
 
 			}, "json");
-		}
+		} 
 
 		function login1() {
 

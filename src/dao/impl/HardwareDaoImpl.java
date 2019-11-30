@@ -162,16 +162,16 @@ public class HardwareDaoImpl implements IHardwareDao {
 		List <Object > list = new ArrayList<Object>(); 
 		String sql="select * from cpu where 1=1 ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and cpuprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and cpuprice=<? ";
 			list.add(maxprice);
 		}else if(minfrequency!=null){
-			sql+="and ?>SUBSTRING_INDEX(frequency,'G',1) ";
+			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(minfrequency);
 		}else if(maxfrequency!=null){
-			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
+			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(maxfrequency);
 		}else if(cores!=null){
 			sql+="and cores = ? ";
@@ -180,9 +180,11 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
+		System.out.println(sql);
 		return  dbHelper.finds(sql, Cpu.class, list);
 	}
 
@@ -193,22 +195,22 @@ public class HardwareDaoImpl implements IHardwareDao {
 		List <Object > list = new ArrayList<Object>(); 
 		String sql="select * from cpu where 1=1  ";
 		if(minprice!=null){
-			sql+="and minprice>? ";
+			sql+="and motherboardprice>? ";
 			list.add(minprice);
 		}else if(maxprice!=null){
-			sql+="and maxprice<? ";
+			sql+="and motherboardprice<? ";
 			list.add(maxprice);
 		}else if(minmaxmemory!=null){
-			sql+="and ?>SUBSTRING_INDEX(maxmemory,'G',1) ";
+			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
 			list.add(minmaxmemory);
 		}else if(maxmaxmemory!=null){
-			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
+			sql+="and ?>SUBSTRING_INDEX(maxmemory,'G',1) ";
 			list.add(maxmaxmemory);
 		}else if(name!=null){
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, MotherBoard.class, list);
@@ -242,7 +244,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, Memory.class, list);
@@ -273,14 +275,14 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and name=? ";
 			list.add(name);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
 		return dbHelper.finds(sql, Disk.class, list);
 	}
 
 	@Override
-	public List<Source> findSourceByPage(String name, Double minprice, Double maxprice, Integer minmemory,
+	public List<Graphics> findGraphicsByPage(String name, Double minprice, Double maxprice, Integer minmemory,
 			Integer maxmemory, Integer minwidth, Integer maxwidth,int page,int rows) {
 		DBHelper dbHelper = new DBHelper();
 		List <Object > list = new ArrayList<Object>(); 
@@ -307,10 +309,38 @@ public class HardwareDaoImpl implements IHardwareDao {
 			sql+="and ?>SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
-		sql +="limit ? , ? order by usetimes desc;";
+		sql +="order by usetimes desc limit ? , ? ";
 		list.add((page-1)*rows);
 		list.add(rows);
-		return dbHelper.finds(sql, Memory.class, list);
+		return dbHelper.finds(sql, Graphics.class, list);
+	}
+
+	@Override
+	public List<Box> findBoxByPage(String name, Double minprice, Double maxprice,int page,int rows) {
+		DBHelper dbHelper = new DBHelper();
+		List <Object > list = new ArrayList<Object>(); 
+		String sql="select * from disk where 1=1  ";
+		if(minprice!=null){
+			sql+="and minprice>? ";
+			list.add(minprice);
+		}else if(maxprice!=null){
+			sql+="and maxprice<? ";
+			list.add(maxprice);
+		}else if(name!=null){
+			sql+="and name=? ";
+			list.add(name);
+		}
+		sql +="order by usetimes desc limit ? , ? ";
+		list.add((page-1)*rows);
+		list.add(rows);
+		return dbHelper.finds(sql, Box.class, list);
+	}
+
+	@Override
+	public List<Source> findSourceByPage(String name, Double minprice, Double maxprice, Integer minpowers,
+			Integer maxpowers, int page, int rows) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
