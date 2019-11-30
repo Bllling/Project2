@@ -130,6 +130,7 @@ body {
 				<div class="nav">
 					<input type="text" placeholder="输入订单号或配置名字进行搜索" id="scan" class="text1">
 					<input type="button" value="订单搜索" class="btn1" onclick="find()">
+					<input type="hidden" id="flag">
 				</div>
 				<div>
 					<table id="orderTable">
@@ -148,10 +149,11 @@ body {
 </div>
 
 <script>
+var flag=0;
 var index=7;
 $(function() {
 	showOrder("admin");
-	change()
+	gochange();
 })
 
 	function showOrder(type, condition) {
@@ -264,18 +266,29 @@ function pic(pics) {
 	var pic = pics.split(";");
 	return pic[0];
 }
-
+function gochange(){
+	var timeoutId = window.setTimeout(function(){
+		flag= $("#flag").val();
+        change(flag);
+	}, 1000);
+}
 function change(){   //更改图片
 	var time=setInterval(function(){
 		if(index%7==0){
 		index=0;
 	}
 		if(index==0){
-    		$("#computerbody img").eq(index-1).attr("class","img");
+			for (var i=1;i<=flag*2+1;i=i+2)	{
+    		$("#orderTbody tr:eq("+i+") #computerbody img").eq(index-1).attr("class","img");
+    		}
 	    }else{
-	    	$("#computerbody img").eq(index-1).attr("class","img");
+	    	for (var i=1;i<=flag*2+1;i=i+2){
+	    		//console.log($("#orderTbody tr:eq(i)").html());
+	    	$("#orderTbody tr:eq("+i+") #computerbody img").attr("class","img");}
 	    }
-	$("#computerbody img").eq(index).attr("class","img1");
+		for (var i=1;i<=flag*2+1;i=i+2){
+			$("#orderTbody tr:eq("+i+") #computerbody img").eq(index).attr("class","img1");
+	}
 
 	++index;}, 1500);
 }
