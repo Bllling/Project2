@@ -236,7 +236,7 @@ public class HardWareInfo extends BasicServlet {
         if("null".equals(name)){
         	name=null;
         }
-        System.out.println(rows+" "+page+" "+minprice+" "+maxprice+" "+minFrequency+" "+maxFrequency+" "+cores);
+        
         this.send(response, hardwareBiz.findCpuByPage(name, minprice, maxprice, minFrequency, maxFrequency, cores, page, rows));
 	}
 

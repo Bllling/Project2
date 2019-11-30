@@ -156,25 +156,26 @@ public class HardwareDaoImpl implements IHardwareDao {
 	@Override
 	public List<Cpu> findCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
 			Double maxfrequency, Integer cores ,int page,int rows) {
+		System.out.println(rows+" "+page+" "+minprice+" "+maxprice+" "+minfrequency+" "+maxfrequency+" "+cores+"name"+name);
 		DBHelper dbHelper = new DBHelper();
 		List <Object > list = new ArrayList<Object>(); 
 		String sql="select * from cpu where 1=1 ";
 		if(minprice!=null){
 			sql+="and cpuprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
-			sql+="and cpuprice=<? ";
+		} if(maxprice!=null){
+			sql+="and cpuprice<=? ";
 			list.add(maxprice);
-		}else if(minfrequency!=null){
+		} if(minfrequency!=null){
 			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(minfrequency);
-		}else if(maxfrequency!=null){
+		}if(maxfrequency!=null){
 			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(maxfrequency);
-		}else if(cores!=null){
+		} if(cores!=null){
 			sql+="and cores = ? ";
 			list.add(cores);
-		}else if(name!=null){
+		} if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
 		}
@@ -195,16 +196,16 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and motherboardprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
-			sql+="and motherboardprice=<? ";
+		}if(maxprice!=null){
+			sql+="and motherboardprice<=? ";
 			list.add(maxprice);
-		}else if(minmaxmemory!=null){
+		}if(minmaxmemory!=null){
 			sql+="and ?<SUBSTRING_INDEX(maxmemory,'G',1) ";
 			list.add(minmaxmemory);
-		}else if(maxmaxmemory!=null){
+		}if(maxmaxmemory!=null){
 			sql+="and ?>=SUBSTRING_INDEX(maxmemory,'G',1) ";
 			list.add(maxmaxmemory);
-		}else if(name!=null){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
 		}
@@ -223,22 +224,22 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and memoryprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
+		}if(maxprice!=null){
 			sql+="and memoryprice<=? ";
 			list.add(maxprice);
-		}else if(minfrequency!=null){
+		}if(minfrequency!=null){
 			sql+="and ?<SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(minfrequency);
-		}else if(maxfrequency!=null){
+		}if(maxfrequency!=null){
 			sql+="and ?>=SUBSTRING_INDEX(frequency,'G',1) ";
 			list.add(maxfrequency);
-		}else if(memorytype!=null){
+		}if(memorytype!=null){
 			sql+="and ?=SUBSTRING(memorytype, 4) ";
 			list.add(memorytype);
-		}else if(volume!=null){
+		}if(volume!=null){
 			sql+="and ?=SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(volume);
-		}else if(name!=null){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
 		}
@@ -257,19 +258,19 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and diskprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
+		}if(maxprice!=null){
 			sql+="and diskprice<=? ";
 			list.add(maxprice);
-		}else if(minvolume!=null){
+		}if(minvolume!=null){
 			sql+="and ?<SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(minvolume);
-		}else if(maxvolume!=null){
+		}if(maxvolume!=null){
 			sql+="and ?>=SUBSTRING_INDEX(volume,'G',1) ";
 			list.add(maxvolume);
-		}else if(isssd!=null){
+		}if(isssd!=null){
 			sql+="and isssd=? ";
 			list.add(isssd);
-		}else if(name!=null){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
 		}
@@ -288,22 +289,22 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and graphicsprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
+		}if(maxprice!=null){
 			sql+="and graphicsprice<=? ";
 			list.add(maxprice);
-		}else if(name!=null){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
-		}else if(minmemory!=null){
+		}if(minmemory!=null){
 			sql+="and ?<SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(minmemory);
-		}else if(maxmemory!=null){
+		}if(maxmemory!=null){
 			sql+="and ?>=SUBSTRING_INDEX(memory,'G',1) ";
 			list.add(maxmemory);
-		}else if(minwidth!=null){
+		}if(minwidth!=null){
 			sql+="and ?<SUBSTRING_INDEX(width,'b',1) ";
 			list.add(minwidth);
-		}else if(maxwidth!=null){
+		}if(maxwidth!=null){
 			sql+="and ?>=SUBSTRING_INDEX(width,'b',1) ";
 			list.add(maxwidth);
 		}
@@ -321,10 +322,10 @@ public class HardwareDaoImpl implements IHardwareDao {
 		if(minprice!=null){
 			sql+="and boxprice>? ";
 			list.add(minprice);
-		}else if(maxprice!=null){
+		}if(maxprice!=null){
 			sql+="and boxprice<=? ";
 			list.add(maxprice);
-		}else if(name!=null){
+		}if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
 		}
@@ -346,7 +347,7 @@ public class HardwareDaoImpl implements IHardwareDao {
 		}else if(maxprice!=null){
 			sql+="and sourceprice<=? ";
 			list.add(maxprice);
-		}else if(name!=null){
+		}else if(name!=null&&!"请输入名称".equals(name)){
 			sql+="and name=? ";
 			list.add(name);
 		}else if(minpowers!=null){

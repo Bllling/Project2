@@ -8,7 +8,8 @@
 			<a href="javascript:void(0);" class="all active" target="_self"
 				id="name-0">不限</a>
 			<div class="search-box">
-				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();"></i>
+				<input type="text" id="name-1" onclick="unActiveName();" value="请输入名称" /> <i onclick="setName();	  	     		proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);
+"></i>
 			</div>
 		</div>
 	</div>
@@ -25,7 +26,7 @@
 		<div class="price-self">
 			<input id="minPrice" type="text" /> <em>-</em> <input id="maxPrice"
 				type="text" /> 
-			<span id="subPri" class="price-button" onclick="unActivePrice();">确定</span>
+			<span id="subPri" class="price-button" onclick="unActivePrice();proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);">确定</span>
 		</div>
 	</div>
    
@@ -58,7 +59,17 @@
 				id="cores-3">三核心</a> <a href="javascript:void(0);" target="_self"
 				id="cores-2">双核心</a>
 		</div>
+		
 	</div>
+	<div class="sort-box clearfix" >
+		 <div class="small-page">
+			 			 <a class="small-page-prev " href="javascript:toprev()" target="_self" style="background-position: 1px -44px;">&nbsp;</a>
+			<span class="small-page-active"><b id="nowpage" >1</b>/<b id="totalpage"></b></span>
+			<a href="javascript:tonext()" class="small-page-next " target="_self" style="background-position: -78px -44px;">&nbsp;</a>
+		 </div>      
+		 <span class="total">共 <b style="color: #999;"></b>款</span>
+		 
+		</div>
         <div class="plist"> </div>
 	<!--hide end-->
 	<!-- 显卡列表 -->
@@ -98,7 +109,7 @@
     	  var minPrice = $("#minPrice").val();
     	  var maxPrice = $("#maxPrice").val();
     	  
-    	  if (minPrice != "" && maxPrice != "" && maxPrice >= minPrice) {
+    	  if (minPrice != "" && maxPrice != "" && parseInt(maxPrice) >= parseInt(minPrice)) {
         	  $("#" + price.chosed).removeClass("active");
         	  price.minPrice = minPrice;
         	  price.maxPrice = maxPrice;
@@ -239,6 +250,7 @@
 	  	     			}
 	  	     		} else if (parentID == ("name")) {
 	  	     			$("#name-1").val("请输入名称");
+	  	     			hName.val = "null";
 	  	     		}
 	   	     		
 	
@@ -252,6 +264,7 @@
 
 
 	  	function proList(name,minPrice,maxPrice,minFrequency,maxFrequency,cores,page,rows) {
+	  		console.log(name);
 			$.post("hardwareinfo", 
 			{
 				op : "findCpuByPage1",
