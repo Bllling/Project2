@@ -260,4 +260,52 @@ public class HardwareBizImpl implements IHardwareBiz {
 		return hardwareDao.getTotal(id, formName);
 	}
 
+	@Override
+	public int getTotalCpuByPage(String name, Double minprice, Double maxprice, Double minfrequency,
+			Double maxfrequency, Integer cores, int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.getTotalCpuByPage(name, minprice, maxprice, minfrequency, maxfrequency, cores, page, rows);
+	}
+
+	@Override
+	public int getTotalMotherboardByPage(String name, Double minprice, Double maxprice, Integer minmaxmemory,
+			Integer maxmaxmemory, int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.getTotalMotherboardByPage(name, minprice, maxprice, minmaxmemory, maxmaxmemory, page, rows);
+	}
+
+	@Override
+	public int getTotalMemoryByPage(String name, Double minprice, Double maxprice, Integer minfrequency,
+			Integer maxfrequency, Integer memorytype, Integer volume, int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		 return hardwareDao.getTotalMemoryByPage(name, minprice, maxprice, minfrequency, maxfrequency, memorytype, volume, page, rows);
+	}
+
+	@Override
+	public int getTotalDiskByPage(String name, Double minprice, Double maxprice, Integer minvolume, Integer maxvolume,
+			Integer isssd, int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.getTotalDiskByPage(name, minprice, maxprice, minvolume, maxvolume, isssd, page, rows);
+	}
+
+	@Override
+	public int getTotalGraphicsByPage(String name, Double minprice, Double maxprice, Integer minmemory,
+			Integer maxmemory, Integer minwidth, Integer maxwidth, int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.getTotalGraphicsByPage(name, minprice, maxprice, minmemory, maxmemory, minwidth, maxwidth, page, rows);
+	}
+
+	@Override
+	public int getTotalSourceByPage(String name, Double minprice, Double maxprice, Integer minpowers, Integer maxpowers,
+			int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.getTotalSourceByPage(name, minprice, maxprice, minpowers, maxpowers, page, rows);
+	}
+
+	@Override
+	public int getTotalBoxByPage(String name, Double minprice, Double maxprice, int page, int rows) {
+		IHardwareDao hardwareDao = new HardwareDaoImpl();
+		return hardwareDao.getTotalBoxByPage(name, minprice, maxprice, page, rows);
+	}
+
 }
