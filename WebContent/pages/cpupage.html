@@ -28,7 +28,7 @@
 			<span id="subPri" class="price-button" onclick="unActivePrice();">确定</span>
 		</div>
 	</div>
-
+   
 
 	<div id="pamItem1" class="filter-item">
 		<strong class="filter-type">CPU主频：</strong>
@@ -59,7 +59,7 @@
 				id="cores-2">双核心</a>
 		</div>
 	</div>
-
+        <div class="plist"> </div>
 	<!--hide end-->
 	<!-- 显卡列表 -->
 	<div class="plist"> 
@@ -252,6 +252,7 @@
 	  	}
 	  	
 
+
 	  	function proList(name,minPrice,maxPrice,minFrequency,maxFrequency,cores,page,rows) {
 			$.post("hardwareinfo", 
 			{
@@ -273,6 +274,8 @@
 				$(".plist").append($(str));
 			}, "json");
 		}
+
+
 
 	init();
 	proList(hName.val,price.minPrice,price.maxPrice,frequency.minFrequency,frequency.maxFrequency,cores.val,page,rows);

@@ -125,22 +125,22 @@
 	  	     			$("#name-1").val("请输入名称");
 	  	     		}
 					
-	  	     		proList();
+	  	     		proList(hName.val, price.minPrice,price.maxPrice,page,showRows);
 	  	     		
 	  	     		$(this).addClass("active");
 	  	     	}
 	  	    }
 	  	}
 	  	
-		function proList() {
-			$.post("../hardwareinfo", 
+		function proList(name,minPrice,maxPrice,page,showRows) {
+			$.post("hardwareinfo", 
 			{
-				op : "findBoxByPage",
-				name : hName.val,
-				minPrice : price.minPrice,
-				maxPrice : price.maxPrice,
+				op : "findBoxByPage1",
+				name : name,
+				minPrice : minPrice,
+				maxPrice : maxPrice,
 				page : page,
-				showRows : showRows
+				rows : showRows
 			}, 
 			function(data) {
 
