@@ -104,12 +104,16 @@ public class ComputerDaoImpl implements IComputerDao {
 	public List<Computer> findAllByMoreId(List<Collection> list) {
 		DBHelper db = new DBHelper();
 		List <Object> list1 = new ArrayList<>();
-	    String sql = "select cname,detail,sumprice,id,u.uid,u.uname,cp.name,cp.pics,me.name as name1,me.pics as pics1,m.name as name2,m.pics as pics2,d.name as name3,d.pics as pics3,s.name as name4,s.pics as pics4,g.name as name5,g.pics as pics5,b.name as name6,b.pics as pics6, id ,c.uid,date_format(rtime,'%Y-%m-%d %H:%i:%s') rtime,znumber,bnumber from  computer c,cpu cp ,memory m,motherboard me ,disk d,source s,graphics g,box b,usr u where c.cpuid = cp.cpuid and c.memoryid=m.memoryid and me.motherboardid=c.motherboardid and d.diskid=c.diskid and s.sourceid=c.sourceid and g.graphicsid=c.graphicsid and b.boxid=c.boxid and u.uid = c.uid and";
+	    String sql = "select cname,detail,sumprice,id,u.uid,u.uname,cp.name,cp.pics,me.name as name1,me.pics as pics1,m.name as name2,m.pics as pics2,d.name as name3,d.pics as pics3,s.name as name4,s.pics as pics4,g.name as name5,g.pics as pics5,b.name as name6,b.pics as pics6, id ,c.uid,date_format(rtime,'%Y-%m-%d %H:%i:%s') rtime,znumber,bnumber from  computer c,cpu cp ,memory m,motherboard me ,disk d,source s,graphics g,box b,usr u where c.cpuid = cp.cpuid and c.memoryid=m.memoryid and me.motherboardid=c.motherboardid and d.diskid=c.diskid and s.sourceid=c.sourceid and g.graphicsid=c.graphicsid and b.boxid=c.boxid and u.uid = c.uid and (1=1 ";
         for (Collection c:list){
-        	sql+=" id = ? or";
+        	sql+=" or id = ? ";
         	list1.add(c.getId());
+        	
         }
-        sql+=" 1=0";
+     	sql+=" ) ";
+  
+        sql+="and  1=1";
+        System.out.println(sql);
 	   return db.finds(sql, Computer.class, list1);
 	}
 
