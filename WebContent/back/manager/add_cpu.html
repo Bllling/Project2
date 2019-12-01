@@ -155,7 +155,7 @@
 	function checkprice() {
 		$("#add_cpu_price_er").attr("style","display:none");
 		var price = $.trim($("#add_cpu_price").val());
-		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
 		if (!reg.test(price) ) {
 			$("#add_cpu_price_er").attr("style","display:block");
 		}
@@ -164,7 +164,7 @@
 	function checkquantiy() {
 		$("#add_cpu_quantiy_er").attr("style","display:none");
 		var quantiy = $.trim($("#add_cpu_quantiy").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(quantiy)) {
 			$("#add_cpu_quantiy_er").attr("style","display:block");
 		}
@@ -173,7 +173,7 @@
 	function checkscore() {
 		$("#add_cpu_score_er").attr("style","display:none");
 		var score = $.trim($("#add_cpu_score").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(score)) {
 			$("#add_cpu_score_er").attr("style","display:block");
 		}
@@ -182,7 +182,7 @@
 	function checkpowers() {
 		$("#add_cpu_powers_er").attr("style","display:none");
 		var powers = $.trim($("#add_cpu_powers").val());
-		var reg = /^[1-9]+(\.\d+)?[w|W]$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?[w|W]$/;   //非负浮点数
 		if (!reg.test(powers)) {
 			$("#add_cpu_powers_er").attr("style","display:block");
 		}
@@ -191,7 +191,7 @@
 	function checkcores() {
 		$("#add_cpu_cores_er").attr("style","display:none");
 		var cores = $.trim($("#add_cpu_cores").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(cores)) {
 			$("#add_cpu_cores_er").attr("style","display:block");
 		}
@@ -200,7 +200,7 @@
 	function checkthreads() {
 		$("#add_cpu_threads_er").attr("style","display:none");
 		var threads = $.trim($("#add_cpu_threads").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(threads)) {
 			$("#add_cpu_threads_er").attr("style","display:block");
 		}
@@ -209,7 +209,7 @@
 	function checkfrequency() {
 		$("#add_cpu_frequency_er").attr("style","display:none");
 		var frequency = $.trim($("#add_cpu_frequency").val());
-		var reg = /^[1-9]+(\.\d+)?[g|G]$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?[g|G]$/;   //非负浮点数
 		if (!reg.test(powers)) {
 			$("#add_cpu_powers_er").attr("style","display:block");
 		}
@@ -218,7 +218,7 @@
 	function checkmaxfrequency() {
 		$("#add_cpu_maxfrequency_er").attr("style","display:none");
 		var maxfrequency = $.trim($("#add_cpu_maxfrequency").val());
-		var reg = /^[1-9]+(\.\d+)?[g|G]$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?[g|G]$/;   //非负浮点数
 		if (!reg.test(maxfrequency)) {
 			$("#add_cpu_maxfrequency_er").attr("style","display:block");
 		}
