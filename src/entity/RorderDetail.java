@@ -24,7 +24,15 @@ public class RorderDetail implements Serializable {
 	private int sourceid;
 	private int graphicsid;
 	private int boxid;
+	private String city;
+	private String county;
+	private String raddress;
+	private String province;
+	private String addrname;
+	private String addrtel;
 	
+
+	private int arid;
 	
 
 	
@@ -61,6 +69,26 @@ public class RorderDetail implements Serializable {
 	private String score6;  //机箱跑分
 	
 	
+
+
+	public String getAddrname() {
+		return addrname;
+	}
+	public void setAddrname(String addrname) {
+		this.addrname = addrname;
+	}
+	public String getAddrtel() {
+		return addrtel;
+	}
+	public void setAddrtel(String addrtel) {
+		this.addrtel = addrtel;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
 	public String getScore() {
 		return score;
 	}
@@ -195,10 +223,7 @@ public class RorderDetail implements Serializable {
 
 	
 	
-	private String city;
-	private String county;
-	private String raddress;
-	private int arid;
+	
 	
 	
 	public String getRtime() {
