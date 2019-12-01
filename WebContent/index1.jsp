@@ -293,10 +293,8 @@ to {
 					href="front/myplan.jsp">我的方案</a></li>
 				<li id="menu_nav_wyplan"><a target="_self"
 					href="front/netplan.jsp">网友方案</a></li>
-				<li id="menu_nav_DiyTop"><a target="_self" href="">配置排行榜</a></li>
 				<li id="menu_nav_ProTop"><a target="_self"
 					href="front/rank.html">网友首选配件</a></li>
-				<li id="menu_nav_Smart"><a target="_blank" href="">智能推荐攒机</a></li>
 			</ul>
 		</div>
 	</div>
@@ -323,7 +321,7 @@ to {
 			</div>
 			<div class="zj-login"
 				style="display: none; color: rgb(55, 145, 237); font-size: 20px;">
-				<strong id="my">${currentAdmin.uname }</strong>,欢迎你。
+				<strong id="my">${currentAdmin.uname }</strong>,欢迎你。&nbsp;&nbsp;您的UID:<strong id="myuid">${currentAdmin.uid }</strong>
 			</div>
 			<!-- <div class="zj-login">当前账号：<a href="javascript:;" target="_self" class="blue">al1wix</a> | <a href="javascript:;" target="_self">退出</a></div> -->
 			<ul>
@@ -381,7 +379,7 @@ to {
 				</div>
 				<div class="item shuoming">
 					<p class="lable">
-						<em id="info-str-count">0/200</em><b>说明：</b><span class="inst">内容不可超过120字</span>
+						<em id="info-str-count">0/120</em><b>说明：</b><span class="inst">内容不可超过120字</span>
 					</p>
 					<textarea class="instruct "
 						placeholder="您攒机的目的/预算，该配置的优势，分享更多内容，获取更多关注"  oninput="countStr(this, 120, 'info-str-count')"></textarea>
@@ -403,7 +401,7 @@ to {
 			</div>
 			<div class="btn-box">
 				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, totalPrice);">发表配置单</a>
-				<a href="javascript:void(0);" target="_self" class="empty">清空</a>
+				<a href="javascript:void(0);" target="_self" class="empty" onclick="location.reload();$('.instruct').val('');$('.name').val(''');">清空</a>
 			</div>
 		</div>
 
@@ -450,7 +448,7 @@ to {
 	
 		var vcode;
 		var vcodePath;
-
+		var id = location.hash.replace("#","");
 
  		window.onload = function() {
 
@@ -462,7 +460,9 @@ to {
 				$(".popOutBg").css('display', 'none');
 				$(".zj-login:eq(0)").css('display', 'none');
 				$(".zj-login:eq(1)").css('display', 'block');
+				
 			}
+			cite(id);
 			createCode();
 			cpuPage();
 			}; 
@@ -685,6 +685,62 @@ to {
 		}
 		
 		
+		
+		//引用配置单攒机
+		function cite(id) {
+			$.post("computer", {
+				op : "findById",
+				id : id
+			}, function(data) {
+				console.log(data);
+				
+				cpuid = data.cpuid;
+				motherboardid = data.motherboardid;
+				memoryid = data.memoryid;
+				diskid = data.diskid;
+				graphicsid = data.graphicsid;
+				boxid = data.boxid;
+				sourceid = data.sourceid;
+				
+				var cpuname = data.name;
+				var motherboardname = data.name1;
+				var memoryname = data.name2;
+				var diskname = data.name3;
+				var graphicsname = data.name5;
+				var boxname = data.name6;
+				var sourcename = data.name4;
+				
+				var cpupic = data.pics;
+				var motherboardpic = data.pics1;
+				var memorypic = data.pics2;
+				var diskpic = data.pics3;
+				var graphicspic = data.pics5;
+				var boxpic = data.pics6;
+				var sourcepic = data.pics4;
+				
+				var cpuprice = data.price;
+				var motherboardprice = data.price1;
+				var memoryprice = data.price2;
+				var diskprice = data.price3;
+				var graphicsprice = data.price5;
+				var boxprice = data.price6;
+				var sourceprice = data.price4;
+				
+				console.log(cpuprice);
+				
+				addToComputer("cpu", cpuid, cpupic, cpuname, cpuprice);
+				addToComputer("motherboard", motherboardid, motherboardpic, motherboardname, motherboardprice);
+				addToComputer("memory", memoryid, memorypic, memoryname, memoryprice);
+				addToComputer("disk", diskid, diskpic, diskname, diskprice);
+				addToComputer("graphics", graphicsid, graphicspic, graphicsname,graphicsprice);
+				addToComputer("box", boxid, boxpic, boxname, boxprice);
+				addToComputer("source", sourceid, sourcepic, sourcename, sourceprice);
+				
+				 
+			}, "json")
+		}
+		
+		
 		//更新总价的方法
 		function updatePrice() {
 			totalPrice = cpuprice + motherboardprice + memoryprice + diskprice + sourceprice + graphicsprice + boxprice;
@@ -864,13 +920,66 @@ to {
 		
 		//提交配置单
 		function addComputer(cpu, motherboard, memory, disk, source, graphics, box, totalPrice) {
+			
+			
+			var uid = $("#myuid").html();
+			var name = $(".name").val();
+			var instruct  = $(".instruct ").val();
+			
+			//判断是否登录
+			if(uid == null || uid.length <= 0 || "" == uid){
+				alert("您目前尚未登录,登录后才能发表配置单");
+				return;
+			}
+			
+			//判断是否所有硬件都选了
  			if (cpu == null || motherboard == null || memory == null || disk == null || source == null || graphics == null || box == null) {
 				alert("有未选的硬件，请检查您的配置单！");
 				return;
-			} 
+			}
+ 			
+			//判断名字和描述是否符合要求
+			if ((name.length < 6) || (name.length > 20)) {
+				alert("配置单名称必须大于6个字符，不超过20个字符！");
+				return;
+			}
+			if (instruct.length > 120) {
+				alert("配置单描述不能超过120个字符！");
+				return;
+			}
+			
+			//判断验证码是否输入正确
 			var inputCode = $(".code").val();
 			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 			
+ 			$.post("computer", {
+				op : "add",
+				uid : uid,
+				cname : name,
+				detail : instruct,
+				cpuid : cpu,
+				motherboardid : motherboard,
+				memoryid : memory,
+				diskid : disk,
+				sourceid : source,
+				graphicsid : graphics,
+				boxid : box,
+				sumprice : totalPrice
+			}, function(data) {
+				data = parseInt($.trim(data));
+
+				if (data > 0) {
+					alert("成功发表配置单:" + name + "!");
+					
+					name = $(".name").val("");
+					instruct  = $(".instruct").val("");
+					location.reload();
+					return;
+				} else {
+					alert("配置单添加失败！");
+					return;
+				}
+			}, "text") 
 			
 		}
 		
