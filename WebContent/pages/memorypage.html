@@ -376,12 +376,12 @@
 				
 				$.each(data,function(index,item){
 					var str="";
-					str = '<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125" id='+item.memoryid+'> <div class="pic"> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.memoryprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="http://detail.zol.com.cn/cpu/index1249003.shtml" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">内存频率：<em>'+item.frequency+'</em></span><span title="2.9GHz ">内存容量：<em>'+item.volume+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">内存类型：<em>'+memoryType(item.memorytype)+'</em></span> </div>  </div> </div>';		
+					str = '<div class="pitem clearfix s_1249003 p_1249003 " reldate="1249003" relmanu="125" id='+item.memoryid+'> <div class="pic"> <a href="javascript:void(0);" class=""> <img src="'+item.pics+'" alt="Intel 酷睿i5 9400F" /> </a> </div> <div class="price-box"> <span class="price">￥'+item.memoryprice+'</span> <a href="javascript:void(0);" target="_self" class="add"><i></i>加入配置单</a> </div> <div class="pro-intro">  <h3> <a href="javascript:void(0);" target="_blank" title="Intel 酷睿i5 9400F" class="">'+item.name+'</a> <i>'+item.usetimes+'</i>人已选用 </h3> <div class="paramet"> <span title="LGA 1151 ">内存频率：<em>'+item.frequency+'</em></span><span title="2.9GHz ">内存容量：<em>'+item.volume+' </em></span><span title="4.1GHz ">跑分：<em>'+item.score+' </em></span><span title="六核心  六线程">内存类型：<em>'+memoryType(item.memorytype)+'</em></span> </div>  </div> </div>';		
 					$(".plist").append($(str));
 					
 					//给每个内存添加监听	
 					$("#" + item.memoryid + " .add").click(function(){
-						addToComputer("memory", item.id, item.pics, item.name, item.memoryprice);
+						addToComputer("memory", item.memoryid, item.pics, item.name, item.memoryprice);
 					})
 				})
 			}, "json");
