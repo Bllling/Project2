@@ -323,7 +323,7 @@ to {
 			</div>
 			<div class="zj-login"
 				style="display: none; color: rgb(55, 145, 237); font-size: 20px;">
-				<strong id="my">${currentAdmin.uname }</strong>,欢迎你。
+				<strong id="my">${currentAdmin.uname }</strong>,欢迎你。&nbsp;&nbsp;您的UID:<strong id="myuid">${currentAdmin.uid }</strong>
 			</div>
 			<!-- <div class="zj-login">当前账号：<a href="javascript:;" target="_self" class="blue">al1wix</a> | <a href="javascript:;" target="_self">退出</a></div> -->
 			<ul>
@@ -381,7 +381,7 @@ to {
 				</div>
 				<div class="item shuoming">
 					<p class="lable">
-						<em id="info-str-count">0/200</em><b>说明：</b><span class="inst">内容不可超过120字</span>
+						<em id="info-str-count">0/120</em><b>说明：</b><span class="inst">内容不可超过120字</span>
 					</p>
 					<textarea class="instruct "
 						placeholder="您攒机的目的/预算，该配置的优势，分享更多内容，获取更多关注"  oninput="countStr(this, 120, 'info-str-count')"></textarea>
@@ -864,13 +864,68 @@ to {
 		
 		//提交配置单
 		function addComputer(cpu, motherboard, memory, disk, source, graphics, box, totalPrice) {
+			
+			
+			var uid = $("#myuid").html();
+			var id = year + month + date + h + m + s + uid;
+			var name = $(".name").val();
+			var instruct  = $(".instruct ").val();
+			
+			//判断是否登录
+			if(uid == null || uid.length <= 0 || "" == uid){
+				alert("您目前尚未登录,登录后才能发表配置单");
+				return;
+			}
+			
+			//判断是否所有硬件都选了
  			if (cpu == null || motherboard == null || memory == null || disk == null || source == null || graphics == null || box == null) {
 				alert("有未选的硬件，请检查您的配置单！");
 				return;
-			} 
+			}
+ 			
+			//判断名字和描述是否符合要求
+			if ((name.length < 6) || (name.length > 20)) {
+				alert("配置单名称必须大于6个字符，不超过20个字符！");
+				return;
+			}
+			if (instruct.length > 120) {
+				alert("配置单描述不能超过120个字符！");
+				return;
+			}
+			
+			//判断验证码是否输入正确
 			var inputCode = $(".code").val();
 			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
 			
+ 			$.post("computer", {
+				op : "add",
+				id : id,
+				uid : uid,
+				cname : name,
+				detail : instruct,
+				cpuid : cpu,
+				motherboardid : motherboard,
+				memoryid : memory,
+				diskid : disk,
+				sourceid : source,
+				graphicsid : graphics,
+				boxid : box,
+				sumprice : totalPrice
+			}, function(data) {
+				data = parseInt($.trim(data));
+
+				if (data > 0) {
+					alert("成功发表配置单:" + name + "!");
+					
+					var name = $(".name").val("");
+					var instruct  = $(".instruct ").val("");
+					location.reload();
+					return;
+				} else {
+					alert("配置单添加失败！");
+					return;
+				}
+			}, "text") 
 			
 		}
 		
