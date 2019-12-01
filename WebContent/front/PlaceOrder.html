@@ -443,7 +443,7 @@ body {
         
     }
     function yes(){
-    	if($("#result").html=="购买成功"){
+    	if($("#result").html()=="购买成功"){
     		var line = location.hash.replace("#","");
 			var uid=line.substring(2,3);
 			$(".popOut").css('display', 'none');

@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<input id="homePageUid" type="hidden"/>
-		<iframe id="commentsiframe" align="middle"  onload="showhtml()" frameborder="0" width="1400px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: 250px; height: 1180px;" ></iframe>
+		<iframe id="commentsiframe" align="middle"  onload="showhtml()" frameborder="0" width="1400px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: 250px; height: 1180px;transform: scale(0.95);" ></iframe>
 	</body>
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script>
@@ -60,11 +60,13 @@
 			$("#menu_nav_myplan").removeClass("active");
 			$("#menu_nav_order").attr("class","active");
 			$("#commentsiframe").attr("src","Order.html#"+uid1);
+			$("#commentsiframe").css("margin-left","0px");
 		}
 		function showperson() {
 			$("#menu_nav_order").removeClass("active");
 			$("#menu_nav_myplan").attr("class","active");
 			$("#commentsiframe").attr("src","person.html#"+uid1);
+			$("#commentsiframe").css("margin-left","250px");
 		}
 	</script>
 </html>

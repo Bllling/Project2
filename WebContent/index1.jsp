@@ -270,13 +270,10 @@ to {
 				<ul class="list clearfix">
 
 					<li class="li5">
-						<div class="search-box">
-							<input id="J_keywords" type="text" class="skey" name="kword"
-								placeholder="请输入关键词或配置单名称" data-source="" autocomplete="off">
-							<!--<input type="hidden" name="f" value="c">-->
-							<input id="submit" type="button" class="sbtn" onclick="scan()"
-								value="搜索">
-						</div>
+						 <div class="search-box">
+                       <input id="J_keywords" type="text" class="skey" name="kword" placeholder="请输入配置单号或配置单名称" data-source="" autocomplete="off">
+                       <input id="sb" type="button" class="sbtn" value="搜索" onclick="findC()">
+                 </div>
 					</li>
 				</ul>
 			</div>
@@ -306,9 +303,7 @@ to {
 	<br />
 	<br />
 
-	<%
-		session.setMaxInactiveInterval(10);
-	%>
+
 	<!-- 配置单栏 -->
 	<div class="wrapper clearfix">
 		<div class="zj-parts">
@@ -983,7 +978,50 @@ to {
 			
 		}
 		
+		 function findC(){
+			 var reg=/^[0-9]*$/;
+			 var id=null;
+			 var cname=null;
+			 var line=$("#J_keywords").val();
+			 var str=$("#my").html();
+			 var uid=$("#myuid").html();
+			 if(line==null||line==""||line.length<=0){
+				 alert("请输入配置名或配置单号");
+				 return;
+			 }
+			 if(str!=null&&str.length > 0&&""!=str){
+				 if(reg.test(line)){
+					id=line;
+					$.post("computer",{op:"isExist",id:id},function(data){
+						if(data==null){
+							alert("你要搜索的配置不存在!");
+							
+					
+						}else{
+							window.location.href="front/buy.html#"+id+"&"+uid;
+						}
+					},"json")
+				
+					
+				 }else{
+					cname=line;
+					$.post("computer",{op:"findIdByCname",cname:cname},function(data){
+						if(data==null){
+							alert("你要搜索的配置不存在!");
+						
+						}else{
+							window.location.href="buy.html#"+data.id+"&"+uid;
+						}
+					
+						
+					},"json")
+				 }
+			 }else{
+				 alert("请先登录"); 
+				 $("#J_keywords").html("");
+			 }
 
+		 }
 	</script>
 
 </body>
