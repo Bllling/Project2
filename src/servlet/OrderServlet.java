@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import biz.IOrderBiz;
+import biz.IOrderDetailBiz;
+import biz.impl.IOrderDetaiBizImpl;
 import biz.impl.OrderBizImpl;
 
 @WebServlet("/order")
@@ -28,9 +30,14 @@ public class OrderServlet extends BasicServlet {
 			findOrderInfoByAdmin(request, response);
 		}else if ("getTotal".equals(op)) {
 			getTotal(request, response);
+		}else if ("addDetail".equals(op)){
+			addDetail(request, response);
 		}
 	}
-
+	private void addDetail(HttpServletRequest request, HttpServletResponse response) {
+		IOrderDetailBiz rBiz = new IOrderDetaiBizImpl();
+		
+	}
 	private void getTotal(HttpServletRequest request, HttpServletResponse response) {
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		String type = request.getParameter("type");

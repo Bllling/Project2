@@ -65,7 +65,14 @@ body {
  margin-left: 180px;
   margin-top: 30px;
   font-size: 15px;
+  display:block;
  
+ }
+ .header-title1{
+ margin-left: 180px;
+  margin-top: 30px;
+  font-size: 15px;
+  display:none;
  }
  hr{
  width: 1007px;
@@ -197,6 +204,19 @@ body {
 	color: white;
 	border-radius: 5px;
 	}
+ .header-operation1{
+  margin-left: 180px;
+    margin-top: 30px;
+    font-size: 20px;
+  text-decoration: none;
+   cursor: pointer;
+   font-size: 15px;
+    color:black;
+ }
+ .go{
+ font-size: 15px;
+ color: blue;
+ }
 </style>
 </head>
    
@@ -216,13 +236,9 @@ body {
 		</div>
 	</div>
 	<h2 class="header-title">确认收货地址<a class="header-operation"  href="homepage.html">管理收货地址</a></h2>
+	<h2 class="header-title1"><a class="header-operation1"  href="homepage.html">暂无收货地址，去添加<span class="go">—-》</span></a></h2>
 	<hr >
-	<div class="boss">
-	
-	
-	
-	
-	</div>
+	<div class="boss"></div>
 
     
    
@@ -243,6 +259,13 @@ body {
 	  <input type="text" id="source" style="opacity:0;">
 	  <input type="text" id="graphics" style="opacity:0;">
 	  <input type="text" id="box" style="opacity:0;">
+	  <input type="text" id="cpup" style="opacity:0;">
+	  <input type="text" id="memoryp" style="opacity:0;">
+	  <input type="text" id="diskp" style="opacity:0;">
+	  <input type="text" id="ssdp" style="opacity:0;">
+	  <input type="text" id="sourcep" style="opacity:0;">
+	  <input type="text" id="graphicsp" style="opacity:0;">
+	  <input type="text" id="boxp" style="opacity:0;">
 	   <input type="text" id="aid" style="opacity:0;">
 	   <div class="popOutBg" id="pop1" style="display: none;"></div>
 		<div class="popOut" id="pop2" style="display: none;">
@@ -263,15 +286,21 @@ body {
 		var str="";
 		var flag=1;
 		$(".header-operation").attr("href","homepage.html#"+uid);
+		$(".header-operation1").attr("href","homepage.html#"+uid);
+		$(".home").attr("href","homepage.html#"+uid);
 		$("#frame").attr("src","Order1.html#"+id);
 		$.post("../usr",{op:"findAllByID",uid:uid},function(data){
 			$("#uname").html(data.uname);
 		},"json")
 		$.post("../address",{op:"findAllByUid",uid:uid},function(data){
-			
+			console.log(data);	
+			if(data.length<=0){
+				$(".header-title1").css("display","block");
+				$(".header-title").css("display","none");
+			}
 			 $.each(data,function(index,item){
 			   if(item.isdefault==1){
-				   str+='<div class="address"><img src="../images/iconsend.jpg" class="marker"><input type="radio" name="radio" id="rad" value="1" style="display: none"><span id="province">'+item.province+'</span>&emsp;<span id="city">'+item.city+'</span>&emsp;<span id="county">'+item.county+'</span>&emsp;<span id="raddress">'+item.raddress+'</span><span>&emsp;(</span><span id="uname">'+item.addrname+'</span><span>&emsp;收)&emsp;</span><span id="utel">'+item.addrtel+'</span><span>&emsp;默认地址</span><span id="arid" style="opacity:0;">'+item.arid+'</span><a href="homepage.html#'+uid+'" class="ahome">修改本地址</a></div>';
+				   str+='<div class="address"><img src="../images/iconsend.jpg" class="marker"><input type="radio" name="radio" id="rad" value="1" style="display: none"><span id="province">'+item.province+'</span>&emsp;<span id="city">'+item.city+'</span>&emsp;<span id="county">'+item.county+'</span>&emsp;<span id="raddress">'+item.raddress+'</span><span>&emsp;(</span><span id="uname">'+item.addrname+'</span><span>&emsp;收)&emsp;</span><span id="utel">'+item.addrtel+'</span><span>&emsp;默认地址</span><span id="arid" style="opacity:0;">'+item.arid+'</span><a href="homepage.html#"'+uid+' class="ahome">修改本地址</a></div>';
 				   $("#bprovince").html(item.province);
 				   $("#bcity").html(item.city);
 				   $("#bcounty").html(item.county);
@@ -282,7 +311,7 @@ body {
 				   arid=item.arid;
 			   }else{
 				   ++flag;
-				   str+='<div class="content"><img src="../images/iconsend.jpg" class="marker" style="display:none"><input type="radio" name="radio" id="rad" value='+flag+' style="display: block"><span id="province">'+item.province+'</span>&emsp;<span id="city">'+item.city+'</span>&emsp;<span id="county">'+item.county+'</span>&emsp;<span id="raddress">'+item.raddress+'</span><span>&emsp;(</span><span id="uname">'+item.addrname+'</span><span>&emsp;收)&emsp;</span><span id="utel">'+item.addrtel+'</span><span></span><span id="arid" style="opacity:0;">'+item.arid+'</span><a href="homepage.html#'+uid+'" class="ahome">修改本地址</a></div>';
+				   str+='<div class="content"><img src="../images/iconsend.jpg" class="marker" style="display:none"><input type="radio" name="radio" id="rad" value='+flag+' style="display: block"><span id="province">'+item.province+'</span>&emsp;<span id="city">'+item.city+'</span>&emsp;<span id="county">'+item.county+'</span>&emsp;<span id="raddress">'+item.raddress+'</span><span>&emsp;(</span><span id="uname">'+item.addrname+'</span><span>&emsp;收)&emsp;</span><span id="utel">'+item.addrtel+'</span><span></span><span id="arid" style="opacity:0;">'+item.arid+'</span><a href="homepage.html#"'+uid+' class="ahome">修改本地址</a></div>';
 				
 			   }	
 			 })
@@ -314,12 +343,19 @@ body {
 			 
 		},"json")
 		
+		
 	})
 	var timeoutId = window.setTimeout(function(){
 		sum= $("#parent").val();
 		$("#sum").html(sum);
 	}, 2000);
     function submit(){
+    	var line = location.hash.replace("#","");
+		var id=line.substring(0,1);
+		var uid=line.substring(2,3);
+    	if($(".boss").html()==null||$(".boss").html().length<=0){
+			window.location.href="homepage.html#"+uid;
+		}
     	var date = new Date();
     	year=date.getFullYear().toString();
     	month=(date.getMonth()+1).toString();
@@ -329,9 +365,7 @@ body {
     	second=date.getSeconds().toString();
     	var rorderid=year+month+day+hour+min+second;
     	
-    	var line = location.hash.replace("#","");
-		var id=line.substring(0,1);
-		var uid=line.substring(2,3);
+    
     	var state=1;
     	var total=$("#sum").html();
         var cpuprice=$("#cpu").val();
@@ -342,8 +376,16 @@ body {
         var sourceprice=$("#source").val();
         var graphicsprice=$("#graphics").val();
         var boxprice=$("#box").val();
-        console.log(isupdate(id));
-        if(isupdate(id)){
+        var cpup=$("#cpup").val();
+        var motherboardp=$("#motherboardp").val();
+        var memoryp=$("#memoryp").val();
+        var diskp=$("#diskp").val();
+        var ssdp=$("#ssdp").val();
+        var sourcep=$("#sourcep").val();
+        var graphicsp=$("#graphicsp").val();
+        var boxp=$("#boxp").val();
+        if(cpup!="0"&&motherboardp!="0"&&memoryp!="0"&&diskp!="0"&&ssdp!="0"&&sourcep!="0"&&graphicsp!="0"&&boxp!="0"){
+        	isupdate(id);
         $.post("../order",{op:"addOrder",id:id,uid:uid,rorderid:rorderid,state:state,total:total},function(data){
            if(data>0){
         		$(".popOut").css('display', 'block');
@@ -373,16 +415,15 @@ body {
         	var sourceid=data.sourceid;
         	var graphicsid=data.graphicsid;
         	var boxid=data.boxid;
-        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"cpu",idName:"cpuid",id:cpuid},function(data){
-        	
-        		if(data>0){	
-        			return 1;
-        		}else{
-              		return 0;
-        		}
-        	})
-        },"json")
-      
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"cpu",idName:"cpuid",id:cpuid},function(data){})
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"motherboard",idName:"motherboardid",id:motherboardid},function(data){})
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"memory",idName:"memoryid",id:memoryid},function(data){})
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"disk",idName:"diskid",id:diskid},function(data){})
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"source",idName:"sourceid",id:sourceid},function(data){})
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"graphics",idName:"graphicsid",id:graphicsid},function(data){})
+        	$.post("../hardwareinfo",{op:"updateQuantiy",formName:"box",idName:"boxid",id:boxid},function(data){})
+
+        },"json")  
         
     }
     function yes(){

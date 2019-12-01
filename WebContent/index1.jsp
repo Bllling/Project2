@@ -329,39 +329,39 @@ to {
 			<ul>
 				<li id="leftSubSel_28" rel="28" class="active">
 					<h3>
-						CPU<i>*</i>
+						CPU
 					</h3> <span class="pic"></span>
-					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="cpuPage()">添加</span>
-					<span class="delete"></span>
+					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="cpuPage();page = 1;">添加</span>
+					<span class="delete" onclick="del('cpu');"></span>
 				</li>
 				<li id="leftSubSel_5" rel="5">
 					<h3>
-						主板<i>*</i>
+						主板
 					</h3> <span class="pic"></span>
-					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="boardPage()">添加</span>
-					<span class="delete"></span>
+					<div class="zj-parts-con">请选择商品</div> <span class="link-add" onclick="boardPage();page = 1;">添加</span>
+					<span class="delete" onclick="del('motherboard');"></span>
 				</li>
 				<li id="leftSubSel_3" rel="3">
 					<h3>
-						内存<i>*</i>
+						内存
 					</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="memoryPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="memoryPage();page = 1;">添加</span> <span class="delete" onclick="del('memory');"></span>
 				</li>
 				<li id="leftSubSel_2" rel="2">
 					<h3>硬盘</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="diskPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="diskPage();page = 1;">添加</span> <span class="delete" onclick="del('disk');"></span>
 				</li>
 				<li id="leftSubSel_6" rel="6">
 					<h3>显卡</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="graphicsPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="graphicsPage();page = 1;">添加</span> <span class="delete" onclick="del('graphics');"></span>
 				</li>
 				<li id="leftSubSel_10" rel="10">
 					<h3>机箱</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="boxPage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="boxPage();page = 1;">添加</span> <span class="delete" onclick="del('box');"></span>
 				</li>
 				<li id="leftSubSel_35" rel="35">
 					<h3>电源</h3> <span class="pic"></span> <span class="zj-parts-con">请选择商品</span>
-					<span class="link-add" onclick="sourcePage()">添加</span> <span class="delete"></span>
+					<span class="link-add" onclick="sourcePage();page = 1;">添加</span> <span class="delete" onclick="del('source');"></span>
 				</li>
 
 				<li class="total">
@@ -402,7 +402,7 @@ to {
 
 			</div>
 			<div class="btn-box">
-				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid);">发表配置单</a>
+				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, totalPrice);">发表配置单</a>
 				<a href="javascript:void(0);" target="_self" class="empty">清空</a>
 			</div>
 		</div>
@@ -530,6 +530,161 @@ to {
 			console.log(ss);
 		}
 		
+		
+		//删除某个硬件的方法
+		function del(type) {
+			if (type == "cpu") {
+				cpuid = null;
+				
+				//设置图片
+				$("#leftSubSel_28" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_28" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_28" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_28" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_28" + " .link-add").html("添加");
+				$("#leftSubSel_28" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_28" + " .link-add").click(function(){cpuPage();});
+				
+				//更新总价
+				cpuprice = 0;
+				chosecpu = 0;
+				updatePrice();
+				
+			} else if (type == "motherboard") {
+				motherboardid = null;
+				
+				//设置图片
+				$("#leftSubSel_5" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_5" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_5" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_5" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_5" + " .link-add").html("添加");
+				$("#leftSubSel_5" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_5" + " .link-add").click(function(){boardPage();});
+				
+				//更新总价
+				motherboardprice = 0;
+				chosemotherboard = 0;
+				updatePrice();
+			} else if (type == "memory") {
+				memoryid = null;
+				
+				//设置图片
+				$("#leftSubSel_3" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_3" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_3" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_3" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_3" + " .link-add").html("添加");
+				$("#leftSubSel_3" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_3" + " .link-add").click(function(){memoryPage();});
+				
+				//更新总价
+				memoryprice = 0;
+				chosememory = 0;
+				updatePrice();
+			} else if (type == "disk") {
+				diskid = null;
+				
+				//设置图片
+				$("#leftSubSel_2" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_2" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_2" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_2" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_2" + " .link-add").html("添加");
+				$("#leftSubSel_2" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_2" + " .link-add").click(function(){diskPage();});
+				
+				//更新总价
+				diskprice = 0;
+				chosedisk = 0;
+				updatePrice();
+			} else if (type == "graphics") {
+				graphicsid = null;
+				
+				//设置图片
+				$("#leftSubSel_6" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_6" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_6" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_6" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_6" + " .link-add").html("添加");
+				$("#leftSubSel_6" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_6" + " .link-add").click(function(){graphicsPage();});
+				
+				//更新总价
+				graphicsprice = 0;
+				chosegraphics = 0;
+				updatePrice();
+			} else if (type == "box") {
+				boxid = null;
+				
+				//设置图片
+				$("#leftSubSel_10" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_10" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_10" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_10" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_10" + " .link-add").html("添加");
+				$("#leftSubSel_10" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_10" + " .link-add").click(function(){boxPage();});
+				
+				//更新总价
+				boxprice = 0;
+				chosebox = 0;
+				updatePrice();
+			} else if (type == "source") {
+				sourceid = null;
+				
+				//设置图片
+				$("#leftSubSel_35" + " .pic").css("background-image",
+				"url(//icon.zol-img.com.cn/zj2011/images/zj.2016.png)");
+				$("#leftSubSel_35" + " .pic").removeClass("hasPic");
+				
+				//设置名称 
+				$("#leftSubSel_35" + " .zj-parts-con").html("请选择商品");
+				$("#leftSubSel_35" + " .zj-parts-con").removeClass("hasName");
+				
+				//设置价格
+				$("#leftSubSel_35" + " .link-add").html("添加");
+				$("#leftSubSel_35" + " .link-add").removeClass("hasPrice");
+				$("#leftSubSel_35" + " .link-add").click(function(){sourcePage();});
+				
+				//更新总价
+				sourceprice = 0;
+				chosesource = 0;
+				updatePrice();
+			}
+		}
+		
+		
 		//更新总价的方法
 		function updatePrice() {
 			totalPrice = cpuprice + motherboardprice + memoryprice + diskprice + sourceprice + graphicsprice + boxprice;
@@ -543,13 +698,12 @@ to {
 		//添加硬件到配置单的方法
 		function addToComputer(type, id, pics, name, price) {
 			if (type == "cpu") {
-				boxid = id;
-				
+				cpuid = id;
+				console.log("cpuid:" + cpuid);
 				//设置图片
 				$("#leftSubSel_28" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_28" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_28" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_28" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_28" + " .zj-parts-con").html(name);
@@ -570,8 +724,7 @@ to {
 				//设置图片
 				$("#leftSubSel_5" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_5" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_5" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_5" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_5" + " .zj-parts-con").html(name);
@@ -592,8 +745,7 @@ to {
 				//设置图片
 				$("#leftSubSel_3" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_3" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_3" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_3" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_3" + " .zj-parts-con").html(name);
@@ -614,8 +766,7 @@ to {
 				//设置图片
 				$("#leftSubSel_2" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_2" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_2" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_2" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_2" + " .zj-parts-con").html(name);
@@ -636,8 +787,7 @@ to {
 				//设置图片
 				$("#leftSubSel_6" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_6" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_6" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_6" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_6" + " .zj-parts-con").html(name);
@@ -649,8 +799,8 @@ to {
 				$("#leftSubSel_6" + " .link-add").removeAttr("onclick");
 				
 				//更新总价
-				diskprice = price;
-				chosedisk = 1;
+				graphicsprice = price;
+				chosegraphics = 1;
 				updatePrice();
 			} else if (type == "box") {
 				boxid = id;
@@ -658,8 +808,7 @@ to {
 				//设置图片
 				$("#leftSubSel_10" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_10" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_10" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_10" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_10" + " .zj-parts-con").html(name);
@@ -680,8 +829,7 @@ to {
 				//设置图片
 				$("#leftSubSel_35" + " .pic").css("background-image",
 				"url("+pics+")");
-				$("#leftSubSel_35" + " .pic").css("background-size", "100% 100%");
-				$("#leftSubSel_35" + " .pic").css("background-position", "0px 0px");
+				$("#leftSubSel_35" + " .pic").addClass("hasPic");
 				
 				//设置名称 
 				$("#leftSubSel_35" + " .zj-parts-con").html(name);
@@ -715,14 +863,15 @@ to {
 		}
 		
 		//提交配置单
-		function addComputer(cpu, motherboard, memory, disk, source, graphics, box) {
-			if (cpu == null || motherboard == null || memory ==null) {
-				alert("CPU,主板和内存为必选硬件，请检查您的配置单！");
+		function addComputer(cpu, motherboard, memory, disk, source, graphics, box, totalPrice) {
+ 			if (cpu == null || motherboard == null || memory == null || disk == null || source == null || graphics == null || box == null) {
+				alert("有未选的硬件，请检查您的配置单！");
 				return;
-			}
+			} 
 			var inputCode = $(".code").val();
-			
 			if (inputCode != vcode) { alert("验证码错误，请重新输入！"); return;}
+			
+			
 		}
 		
 
