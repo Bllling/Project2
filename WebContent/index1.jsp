@@ -396,7 +396,7 @@ to {
 			</div>
 			<div class="btn-box">
 				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, totalPrice);">发表配置单</a>
-				<a href="javascript:void(0);" target="_self" class="empty" onclick="location.reload();$('.instruct').val('');$('.name').val(''');">清空</a>
+				<a href="javascript:void(0);" target="_self" class="empty" onclick="location.reload();$('.instruct').val('');$('.name').val('');$('.code').val('');">清空</a>
 			</div>
 		</div>
 
@@ -457,7 +457,10 @@ to {
 				$(".zj-login:eq(1)").css('display', 'block');
 				
 			}
-			cite(id);
+			if (id != null && id != "") {
+				cite(id);
+			}
+			
 			createCode();
 			cpuPage();
 			}; 
@@ -966,8 +969,9 @@ to {
 				if (data > 0) {
 					alert("成功发表配置单:" + name + "!");
 					
-					name = $(".name").val("");
-					instruct  = $(".instruct").val("");
+					$(".name").val("");
+					$(".instruct").val("");
+					$(".code").val("");
 					location.reload();
 					return;
 				} else {

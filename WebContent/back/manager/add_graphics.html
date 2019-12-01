@@ -127,7 +127,7 @@
 	function checkprice() {
 		$("#add_graphics_price_er").attr("style","display:none");
 		var price = $.trim($("#add_graphics_price").val());
-		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
 		if (!reg.test(price) ) {
 			$("#add_graphics_price_er").attr("style","display:block");
 		}
@@ -136,7 +136,7 @@
 	function checkquantiy() {
 		$("#add_graphics_quantiy_er").attr("style","display:none");
 		var quantiy = $.trim($("#add_graphics_quantiy").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(quantiy)) {
 			$("#add_graphics_quantiy_er").attr("style","display:block");
 		}
@@ -145,7 +145,7 @@
 	function checkscore() {
 		$("#add_graphics_score_er").attr("style","display:none");
 		var score = $.trim($("#add_graphics_score").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(score)) {
 			$("#add_graphics_score_er").attr("style","display:block");
 		}
@@ -154,7 +154,7 @@
 	function checkpowers() {
 		$("#add_graphics_powers_er").attr("style","display:none");
 		var powers = $.trim($("#add_graphics_powers").val());
-		var reg = /^[1-9]+(\.\d+)?[w|W]$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?[w|W]$/;   //非负浮点数
 		if (!reg.test(powers)) {
 			$("#add_graphics_powers_er").attr("style","display:block");
 		}
@@ -163,7 +163,7 @@
 	function checkmemory() {
 		$("#add_graphics_memory_er").attr("style","display:none");
 		var memory = $.trim($("#add_graphics_memory").val());
-		var reg = /^[1-9]+(\.\d+)?[gb|GB]$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?[gb|GB]$/;   //非负浮点数
 		if (!reg.test(memory)) {
 			$("#add_graphics_memory_er").attr("style","display:block");
 		}
@@ -172,7 +172,7 @@
 	function checkwidth() {
 		$("#add_graphics_width_er").attr("style","display:none");
 		var width = $.trim($("#add_graphics_width").val());
-		var reg = /^[1-9]+(\.\d+)?[bit|BIT]$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?[bit|BIT]$/;   //非负浮点数
 		if (!reg.test(width)) {
 			$("#add_graphics_width_er").attr("style","display:block");
 		}

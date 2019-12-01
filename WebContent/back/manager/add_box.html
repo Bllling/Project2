@@ -104,7 +104,7 @@
 	function checkprice() {
 		$("#add_box_price_er").attr("style","display:none");
 		var price = $.trim($("#add_box_price").val());
-		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
 		if (!reg.test(price) ) {
 			$("#add_box_price_er").attr("style","display:block");
 		}
@@ -113,7 +113,7 @@
 	function checkquantiy() {
 		$("#add_box_quantiy_er").attr("style","display:none");
 		var quantiy = $.trim($("#add_box_quantiy").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(quantiy)) {
 			$("#add_box_quantiy_er").attr("style","display:block");
 		}
@@ -122,7 +122,7 @@
 	function checkscore() {
 		$("#add_box_score_er").attr("style","display:none");
 		var score = $.trim($("#add_box_score").val());
-		var reg = /^[1-9]+$/;  //非负整数
+		var reg = /^([1-9])\d+$/;  //非负整数
 		if (!reg.test(score)) {
 			$("#add_box_score_er").attr("style","display:block");
 		}
