@@ -32,7 +32,14 @@ public class OrderServlet extends BasicServlet {
 			getTotal(request, response);
 		}else if ("addDetail".equals(op)){
 			addDetail(request, response);
+		}else if ("findOrderDetailById".equals(op)) {
+			findOrderDetailById(request, response);
 		}
+	}
+	private void findOrderDetailById(HttpServletRequest request, HttpServletResponse response) {
+		double rorderid = Double.parseDouble(request.getParameter("rorderid"));
+		IOrderDetailBiz orderDetailBiz = new IOrderDetaiBizImpl();
+		this.send(response, orderDetailBiz.findOrderDetailInfoByid(rorderid));
 	}
 	private void addDetail(HttpServletRequest request, HttpServletResponse response) {
 		IOrderDetailBiz rBiz = new IOrderDetaiBizImpl();
