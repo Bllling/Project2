@@ -867,7 +867,6 @@ to {
 			
 			
 			var uid = $("#myuid").html();
-			var id = year + month + date + h + m + s + uid;
 			var name = $(".name").val();
 			var instruct  = $(".instruct ").val();
 			
@@ -899,7 +898,6 @@ to {
 			
  			$.post("computer", {
 				op : "add",
-				id : id,
 				uid : uid,
 				cname : name,
 				detail : instruct,
