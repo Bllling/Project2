@@ -401,7 +401,7 @@ to {
 			</div>
 			<div class="btn-box">
 				<a href="javascript:void(0);" target="_self" class="publish" onclick="addComputer(cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, totalPrice);">发表配置单</a>
-				<a href="javascript:void(0);" target="_self" class="empty">清空</a>
+				<a href="javascript:void(0);" target="_self" class="empty" onclick="location.reload();$('.instruct').val('');$('.name').val(''');">清空</a>
 			</div>
 		</div>
 
@@ -462,6 +462,7 @@ to {
 				$(".zj-login:eq(1)").css('display', 'block');
 				
 			}
+			cite(id);
 			createCode();
 			cpuPage();
 			}; 
@@ -684,6 +685,7 @@ to {
 		}
 		
 		
+		
 		//引用配置单攒机
 		function cite(id) {
 			$.post("computer", {
@@ -707,6 +709,34 @@ to {
 				var graphicsname = data.name5;
 				var boxname = data.name6;
 				var sourcename = data.name4;
+				
+				var cpupic = data.pics;
+				var motherboardpic = data.pics1;
+				var memorypic = data.pics2;
+				var diskpic = data.pics3;
+				var graphicspic = data.pics5;
+				var boxpic = data.pics6;
+				var sourcepic = data.pics4;
+				
+				var cpuprice = data.price;
+				var motherboardprice = data.price1;
+				var memoryprice = data.price2;
+				var diskprice = data.price3;
+				var graphicsprice = data.price5;
+				var boxprice = data.price6;
+				var sourceprice = data.price4;
+				
+				console.log(cpuprice);
+				
+				addToComputer("cpu", cpuid, cpupic, cpuname, cpuprice);
+				addToComputer("motherboard", motherboardid, motherboardpic, motherboardname, motherboardprice);
+				addToComputer("memory", memoryid, memorypic, memoryname, memoryprice);
+				addToComputer("disk", diskid, diskpic, diskname, diskprice);
+				addToComputer("graphics", graphicsid, graphicspic, graphicsname,graphicsprice);
+				addToComputer("box", boxid, boxpic, boxname, boxprice);
+				addToComputer("source", sourceid, sourcepic, sourcename, sourceprice);
+				
+				 
 			}, "json")
 		}
 		
@@ -942,7 +972,7 @@ to {
 					alert("成功发表配置单:" + name + "!");
 					
 					name = $(".name").val("");
-					instruct  = $(".instruct ").val("");
+					instruct  = $(".instruct").val("");
 					location.reload();
 					return;
 				} else {
