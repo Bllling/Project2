@@ -293,10 +293,8 @@ to {
 					href="front/myplan.jsp">我的方案</a></li>
 				<li id="menu_nav_wyplan"><a target="_self"
 					href="front/netplan.jsp">网友方案</a></li>
-				<li id="menu_nav_DiyTop"><a target="_self" href="">配置排行榜</a></li>
 				<li id="menu_nav_ProTop"><a target="_self"
 					href="front/rank.html">网友首选配件</a></li>
-				<li id="menu_nav_Smart"><a target="_blank" href="">智能推荐攒机</a></li>
 			</ul>
 		</div>
 	</div>
