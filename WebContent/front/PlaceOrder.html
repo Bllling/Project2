@@ -255,7 +255,7 @@ body {
 	  <input type="text" id="cpu" style="opacity:0;">
 	  <input type="text" id="memory" style="opacity:0;">
 	  <input type="text" id="disk" style="opacity:0;">
-	  <input type="text" id="ssd" style="opacity:0;">
+	  <input type="text" id="motherboard" style="opacity:0;">
 	  <input type="text" id="source" style="opacity:0;">
 	  <input type="text" id="graphics" style="opacity:0;">
 	  <input type="text" id="box" style="opacity:0;">
@@ -388,15 +388,31 @@ body {
         	isupdate(id);
         $.post("../order",{op:"addOrder",id:id,uid:uid,rorderid:rorderid,state:state,total:total},function(data){
            if(data>0){
-        		$(".popOut").css('display', 'block');
-        		$(".popOutBg").css('display', 'block');
-        		$("#result").html("购买成功");
+           	$.post("../order",
+           	{op:"addDetail",
+           	rorderid:rorderid,
+           	arid:arid,
+           	cpuprice:cpuprice,
+           	motherboardprice:motherboardprice,
+           	memoryprice:memoryprice,
+           	diskprice:diskprice,
+           	sourceprice:sourceprice,
+           	graphicsprice:graphicsprice,
+           	boxprice:boxprice},
+           	function(data){
+           		if(data>0){
+           			$(".popOut").css('display', 'block');
+            		$(".popOutBg").css('display', 'block');
+            		$("#result").html("购买成功");
+           		}
+           	})
            }else{
         	   $(".popOut").css('display', 'block');
        		   $(".popOutBg").css('display', 'block');
        		$("#result").html("购买失败");
            }
         })
+        
         }else{
         	$(".popOut").css('display', 'block');
     		$(".popOutBg").css('display', 'block');

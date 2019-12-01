@@ -9,9 +9,9 @@ public class IOrderDetaiBizImpl implements IOrderDetailBiz {
 
 	@Override
 	public int add(String rorderid, Integer arid, Double cpuprice, Double motherboardprice, Double memoryprice,
-			Double diskprice, Double ssdprice, Double sourceprice, Double graphicsprice, Double boxprice) {
+			Double diskprice,  Double sourceprice, Double graphicsprice, Double boxprice) {
 		IOrderDetailDao dao = new IOrderDetaiDaoImpl();
-		return dao.add(rorderid, arid, cpuprice, motherboardprice, memoryprice, diskprice, ssdprice, sourceprice, graphicsprice, boxprice);
+		return dao.add(rorderid, arid, cpuprice, motherboardprice, memoryprice, diskprice, sourceprice, graphicsprice, boxprice);
 	}
 
 
