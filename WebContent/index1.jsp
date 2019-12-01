@@ -685,6 +685,17 @@ to {
 		}
 		
 		
+		//引用配置单攒机
+		function cite(id) {
+			$.post("computer", {
+				op : "findById",
+				id : id
+			}, function(data) {
+				console.log(data);
+			}, "text")
+		}
+		
+		
 		//更新总价的方法
 		function updatePrice() {
 			totalPrice = cpuprice + motherboardprice + memoryprice + diskprice + sourceprice + graphicsprice + boxprice;
