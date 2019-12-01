@@ -20,6 +20,7 @@ public class ComputerDaoImpl implements IComputerDao {
 	public int add(Integer uid,String cname,String detail,Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid,Double sumprice ) {
 		   DBHelper db = new DBHelper();
            String sql="insert into computer values(0,?,now(),0,0,?,?,?,?,?,?,?,?,?,?)";
+          System.out.println(sql);
            return db.update(sql, uid,cpuid,motherboardid,memoryid,diskid,sourceid,graphicsid,boxid,detail,cname,sumprice);
 	}
 
