@@ -448,7 +448,7 @@ to {
 	
 		var vcode;
 		var vcodePath;
-
+		var id = location.hash.replace("#","");
 
  		window.onload = function() {
 
@@ -460,6 +460,7 @@ to {
 				$(".popOutBg").css('display', 'none');
 				$(".zj-login:eq(0)").css('display', 'none');
 				$(".zj-login:eq(1)").css('display', 'block');
+				
 			}
 			createCode();
 			cpuPage();
@@ -690,6 +691,22 @@ to {
 				id : id
 			}, function(data) {
 				console.log(data);
+				
+				cpuid = data.cpuid;
+				motherboardid = data.motherboardid;
+				memoryid = data.memoryid;
+				diskid = data.diskid;
+				graphicsid = data.graphicsid;
+				boxid = data.boxid;
+				sourceid = data.sourceid;
+				
+				var cpuname = data.name;
+				var motherboardname = data.name1;
+				var memoryname = data.name2;
+				var diskname = data.name3;
+				var graphicsname = data.name5;
+				var boxname = data.name6;
+				var sourcename = data.name4;
 			}, "json")
 		}
 		
