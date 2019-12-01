@@ -924,8 +924,8 @@ to {
 				if (data > 0) {
 					alert("成功发表配置单:" + name + "!");
 					
-					var name = $(".name").val("");
-					var instruct  = $(".instruct ").val("");
+					name = $(".name").val("");
+					instruct  = $(".instruct ").val("");
 					location.reload();
 					return;
 				} else {
