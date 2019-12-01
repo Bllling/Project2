@@ -1,30 +1,40 @@
+<style>
+.er {
+	float:left; display:none; color:red;height: 20px;line-height:20px; margin-top: 14px; margin-left: 10px;
+}
+</style>
 <h2>添加电源</h2>
 <form id="add_form">
 	<ul>
 		<li>
 			<label for="add_source_name">电源名称：</label> 
 			<br />
-			<input type="text" name="sname" id="add_source_name" class="myipt" />
+			<input type="text" name="sname" id="add_source_name" class="myipt" style="float:left;" onblur="checkname()"/>
+			<span id="add_source_name_er" class="er">名称不能为空！</span>
 		</li>
 		<li>
 			<label for="add_source_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
 			<br />
-			<input type="text" name="sprice" id="add_source_price" class="myipt" />
+			<input type="text" name="sprice" id="add_source_price" class="myipt" style="float:left;" onblur="checkprice()" />
+			<span id="add_source_price_er" class="er">价格填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_source_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
 			<br />
-			<input type="text" name="squantiy" id="add_source_quantiy" class="myipt" />
+			<input type="text" name="squantiy" id="add_source_quantiy" class="myipt" style="float:left;" onblur="checkquantiy()" />
+			<span id="add_source_quantiy_er" class="er">库存填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_source_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
 			<br />
-			<input type="text" name="sscore" id="add_source_score" class="myipt" />
+			<input type="text" name="sscore" id="add_source_score" class="myipt" style="float:left;" onblur="checkscore()" />
+			<span id="add_source_score_er" class="er">跑分填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_source_maxpowers">最大功率：</label> 
 			<br />
-			<input type="text" name="maxpowers" id="add_source_maxpowers" class="myipt" />
+			<input type="text" name="maxpowers" id="add_source_maxpowers" class="myipt" style="float:left;" onblur="checkpowers()" />
+			<span id="add_source_powers_er" class="er">功率填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_source_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
@@ -36,17 +46,31 @@
 		</li>
 		<li style="width: 80%; text-align: center;">
 			<input type="button" value="添加" onclick="add_motherboard()" class="mybtn" />
+			<br>
+			<span id="source_add_er" class="er" >有信息填写格式错误！</span>
 		</li>
 	</ul>
 </form>
 
 <script type="text/javascript">
 	function add_motherboard() {
+		$("#source_add_er").attr("style","display:none");
 		var name = $.trim($("#add_source_name").val());
 		var sourceprice = $.trim($("#add_source_price").val());
 		var quantiy = $.trim($("#add_source_quantiy").val());
 		var score = $.trim($("#add_source_score").val());
 		var maxpowers = $.trim($("#add_source_maxpowers").val());
+		
+		var add_source_name_er = $("#add_source_name_er").css("display");
+		var add_source_price_er = $("#add_source_price_er").css("display");
+		var add_source_quantiy_er = $("#add_source_quantiy_er").css("display");
+		var add_source_score_er = $("#add_source_score_er").css("display");
+		var add_source_powers_er = $("#add_source_powers_er").css("display");
+		
+		if (add_source_name_er == "block" || add_source_price_er == "block" || add_source_quantiy_er == "block" || add_source_score_er == "block" || add_source_powers_er == "block"  ) {
+			$("#source_add_er").attr("style","display:block");
+			return;
+		}
 		
 		if (name == "" || sourceprice == "" || quantiy == "" || score == "" || maxpowers == "" ){
 			alert("您输入的信息不能为空，请确认后重新输入...");
@@ -75,5 +99,49 @@
 				alert("电源添加失败...\n" + e);
 			}
 		})
+	}
+	
+	
+	function checkname() {
+		$("#add_source_name_er").attr("style","display:none");
+		var cname = $.trim($("#add_source_name").val());   
+		if (cname == "") {
+			$("#add_source_name_er").attr("style","display:block");
+		}
+	}
+	function checkprice() {
+		$("#add_source_price_er").attr("style","display:none");
+		var price = $.trim($("#add_source_price").val());
+		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(price) ) {
+			$("#add_source_price_er").attr("style","display:block");
+		}
+	}
+	
+	function checkquantiy() {
+		$("#add_source_quantiy_er").attr("style","display:none");
+		var quantiy = $.trim($("#add_source_quantiy").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(quantiy)) {
+			$("#add_source_quantiy_er").attr("style","display:block");
+		}
+	}
+	
+	function checkscore() {
+		$("#add_source_score_er").attr("style","display:none");
+		var score = $.trim($("#add_sourcek_score").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(score)) {
+			$("#add_source_score_er").attr("style","display:block");
+		}
+	}
+	
+	function checkpowers() {
+		$("#add_source_powers_er").attr("style","display:none");
+		var powers = $.trim($("#add_source_maxpowers").val());
+		var reg = /^[1-9]+(\.\d+)?[w|W]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_source_powers_er").attr("style","display:block");
+		}
 	}
 </script>

@@ -2,39 +2,49 @@
 	#add_form .ssd_radio {
 		margin-top: 15px;
 	}
+	.er {
+	float:left; display:none; color:red;height: 20px;line-height:20px; margin-top: 14px; margin-left: 10px;
+}
 </style>
+
 <h2>添加硬盘</h2>
 <form id="add_form">
 	<ul>
 		<li>
 			<label for="add_disk_name">硬盘名称：</label> 
 			<br />
-			<input type="text" name="dname" id="add_disk_name" class="myipt" />
+			<input type="text" name="dname" id="add_disk_name" class="myipt" style="float:left;" onblur="checkname()"/>
+			<span id="add_disk_name_er" class="er">名称不能为空！</span>
 		</li>
 		<li>
 			<label for="add_disk_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
 			<br />
-			<input type="text" name="dprice" id="add_disk_price" class="myipt" />
+			<input type="text" name="dprice" id="add_disk_price" class="myipt" style="float:left;" onblur="checkprice()" />
+			<span id="add_disk_price_er" class="er">价格填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_disk_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
 			<br />
-			<input type="text" name="dquantiy" id="add_disk_quantiy" class="myipt" />
+			<input type="text" name="dquantiy" id="add_disk_quantiy" class="myipt" style="float:left;" onblur="checkquantiy()" />
+			<span id="add_disk_quantiy_er" class="er">库存填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_disk_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
 			<br />
-			<input type="text" name="dscore" id="add_disk_score" class="myipt" />
+			<input type="text" name="dscore" id="add_disk_score" class="myipt" style="float:left;" onblur="checkscore()" />
+			<span id="add_disk_score_er" class="er">跑分填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_disk_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
 			<br />
-			<input type="text" name=dpowers" id="add_disk_powers" class="myipt" />
+			<input type="text" name=dpowers" id="add_disk_powers" class="myipt" style="float:left;" onblur="checkpowers()" />
+			<span id="add_disk_powers_er" class="er">功率填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_disk_volume">硬盘容量：</label> 
 			<br />
-			<input type="text" name="dvolume" id="add_disk_volume" class="myipt" />
+			<input type="text" name="dvolume" id="add_disk_volume" class="myipt" style="float:left;" onblur="checkvolume()" />
+			<span id="add_disk_volume_er" class="er">硬盘容量填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_disk_isssd_y">固&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</label>
@@ -50,7 +60,8 @@
 		<li>
 			<label for="add_disk_rpm">转&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速：&nbsp;</label> 
 			<br />
-			<input type="text" name="drpm" id="add_disk_rpm" class="myipt" />
+			<input type="text" name="drpm" id="add_disk_rpm" class="myipt" style="float:left;" onblur="checkrpm()" />
+			<span id="add_disk_rpm_er" class="er">转速填写格式错误！</span>
 		</li>
 		
 		<li id="show_disk_pic">
@@ -58,13 +69,15 @@
 		</li>
 		<li style="width: 80%; text-align: center;">
 			<input type="button" value="添加" onclick="add_disk()" class="mybtn" />
+			<br>
+			<span id="disk_add_er" class="er" >有信息填写格式错误！</span>
 		</li>
 	</ul>
 </form>
 
 <script type="text/javascript">
 	function add_disk() {
-		alert("a");
+		$("#disk_add_er").attr("style","display:none");
 		var isssd = $('input:radio[name=ssd]:checked').val();
 		if (isssd == 'y') {
 			isssd = 1;
@@ -78,6 +91,20 @@
 		var powers = $.trim($("#add_disk_powers").val());
 		var volume = $.trim($("#add_disk_volume").val());
 		var rpm = $.trim($("#add_disk_rpm").val());
+		
+		var add_disk_name_er = $("#add_disk_name_er").css("display");
+		var add_disk_price_er = $("#add_disk_price_er").css("display");
+		var add_disk_quantiy_er = $("#add_disk_quantiy_er").css("display");
+		var add_disk_score_er = $("#add_disk_score_er").css("display");
+		var add_disk_powers_er = $("#add_disk_powers_er").css("display");
+		var add_disk_volume_er = $("#add_disk_volume_er").css("display");
+		var add_disk_rpm_er = $("#add_disk_rpm_er").css("display");
+		
+		if (add_disk_name_er == "block" || add_disk_price_er == "block" || add_disk_quantiy_er == "block" || add_disk_score_er == "block" || add_disk_powers_er == "block" || add_disk_volume_er == "block" || add_disk_rpm_er == "block"  ) {
+			$("#disk_add_er").attr("style","display:block");
+			return;
+		}
+		
 		if (name == "" || diskprice == "" || quantiy == "" || score == "" || powers == "" || volume == "" || 
 				rpm == "" ) {
 			alert("您输入的信息不能为空，请确认后重新输入...");
@@ -108,8 +135,66 @@
 		})
 	}
 	
+	function checkname() {
+		$("#add_disk_name_er").attr("style","display:none");
+		var cname = $.trim($("#add_disk_name").val());   
+		if (cname == "") {
+			$("#add_disk_name_er").attr("style","display:block");
+		}
+	}
+	function checkprice() {
+		$("#add_disk_price_er").attr("style","display:none");
+		var price = $.trim($("#add_disk_price").val());
+		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(price) ) {
+			$("#add_disk_price_er").attr("style","display:block");
+		}
+	}
 	
+	function checkquantiy() {
+		$("#add_disk_quantiy_er").attr("style","display:none");
+		var quantiy = $.trim($("#add_disk_quantiy").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(quantiy)) {
+			$("#add_disk_quantiy_er").attr("style","display:block");
+		}
+	}
 	
+	function checkscore() {
+		$("#add_disk_score_er").attr("style","display:none");
+		var score = $.trim($("#add_disk_score").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(score)) {
+			$("#add_disk_score_er").attr("style","display:block");
+		}
+	}
+	
+	function checkpowers() {
+		$("#add_disk_powers_er").attr("style","display:none");
+		var powers = $.trim($("#add_disk_powers").val());
+		var reg = /^[1-9]+(\.\d+)?[w|W]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_disk_powers_er").attr("style","display:block");
+		}
+	}
+	
+	function checkvolume() {
+		$("#add_disk_volume_er").attr("style","display:none");
+		var volume = $.trim($("#add_disk_volume").val());
+		var reg = /^[1-9]+(\.\d+)?[gb|GB]$/;   //非负浮点数
+		if (!reg.test(volume)) {
+			$("#add_disk_volume_er").attr("style","display:block");
+		}
+	}
+	
+	function checkrpm() {
+		$("#add_disk_rpm_er").attr("style","display:none");
+		var rpm = $.trim($("#add_disk_rpm").val());
+		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(rpm)) {
+			$("#add_disk_rpm_er").attr("style","display:block");
+		}
+	}
 	
 	
 	
