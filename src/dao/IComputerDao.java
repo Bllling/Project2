@@ -13,7 +13,7 @@ public interface IComputerDao {
 	 * @param map
 	 * @return
 	 */
-	public int add(Integer id,Integer uid,String cname,String detail,Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid,Double sumprice );
+	public int add(Integer uid,String cname,String detail,Integer cpuid,Integer motherboardid,Integer memoryid,Integer diskid,Integer sourceid,Integer graphicsid,Integer boxid,Double sumprice );
      
      
      /**

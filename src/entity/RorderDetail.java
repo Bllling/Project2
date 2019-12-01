@@ -44,6 +44,157 @@ public class RorderDetail implements Serializable {
 	private String pics5;  //显卡图片
 	private String pics6;  //机箱图片
 	
+	private String name;   //cpu名
+	private String name1;  //主板名
+	private String name2;  //内存名
+	private String name3;  //硬盘名
+	private String name4;  //电源名
+	private String name5;  //显卡名
+	private String name6;  //机箱名
+	
+	private String score;   //cpu跑分
+	private String score1;  //主板跑分
+	private String score2;  //内存跑分
+	private String score3;  //硬盘跑分
+	private String score4;  //电源跑分
+	private String score5;  //显卡跑分
+	private String score6;  //机箱跑分
+	
+	
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
+	}
+	public String getScore1() {
+		return score1;
+	}
+	public void setScore1(String score1) {
+		this.score1 = score1;
+	}
+	public String getScore2() {
+		return score2;
+	}
+	public void setScore2(String score2) {
+		this.score2 = score2;
+	}
+	public String getScore3() {
+		return score3;
+	}
+	public void setScore3(String score3) {
+		this.score3 = score3;
+	}
+	public String getScore4() {
+		return score4;
+	}
+	public void setScore4(String score4) {
+		this.score4 = score4;
+	}
+	public String getScore5() {
+		return score5;
+	}
+	public void setScore5(String score5) {
+		this.score5 = score5;
+	}
+	public String getScore6() {
+		return score6;
+	}
+	public void setScore6(String score6) {
+		this.score6 = score6;
+	}
+
+
+
+	
+	
+	public int getCpuid() {
+		return cpuid;
+	}
+	public void setCpuid(int cpuid) {
+		this.cpuid = cpuid;
+	}
+	public int getMotherboardid() {
+		return motherboardid;
+	}
+	public void setMotherboardid(int motherboardid) {
+		this.motherboardid = motherboardid;
+	}
+	public int getMemoryid() {
+		return memoryid;
+	}
+	public void setMemoryid(int memoryid) {
+		this.memoryid = memoryid;
+	}
+	public int getDiskid() {
+		return diskid;
+	}
+	public void setDiskid(int diskid) {
+		this.diskid = diskid;
+	}
+	public int getSourceid() {
+		return sourceid;
+	}
+	public void setSourceid(int sourceid) {
+		this.sourceid = sourceid;
+	}
+	public int getGraphicsid() {
+		return graphicsid;
+	}
+	public void setGraphicsid(int graphicsid) {
+		this.graphicsid = graphicsid;
+	}
+	public int getBoxid() {
+		return boxid;
+	}
+	public void setBoxid(int boxid) {
+		this.boxid = boxid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName1() {
+		return name1;
+	}
+	public void setName1(String name1) {
+		this.name1 = name1;
+	}
+	public String getName2() {
+		return name2;
+	}
+	public void setName2(String name2) {
+		this.name2 = name2;
+	}
+	public String getName3() {
+		return name3;
+	}
+	public void setName3(String name3) {
+		this.name3 = name3;
+	}
+	public String getName4() {
+		return name4;
+	}
+	public void setName4(String name4) {
+		this.name4 = name4;
+	}
+	public String getName5() {
+		return name5;
+	}
+	public void setName5(String name5) {
+		this.name5 = name5;
+	}
+	public String getName6() {
+		return name6;
+	}
+	public void setName6(String name6) {
+		this.name6 = name6;
+	}
+
+	
+	
 	private String city;
 	private String county;
 	private String raddress;

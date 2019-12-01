@@ -38,14 +38,14 @@
 					<li id="menu_nav_index" style="" ><a href="../index1.jsp">首页</a></li>
 					<li id="menu_nav_myplan"><a target="_self"
 						href="#" onclick="showperson()">个人主页</a></li>
-					<li id="menu_nav_index"><a target="_self"
+					<li id="menu_nav_order"><a target="_self"
 						href="#" onclick="showorder()" >已买到的宝贝</a></li>
 					
 				</ul>
 			</div>
 		</div>
 		<input id="homePageUid" type="hidden"/>
-		<iframe id="commentsiframe" align="middle"  onload="showhtml()" frameborder="0" width="1000px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: 250px; height: 1180px;" ></iframe>
+		<iframe id="commentsiframe" align="middle"  onload="showhtml()" frameborder="0" width="1400px" allowtransparency="" marginwidth="0" marginheight="0" scrolling="no" style="margin-bottom: 30px;margin-left: 250px; height: 1180px;" ></iframe>
 	</body>
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script>
@@ -53,13 +53,17 @@
 		
 		$(function() {
 			uid1 = location.hash.replace("#","");
+			$("#menu_nav_myplan").attr("class","active");
 			$("#commentsiframe").attr("src","person.html#"+uid1);
 		})
 		function showorder() {
+			$("#menu_nav_myplan").removeClass("active");
+			$("#menu_nav_order").attr("class","active");
 			$("#commentsiframe").attr("src","Order.html#"+uid1);
 		}
 		function showperson() {
-			
+			$("#menu_nav_order").removeClass("active");
+			$("#menu_nav_myplan").attr("class","active");
 			$("#commentsiframe").attr("src","person.html#"+uid1);
 		}
 	</script>

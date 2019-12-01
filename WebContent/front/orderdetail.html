@@ -2,9 +2,117 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>订单详情</title>
+<link href="../css/Diy_detailNew.css" rel="stylesheet">
+<link href="../css/zLoginDialog.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/share_style0_24.css">
+<link rel="stylesheet" href="../css/global-sitennav.css">
 </head>
 <body>
-
+<div class="wrap">
+		<div class="box" style="margin-left: 200px;">
+			
+			<div class="content clearfix">
+				<div class="left">
+					<p class="title big-title">
+						<span id="orderAdr" style="float:left;">收货地址：</span><br>
+						<span id="orderPhone" style="float:left;">电话号码：</span><span id="ordername" style="margin-left: 200px">收货人：</span>
+					</p>
+					<div class="msg">
+						<div class="text">
+							订单号: <span id="rorderid">20179658547125</span>下单时间：<span id="rtime">2019-11-29 22:21:00</span><span>状态：<font
+								id="state">已发货</font>
+							</span>
+						</div>
+					</div>
+					<ul class="list clearfix" style="margin-left: -50px;">
+						<li><a href="javascript:void(0)" target="_blank"> <img
+								id="img1" src="" title="" width="170" height="120"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img2" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img3" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img4" src="" title="" width="150" height="90"></a></li>
+						<li><a href="javascript:void(0) " target="_blank"> <img
+								id="img5" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img6" src="" title="" width="150" height="90"></a></li>
+						<li><a href=" javascript:void(0)" target="_blank"> <img
+								id="img7" src="" title="" width="150" height="90"></a></li>
+					</ul>
+					<div class="whole-inf" id="proShow"
+						style="width: 1200px; margin-left: -100px;">
+						<div class="inf-lable">
+							<div class="nav">
+								<p style="font-size: 25px;">订单详情</p>
+							</div>
+						</div>
+						<div class="details">
+							<div class="detail" style="display: block;">
+								<table class="zj-inf" width="100%" height="462">
+									<tbody>
+										<tr class="inf-head" align="center">
+											<th width="100">配件</th>
+											<th width="246">配件名</th>
+											<th width="52">数量</th>
+											<th width="96">价格</th>
+											<th width="116">跑分</th>
+										</tr>
+										<tr class="tr1" id="no1">
+											<td align="center" class="ptype">CPU</td>
+										</tr>
+										<tr class="tr1" id="no2">
+											<td align="center" class="ptype">主板</td>
+										</tr>
+										<tr class="tr1" id="no3">
+											<td align="center" class="ptype">内存</td>
+										</tr>
+										<tr class="tr1" id="no4">
+											<td align="center" class="ptype">硬盘</td>
+										</tr>
+										<tr class="tr1" id="no5">
+											<td align="center" class="ptype">电源</td>
+										</tr>
+										<tr class="tr1" id="no6">
+											<td align="center" class="ptype">显卡</td>
+										</tr>
+										<tr class="tr1" id="no7">
+											<td align="center" class="ptype">机箱</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="last-tr clearfix">
+									<div class="left">
+										<span style="margin: 0 10px 0 20px;" class="cite"><a
+											href="#" style="width: 80px;"><font>&lt;&lt;&nbsp;</font>返       回</a></span>
+									</div>
+									<div class="right">
+										<span class="total-num">总计&nbsp;:&nbsp;<font
+											color="#ff3333">￥<span id="sum1">1111</span>元
+										</font></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" id="conputerID" value=""> 
+					<input type="hidden" id="uid" value="">
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+$(function() {
+	rordrid = location.hash.replace("#","");
+	console.log("orderorderid："+rordrid);
+})
+
+
+
+
+
+</script>
 </html>
