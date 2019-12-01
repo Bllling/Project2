@@ -718,6 +718,24 @@ to {
 				var boxpic = data.pics6;
 				var sourcepic = data.pics4;
 				
+				var cpuprice = data.price;
+				var motherboardprice = data.price1;
+				var memoryprice = data.price2;
+				var diskprice = data.price3;
+				var graphicsprice = data.price5;
+				var boxprice = data.price6;
+				var sourceprice = data.price4;
+				
+				console.log(cpuprice);
+				
+				addToComputer("cpu", cpuid, cpupic, cpuname, cpuprice);
+				addToComputer("motherboard", motherboardid, motherboardpic, motherboardname, motherboardprice);
+				addToComputer("memory", memoryid, memorypic, memoryname, memoryprice);
+				addToComputer("disk", diskid, diskpic, diskname, diskprice);
+				addToComputer("graphics", graphicsid, graphicspic, graphicsname,graphicsprice);
+				addToComputer("box", boxid, boxpic, boxname, boxprice);
+				addToComputer("source", sourceid, sourcepic, sourcename, sourceprice);
+				
 				 
 			}, "json")
 		}
