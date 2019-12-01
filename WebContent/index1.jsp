@@ -690,7 +690,7 @@ to {
 				id : id
 			}, function(data) {
 				console.log(data);
-			}, "text")
+			}, "json")
 		}
 		
 		
