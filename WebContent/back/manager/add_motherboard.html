@@ -118,7 +118,7 @@
 	function checkprice() {
 		$("#add_board_price_er").attr("style","display:none");
 		var price = $.trim($("#add_board_price").val());
-		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
+		var reg = /^([1-9][0-9]*)(\.\d+)?$/;   //非负浮点数
 		if (!reg.test(price) ) {
 			$("#add_board_price_er").attr("style","display:block");
 		}
@@ -127,7 +127,7 @@
 	function checkquantiy() {
 		$("#add_board_quantiy_er").attr("style","display:none");
 		var quantiy = $.trim($("#add_board_quantiy").val());
-		var reg = /^([1-9])\d+$/;  //非负整数
+		var reg = /^([1-9][0-9]*)$/;  //非负整数
 		if (!reg.test(quantiy)) {
 			$("#add_board_quantiy_er").attr("style","display:block");
 		}
@@ -136,7 +136,7 @@
 	function checkscore() {
 		$("#add_board_score_er").attr("style","display:none");
 		var score = $.trim($("#add_board_score").val());
-		var reg = /^([1-9])\d+$/;  //非负整数
+		var reg = /^([1-9][0-9]*)$/;  //非负整数
 		if (!reg.test(score)) {
 			$("#add_board_score_er").attr("style","display:block");
 		}
@@ -145,7 +145,7 @@
 	function checkpowers() {
 		$("#add_board_powers_er").attr("style","display:none");
 		var powers = $.trim($("#add_board_powers").val());
-		var reg = /^([1-9])\d+(\.\d+)?[w|W]$/;   //非负浮点数
+		var reg = /^([1-9][0-9]*)(\.\d+)?[w|W]$/;   //非负浮点数
 		if (!reg.test(powers)) {
 			$("#add_board_powers_er").attr("style","display:block");
 		}
@@ -154,7 +154,7 @@
 	function checkmaxmemory() {
 		$("#add_board_maxmemory_er").attr("style","display:none");
 		var maxmemory = $.trim($("#add_board_maxmemory").val());
-		var reg = /^([1-9])\d+(\.\d+)?[gb|GB]$/;   //非负浮点数
+		var reg = /^([1-9][0-9]*)(\.\d+)?[gb|GB]$/;   //非负浮点数
 		if (!reg.test(maxmemory)) {
 			$("#add_board_maxmemory_er").attr("style","display:block");
 		}
