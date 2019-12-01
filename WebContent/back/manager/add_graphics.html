@@ -1,40 +1,52 @@
+<style>
+.er {
+	float:left; display:none; color:red;height: 20px;line-height:20px; margin-top: 14px; margin-left: 10px;
+}
+</style>
 <h2>添加显卡</h2>
 <form id="add_form">
 	<ul>
 		<li>
 			<label for="add_graphics_name">显卡名称：</label> 
 			<br />
-			<input type="text" name="gname" id="add_graphics_name" class="myipt" />
+			<input type="text" name="gname" id="add_graphics_name" class="myipt" style="float:left;" onblur="checkname()"/>
+			<span id="add_graphics_name_er" class="er">名称不能为空！</span>
 		</li>
 		<li>
 			<label for="add_graphics_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
 			<br />
-			<input type="text" name="gprice" id="add_graphics_price" class="myipt" />
+			<input type="text" name="gprice" id="add_graphics_price" class="myipt" style="float:left;" onblur="checkprice()" />
+			<span id="add_graphics_price_er" class="er">价格填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_graphics_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
 			<br />
-			<input type="text" name="gquantiy" id="add_graphics_quantiy" class="myipt" />
+			<input type="text" name="gquantiy" id="add_graphics_quantiy" class="myipt" style="float:left;" onblur="checkquantiy()" />
+			<span id="add_graphics_quantiy_er" class="er">库存填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_graphics_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
 			<br />
-			<input type="text" name="gscore" id="add_graphics_score" class="myipt" />
+			<input type="text" name="gscore" id="add_graphics_score" class="myipt" style="float:left;" onblur="checkscore()" />
+			<span id="add_graphics_score_er" class="er">跑分填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_graphics_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
 			<br />
-			<input type="text" name=gpowers" id="add_graphics_powers" class="myipt" />
+			<input type="text" name=gpowers" id="add_graphics_powers" class="myipt" style="float:left;" onblur="checkpowers()" />
+			<span id="add_graphics_powers_er" class="er">功率填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_graphics_memory">显卡大小：</label> 
 			<br />
-			<input type="text" name="gmemory" id="add_graphics_memory" class="myipt" />
+			<input type="text" name="gmemory" id="add_graphics_memory" class="myipt" style="float:left;" onblur="checkmemory()" />
+			<span id="add_graphics_memory_er" class="er">显卡大小填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_graphics_width">显卡带宽：</label> 
 			<br />
-			<input type="text" name="gwidth" id="add_graphics_width" class="myipt" />
+			<input type="text" name="gwidth" id="add_graphics_width" class="myipt" style="float:left;" onblur="checkwidth()" />
+			<span id="add_graphics_width_er" class="er">显卡带宽填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_graphics_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
@@ -46,12 +58,15 @@
 		</li>
 		<li style="width: 80%; text-align: center;">
 			<input type="button" value="添加" onclick="add_graphics()" class="mybtn" />
+			<br>
+			<span id="graphics_add_er" class="er" >有信息填写格式错误！</span>
 		</li>
 	</ul>
 </form>
 
 <<script type="text/javascript">
 	function add_graphics() {
+		$("#graphics_add_er").attr("style","display:none");
 		var name = $.trim($("#add_graphics_name").val());
 		var graphicsprice = $.trim($("#add_graphics_price").val());
 		var quantiy = $.trim($("#add_graphics_quantiy").val());
@@ -59,6 +74,19 @@
 		var powers = $.trim($("#add_graphics_powers").val());
 		var memory = $.trim($("#add_graphics_memory").val());
 		var width = $.trim($("#add_graphics_width").val());
+		
+		var add_graphics_name_er = $("#add_graphics_name_er").css("display");
+		var add_graphics_price_er = $("#add_graphics_price_er").css("display");
+		var add_graphics_quantiy_er = $("#add_graphics_quantiy_er").css("display");
+		var add_graphics_score_er = $("#add_graphics_score_er").css("display");
+		var add_graphics_powers_er = $("#add_graphics_powers_er").css("display");
+		var add_graphics_memory_er = $("#add_graphics_memory_er").css("display");
+		var add_graphics_width_er = $("#add_graphics_width_er").css("display");
+		
+		if (add_graphics_name_er == "block" || add_graphics_price_er == "block" || add_graphics_quantiy_er == "block" || add_graphics_score_er == "block" || add_graphics_powers_er == "block" || add_graphics_memory_er == "block" || add_graphics_width_er == "block"  ) {
+			$("#graphics_add_er").attr("style","display:block");
+			return;
+		}
 		
 		if (name == "" || graphicsprice == "" || quantiy == "" || score == "" || powers == "" || memory == "" || 
 				width == "" ){
@@ -87,5 +115,66 @@
 				alert("显卡添加失败...\n" + e);
 			}
 		})
+	}
+	
+	function checkname() {
+		$("#add_graphics_name_er").attr("style","display:none");
+		var cname = $.trim($("#add_graphics_name").val());   
+		if (cname == "") {
+			$("#add_graphics_name_er").attr("style","display:block");
+		}
+	}
+	function checkprice() {
+		$("#add_graphics_price_er").attr("style","display:none");
+		var price = $.trim($("#add_graphics_price").val());
+		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(price) ) {
+			$("#add_graphics_price_er").attr("style","display:block");
+		}
+	}
+	
+	function checkquantiy() {
+		$("#add_graphics_quantiy_er").attr("style","display:none");
+		var quantiy = $.trim($("#add_graphics_quantiy").val());
+		var reg = /^([1-9])\d+$/;  //非负整数
+		if (!reg.test(quantiy)) {
+			$("#add_graphics_quantiy_er").attr("style","display:block");
+		}
+	}
+	
+	function checkscore() {
+		$("#add_graphics_score_er").attr("style","display:none");
+		var score = $.trim($("#add_graphics_score").val());
+		var reg = /^([1-9])\d+$/;  //非负整数
+		if (!reg.test(score)) {
+			$("#add_graphics_score_er").attr("style","display:block");
+		}
+	}
+	
+	function checkpowers() {
+		$("#add_graphics_powers_er").attr("style","display:none");
+		var powers = $.trim($("#add_graphics_powers").val());
+		var reg = /^([1-9])\d+(\.\d+)?[w|W]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_graphics_powers_er").attr("style","display:block");
+		}
+	}
+	
+	function checkmemory() {
+		$("#add_graphics_memory_er").attr("style","display:none");
+		var memory = $.trim($("#add_graphics_memory").val());
+		var reg = /^([1-9])\d+(\.\d+)?[gb|GB]$/;   //非负浮点数
+		if (!reg.test(memory)) {
+			$("#add_graphics_memory_er").attr("style","display:block");
+		}
+	}
+	
+	function checkwidth() {
+		$("#add_graphics_width_er").attr("style","display:none");
+		var width = $.trim($("#add_graphics_width").val());
+		var reg = /^([1-9])\d+(\.\d+)?[bit|BIT]$/;   //非负浮点数
+		if (!reg.test(width)) {
+			$("#add_graphics_width_er").attr("style","display:block");
+		}
 	}
 </script>

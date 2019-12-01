@@ -1,45 +1,58 @@
+<style>
+.er {
+	float:left; display:none; color:red;height: 20px;line-height:20px; margin-top: 14px; margin-left: 10px;
+}
+</style>
 <h2>添加内存</h2>
 <form id="add_form">
 	<ul>
 		<li>
 			<label for="add_memory_name">内存名称：</label> 
 			<br />
-			<input type="text" name="mname" id="add_memory_name" class="myipt" />
+			<input type="text" name="mname" id="add_memory_name" class="myipt" style="float:left;" onblur="checkname()"/>
+			<span id="add_memory_name_er" class="er">名称不能为空！</span>
 		</li>
 		<li>
 			<label for="add_memory_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
 			<br />
-			<input type="text" name="mprice" id="add_memory_price" class="myipt" />
+			<input type="text" name="mprice" id="add_memory_price" class="myipt" style="float:left;" onblur="checkprice()" />
+			<span id="add_memory_price_er" class="er">价格填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
 			<br />
-			<input type="text" name="mquantiy" id="add_memory_quantiy" class="myipt" />
+			<input type="text" name="mquantiy" id="add_memory_quantiy" class="myipt" style="float:left;" onblur="checkquantiy()" />
+			<span id="add_memory_quantiy_er" class="er">库存填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
 			<br />
-			<input type="text" name="mscore" id="add_memory_score" class="myipt" />
+			<input type="text" name="mscore" id="add_memory_score" class="myipt"  style="float:left;" onblur="checkscore()" />
+			<span id="add_memory_score_er" class="er">跑分填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
 			<br />
-			<input type="text" name=mpowers" id="add_memory_powers" class="myipt" />
+			<input type="text" name=mpowers" id="add_memory_powers" class="myipt" style="float:left;" onblur="checkpowers()" />
+			<span id="add_memory_powers_er" class="er">功率填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_volume">内存容量：</label> 
 			<br />
-			<input type="text" name="volume" id="add_memory_volume" class="myipt" />
+			<input type="text" name="volume" id="add_memory_volume" class="myipt" style="float:left;" onblur="checkvolume()" />
+			<span id="add_memory_volume_er" class="er">内存容量填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_memorytype">内存类型：</label> 
 			<br />
-			<input type="text" name="memorytype" id="add_memory_memorytype" class="myipt" />
+			<input type="text" name="memorytype" id="add_memory_memorytype" class="myipt" style="float:left;" onblur="checkmemorytype()" />
+			<span id="add_memory_memorytype_er" class="er">内存类型填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_frequency ">内存主频：</label> 
 			<br />
-			<input type="text" name="frequency" id="add_memory_frequency" class="myipt" />
+			<input type="text" name="frequency" id="add_memory_frequency" class="myipt" style="float:left;" onblur="checkfrequency()" />
+			<span id="add_memory_frequency_er" class="er">内存主频填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_memory_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
@@ -51,12 +64,15 @@
 		</li>
 		<li style="width: 80%; text-align: center;">
 			<input type="button" value="添加" onclick="add_memory()" class="mybtn" />
+			<br>
+			<span id="memory_add_er" class="er" >有信息填写格式错误！</span>
 		</li>
 	</ul>
 </form>
 
 <script type="text/javascript">
 	function add_memory() {
+		$("#memory_add_er").attr("style","display:none");
 		var name = $.trim($("#add_memory_name").val());
 		var memoryprice = $.trim($("#add_memory_price").val());
 		var quantiy = $.trim($("#add_memory_quantiy").val());
@@ -65,6 +81,21 @@
 		var volume = $.trim($("#add_memory_volume").val());
 		var memorytype = $.trim($("#add_memory_memorytype").val());
 		var frequency = $.trim($("#add_memory_frequency").val());
+		
+		var add_memory_name_er = $("#add_memory_name_er").css("display");
+		var add_memory_price_er = $("#add_memory_price_er").css("display");
+		var add_memory_quantiy_er = $("#add_memory_quantiy_er").css("display");
+		var add_memory_score_er = $("#add_memory_score_er").css("display");
+		var add_memory_powers_er = $("#add_memory_powers_er").css("display");
+		var add_memory_volume_er = $("#add_memory_volume_er").css("display");
+		var add_memory_memorytype_er = $("#add_memory_memorytype_er").css("display");
+		var add_memory_frequency_er = $("#add_memory_frequency_er").css("display");
+		
+		if (add_memory_name_er == "block" || add_memory_price_er == "block" || add_memory_quantiy_er == "block" || add_memory_score_er == "block" || add_memory_powers_er == "block" || add_memory_volume_er == "block" || add_memory_memorytype_er == "block" || add_memory_frequency_er == "block"  ) {
+			$("#memory_add_er").attr("style","display:block");
+			return;
+		}
+		
 		
 		if (name == "" || memoryprice == "" || quantiy == "" || score == "" || powers == "" || volume == "" || 
 				memorytype == "" || frequency == "" ){
@@ -94,6 +125,76 @@
 				alert("内存添加失败...\n" + e);
 			}
 		})
+	}
+	
+	function checkname() {
+		$("#add_memory_name_er").attr("style","display:none");
+		var cname = $.trim($("#add_memory_name").val());   
+		if (cname == "") {
+			$("#add_memory_name_er").attr("style","display:block");
+		}
+	}
+	function checkprice() {
+		$("#add_memory_price_er").attr("style","display:none");
+		var price = $.trim($("#add_memory_price").val());
+		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(price) ) {
+			$("#add_memory_price_er").attr("style","display:block");
+		}
+	}
+	
+	function checkquantiy() {
+		$("#add_memory_quantiy_er").attr("style","display:none");
+		var quantiy = $.trim($("#add_memory_quantiy").val());
+		var reg = /^([1-9])\d+$/;  //非负整数
+		if (!reg.test(quantiy)) {
+			$("#add_memory_quantiy_er").attr("style","display:block");
+		}
+	}
+	
+	function checkscore() {
+		$("#add_memory_score_er").attr("style","display:none");
+		var score = $.trim($("#add_memory_score").val());
+		var reg = /^([1-9])\d+$/;  //非负整数
+		if (!reg.test(score)) {
+			$("#add_memory_score_er").attr("style","display:block");
+		}
+	}
+	
+	function checkpowers() {
+		$("#add_memory_powers_er").attr("style","display:none");
+		var powers = $.trim($("#add_memory_powers").val());
+		var reg = /^([1-9])\d+(\.\d+)?[w|W]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_memory_powers_er").attr("style","display:block");
+		}
+	}
+	
+	function checkvolume() {
+		$("#add_memory_volume_er").attr("style","display:none");
+		var volume = $.trim($("#add_memory_volume").val());
+		var reg = /^([1-9])\d+(\.\d+)?[gb|GB]$/;   //非负浮点数
+		if (!reg.test(volume)) {
+			$("#add_memory_volume_er").attr("style","display:block");
+		}
+	}
+	
+	function checkfrequency() {
+		$("#add_memory_frequency_er").attr("style","display:none");
+		var frequency = $.trim($("#add_memory_frequency").val());
+		var reg = /^([1-9])\d+[mhz|MHZ]$/;  //非负整数
+		if (!reg.test(frequency)) {
+			$("#add_memory_frequency_er").attr("style","display:block");
+		}
+	}
+	
+	function checkmemorytype() {
+		$("#add_memory_memorytype_er").attr("style","display:none");
+		var memorytype = $.trim($("#add_memory_memorytype").val());
+		var reg = /^[DDR][2|3|4]$/; 
+		if (!reg.test(memorytype)) {
+			$("#add_memory_memorytype_er").attr("style","display:block");
+		}
 	}
 </script>
 

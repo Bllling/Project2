@@ -1,35 +1,46 @@
+<style>
+.er {
+	float:left; display:none; color:red;height: 20px;line-height:20px; margin-top: 14px; margin-left: 10px;
+}
+</style>
 <h2>添加主板</h2>
 <form id="add_form">
 	<ul>
 		<li>
 			<label for="add_board_name">主板名称：</label> 
 			<br />
-			<input type="text" name="bname" id="add_board_name" class="myipt" />
+			<input type="text" name="bname" id="add_board_name" class="myipt" style="float:left;" onblur="checkname()"/>
+			<span id="add_board_name_er" class="er">名称不能为空！</span>
 		</li>
 		<li>
 			<label for="add_board_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
 			<br />
-			<input type="text" name="bprice" id="add_board_price" class="myipt" />
+			<input type="text" name="bprice" id="add_board_price" class="myipt" style="float:left;" onblur="checkprice()" />
+			<span id="add_board_price_er" class="er">价格填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_board_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
 			<br />
-			<input type="text" name="bquantiy" id="add_board_quantiy" class="myipt" />
+			<input type="text" name="bquantiy" id="add_board_quantiy" class="myipt" style="float:left;" onblur="checkquantiy()" />
+			<span id="add_board_quantiy_er" class="er">库存填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_board_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
 			<br />
-			<input type="text" name="bscore" id="add_board_score" class="myipt" />
+			<input type="text" name="bscore" id="add_board_score" class="myipt" style="float:left;" onblur="checkscore()" />
+			<span id="add_board_score_er" class="er">跑分填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_board_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
 			<br />
-			<input type="text" name=bpowers" id="add_board_powers" class="myipt" />
+			<input type="text" name=bpowers" id="add_board_powers" class="myipt" style="float:left;" onblur="checkpowers()" />
+			<span id="add_board_powers_er" class="er">功率填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_board_maxmemory">最大内存：</label> 
 			<br />
-			<input type="text" name="maxmemory" id="add_board_maxmemory" class="myipt" />
+			<input type="text" name="maxmemory" id="add_board_maxmemory" class="myipt" style="float:left;" onblur="checkmaxmemory()" />
+			<span id="add_board_maxmemory_er" class="er">内存填写格式错误！</span>
 		</li>
 		<li>
 			<label for="add_board_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
@@ -41,18 +52,33 @@
 		</li>
 		<li style="width: 80%; text-align: center;">
 			<input type="button" value="添加" onclick="add_motherboard()" class="mybtn" />
+			<br>
+			<span id="board_add_er" class="er" >有信息填写格式错误！</span>
 		</li>
 	</ul>
 </form>
 
 <script type="text/javascript">
 	function add_motherboard() {
+		$("#board_add_er").attr("style","display:none");
 		var name = $.trim($("#add_board_name").val());
 		var price = $.trim($("#add_board_price").val());
 		var quantiy = $.trim($("#add_board_quantiy").val());
 		var score = $.trim($("#add_board_score").val());
 		var powers = $.trim($("#add_board_powers").val());
 		var maxmemory = $.trim($("#add_board_maxmemory").val());
+		
+		var add_board_name_er = $("#add_board_name_er").css("display");
+		var add_board_price_er = $("#add_board_price_er").css("display");
+		var add_board_quantiy_er = $("#add_board_quantiy_er").css("display");
+		var add_board_score_er = $("#add_board_score_er").css("display");
+		var add_board_powers_er = $("#add_board_powers_er").css("display");
+		var add_board_maxmemory_er = $("#add_board_maxmemory_er").css("display");
+		
+		if (add_board_name_er == "block" || add_board_price_er == "block" || add_board_quantiy_er == "block" || add_board_score_er == "block" || add_board_powers_er == "block" || add_board_maxmemory_er == "block"  ) {
+			$("#board_add_er").attr("style","display:block");
+			return;
+		}
 		
 		if (name == "" || price == "" || quantiy == "" || score == "" || powers == "" || maxmemory == "" ){
 			alert("您输入的信息不能为空，请确认后重新输入...");
@@ -81,5 +107,56 @@
 				alert("主板添加失败...\n" + e);
 			}
 		})
+	}
+	function checkname() {
+		$("#add_board_name_er").attr("style","display:none");
+		var cname = $.trim($("#add_board_name").val());   
+		if (cname == "") {
+			$("#add_board_name_er").attr("style","display:block");
+		}
+	}
+	function checkprice() {
+		$("#add_board_price_er").attr("style","display:none");
+		var price = $.trim($("#add_board_price").val());
+		var reg = /^([1-9])\d+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(price) ) {
+			$("#add_board_price_er").attr("style","display:block");
+		}
+	}
+	
+	function checkquantiy() {
+		$("#add_board_quantiy_er").attr("style","display:none");
+		var quantiy = $.trim($("#add_board_quantiy").val());
+		var reg = /^([1-9])\d+$/;  //非负整数
+		if (!reg.test(quantiy)) {
+			$("#add_board_quantiy_er").attr("style","display:block");
+		}
+	}
+	
+	function checkscore() {
+		$("#add_board_score_er").attr("style","display:none");
+		var score = $.trim($("#add_board_score").val());
+		var reg = /^([1-9])\d+$/;  //非负整数
+		if (!reg.test(score)) {
+			$("#add_board_score_er").attr("style","display:block");
+		}
+	}
+	
+	function checkpowers() {
+		$("#add_board_powers_er").attr("style","display:none");
+		var powers = $.trim($("#add_board_powers").val());
+		var reg = /^([1-9])\d+(\.\d+)?[w|W]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_board_powers_er").attr("style","display:block");
+		}
+	}
+	
+	function checkmaxmemory() {
+		$("#add_board_maxmemory_er").attr("style","display:none");
+		var maxmemory = $.trim($("#add_board_maxmemory").val());
+		var reg = /^([1-9])\d+(\.\d+)?[gb|GB]$/;   //非负浮点数
+		if (!reg.test(maxmemory)) {
+			$("#add_board_maxmemory_er").attr("style","display:block");
+		}
 	}
 </script>
