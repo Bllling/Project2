@@ -1,50 +1,73 @@
+<style>
+.er {
+	float:left; display:none; color:red;height: 20px;line-height:20px; margin-top: 14px; margin-left: 10px;
+}
+</style>
 <h2>CPU添加</h2>
 		<form id="add_form">
 			<ul>
 				<li>
 					<label for="add_cpu_name">cpu名称：</label> 
 					<br />
-					<input type="text" name="cname" id="add_cpu_name" class="myipt" />
+					<input type="text" name="cname" id="add_cpu_name" class="myipt" style="float:left;" onblur="checkname()"/>
+					<span id="add_cpu_name_er" class="er">名称不能为空！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：&nbsp;</label> 
 					<br />
-					<input type="text" name="cprice" id="add_cpu_price" class="myipt" />
+					<input type="text" name="cprice" id="add_cpu_price" class="myipt"style="float:left;" onblur="checkprice()" />
+					<span id="add_cpu_price_er" class="er">价格填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_quantiy">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：</label> 
 					<br />
-					<input type="text" name="cquantiy" id="add_cpu_quantiy" class="myipt" />
+					<input type="text" name="cquantiy" id="add_cpu_quantiy" class="myipt"style="float:left;" onblur="checkquantiy()" />
+					<span id="add_cpu_quantiy_er" class="er">库存填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_score">跑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：&nbsp;</label> 
 					<br />
-					<input type="text" name="cscore" id="add_cpu_score" class="myipt" />
+					<input type="text" name="cscore" id="add_cpu_score" class="myipt"style="float:left;" onblur="checkscore()" />
+					<span id="add_cpu_score_er" class="er">跑分填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_powers">功&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;率：</label> 
 					<br />
-					<input type="text" name="cpowers" id="add_cpu_powers" class="myipt" />
+					<input type="text" name="cpowers" id="add_cpu_powers" class="myipt"style="float:left;" onblur="checkpowers()" />
+					<span id="add_cpu_powers_er" class="er">功率填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_cores">核&nbsp;心&nbsp;数：&nbsp;</label> 
 					<br />
-					<input type="text" name="cores" id="add_cpu_cores" class="myipt" />
+					<input type="text" name="cores" id="add_cpu_cores" class="myipt"style="float:left;" onblur="checkcores()" />
+					<span id="add_cpu_cores_er" class="er">核心数填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_threads">线&nbsp;程&nbsp;数：&nbsp;</label> 
 					<br />
-					<input type="text" name="threads" id="add_cpu_threads" class="myipt" />
+					<input type="text" name="threads" id="add_cpu_threads" class="myipt"style="float:left;" onblur="checkthreads()" />
+					<span id="add_cpu_threads_er" class="er">线程数填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_frequency">默认主频：</label> 
 					<br />
-					<input type="text" name="frequency" id="add_cpu_frequency" class="myipt" />
+					<input type="text" name="frequency" id="add_cpu_frequency" class="myipt"style="float:left;" onblur="checkfrequency()" />
+					<span id="add_cpu_frequency_er" class="er">默认主频填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_maxfrequency">最大主频：</label> 
 					<br />
-					<input type="text" name="maxfrequency" id="add_cpu_maxfrequency" class="myipt" />
+					<input type="text" name="maxfrequency" id="add_cpu_maxfrequency" class="myipt"style="float:left;" onblur="checkmaxfrequency()" />
+					<span id="add_cpu_maxfrequency_er" class="er">最大主频填写格式错误！</span>
+					
 				</li>
 				<li>
 					<label for="add_cpu_pics">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片：&nbsp;</label> 
@@ -58,11 +81,14 @@
 				
 				<li style="width: 80%; text-align: center;">
 					<input type="button" value="添加" onclick="addCPU()" class="mybtn" />
+					<br>
+					<span id="add_er" class="er" >有信息填写格式错误！</span>
 				</li>
 			</ul>
 </form>
 <script type="text/javascript">
 	function addCPU() {
+		$("#add_er").attr("style","display:none");
 		var cname = $.trim($("#add_cpu_name").val());    
 		var price = $.trim($("#add_cpu_price").val());
 		var quantiy = $.trim($("#add_cpu_quantiy").val());
@@ -72,11 +98,28 @@
 		var threads = $.trim($("#add_cpu_threads").val());
 		var frequency = $.trim($("#add_cpu_frequency").val());
 		var maxfrequency = $.trim($("#add_cpu_maxfrequency").val());
-		if (cname == "" || price == "" || quantiy == "" || score == "" || powers == "" || cores == "" || 
-				threads == "" || frequency == "" || maxfrequency == "") {
-			alert("您输入的信息不能为空，请确认后重新输入...");
+		
+		var add_cpu_name_er = $("#add_cpu_name_er").css("display");
+		var add_cpu_price_er = $("#add_cpu_price_er").css("display");
+		var add_cpu_quantiy_er = $("#add_cpu_quantiy_er").css("display");
+		var add_cpu_score_er = $("#add_cpu_score_er").css("display");
+		var add_cpu_powers_er = $("#add_cpu_powers_er").css("display");
+		var add_cpu_cores_er = $("#add_cpu_cores_er").css("display");
+		var add_cpu_threads_er = $("#add_cpu_threads_er").css("display");
+		var add_cpu_frequency_er = $("#add_cpu_frequency_er").css("display");
+		var add_cpu_maxfrequency_er = $("#add_cpu_maxfrequency_er").css("display");
+		
+		if (add_cpu_name_er == "block" || add_cpu_price_er == "block" || add_cpu_quantiy_er == "block" || add_cpu_score_er == "block" || add_cpu_powers_er == "block" || add_cpu_cores_er == "block" || add_cpu_threads_er == "block" || add_cpu_frequency_er == "block" || add_cpu_maxfrequency_er == "block" ) {
+			$("#add_er").attr("style","display:block");
 			return;
 		}
+		
+		if (cname == "" || price == "" || quantiy == "" || score == "" || powers == "" || cores == "" || 
+				threads == "" || frequency == "" || maxfrequency == "") {
+			$("#add_er").attr("style","display:block");
+			return;
+		}
+		
 		$.ajaxFileUpload({
 			url: "../../hardware?op=addCPU",
 			secureuri: false,
@@ -99,6 +142,86 @@
 				alert("CPU添加失败...\n" + e);
 			}
 		})
+	}
+	
+	function checkname() {
+		$("#add_cpu_name_er").attr("style","display:none");
+		var cname = $.trim($("#add_cpu_name").val());   
+		if (cname == "") {
+			$("#add_cpu_name_er").attr("style","display:block");
+		}
+	}
+	
+	function checkprice() {
+		$("#add_cpu_price_er").attr("style","display:none");
+		var price = $.trim($("#add_cpu_price").val());
+		var reg = /^[1-9]+(\.\d+)?$/;   //非负浮点数
+		if (!reg.test(price) ) {
+			$("#add_cpu_price_er").attr("style","display:block");
+		}
+	}
+	
+	function checkquantiy() {
+		$("#add_cpu_quantiy_er").attr("style","display:none");
+		var quantiy = $.trim($("#add_cpu_quantiy").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(quantiy)) {
+			$("#add_cpu_quantiy_er").attr("style","display:block");
+		}
+	}
+	
+	function checkscore() {
+		$("#add_cpu_score_er").attr("style","display:none");
+		var score = $.trim($("#add_cpu_score").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(score)) {
+			$("#add_cpu_score_er").attr("style","display:block");
+		}
+	}
+	
+	function checkpowers() {
+		$("#add_cpu_powers_er").attr("style","display:none");
+		var powers = $.trim($("#add_cpu_powers").val());
+		var reg = /^[1-9]+(\.\d+)?[w|W]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_cpu_powers_er").attr("style","display:block");
+		}
+	}
+	
+	function checkcores() {
+		$("#add_cpu_cores_er").attr("style","display:none");
+		var cores = $.trim($("#add_cpu_cores").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(cores)) {
+			$("#add_cpu_cores_er").attr("style","display:block");
+		}
+	}
+	
+	function checkthreads() {
+		$("#add_cpu_threads_er").attr("style","display:none");
+		var threads = $.trim($("#add_cpu_threads").val());
+		var reg = /^[1-9]+$/;  //非负整数
+		if (!reg.test(threads)) {
+			$("#add_cpu_threads_er").attr("style","display:block");
+		}
+	}
+	
+	function checkfrequency() {
+		$("#add_cpu_frequency_er").attr("style","display:none");
+		var frequency = $.trim($("#add_cpu_frequency").val());
+		var reg = /^[1-9]+(\.\d+)?[g|G]$/;   //非负浮点数
+		if (!reg.test(powers)) {
+			$("#add_cpu_powers_er").attr("style","display:block");
+		}
+	}
+	
+	function checkmaxfrequency() {
+		$("#add_cpu_maxfrequency_er").attr("style","display:none");
+		var maxfrequency = $.trim($("#add_cpu_maxfrequency").val());
+		var reg = /^[1-9]+(\.\d+)?[g|G]$/;   //非负浮点数
+		if (!reg.test(maxfrequency)) {
+			$("#add_cpu_maxfrequency_er").attr("style","display:block");
+		}
 	}
 </script>
 
