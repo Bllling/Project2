@@ -36,10 +36,60 @@ public class Computer implements Serializable {
 	private String name6;  //机箱名
 	private String pics6;  //机箱价格
 	
+	private double price;  
+	private double price1;
+	private double price2;
+	private double price3;
+	private double price4;
+	private double price5;
+	private double price6;
 	
 	
 	
 	
+	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public double getPrice1() {
+		return price1;
+	}
+	public void setPrice1(double price1) {
+		this.price1 = price1;
+	}
+	public double getPrice2() {
+		return price2;
+	}
+	public void setPrice2(double price2) {
+		this.price2 = price2;
+	}
+	public double getPrice3() {
+		return price3;
+	}
+	public void setPrice3(double price3) {
+		this.price3 = price3;
+	}
+	public double getPrice4() {
+		return price4;
+	}
+	public void setPrice4(double price4) {
+		this.price4 = price4;
+	}
+	public double getPrice5() {
+		return price5;
+	}
+	public void setPrice5(double price5) {
+		this.price5 = price5;
+	}
+	public double getPrice6() {
+		return price6;
+	}
+	public void setPrice6(double price6) {
+		this.price6 = price6;
+	}
 	public String getName() {
 		return name;
 	}
