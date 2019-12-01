@@ -15,12 +15,12 @@
 			<div class="content clearfix">
 				<div class="left">
 					<p class="title big-title">
-						<span id="orderAdr" style="float:left;">收货地址：</span><br>
-						<span id="orderPhone" style="float:left;">电话号码：</span><span id="ordername" style="margin-left: 200px">收货人：</span>
+						收货地址：<span id="orderAdr" ></span><br>
+						电话号码：<span id="orderPhone" style="margin-right: 200px" ></span>收货人：<span id="ordername" ></span>
 					</p>
 					<div class="msg">
 						<div class="text">
-							订单号: <span id="rorderid">20179658547125</span>下单时间：<span id="rtime">2019-11-29 22:21:00</span><span>状态：<font
+							订单号: <span id="rorderid"></span>下单时间：<span id="rtime"></span><span>状态：<font
 								id="state">已发货</font>
 							</span>
 						</div>
@@ -89,7 +89,7 @@
 									</div>
 									<div class="right">
 										<span class="total-num">总计&nbsp;:&nbsp;<font
-											color="#ff3333">￥<span id="sum1">1111</span>元
+											color="#ff3333">￥<span id="sum1"></span>元
 										</font></span>
 									</div>
 								</div>
@@ -105,11 +105,83 @@
 </body>
 <script src="../js/jquery-3.4.1.min.js"></script>
 <script>
+var rorderid;
 $(function() {
-	rordrid = location.hash.replace("#","");
-	console.log("orderorderid："+rordrid);
+	rorderid = location.hash.replace("#","");
+	console.log("orderorderid："+rorderid);
+	showinfo();
 })
 
+function showinfo() {
+	$.post("../order", {op:"findOrderDetailById", rorderid: rorderid}, function(data) {
+		if (data == null) {
+			alert("没有数据...");
+			return;
+		}
+		var province = data.province;
+		var city = data.city;
+		var county = data.county
+		var raddress = data.raddress;
+		var orderAdr = province + " " + city + " " + county + " " + raddress;
+		var orderState;
+		if (data.state == 0) {
+			orderState = "已删除";
+		} else if (data.state == 1) {
+			orderState = "待发货";
+		} else if (data.state == 2) {
+			orderState = "已发货";
+		} else if (data.state == 3) {
+			orderState = "已收货";
+		}
+		var cpupic = pic(data.pics);  //cpu图片
+		var mbpic = pic(data.pics1);    //主板图片
+		var mepic = pic(data.pics2);    //内存图片
+		var dpic = pic(data.pics3);      //硬盘图片
+		var spic = pic(data.pics4);      //电源图片
+		var grapic = pic(data.pics5);  //显卡图片
+		var bpic = pic(data.pics6);      //机箱图片
+		$("#orderAdr").text(orderAdr);
+		$("#orderPhone").text(data.addrtel);
+		$("#ordername").text(data.addrname);
+		$("#rorderid").text(data.rorderid);
+		$("#rtime").text(data.rtime);
+		$("#state").text(orderState);
+		$("#img1").attr("src","../"+cpupic);
+		$("#img1").attr("title",data.name);
+		$("#img2").attr("src","../"+mbpic);
+		$("#img2").attr("title",data.name1);
+		$("#img3").attr("src","../"+mepic);
+		$("#img3").attr("title",data.name2);
+		$("#img4").attr("src","../"+dpic);
+		$("#img4").attr("title",data.name3);
+		$("#img5").attr("src","../"+spic);
+		$("#img5").attr("title",data.name4);
+		$("#img6").attr("src","../"+grapic);
+		$("#img6").attr("title",data.name5);
+		$("#img7").attr("src","../"+bpic);
+		$("#img7").attr("title",data.name6);
+		var str1 = "<td align='center'><a href='javascript:void(0)'>"+data.name+"</a></td><td>1</td><td><font>￥"+data.cpuprice+"</font></td><td><a href='javascript:void(0)'>"+data.score+"</a></td>";
+		$("#no1").append(str1);
+		var str2 = "<td align='center'><a href='javascript:void(0)'>"+data.name1+"</a></td><td>1</td><td><font>￥"+data.motherboardprice+"</font></td><td><a href='javascript:void(0)'>"+data.score1+"</a></td>";
+		$("#no2").append(str2);
+		var str3 = "<td align='center'><a href='javascript:void(0)'>"+data.name2+"</a></td><td>1</td><td><font>￥"+data.memoryprice+"</font></td><td><a href='javascript:void(0)'>"+data.score2+"</a></td>";
+		$("#no3").append(str3);
+		var str4 = "<td align='center'><a href='javascript:void(0)'>"+data.name3+"</a></td><td>1</td><td><font>￥"+data.diskprice+"</font></td><td><a href='javascript:void(0)'>"+data.score3+"</a></td>";
+		$("#no4").append(str4);
+		var str5 = "<td align='center'><a href='javascript:void(0)'>"+data.name4+"</a></td><td>1</td><td><font>￥"+data.sourceprice+"</font></td><td><a href='javascript:void(0)'>"+data.score4+"</a></td>";
+		$("#no5").append(str5);
+		var str6 = "<td align='center'><a href='javascript:void(0)'>"+data.name5+"</a></td><td>1</td><td><font>￥"+data.graphicsprice+"</font></td><td><a href='javascript:void(0)'>"+data.score5+"</a></td>";
+		$("#no6").append(str6);
+		var str7 = "<td align='center'><a href='javascript:void(0)'>"+data.name6+"</a></td><td>1</td><td><font>￥"+data.boxprice+"</font></td><td><a href='javascript:void(0)'>"+data.score6+"</a></td>";
+		$("#no7").append(str7);
+		$("#sum1").text(data.total);
+	},"json");
+}
+
+function pic(pics) {
+	var pic = pics.split(";");
+	return pic[0];
+}
 
 
 
