@@ -43,6 +43,16 @@ public class OrderServlet extends BasicServlet {
 	}
 	private void addDetail(HttpServletRequest request, HttpServletResponse response) {
 		IOrderDetailBiz rBiz = new IOrderDetaiBizImpl();
+		String rorderid=request.getParameter("rorderid");
+		Integer arid = Integer.parseInt(request.getParameter("arid"));
+		Double cpuprice=Double.parseDouble(request.getParameter("cpuprice"));
+		Double motherboardprice=Double.parseDouble(request.getParameter("motherboardprice"));
+		Double memoryprice=Double.parseDouble(request.getParameter("memoryprice"));
+		Double diskprice=Double.parseDouble(request.getParameter("diskprice"));
+		Double sourceprice=Double.parseDouble(request.getParameter("sourceprice"));
+		Double graphicsprice=Double.parseDouble(request.getParameter("graphicsprice"));
+		Double boxprice=Double.parseDouble(request.getParameter("boxprice"));
+		this.send(response, rBiz.add(rorderid, arid, cpuprice, motherboardprice, memoryprice, diskprice, sourceprice, graphicsprice, boxprice));
 		
 	}
 	private void getTotal(HttpServletRequest request, HttpServletResponse response) {
@@ -76,7 +86,7 @@ public class OrderServlet extends BasicServlet {
         Integer id=Integer.parseInt(request.getParameter("id"));
         Integer uid=Integer.parseInt(request.getParameter("uid"));
         Integer state=Integer.parseInt(request.getParameter("state"));
-        Double total=Double.parseDouble(request.getParameter("state"));
+        Double total=Double.parseDouble(request.getParameter("total"));
 		this.send(response, orderBiz.addOrder(rorderid, id, uid, state, total));
 		
 	}

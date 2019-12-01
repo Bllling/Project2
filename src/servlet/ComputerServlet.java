@@ -75,7 +75,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	private void add(HttpServletRequest request, HttpServletResponse response) {
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		
 		Integer uid = Integer.parseInt(request.getParameter("uid"));
 		String cname = request.getParameter("cname");
 		String detail = request.getParameter("detail");
@@ -88,7 +88,7 @@ private static final long serialVersionUID = 1L;
 		Integer boxid = Integer.parseInt(request.getParameter("boxid"));
 		Double sumprice = Double.parseDouble(request.getParameter("sumprice"));
 		IComputerBiz computerBiz = new ComputerBizImpl();
-		this.send(response,computerBiz.add(id, uid, cname, detail, cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, sumprice));
+		this.send(response,computerBiz.add( uid, cname, detail, cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, sumprice));
 	}
 
 	private void isExist(HttpServletRequest request, HttpServletResponse response) {

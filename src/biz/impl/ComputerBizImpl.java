@@ -119,10 +119,10 @@ public class ComputerBizImpl implements IComputerBiz{
 	}
 
 	@Override
-	public int add(Integer id, Integer uid, String cname, String detail, Integer cpuid, Integer motherboardid,
+	public int add( Integer uid, String cname, String detail, Integer cpuid, Integer motherboardid,
 			Integer memoryid, Integer diskid, Integer sourceid, Integer graphicsid, Integer boxid, Double sumprice) {
 		IComputerDao  computerDao = new ComputerDaoImpl();
-		return computerDao.add(id, uid, cname, detail, cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, sumprice);
+		return computerDao.add( uid, cname, detail, cpuid, motherboardid, memoryid, diskid, sourceid, graphicsid, boxid, sumprice);
 	}
 	
 	

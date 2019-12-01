@@ -10,10 +10,10 @@ public class IOrderDetaiDaoImpl implements IOrderDetailDao {
 
 	@Override
 	public int add(String rorderid, Integer arid, Double cpuprice, Double motherboardprice, Double memoryprice,
-			Double diskprice, Double ssdprice, Double sourceprice, Double graphicsprice, Double boxprice) {
+			Double diskprice,  Double sourceprice, Double graphicsprice, Double boxprice) {
 		DBHelper db= new DBHelper();
-		String sql="insert into rorderdetail values(?,?,?,?,?,?,?,?,?,?)";
-		return db.update(sql, rorderid,arid,cpuprice,motherboardprice,memoryprice,diskprice,ssdprice,sourceprice,graphicsprice,boxprice);
+		String sql="insert into rorderdetail values(?,?,?,?,?,?,?,?,?)";
+		return db.update(sql, rorderid,arid,cpuprice,motherboardprice,memoryprice,diskprice,sourceprice,graphicsprice,boxprice);
 	}
 
 	//查询订单详情
