@@ -150,6 +150,7 @@ public class UsrServlet extends BasicServlet{
 		Usr usr=usrBiz.login(uname, upwd);
 		if(usr !=null){
 			req.getSession().setAttribute("currentAdmin", usr);
+			req.getSession().setMaxInactiveInterval(10);
 	
 			result = 1;
 		}else{

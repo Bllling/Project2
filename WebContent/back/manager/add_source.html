@@ -129,7 +129,7 @@
 	
 	function checkscore() {
 		$("#add_source_score_er").attr("style","display:none");
-		var score = $.trim($("#add_sourcek_score").val());
+		var score = $.trim($("#add_source_score").val());
 		var reg = /^([1-9][0-9]*)$/;  //非负整数
 		if (!reg.test(score)) {
 			$("#add_source_score_er").attr("style","display:block");

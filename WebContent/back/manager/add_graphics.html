@@ -172,7 +172,7 @@
 	function checkwidth() {
 		$("#add_graphics_width_er").attr("style","display:none");
 		var width = $.trim($("#add_graphics_width").val());
-		var reg = /^([1-9][0-9]*)(\.\d+)?[bit|BIT]$/;   //非负浮点数
+		var reg = /^([1-9][0-9]*)(\.\d+)?([bit|BIT]*)$/;   //非负浮点数
 		if (!reg.test(width)) {
 			$("#add_graphics_width_er").attr("style","display:block");
 		}

@@ -314,6 +314,9 @@ to {
 				<button type="button" class="login-btn" id="btn1"
 					onclick="showlogin()">登录</button>
 			</div>
+				<%
+		session.setMaxInactiveInterval(10);
+	%>
 			<div class="zj-login"
 				style="display: none; color: rgb(55, 145, 237); font-size: 20px;">
 				<strong id="my">${currentAdmin.uname }</strong>,欢迎你。&nbsp;&nbsp;您的UID:<strong id="myuid">${currentAdmin.uid }</strong>

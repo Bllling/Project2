@@ -182,7 +182,7 @@
 	function checkfrequency() {
 		$("#add_memory_frequency_er").attr("style","display:none");
 		var frequency = $.trim($("#add_memory_frequency").val());
-		var reg = /^([1-9][0-9]*)[mhz|MHZ]$/;  //非负整数
+		var reg = /^([1-9][0-9]*)([mhz|MHZ]*)$/;  //非负整数
 		if (!reg.test(frequency)) {
 			$("#add_memory_frequency_er").attr("style","display:block");
 		}
@@ -191,7 +191,7 @@
 	function checkmemorytype() {
 		$("#add_memory_memorytype_er").attr("style","display:none");
 		var memorytype = $.trim($("#add_memory_memorytype").val());
-		var reg = /^[DDR][2|3|4]$/; 
+		var reg = /^([DDR]*)([2|3|4]*)$/; 
 		if (!reg.test(memorytype)) {
 			$("#add_memory_memorytype_er").attr("style","display:block");
 		}
