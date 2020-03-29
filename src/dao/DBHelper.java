@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 
 public class DBHelper {
 	/**
-	 * 加载静态类
+	 *  加载静态类
 	 */
 	/*static {
 		try {
